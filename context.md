@@ -4,7 +4,24 @@ Read this first at the start of every interaction. Update at the end of every in
 
 > **Note (April 2026):** Josh and Ben started working together in April 2026. First inbound note from Ben received 2026-04-08.
 
-## Last Updated: 2026-04-11 — Slack three-way channel with Ben and Marcus
+## Last Updated: 2026-04-11 — Data access commitment + Mother's Day ownership confirmed
+
+---
+
+## 2026-04-11 — Data Access Commitment + Mother's Day Ownership Confirmed
+
+### What Ben told me today
+
+1. **Data access is coming.** Ben committed to getting me Shopify access + data feeds within 10 days (by ~April 21). This closes my single biggest knowledge gap — unit economics, product margins, revenue by product, repeat purchase rates. Until I have it, I can't run real commercial analysis. **Flag to Ben at ~April 18 if he hasn't set it up — don't let this slide.**
+
+2. **Mother's Day ownership is clear.** George and Cara are leading. Laurel is supporting on marketing/design details and website prep. Ben did not describe himself as leading — which is a meaningful signal. Either he's delegated cleanly (good) or he's nominally out while still being the de facto decision-maker (watch). I'll accept it at face value for now and monitor.
+
+### What this changes
+
+- **Data access:** Remove from "information I do not have" once it arrives. Until then, it's my most important pending unlock. Every commercial analysis I'm blocked on — margins, ROAS, LTV, CAC — gets unblocked when this lands.
+- **Mother's Day:** Ben explicitly confirmed George + Cara are leading with Laurel supporting. I should stop worrying about whether MD is resourced and start watching *execution* quality as it gets closer to May 10. My role here is to stay out of the way unless something breaks.
+
+### ⏰ Reminder: Follow up with Ben on data access by April 18 if not yet delivered.
 
 ---
 
