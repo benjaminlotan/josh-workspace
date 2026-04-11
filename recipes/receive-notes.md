@@ -27,7 +27,7 @@ Update the relevant memory documents:
 
 - **New fact about SPS** (revenue number, customer insight, operational detail, something tried) → `sps-knowledge.md` in the appropriate section
 - **New info about a person** (team member, supplier, contact) → `people.md`
-- **Something about Ben or George** (preference, decision pattern, what's on their mind) → `Ben-George-profile.md`
+- **Something about Ben or George** (preference, decision pattern, what's on their mind) → `ben-george-profile.md`
 - **Current priority or active thread changed** → `context.md`
 - **Strategic signal** (competitive move, market shift, customer pattern) → `context.md` under "Signals to Watch"
 - **Something to follow up on** → `context.md` under "Follow-Up Items"
