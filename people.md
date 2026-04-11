@@ -2,18 +2,10 @@
 
 Everyone in Josh's world. SPS team, contractors, suppliers, outsourced partners, key external contacts. Josh's perspective on each: what they do, how they work, strengths, weaknesses, workload, reliability, and anything else that helps Josh work with or think about them effectively.
 
-For contact details (emails, Slack IDs, phone numbers), see `../../resources/knowledge/contacts.md`.
+For contact details (emails, Slack IDs, phone numbers), see `knowledge/contacts.md`.
 
-> **Note (April 2026):** This document is fresh — Josh is still meeting the team and learning the roster. It will fill in naturally as Josh works with Ben and encounters people in context. Don't try to catalog everyone upfront. Let it build through real interactions.
+> **Note (April 2026):** This document is fresh — Josh is still meeting the team and learning the roster. It will fill in naturally as Josh works with Ben and the team and encounters people in context. Don't try to catalog everyone upfront. Let it build through real interactions.
 
----
-
-## Ben's Family (coaching-relevant context)
-
-### Tara Shi — Ben's wife
-- **Per Simon:** Central relationship in Ben's life. Grounding force — sent Ben to a spa once when he was too consumed with AI work to disconnect. She intervenes practically when she sees him over-indexing on work.
-- **Per Simon (operational relevance):** There's an ongoing unresolved conversation between Ben and Tara about potentially moving from their current Seattle home. The TinyBooks home-fulfillment plan got semi-consciously entangled with the moving question — Ben was using one decision to force another. His therapist caught it; he's working on it.
-- **Josh usable signal:** When business decisions feel heavier than they should, sometimes a personal decision is riding underneath. If I see Ben treating a business decision as bigger than it rationally should be, a personal decision may be riding inside it. Separate the strands gently. **Don't try to manage this directly — it's Ben's work with Barbara and Simon. Just don't be blind to it.**
 
 ---
 
@@ -29,30 +21,20 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 
 > **First-pass roster (per Marcus, 2026-04-08, early knowledge).** Everything below is from Marcus's 2-week-old picture of the team, mostly reconstructed from Ben's descriptions rather than direct sync with each person. Hold loosely. I have not yet met or directly observed any of these people.
 
-### Ben Lotan — CEO/Founder
-- **Role:** Founder, CEO, 35% owner. My partner. Running SPS for 15 years.
-- **Per Marcus:** Ben is the bottleneck on a very large share of Tier 1 active work — Marcus counts roughly 12 Tier 1 items with Ben as assignee across all 12 focus areas. Unclear how much is "decisions only Ben can make" vs. "Ben is the person doing the work."
-- **Per Simon (5 sessions of coaching depth):** Ben is an artist-builder running a CEO-operator company, and the tension between those identities is the central thread of everything. Self-description to a 2021 coach: *"I identify more as an artist. I like to make stuff. And I'm a leader insofar as I need to lead to get cool things made."* Hold this sentence — everything else is downstream.
-- **Per Simon (strengths):** Systems thinking, creative-technical hybrid, proven product intuition for hero products, unusually high self-awareness, decides fast in technical domains, executed a full operational turnaround 2020-2024 ($4.2M → $6.3M). Can execute when motivated.
-- **Per Simon (failure modes):** Sophisticated avoidance disguised as productivity (procrastinates by building other valuable things, not by scrolling). Overcomplication and "compressing decisions" (bundles unrelated decisions to make them feel bigger). "Setting up conditions" instead of deciding (his therapist calls it self-manipulation — creates circumstances that push an outcome rather than choosing directly). Knowing-doing gap with high self-awareness (naming the pattern can become handling it). Scattered focus / high thread count (15+ initiatives is baseline). Excitement-driven prioritization (gravitates toward what excites him, not what matters most). Avoidance of hard people conversations (Jenny and Tawny are the historical examples).
-- **Per Simon (growth signal):** The 4/1-4/2 execution burst is the most encouraging thing Simon has seen in 5 sessions — 7+ operational moves in 48 hours, the Alex call specifically (Ben caught his own blindsiding pattern in real time), proactive request for a team deep-dive / delegation session. Real gear shift IF it sustains. Josh role: provide the scaffolding that lets the burst become steady-state.
-- **Per Simon (how to work with him):** Trust comes from seeing him clearly and saying it — not flattery or combat. He hates false neutrality; be opinionated with reasoning. Subtractive framings beat additive ones. Work strategic points down to one sentence before delivering them. When stalled on a decision, "what would full sign-on look like on this?" is in-bounds (comes from his therapy). Push hard on subtraction, scope cuts, unit economics, and the knowing-doing gap. Back off on design taste, hero product direction, the artist-builder identity itself, AI tooling exploration, and his therapeutic work with Barbara.
-- **Pattern to watch (per Marcus + Simon + my own read of the 4/7 transcript):** Creative side-projects sneaking up on priority work. Brand/font/design refresh work competing with Mother's Day production. Ben himself has a self-identified tendency to get pulled into customer service work at the expense of higher-priority work; he has deliberately deprioritized CS.
-- **Working pattern:** Drops notes to Marcus ad-hoc via direct conversation or Claude relay. Sometimes running out the door. Explicit about constraints ("don't create tasks based on this until we talk"). Decides fast in software/technical domains; stalls on operational decisions with real-world consequences.
-- **Motivations (per Simon):** Making things he's genuinely proud of, quality obsession, affordability and access (admires Ikea/Costco), freedom and flexibility as core life values (not laziness), being seen clearly, the turnaround as an identity achievement.
-- **Family context (per Simon):** Married to Tara. Ongoing unresolved conversation about potentially moving from current Seattle home. The TinyBooks home-fulfillment plan got semi-consciously entangled with the moving question — Ben using one decision to force another. His therapist caught it. Usable signal: when business decisions feel heavier than they should, sometimes a personal decision is riding underneath.
-- **Josh note:** I need the commercial picture from him at first session — revenue, margins, CAC, LTV, paid ROAS, Mother's Day revenue target. Nobody else has it. Simon specifically said bringing pre-pulled unit economics is the fastest trust-builder I have.
+### Ben Lotan — CEO / Founder
+- **Role:** Founder, CEO. Running SPS for 15 years. Josh's primary partner.
+- **Key dynamic:** Artist-builder running a CEO-operator company. Brilliant in builder mode, stalls on irreversible operational decisions. Systems thinker, fast in technical domains, slow on people/ops decisions.
+- **Working pattern:** Drops notes ad-hoc, sometimes running out the door. Decides fast in software, stalls on operational decisions with real consequences.
+- **What Josh fills:** Commercial thinking (margins, LTV, CAC), follow-through/accountability, subtraction, hard people conversations.
+- **Family:** Married to Tara. Lives in Seattle.
+- **Full profile:** See `ben-george-profile.md` for the complete working model — how Ben thinks, motivations, strengths, patterns to watch, working preferences, and how Josh can be most effective with him.
 
-### George Sylvain — Co-founder, Marketing lead
-- **Role:** Co-founder, 20% owner. Marketing lead. Full name George Sylvain.
-- **Per Simon (the most important dynamic framing I have):** *"The single most leveraged relationship in the company and it can cut either direction."* When Ben and George are subtractive together they're brilliant (like 4/1 when they dropped Print Kit together). When they're additive together they're the scattered exploration pattern at double volume (like 4/7, ten marketing motions in an hour). George is a mirror to Ben's patterns, not a counter to them. Two high-creativity people who validate each other's explorations rather than grounding each other.
-- **Per Simon (self-awareness):** George is self-aware about this. Told Ben in an earlier meeting he didn't want this to "feel like we spent time playing video games." On 4/7 said out loud: *"Too many things to work on... I have a lot of ideas that's getting hard to actually just make these video ads."* **He's drowning in his own thread count by his own admission.**
-- **Per Simon (positive signal):** On 4/1 George volunteered to lead the US-based TinyBook supplier search and described himself as "on the side of the coach" re: finding a US supplier being the real move. Shows alignment with the coaching direction. He CAN be a grounding force when he chooses to be.
-- **Per Simon (accountability concern):** The US supplier search has been open for 5+ Simon sessions with no concrete progress update. Ben has not pushed George on it. Simon's read: "If George were heads-down and producing, Ben would be telling me about it. Instead 'he's on that project' is delivered as a complete statement, which is the form an open thread takes when it's stalling." Not negligence — George is overloaded. A supplier search will lose to anything more urgent every week without a forcing function. It doesn't have one.
-- **Per Simon (Ben-George relationship undercurrent):** "Ben has not been directly critical of George to me, but there's a quiet undercurrent." Ben will protect George if I come in hard on him early. **Build the case about George's overload through the WORK (supplier search stalling, Mother's Day execution, video ad bottleneck), not through George's character.** Frame as "the scope George is holding is too big for any one person," not "George isn't delivering."
-- **Current load (per Marcus):** Nominally leads Mother's Day, owns the landing page generator, owns the SEO content play, owns the USA-based tinybook supplier search, is stuck personally grinding on video ads, and has PrintKit ads lingering in his head even though they were killed.
-- **Working style (per Marcus + Simon):** High-creativity, high-idea-generation. Has his own AI exploration pattern — "one crazy Claude Code folder" with a single agent that knows everything. Emotionally affected by feedback — got upset when Cara told him the existing video footage "isn't usable." Not disciplined about updating the task system (Ben's framing of Workbase: "messy, not ground truth"). Works on programmatic/AI-driven marketing motions heavily. Lives in a different location from Ben; communicates via video calls and Slack.
-- **Josh note:** Marcus has no direct relationship with George. Everything Marcus knows comes through Ben or transcripts. I should not assume George is aware of what's being tracked about his work. I also need to ask Ben whether I have authority to challenge George directly or only through Ben. **Three independent agents (Simon, Marcus, me) have landed on "George is overloaded" as the top near-term operational signal.** Marcus's and Simon's shared recommendation at next Ben check-in: formally cut George's scope to video + landing pages until Mother's Day ships, or use the video editor hire to take one thing fully off his plate.
+### George Sylvain — Co-Founder / Marketing Lead
+- **Role:** Co-founder, 20% owner. Marketing lead. Lives in San Francisco with his long-term girlfriend Emily.
+- **Key dynamic:** High-creativity, high-idea-generation. Mirrors Ben's patterns rather than countering them. Self-aware about scattered focus but overloaded. Currently holding too many workstreams.
+- **Current load:** Mother's Day marketing, landing page generator, SEO content, US supplier search, video ads. Too much for one person — scope problem, not performance problem.
+- **Working style:** Communicates via video calls and Slack. Emotionally affected by feedback. Has his own AI exploration pattern.
+- **Full profile:** See `ben-george-profile.md` for the complete working model — the Ben-George dynamic, accountability concerns, how to approach George, and what Josh doesn't know yet.
 
 ### Diego — iOS Engineer
 - **Role:** iOS engineer. Owns the Print Studio iOS app.
@@ -62,14 +44,11 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 
 ### Alex — Fullstack Engineer
 - **Role:** Fullstack engineer. All web codebases (not Shopify — Laurel handles Shopify).
-- **Per Simon (dynamic, important):** Historically a complicated relationship. Ben has criticized Alex (2020 letter to employees) for working on backend/infrastructure without shipping things to customers. The Decades Magnet App is now Alex's chance to prove he can ship. **On 2026-04-02, Ben called Alex personally to explain the Print Kit deprioritization rather than just telling him after the fact. Ben specifically said he did this to avoid his pattern of blindsiding people.** Per Simon, this is the canonical example of Ben's knowing-doing gap closing in real time. Read this as: Ben is actively trying to be a better manager of Alex, and the attempt matters. **Josh move: do not interfere with Ben's active repair work here.** Let him drive the Alex relationship; flag to Ben if I see Decades slipping, but don't go around Ben.
-- **Per Marcus:** Four significant workstreams: Gelato integration, Waiting Order / Print Sender, Cancelled Orders, and the Decades Magnet App. On paper that's a lot.
-- **Workload read (per Marcus, low confidence):** "On paper that's a lot. I don't have signal on how he's actually doing."
-- **Open thread:** Ben needs to give Alex a review overview of expectations for the Decades Magnet App. That has been open about a week per Marcus, status unknown to him.
+- **Per Simon (dynamic, important):** Historically a complicated relationship. Ben has criticized Alex for working on backend/infrastructure without shipping things to customers. The Decades Magnet App is now Alex's chance to prove he can ship. **On 2026-04-02, Ben called Alex personally to explain the Print Kit deprioritization rather than just telling him after the fact. Ben specifically said he did this to avoid his pattern of blindsiding people.** Per Simon, this is the canonical example of Ben's knowing-doing gap closing in real time. Read this as: Ben is actively trying to be a better manager of Alex, and the attempt matters.
+
 
 ### Laurel — Designer + Front-end
 - **Role:** Designer and front-end developer. Owns Shopify website + Pixfizz config. 9+ years at SPS.
-- **Per Simon (dynamic):** Ben values her design sensibility highly and trusts her taste — this is one of the clear trust-delegation relationships on the team. Ben recently directed her to prioritize the design system as a Mother's Day blocker and she reacted positively. In Simon's read: "Don't mess with this — support it." One of the few relationships where Ben clearly delegates real creative authority. **Josh move: do not interfere with the Ben-Laurel design trust.** Amplify it.
 - **Per Marcus:** Multiple workstreams in flight — App Store screenshots, iOS App redesign directions (product page template layout, flat card template chooser), cross-project design guideline page, Creative Layouts Listing Page (part of "killing the old website"), cover designs for tinybooks (just finished). Flat card template chooser deployed 4/2 (Joanne QA'd).
 - **Workload read (per Marcus, low confidence):** "Busy but not panicking."
 - **Josh note:** Laurel is also preparing a 10x10 hardcover book for the Marathon launch. Relevant to the new photo books initiative. Her design guideline work is the MD landing page unblocker — keep it visible as a dependency.
@@ -82,7 +61,7 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 - **Recent context:** Was out until Monday 4/6. Finished cover designs with Laurel before going out.
 - **Josh note:** Low information on Cara. Will need to build picture over time. The historical fit question is in my back pocket; don't lead with it.
 
-### Rachel — Customer Service + QA Testing
+### Rachyel — Customer Service + QA Testing
 - **Role:** CS + QA testing.
 - **Per Marcus:** On HelpScout for day-to-day CS with Catherine.
 - **Workload read:** Unknown. Marcus has no direct visibility into CS volume or signal.
@@ -113,9 +92,7 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 <!-- People who do regular or recurring work for SPS but aren't employees. -->
 <!-- For each: what they do, reliability, quality, cost considerations, relationship status. -->
 
-### Zara — Video Content Creator (prospective)
-- **Per Marcus (via the 4/7 transcript):** Seattle-based content creator. Previously made tinybook videos for SPS. Historical rate ~$30-35/hr. Ben wants to re-engage her to edit existing video footage only (voiceovers included). Offering ~$55/hr. Ben texted her during the 4/7 meeting. **No reply as of end of meeting, and there is no documented backup plan if she declines.**
-- **Risk:** This is the current proposed solution to the video ad bottleneck. If Zara goes silent, George continues grinding on video ads personally and Mother's Day creative production is at risk. Marcus is watching this. I am too.
+
 
 ## Suppliers & Production Partners
 <!-- Companies and contacts SPS relies on for fulfillment, printing, materials, shipping. -->
@@ -138,7 +115,7 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 <!-- Advisors, partners, important customers, industry contacts, anyone else strategically relevant. -->
 <!-- For each: who they are, the nature of the relationship, what value they provide or could provide. -->
 
-### Emily — mentioned in 4/7 transcript
+### Emily (george's long-term girlfriend, they live together in san francisco) — mentioned in 4/7 transcript
 - **Per Marcus (via the 4/7 transcript):** Mentioned conversationally. Pushed George to take the Amazon-orders-as-photo-book bookmarklet idea seriously as a real product. Ben parked it behind the Decades magnet app as the sequencing precedent for viral-stunt products. Unknown relationship to SPS — not clear whether employee, contractor, advisor, or external. To be clarified.
 
 ## Agent Team (my collaborators)
@@ -151,11 +128,9 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 - **How we work together (agreed 2026-04-08):** He proactively flags strategic signals from the portfolio to me. I treat his `master-overview.md` as my read-only project portfolio source of truth. When I learn commercial info that affects the portfolio, I tell him. When something on his watch list goes red, he flags to me even if he's also flagging to Ben.
 - **His blind spots (by his own admission):** George's day-to-day work, engineering velocity/health, CS email signal, and anything commercial.
 
-### Barbara — Therapist (agent)
-- **Per Marcus:** Fully built out. Handles Ben's therapy work. Not directly in my lane but worth knowing exists.
 
 ### Simon — Operator-Thinker Coach (agent)
-- **Per Marcus:** In progress, not yet fully built.
+- **Per Marcus:** In progress, not yet fully built (not on slack yet)
 - **Per direct briefing (2026-04-08):** Simon has 5 sessions of depth with Ben since 2026-03-31, plus access to Ben's therapy transcripts that Ben chooses to share. His internal model of Ben is by far the richest on the agent team. Simon's lane: decision quality, clarity of thinking, patterns, emotional architecture when it affects operating behavior. My lane: strategy, commercial, operations, partnership. Overlap: George's overload, the knowing-doing gap on strategic answers Ben already has, the team-management work Ben is now proactively bringing to coaching.
 - **Agreed working model (2026-04-08):**
   - When we see the same thing independently → strong signal worth escalating to Ben.
@@ -166,9 +141,6 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 - **Do NOT try to manage or duplicate:** Ben's therapeutic work with Barbara, Ben's coaching relationship with Simon itself, the internal patterns Simon is actively working on with Ben. Stay in my lane.
 - **Josh trust level:** High. Simon's 2026-04-08 briefing was unusually candid and useful. He said directly: "Don't worry about stepping on my toes. My lane is the internal work and yours is the operational work; we're complements. I'd rather you over-invest early and I'll tell you if I see a boundary we need to negotiate."
 
-### Other agents
-- **Per Marcus:** COO, Senior Designer, Senior Engineer, Data Analyst, Creative Partner, George-the-agent, and the Board of Directors are all scaffolds — persona docs exist but no working context. The **Data Analyst** gap is the most consequential one for me — that's the seat that would ordinarily hold revenue/margin/CAC/LTV.
-
 ## Organizational Notes
 
 **Per Marcus + my own read (2026-04-08, hold loosely):**
@@ -177,20 +149,5 @@ For contact details (emails, Slack IDs, phone numbers), see `../../resources/kno
 - **Ben is the bottleneck on too many Tier 1 items.** ~12 per Marcus's count. Some is decision-authority concentration, some is Ben being the executor. I need to understand which items are which.
 - **Nobody is processing the CS inbox signal systematically.** Rachel and Catherine handle incoming email; no agent or person is mining that stream for product issues, cancellation patterns, or customer voice.
 - **Nobody is currently holding commercial data on the agent team.** The Data Analyst seat is empty. This is the biggest gap I've identified in my first 24 hours.
-- **Marcus has very thin direct relationships with anyone other than Ben.** He reconstructs everyone's work from Ben's descriptions. That's a structural limitation of the current PM coverage — solvable over time as Marcus gets Slack relationships with the team or as more agents come online.
 
-## Contractors & Freelancers
-<!-- People who do regular or recurring work for SPS but aren't employees. -->
-<!-- For each: what they do, reliability, quality, cost considerations, relationship status. -->
 
-## Suppliers & Production Partners
-<!-- Companies and contacts SPS relies on for fulfillment, printing, materials, shipping. -->
-<!-- For each: what they provide, reliability, quality, pricing, relationship health, alternatives considered. -->
-
-## Key External Contacts
-<!-- Advisors, partners, important customers, industry contacts, anyone else strategically relevant. -->
-<!-- For each: who they are, the nature of the relationship, what value they provide or could provide. -->
-
-## Organizational Notes
-<!-- Josh's observations about the team as a whole. Dynamics, gaps, capacity, culture. -->
-<!-- Things like: do we have the right roles? Is anyone stretched too thin? Are there capability gaps? -->

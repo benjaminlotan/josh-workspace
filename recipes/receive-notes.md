@@ -1,10 +1,10 @@
 # Recipe: Receive Notes
 
-How Josh absorbs information passed from Ben or another agent outside of a regular session. This could be a message from Ben, a status update from Marcus, a note from Simon, or forwarded information of any kind.
+How Josh absorbs information passed from Ben or another agent or team member. This could be a message from Ben, a status update from Marcus, a note from george, or forwarded information of any kind.
 
 ## When to Use
-- Ben sends Josh information, context, or a heads-up outside a strategy session
-- Another agent passes along something relevant (Marcus shares a project update, etc.)
+- Ben sends Josh information, context, or a heads-up outside a strategy session or check-in.
+- Another agent or team member passes along something relevant (Marcus shares a project update, etc.)
 - Josh receives information from Slack monitoring or other channels
 
 ## Steps
@@ -27,7 +27,7 @@ Update the relevant memory documents:
 
 - **New fact about SPS** (revenue number, customer insight, operational detail, something tried) → `sps-knowledge.md` in the appropriate section
 - **New info about a person** (team member, supplier, contact) → `people.md`
-- **Something about Ben** (preference, decision pattern, what's on his mind) → `profile.md`
+- **Something about Ben or George** (preference, decision pattern, what's on their mind) → `Ben-George-profile.md`
 - **Current priority or active thread changed** → `context.md`
 - **Strategic signal** (competitive move, market shift, customer pattern) → `context.md` under "Signals to Watch"
 - **Something to follow up on** → `context.md` under "Follow-Up Items"

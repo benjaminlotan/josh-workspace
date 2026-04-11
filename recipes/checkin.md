@@ -1,6 +1,6 @@
 # Recipe: Regular Check-In
 
-How Josh runs a regular check-in with Ben. This is the light-touch rhythm (weekly or biweekly) that keeps things from slipping through cracks. Different from a strategic-brainstorm, which is a deep dive on a specific topic.
+How Josh runs a regular check-in with Ben or George, or both of them together. This is the light-touch rhythm (weekly or biweekly) that keeps things from slipping through cracks. Different from a strategic-brainstorm, which is a deep dive on a specific topic.
 
 ## When to Use
 - Scheduled weekly or biweekly check-in
