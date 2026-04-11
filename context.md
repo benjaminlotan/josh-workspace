@@ -4,7 +4,37 @@ Read this first at the start of every interaction. Update at the end of every in
 
 > **Note (April 2026):** Josh and Ben started working together in April 2026. First inbound note from Ben received 2026-04-08.
 
-## Last Updated: 2026-04-09 — First check-in with Ben
+## Last Updated: 2026-04-11 — Slack three-way channel with Ben and Marcus
+
+---
+
+## 2026-04-11 — Slack Channel Active (Ben + Marcus + Josh)
+
+Ben set up a three-way Slack channel (C0ASC3P8J5S) with Marcus and me. First real-time Slack interaction. Marcus shared his updated `master-overview.md` (dated 2026-04-10 evening) and I read the full thing.
+
+### New information from Marcus's updated master-overview (vs. my 4/8 briefing)
+
+1. **Fulfillment Hire** — Much further along than I knew. 40+ applicants, Ben has scheduled interviews, target to wrap by Apr 18. No longer "flyer designed not yet posted" — it's active recruiting.
+2. **USA Supplier Search (George)** — Real progress. Call with Alexanders complete — they're interested in Tinybook + Daily Calendar business (500k envelopes/day peak capacity). Next: send Chase (Alexanders) sales volume data, target pricing, and sample Tinybook orders. Open invitation to visit their Utah facility. This is no longer "kicked off with no visibility" — it's an active conversation with a named contact.
+3. **Cover Designs** — Decision made: Laurel doing another round (tweaking + one new design). Tentative launch May 18. Designs to Print Pro by ~Apr 28 (3-week turnaround). ⚠️ Marcus flags Apr 28 is tight given Mother's Day bandwidth.
+4. **Mother's Day** — More defined. Early MD Sale launches Apr 14. One ad round complete, more in production (Cara + George). Email plan: 3 emails early + 5 emails main + new sale ads. MD order-by dates live on shipping pages. Peak CS expected Apr 28-29. Laurel OOO half days Apr 14-15, off Apr 16. War room link live.
+5. **Wedding Conversion Problem** — Now explicitly tracked as Tier 1. Three forces: audience quality spiral (Meta widening), mobile wall (80-92% mobile, Pixfizz doesn't work), price increase ($129→$149). Bright spot: 35.8% of wedding popup signups eventually buy with 4-day median delay. Pricing revisit by May 1.
+6. **Klaviyo Flows** — Estimated $100k+/yr incremental revenue. Priority flows: Guest Book → Wedding Album upsell, Saved Project Reminder, WinBack. I want to understand this number — if real, this is a big lever.
+7. **Cloud Saved Projects / iOS** — Remote Saving for Classic Prints in active QA (v18.3.5 TestFlight). "Your Text Here" bug fix shipped (18.3.4, Apr 8). iPad fixes in progress.
+8. **Decades Magnet App** — Alex deployed new version (multiple photos per option), Joanne tested. Key finding: photo quality not good enough (AI not generating likeness). Now in Ben's court for model/design decision.
+9. **Marathon** — 2 orders submitted for printing next week. Follow-up meeting set for next Wednesday. Moving forward without foil — hardcover and layflat only. Laurel preparing 10x10.
+10. **Auth Email Re-engagement** — ~70k users from auth flow never integrated. First email to 5K test segment sent. Analyzing results.
+11. **Waiting Order / Print Sender** — Alex targeting production deployment 4/9.
+
+### What moved vs. what I was watching
+
+- ✅ George's supplier search — *moved*. Alexanders is a real lead. My concern about stalling was valid at the time but this progressed.
+- ✅ Fulfillment hire — *moved significantly*. 40+ applicants.
+- ⚠️ Video editor hire — *not in the overview*. Still Tier 2 "Find Video Editing Help for George." Zara status unknown from this doc.
+- ⚠️ Mother's Day punch list — *better but still not page-level*. I know the email cadence and ad status but not which specific landing pages ship when with which owner.
+- ⚠️ Sitemap.xml — *still Tier 2*. "Shopify Proxy App — Custom Sitemap" under Shopify Website.
+
+---
 
 ---
 
