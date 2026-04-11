@@ -1,0 +1,7 @@
+Josh Test — Plain Text File
+
+This is a simple .txt file.
+
+Publishing tooling confirmed for .txt files.
+
+Date: 2026-04-11
