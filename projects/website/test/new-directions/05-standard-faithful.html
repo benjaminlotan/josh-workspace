@@ -1,0 +1,1411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>social print studio — standard / faithful</title>
+
+<!-- ============================================================
+     google fonts: inter (variable 100-900) + jetbrains mono
+     one link, two families. inter substitutes gt standard.
+     jetbrains mono substitutes gt standard mono.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   tokens — gt standard palette, verbatim
+   ============================================================ */
+:root {
+  /* color */
+  --gt-black:        #000000;
+  --gt-white:        #FFFFFF;
+  --gt-red:          #FF3500;
+  --gt-yellow:       #FFCA08;
+  --gt-blue:         #40A0FF;
+  --gt-pink:         #FFCCCC;
+  --gt-grey:         #EAEAEA;
+  --gt-green:        #0AC100;
+  --gt-purple:       #8800FF;
+  --gt-orange:       #FF6200;
+  --gt-deep-green:   #0B6E49;
+  --gt-warm-white:   #F2F3E8;
+  --gt-deep-blue:    #1414FF;
+  --gt-soft-pink:    #FFADE8;
+  --gt-muted-green:  #CBCCBE;
+
+  /* type */
+  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+
+  --caption-size: 0.4375rem;   /* 7px */
+
+  /* layout */
+  --max-width:        1280px;
+  --page-padding:     36px;
+  --section-gap:      125px;
+  --grid-row-gap:     28px;
+  --grid-col-gap:     20px;
+  --nav-height:       40px;
+  --stroke:           1px;
+  --border-lg:        1.5px;
+}
+
+/* ============================================================
+   reset
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--gt-white);
+  color: var(--gt-black);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 22.32px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+}
+a:hover, a:focus { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+/* ============================================================
+   global type — lowercase by default, mixed case only in <p>
+   ============================================================ */
+h1, h2, h3, h4, h5, h6,
+nav, .pill, .display, .specimen, .section-title, .number-display, .label-pill {
+  text-transform: lowercase;
+  font-weight: 400;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  font-size: 18px;
+  line-height: 22.32px;
+  margin: 0;
+}
+
+.body { font-size: 18px; line-height: 22.32px; }
+
+/* the 7px caption — uppercase exception */
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+/* mono data label, slightly larger than the 7px caption */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* display sizes */
+.display-xxl {
+  font-family: var(--font-sans);
+  font-size: clamp(96px, 18vw, 220px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+}
+.display-xl {
+  font-family: var(--font-sans);
+  font-size: clamp(72px, 12vw, 160px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+.display-l {
+  font-family: var(--font-sans);
+  font-size: clamp(56px, 8vw, 110px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+}
+.display-m {
+  font-family: var(--font-sans);
+  font-size: clamp(40px, 5.6vw, 76px);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.display-s {
+  font-family: var(--font-sans);
+  font-size: 47.43px;
+  font-weight: 400;
+  line-height: 47.43px;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   layout — full bleed sections, max-width container inside
+   ============================================================ */
+.bleed {
+  width: 100%;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+.section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+.section--tight {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.bg-red    { background: var(--gt-red); }
+.bg-yellow { background: var(--gt-yellow); }
+.bg-blue   { background: var(--gt-blue); }
+.bg-pink   { background: var(--gt-pink); }
+.bg-black  { background: var(--gt-black); color: var(--gt-white); }
+.bg-white  { background: var(--gt-white); }
+.bg-grey   { background: var(--gt-grey); }
+
+/* white text in black sections */
+.bg-black h1, .bg-black h2, .bg-black h3,
+.bg-black p, .bg-black a, .bg-black .display-xxl,
+.bg-black .display-xl, .bg-black .display-l, .bg-black .display-m,
+.bg-black .display-s, .bg-black .caption, .bg-black .mono { color: var(--gt-white); }
+
+/* the 12 column grid */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+}
+.grid-gap {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-col-gap);
+  row-gap: var(--grid-row-gap);
+}
+
+/* span helpers */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+.start-1  { grid-column-start: 1; }
+.start-2  { grid-column-start: 2; }
+.start-3  { grid-column-start: 3; }
+.start-4  { grid-column-start: 4; }
+.start-5  { grid-column-start: 5; }
+.start-6  { grid-column-start: 6; }
+.start-7  { grid-column-start: 7; }
+.start-8  { grid-column-start: 8; }
+.start-9  { grid-column-start: 9; }
+.start-10 { grid-column-start: 10; }
+
+/* ============================================================
+   sticky nav — 40px grey, pills with rounded top corners only
+   ============================================================ */
+nav.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  background: var(--gt-grey);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 var(--page-padding);
+  border-bottom: var(--stroke) solid var(--gt-black);
+}
+.topbar-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: var(--nav-height);
+}
+.brand {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark {
+  width: 14px;
+  height: 14px;
+  background: var(--gt-black);
+  border-radius: 50%;
+  display: inline-block;
+}
+.pills {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: var(--nav-height);
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: -0.005em;
+  padding: 6px 14px 8px;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  color: var(--gt-black);
+  cursor: pointer;
+  height: 28px;
+}
+.pill .pill-num {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  margin-right: 8px;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+.pill[data-section="identity"] { background: var(--gt-red); }
+.pill[data-section="craft"]    { background: var(--gt-yellow); }
+.pill[data-section="catalog"]  { background: var(--gt-blue); }
+.pill[data-section="studio"]   { background: var(--gt-pink); }
+
+/* ============================================================
+   small reusable parts
+   ============================================================ */
+.rule {
+  border: 0;
+  border-top: var(--stroke) solid currentColor;
+  margin: 0;
+}
+.rule-thick { border-top-width: var(--border-lg); }
+
+.label-pill {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-block;
+  padding: 3px 6px 2px;
+  border: var(--stroke) solid currentColor;
+}
+
+.section-marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.section-marker .circle-num {
+  width: 22px;
+  height: 22px;
+  border: var(--stroke) solid currentColor;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: lowercase;
+  line-height: 1;
+}
+
+/* metadata stack — column of 7px caption rows with rules */
+.meta-stack {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--stroke) solid currentColor;
+}
+.meta-stack .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0 7px;
+  border-bottom: var(--stroke) solid currentColor;
+  gap: 12px;
+}
+.meta-stack .row .k,
+.meta-stack .row .v {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+}
+.meta-stack .row .v { text-align: right; }
+
+/* ============================================================
+   product image plates — sharp corners, black border, captioned
+   ============================================================ */
+.plate {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+.plate__frame {
+  border: var(--stroke) solid var(--gt-black);
+  background: var(--gt-white);
+  position: relative;
+  overflow: hidden;
+}
+.plate__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0%);
+}
+.plate__frame.square { aspect-ratio: 1 / 1; }
+.plate__frame.tall   { aspect-ratio: 3 / 4; }
+.plate__frame.wide   { aspect-ratio: 16 / 9; }
+.plate__frame.wider  { aspect-ratio: 21 / 9; }
+
+.plate__caption {
+  border-bottom: var(--stroke) solid var(--gt-black);
+  border-left: var(--stroke) solid var(--gt-black);
+  border-right: var(--stroke) solid var(--gt-black);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 8px 5px;
+  gap: 12px;
+}
+.plate__caption .caption,
+.plate__caption .mono {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.specs-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: var(--stroke) solid var(--gt-black);
+  border-left: var(--stroke) solid var(--gt-black);
+  border-right: var(--stroke) solid var(--gt-black);
+}
+.specs-row > div {
+  padding: 8px 8px 6px;
+  border-right: var(--stroke) solid var(--gt-black);
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.specs-row > div:last-child { border-right: 0; }
+
+/* ============================================================
+   numbered manifesto rows
+   ============================================================ */
+.manifesto {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--stroke) solid var(--gt-black);
+}
+.manifesto .row {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
+  padding: 18px 0 16px;
+  border-bottom: var(--stroke) solid var(--gt-black);
+  align-items: baseline;
+}
+.manifesto .row .num {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 6px;
+}
+.manifesto .row p {
+  font-size: 18px;
+  line-height: 22.32px;
+  text-transform: lowercase;
+}
+
+/* hero meta column */
+.brand-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* the wordmark giant grid (shown in identity section) */
+.wordmark-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: var(--stroke) solid var(--gt-black);
+  border-left: var(--stroke) solid var(--gt-black);
+}
+.wordmark-grid .cell {
+  border-right: var(--stroke) solid var(--gt-black);
+  border-bottom: var(--stroke) solid var(--gt-black);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+  position: relative;
+}
+.wordmark-grid .cell .cell-cap {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+}
+.wordmark-grid .cell.empty {
+  background: transparent;
+}
+.wordmark-grid .cell.dot::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: var(--gt-black);
+  border-radius: 50%;
+  display: block;
+}
+
+/* ============================================================
+   identity section (red)
+   ============================================================ */
+.identity-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 36px;
+  align-items: end;
+}
+@media (max-width: 900px) {
+  .identity-hero { grid-template-columns: 1fr; }
+}
+
+.identity-hero .massive {
+  font-family: var(--font-sans);
+  font-size: clamp(80px, 17vw, 220px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+
+/* ============================================================
+   craft section (yellow) — varied product plate layouts
+   ============================================================ */
+.craft-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-col-gap);
+  row-gap: 80px;
+}
+
+/* ============================================================
+   catalog section (blue) — numbered catalog
+   ============================================================ */
+.catalog-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-col-gap);
+  row-gap: 24px;
+  border-top: var(--border-lg) solid var(--gt-black);
+  padding: 36px 0 56px;
+}
+.catalog-row + .catalog-row { border-top: var(--border-lg) solid var(--gt-black); }
+.catalog-row:last-of-type { border-bottom: var(--border-lg) solid var(--gt-black); }
+
+.catalog-row .cat-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.catalog-row .cat-title {
+  font-family: var(--font-sans);
+  font-size: clamp(44px, 7vw, 84px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+.catalog-row .cat-price {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.catalog-row .cat-desc {
+  font-size: 18px;
+  line-height: 22.32px;
+  text-transform: lowercase;
+}
+.catalog-row .cat-link {
+  font-size: 18px;
+  line-height: 22.32px;
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+/* ============================================================
+   studio section (pink) — huge numerals
+   ============================================================ */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: var(--border-lg) solid var(--gt-black);
+  border-left: var(--border-lg) solid var(--gt-black);
+}
+.facts-grid .fact {
+  border-right: var(--border-lg) solid var(--gt-black);
+  border-bottom: var(--border-lg) solid var(--gt-black);
+  padding: 16px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+}
+.facts-grid .fact .num {
+  font-family: var(--font-sans);
+  font-size: clamp(120px, 16vw, 220px);
+  font-weight: 500;
+  line-height: 0.84;
+  letter-spacing: -0.04em;
+  text-transform: lowercase;
+}
+.facts-grid .fact .lab {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  .facts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   outro section (black)
+   ============================================================ */
+.outro-quote {
+  font-family: var(--font-sans);
+  font-size: clamp(56px, 9vw, 130px);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  text-transform: lowercase;
+}
+.colophon {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--grid-col-gap);
+  row-gap: 28px;
+  border-top: var(--stroke) solid var(--gt-white);
+  padding-top: 36px;
+  margin-top: 80px;
+}
+.colophon .col-block h4 {
+  font-family: var(--font-mono);
+  font-size: var(--caption-size);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.colophon .col-block p {
+  font-size: 18px;
+  line-height: 22.32px;
+  text-transform: lowercase;
+}
+
+/* ============================================================
+   footer bar — minimal, mirrors the top nav
+   ============================================================ */
+footer.bottombar {
+  height: var(--nav-height);
+  background: var(--gt-grey);
+  border-top: var(--stroke) solid var(--gt-black);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--page-padding);
+  position: relative;
+  z-index: 5;
+}
+.bottombar-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+/* ============================================================
+   small responsive adjustments
+   ============================================================ */
+@media (max-width: 1100px) {
+  .col-md-12 { grid-column: span 12 !important; }
+  .col-md-6  { grid-column: span 6 !important; }
+}
+@media (max-width: 720px) {
+  :root { --section-gap: 80px; --page-padding: 20px; }
+  .pills .pill { padding: 4px 8px 6px; font-size: 12px; }
+  .pill .pill-num { display: none; }
+  .grid-gap, .craft-grid, .catalog-row, .colophon, .grid-12 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { grid-column: span 6; }
+  .wordmark-grid { grid-template-columns: repeat(3, 1fr); }
+  .identity-hero { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     top nav — sticky, 40px, grey, with active section pills
+     ============================================================ -->
+<nav class="topbar" aria-label="primary">
+  <div class="topbar-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark"></span>
+      social print studio
+    </a>
+    <div class="pills">
+      <a href="#identity" class="pill" data-section="identity"><span class="pill-num">01</span>identity</a>
+      <a href="#craft"    class="pill" data-section="craft"><span class="pill-num">02</span>craft</a>
+      <a href="#catalog"  class="pill" data-section="catalog"><span class="pill-num">03</span>catalog</a>
+      <a href="#studio"   class="pill" data-section="studio"><span class="pill-num">04</span>studio</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ============================================================
+     section 01 — identity (red)
+     ============================================================ -->
+<section id="identity" class="bleed bg-red section">
+  <div class="container">
+
+    <!-- top marker bar -->
+    <div class="grid-gap" style="margin-bottom: 64px;">
+      <div class="col-6">
+        <div class="section-marker">
+          <span class="circle-num">1</span>
+          <span>section 01 / 04 — identity</span>
+        </div>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:flex-end;">
+        <span class="mono">ref. sps — 2026 / standard / faithful</span>
+      </div>
+    </div>
+
+    <!-- hero -->
+    <div class="identity-hero">
+      <div>
+        <div class="massive">social<br>print<br>studio.</div>
+      </div>
+      <div class="brand-meta">
+        <span class="caption">est. brooklyn 2010 / seattle 2026</span>
+        <div class="meta-stack">
+          <div class="row"><span class="k">founded</span><span class="v">2010</span></div>
+          <div class="row"><span class="k">location</span><span class="v">seattle wa</span></div>
+          <div class="row"><span class="k">discipline</span><span class="v">photo printing</span></div>
+          <div class="row"><span class="k">team</span><span class="v">10 humans</span></div>
+          <div class="row"><span class="k">products</span><span class="v">8 in catalog</span></div>
+          <div class="row"><span class="k">tenure</span><span class="v">16 yrs</span></div>
+          <div class="row"><span class="k">credo</span><span class="v">force for good</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- manifesto paragraph + numbered points -->
+    <div class="grid-gap" style="margin-top: 110px;">
+      <div class="col-6 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 18px;">manifesto / 2026</span>
+        <p style="font-size: 28px; line-height: 32px; letter-spacing: -0.005em; text-transform: lowercase;">
+          social print studio is a fifteen-year-old photo printing house. we make small,
+          deliberate, beautiful objects out of the pictures you already have on your phone.
+          a friend with incredible taste, with an indigo press in the back room.
+        </p>
+      </div>
+      <div class="col-5 start-8 col-md-12">
+        <div class="manifesto">
+          <div class="row"><span class="num">01</span><p>photographs are not files. they are objects waiting to be made.</p></div>
+          <div class="row"><span class="num">02</span><p>a print on the wall outlasts the platform it came from.</p></div>
+          <div class="row"><span class="num">03</span><p>small details matter. paper weight matters. binding matters.</p></div>
+          <div class="row"><span class="num">04</span><p>we trust the image. the design stays out of the way.</p></div>
+          <div class="row"><span class="num">05</span><p>the studio is the work. the team is the studio.</p></div>
+          <div class="row"><span class="num">06</span><p>photos as a force for good. that is the entire brief.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- giant wordmark grid — "social print studio" broken into letter cells -->
+    <div style="margin-top: 110px;">
+      <div style="display:flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+        <span class="caption">specimen / wordmark / 12 col grid</span>
+        <span class="caption">inter 500 / -0.04em / 1.0</span>
+      </div>
+      <div class="wordmark-grid">
+        <div class="cell"><span class="cell-cap">a01</span>s</div>
+        <div class="cell"><span class="cell-cap">a02</span>o</div>
+        <div class="cell"><span class="cell-cap">a03</span>c</div>
+        <div class="cell"><span class="cell-cap">a04</span>i</div>
+        <div class="cell"><span class="cell-cap">a05</span>a</div>
+        <div class="cell"><span class="cell-cap">a06</span>l</div>
+        <div class="cell"><span class="cell-cap">b01</span>p</div>
+        <div class="cell"><span class="cell-cap">b02</span>r</div>
+        <div class="cell"><span class="cell-cap">b03</span>i</div>
+        <div class="cell"><span class="cell-cap">b04</span>n</div>
+        <div class="cell"><span class="cell-cap">b05</span>t</div>
+        <div class="cell dot"><span class="cell-cap">b06</span></div>
+        <div class="cell"><span class="cell-cap">c01</span>s</div>
+        <div class="cell"><span class="cell-cap">c02</span>t</div>
+        <div class="cell"><span class="cell-cap">c03</span>u</div>
+        <div class="cell"><span class="cell-cap">c04</span>d</div>
+        <div class="cell"><span class="cell-cap">c05</span>i</div>
+        <div class="cell"><span class="cell-cap">c06</span>o</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     section 02 — craft (yellow)
+     ============================================================ -->
+<section id="craft" class="bleed bg-yellow section">
+  <div class="container">
+
+    <!-- top marker -->
+    <div class="grid-gap" style="margin-bottom: 64px;">
+      <div class="col-6">
+        <div class="section-marker">
+          <span class="circle-num">2</span>
+          <span>section 02 / 04 — craft</span>
+        </div>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:flex-end;">
+        <span class="mono">objects / press / paper / binding</span>
+      </div>
+    </div>
+
+    <!-- big intro line -->
+    <div class="grid-gap" style="margin-bottom: 80px;">
+      <div class="col-12">
+        <div class="display-l">we make<br>physical things<br>from photographs.</div>
+      </div>
+    </div>
+
+    <div class="grid-gap" style="margin-bottom: 96px;">
+      <div class="col-7 col-md-12">
+        <p style="text-transform: lowercase;">
+          every product in the catalog is the result of a fifteen-year argument with paper.
+          we have opinions about cover stock, binding glue, ink density, and the exact
+          weight of a satin laminate. the work below is not a list of skus — it is a
+          set of decisions made one millimetre at a time.
+        </p>
+      </div>
+      <div class="col-4 start-9 col-md-12">
+        <div class="meta-stack">
+          <div class="row"><span class="k">press</span><span class="v">hp indigo 7900</span></div>
+          <div class="row"><span class="k">house stock</span><span class="v">mohawk superfine</span></div>
+          <div class="row"><span class="k">binding</span><span class="v">smyth-sewn case</span></div>
+          <div class="row"><span class="k">soft proof</span><span class="v">delta-e &lt; 2.0</span></div>
+          <div class="row"><span class="k">turnaround</span><span class="v">5 business days</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- the plate grid: varied 12-col arrangements -->
+    <div class="craft-grid">
+
+      <!-- row a: full bleed hero plate (12) -->
+      <div class="col-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate a / 01 — flagship</span>
+        <div class="plate">
+          <div class="plate__frame wide">
+            <img src="../images/layflat-album.jpg" alt="layflat album">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">layflat album</span>
+            <span class="caption">a / 12 col</span>
+          </div>
+          <div class="specs-row">
+            <div>press: indigo 7900</div>
+            <div>stock: mohawk superfine 100c</div>
+            <div>binding: smyth-sewn lay-flat</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- row b: 6 + 6 pair -->
+      <div class="col-6 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate b / 02 — duet</span>
+        <div class="plate">
+          <div class="plate__frame square">
+            <img src="../images/tiny-books.jpg" alt="tinybooks">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">tinybooks</span>
+            <span class="caption">b / 6 col</span>
+          </div>
+          <div class="specs-row">
+            <div>format: 3.5 × 3.5 in</div>
+            <div>cover: matte laminate</div>
+            <div>set: 3 books</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate b / 03 — duet</span>
+        <div class="plate">
+          <div class="plate__frame square">
+            <img src="../images/photo-strips.jpg" alt="photo strips">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">photo strips</span>
+            <span class="caption">b / 6 col</span>
+          </div>
+          <div class="specs-row">
+            <div>format: 2 × 6 in</div>
+            <div>stock: lustre photo</div>
+            <div>set: 4 strips</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- row c: triptych 4+4+4 -->
+      <div class="col-4 col-md-6">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate c / 04 — triptych</span>
+        <div class="plate">
+          <div class="plate__frame tall">
+            <img src="../images/gallery-frames.jpg" alt="gallery frames">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">gallery frames</span>
+            <span class="caption">c / 4 col</span>
+          </div>
+          <div class="specs-row">
+            <div>frame: solid oak</div>
+            <div>mat: 100% rag</div>
+            <div>glaze: museum acrylic</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 col-md-6">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate c / 05 — triptych</span>
+        <div class="plate">
+          <div class="plate__frame tall">
+            <img src="../images/metal-prints.jpg" alt="metal prints">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">metal prints</span>
+            <span class="caption">c / 4 col</span>
+          </div>
+          <div class="specs-row">
+            <div>substrate: aluminum</div>
+            <div>finish: satin</div>
+            <div>mount: float bracket</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate c / 06 — triptych</span>
+        <div class="plate">
+          <div class="plate__frame tall">
+            <img src="../images/brass-print-set.jpg" alt="brass print set">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">brass print set</span>
+            <span class="caption">c / 4 col</span>
+          </div>
+          <div class="specs-row">
+            <div>plate: cast brass</div>
+            <div>process: photo etch</div>
+            <div>set of: 6</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- row d: 8 + 4 -->
+      <div class="col-8 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate d / 07 — wide</span>
+        <div class="plate">
+          <div class="plate__frame wider">
+            <img src="../images/daily-calendar.jpg" alt="daily calendar">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">daily calendar</span>
+            <span class="caption">d / 8 col</span>
+          </div>
+          <div class="specs-row">
+            <div>pages: 365</div>
+            <div>stock: 80lb uncoated</div>
+            <div>base: solid maple</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 col-md-12">
+        <span class="caption" style="display:block; margin-bottom: 10px;">plate d / 08 — quiet</span>
+        <div class="plate">
+          <div class="plate__frame square">
+            <img src="../images/magnets.jpg" alt="magnets">
+          </div>
+          <div class="plate__caption">
+            <span class="caption">magnets</span>
+            <span class="caption">d / 4 col</span>
+          </div>
+          <div class="specs-row">
+            <div>size: 2 × 2 in</div>
+            <div>finish: matte</div>
+            <div>set of: 9</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /craft-grid -->
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     section 03 — catalog (blue)
+     ============================================================ -->
+<section id="catalog" class="bleed bg-blue section">
+  <div class="container">
+
+    <!-- top marker -->
+    <div class="grid-gap" style="margin-bottom: 64px;">
+      <div class="col-6">
+        <div class="section-marker">
+          <span class="circle-num">3</span>
+          <span>section 03 / 04 — catalog</span>
+        </div>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:flex-end;">
+        <span class="mono">eight objects / spring 2026</span>
+      </div>
+    </div>
+
+    <!-- catalog headline -->
+    <div class="grid-gap" style="margin-bottom: 96px;">
+      <div class="col-12">
+        <div class="display-xl">eight objects.<br>that is the catalog.</div>
+      </div>
+      <div class="col-6 start-7 col-md-12" style="margin-top: 36px;">
+        <p style="text-transform: lowercase;">
+          we keep the line short on purpose. every object has a reason to exist.
+          we sell more of fewer things, and we sleep better at night.
+        </p>
+      </div>
+    </div>
+
+    <!-- 01 — full row hero product -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 01 / 08</span>
+        <div style="margin-top: 16px;">
+          <span class="cat-price">usd 36.00</span>
+        </div>
+      </div>
+      <div class="col-6 col-md-12">
+        <div class="cat-title">tinybooks</div>
+        <p class="cat-desc" style="margin-top: 24px; max-width: 36ch;">
+          a set of three palm-sized books printed from a photo album, an instagram, or a roll of film.
+          softcover, smyth-sewn, sized to fit in a coat pocket.
+        </p>
+        <div style="margin-top: 24px;"><a href="#" class="cat-link">make a set →</a></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="plate__frame square">
+          <img src="../images/tiny-books.jpg" alt="tinybooks">
+        </div>
+        <div class="plate__caption">
+          <span class="caption">tinybooks · usd 36</span>
+          <span class="caption">01 / 08</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 + 03 pair -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 02 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 89.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(36px, 5vw, 60px);">layflat<br>albums</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          archival lay-flat photo books with thick rigid pages and smyth-sewn binding.
+          the kind your grandkids fight over.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">build an album →</a></div>
+      </div>
+      <div class="col-2">
+        <span class="cat-num">product 03 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 78.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(36px, 5vw, 60px);">gallery<br>frames</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          a print, a mat, a solid wood frame, museum-grade glazing.
+          arrives ready to hang in a single box.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">order a frame →</a></div>
+      </div>
+    </div>
+
+    <!-- 04 — wide right -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 04 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 64.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(40px, 5vw, 64px);">metal<br>prints</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          dye-sublimated onto satin aluminum. nothing in front of the image except the air in the room.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">choose a size →</a></div>
+      </div>
+      <div class="col-6 col-md-12">
+        <div class="plate__frame wide">
+          <img src="../images/metal-prints.jpg" alt="metal prints">
+        </div>
+        <div class="plate__caption">
+          <span class="caption">metal prints · usd 64</span>
+          <span class="caption">04 / 08</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 + 06 pair -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 05 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 22.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(36px, 5vw, 60px);">photo<br>strips</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          four-up vertical strips on lustre photo paper, like a borrowed photo booth in the mail.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">make a strip →</a></div>
+      </div>
+      <div class="col-2">
+        <span class="cat-num">product 06 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 18.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(36px, 5vw, 60px);">magnets</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          a set of nine 2-inch magnets, matte finish, sized for the door of any normal fridge.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">build a set →</a></div>
+      </div>
+    </div>
+
+    <!-- 07 — full row hero product -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 07 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 124.00</span></div>
+      </div>
+      <div class="col-6 col-md-12">
+        <div class="cat-title">brass print set</div>
+        <p class="cat-desc" style="margin-top: 24px; max-width: 36ch;">
+          six photo-etched brass plates, each one a single image translated into raised metal.
+          the slow object in the catalog. the one that asks you to look twice.
+        </p>
+        <div style="margin-top: 24px;"><a href="#" class="cat-link">commission a set →</a></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="plate__frame square">
+          <img src="../images/brass-print-set.jpg" alt="brass print set">
+        </div>
+        <div class="plate__caption">
+          <span class="caption">brass print set · usd 124</span>
+          <span class="caption">07 / 08</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 — wide hero -->
+    <div class="catalog-row">
+      <div class="col-2">
+        <span class="cat-num">product 08 / 08</span>
+        <div style="margin-top: 16px;"><span class="cat-price">usd 48.00</span></div>
+      </div>
+      <div class="col-4 col-md-12">
+        <div class="cat-title" style="font-size: clamp(40px, 5vw, 64px);">daily<br>calendar</div>
+        <p class="cat-desc" style="margin-top: 18px;">
+          a 365-day desk calendar with one of your photos on every page. one year, one image a day.
+          the most photos we sell, in the smallest object we make.
+        </p>
+        <div style="margin-top: 18px;"><a href="#" class="cat-link">build a year →</a></div>
+      </div>
+      <div class="col-6 col-md-12">
+        <div class="plate__frame wide">
+          <img src="../images/daily-calendar.jpg" alt="daily calendar">
+        </div>
+        <div class="plate__caption">
+          <span class="caption">daily calendar · usd 48</span>
+          <span class="caption">08 / 08</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- closing line -->
+    <div class="grid-gap" style="margin-top: 80px;">
+      <div class="col-12">
+        <div class="display-m">eight objects. that is the entire shop.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     section 04 — studio (pink)
+     ============================================================ -->
+<section id="studio" class="bleed bg-pink section">
+  <div class="container">
+
+    <!-- top marker -->
+    <div class="grid-gap" style="margin-bottom: 64px;">
+      <div class="col-6">
+        <div class="section-marker">
+          <span class="circle-num">4</span>
+          <span>section 04 / 04 — studio</span>
+        </div>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:flex-end;">
+        <span class="mono">brooklyn 2010 → seattle 2026</span>
+      </div>
+    </div>
+
+    <div class="grid-gap" style="margin-bottom: 80px;">
+      <div class="col-12">
+        <div class="display-xl">a small studio<br>in a small room.</div>
+      </div>
+    </div>
+
+    <div class="grid-gap" style="margin-bottom: 96px;">
+      <div class="col-6 col-md-12">
+        <p style="text-transform: lowercase;">
+          social print studio is ten people. it was founded in 2010 in a brooklyn apartment by
+          ben lotan and a small group of friends who wanted to print their own photos and could
+          not find a single online lab they liked. today the studio is in seattle. most of the
+          actual printing happens at long-running partner labs across the united states; the
+          studio designs the products, writes the software, picks the paper, and answers the
+          phone.
+        </p>
+      </div>
+      <div class="col-5 start-8 col-md-12">
+        <p style="text-transform: lowercase;">
+          we are not a venture-backed marketplace. we are not an app. we are a printing house
+          with a small website and a long memory. fifteen birthdays, sixteen years, eight products,
+          ten people. that is the whole company on a single line.
+        </p>
+        <div class="meta-stack" style="margin-top: 36px;">
+          <div class="row"><span class="k">studio address</span><span class="v">seattle, washington</span></div>
+          <div class="row"><span class="k">founder</span><span class="v">ben lotan</span></div>
+          <div class="row"><span class="k">team size</span><span class="v">10</span></div>
+          <div class="row"><span class="k">orders shipped</span><span class="v">~ 1.4m</span></div>
+          <div class="row"><span class="k">prints made</span><span class="v">~ 38m</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- huge numerical facts -->
+    <div style="margin-bottom: 24px;">
+      <span class="caption">data / 2026</span>
+    </div>
+    <div class="facts-grid">
+      <div class="fact">
+        <span class="lab">people in the studio</span>
+        <span class="num">10</span>
+      </div>
+      <div class="fact">
+        <span class="lab">years in operation</span>
+        <span class="num">16</span>
+      </div>
+      <div class="fact">
+        <span class="lab">objects in catalog</span>
+        <span class="num">8</span>
+      </div>
+      <div class="fact">
+        <span class="lab">studio in seattle</span>
+        <span class="num">1</span>
+      </div>
+    </div>
+
+    <!-- timeline as a meta stack -->
+    <div class="grid-gap" style="margin-top: 96px;">
+      <div class="col-12" style="margin-bottom: 18px;">
+        <span class="caption">timeline</span>
+      </div>
+      <div class="col-12">
+        <div class="meta-stack">
+          <div class="row"><span class="k">2010</span><span class="v">founded in brooklyn. first product: prints from instagram.</span></div>
+          <div class="row"><span class="k">2012</span><span class="v">launched tinybooks. the small object that changed the studio.</span></div>
+          <div class="row"><span class="k">2014</span><span class="v">moved into a real warehouse. hired the first full-time printer.</span></div>
+          <div class="row"><span class="k">2017</span><span class="v">launched the layflat album. the studio learned to bind books.</span></div>
+          <div class="row"><span class="k">2019</span><span class="v">moved the studio from brooklyn to seattle.</span></div>
+          <div class="row"><span class="k">2022</span><span class="v">added gallery frames, metal prints, the daily calendar.</span></div>
+          <div class="row"><span class="k">2025</span><span class="v">released the brass print set. our slowest, quietest object.</span></div>
+          <div class="row"><span class="k">2026</span><span class="v">sixteen years in. ten humans. eight objects. one studio.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     outro (black) — closing manifesto + colophon
+     ============================================================ -->
+<section id="outro" class="bleed bg-black section">
+  <div class="container">
+
+    <div class="grid-gap" style="margin-bottom: 64px;">
+      <div class="col-6">
+        <div class="section-marker">
+          <span class="circle-num" style="border-color: #fff;">·</span>
+          <span>colophon &amp; close</span>
+        </div>
+      </div>
+      <div class="col-6" style="display:flex; justify-content:flex-end;">
+        <span class="mono">end of document</span>
+      </div>
+    </div>
+
+    <div class="grid-gap">
+      <div class="col-12">
+        <div class="outro-quote">
+          photos<br>
+          as a force<br>
+          for good.
+        </div>
+      </div>
+      <div class="col-6 start-7 col-md-12" style="margin-top: 56px;">
+        <p style="text-transform: lowercase;">
+          if you have a stack of pictures and a person you love, we will turn one into the other.
+          that is what the studio has been doing since 2010 and that is what the studio will be
+          doing in 2036. small objects, made with care, sent to your door.
+        </p>
+        <div style="margin-top: 28px;">
+          <a href="https://socialprintstudio.com" class="body" style="text-transform: lowercase;">socialprintstudio.com →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- colophon -->
+    <div class="colophon">
+      <div class="col-3 col-md-6 col-block">
+        <h4>typeface</h4>
+        <p>
+          set in inter — variable, weights 100–900 — and jetbrains mono 400 / 500.
+          inter substitutes grilli type's gt standard. jetbrains mono substitutes
+          gt standard mono.
+        </p>
+      </div>
+      <div class="col-3 col-md-6 col-block">
+        <h4>direction</h4>
+        <p>
+          this is direction 05 of 06 in the spring 2026 brand exploration.
+          standard / faithful: a no-compromise application of the gt standard
+          design language to social print studio content.
+        </p>
+      </div>
+      <div class="col-3 col-md-6 col-block">
+        <h4>studio</h4>
+        <p>
+          social print studio<br>
+          seattle, washington<br>
+          founded brooklyn, 2010<br>
+          ben lotan, founder
+        </p>
+      </div>
+      <div class="col-3 col-md-6 col-block">
+        <h4>colophon</h4>
+        <p>
+          based on the gt standard design language by grilli type. palette,
+          rules, and structure used verbatim. content, images, and product
+          information from social print studio.
+        </p>
+        <p style="margin-top: 12px;">© 2026 social print studio.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     footer bar — minimal grey, mirrors the top nav
+     ============================================================ -->
+<footer class="bottombar">
+  <div class="bottombar-inner">
+    <span>social print studio · seattle · 2026</span>
+    <a href="#top">return to top ↑</a>
+  </div>
+</footer>
+
+</body>
+</html>

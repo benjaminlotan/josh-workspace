@@ -1,0 +1,1494 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Atelier — Social Print Studio · Brand Direction 01</title>
+<meta name="description" content="A photo magazine direction for Social Print Studio. Aperture sophistication, Steidl restraint, refined editorial serif." />
+
+<!-- ============================================================
+     FONTS — Google Fonts only
+     Fraunces (variable: opsz, wght, ital), Hanken Grotesk, JetBrains Mono
+============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   01 · TOKENS
+   The palette is a deliberate evolution of the existing brand:
+   warmer cream, more refined sage, true near-black, oxidized rust.
+============================================================ */
+:root {
+  /* Color */
+  --ink:        #1A1A1A;
+  --ink-70:     rgba(26, 26, 26, 0.70);
+  --ink-45:     rgba(26, 26, 26, 0.45);
+  --paper:      #FAF7F2;
+  --bone:       #EDE7DD;
+  --sage:       #6B7F6A;
+  --forest:     #2F3E36;
+  --rust:       #B8543C;
+  --rule:       #C5BDB0;
+
+  /* Type */
+  --serif:  "Fraunces", "Times New Roman", Georgia, serif;
+  --sans:   "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --mono:   "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Grid + rhythm */
+  --gutter: 24px;
+  --col: 12;
+  --max: 1480px;
+  --pad-x: clamp(24px, 5vw, 80px);
+  --rule-w: 1px;
+}
+
+/* ============================================================
+   02 · RESET / BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+  font-feature-settings: "kern", "liga", "calt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* ============================================================
+   03 · TYPOGRAPHY UTILITIES
+   Fraunces variable axes are used aggressively here.
+   opsz: low values are subtle, 144 is ultra high-contrast display.
+============================================================ */
+.serif    { font-family: var(--serif); font-variation-settings: "opsz" 144, "SOFT" 50; }
+.serif-it { font-family: var(--serif); font-style: italic; font-variation-settings: "opsz" 144, "SOFT" 50; }
+.sans     { font-family: var(--sans); }
+.mono     { font-family: var(--mono); }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+}
+.eyebrow--muted { color: var(--ink-70); }
+.eyebrow--rust  { color: var(--rust); }
+.eyebrow--rule {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow--rule::before {
+  content: "";
+  width: 28px;
+  height: var(--rule-w);
+  background: currentColor;
+  display: inline-block;
+}
+
+.dateline {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-70);
+  text-transform: uppercase;
+}
+
+.lede {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.55;
+  color: var(--ink-70);
+  max-width: 56ch;
+}
+
+/* ============================================================
+   04 · LAYOUT PRIMITIVES
+============================================================ */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  row-gap: var(--gutter);
+}
+
+.section {
+  padding-top: clamp(80px, 10vw, 144px);
+  padding-bottom: clamp(80px, 10vw, 144px);
+  border-top: var(--rule-w) solid var(--rule);
+}
+.section--bone { background: var(--bone); }
+.section--paper { background: var(--paper); }
+.section--ink  { background: var(--ink); color: var(--paper); }
+.section--ink .eyebrow,
+.section--ink .lede,
+.section--ink .dateline { color: rgba(250, 247, 242, 0.72); }
+
+/* ============================================================
+   05 · HEADER / NAV
+============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: var(--rule-w) solid var(--rule);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+.wordmark {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.wordmark em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+}
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color 220ms ease;
+}
+.nav a:hover { color: var(--rust); }
+.nav__sep {
+  width: 1px;
+  height: 12px;
+  background: var(--rule);
+  display: inline-block;
+}
+.nav__index {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-70);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   06 · HERO
+   Editorial statement. One huge Fraunces line with an italic word.
+============================================================ */
+.hero {
+  padding-top: clamp(80px, 12vw, 180px);
+  padding-bottom: clamp(80px, 10vw, 160px);
+  position: relative;
+}
+.hero__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: clamp(48px, 6vw, 96px);
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hero__issue {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+}
+.hero__issue .num {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: 64px;
+  line-height: 0.85;
+  font-weight: 300;
+}
+.hero__title {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(56px, 11vw, 184px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--ink);
+  max-width: 14ch;
+}
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144;
+  color: var(--forest);
+}
+.hero__bottom {
+  margin-top: clamp(48px, 6vw, 88px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+}
+.hero__bottom > div:first-child { grid-column: 1 / span 1; }
+.hero__bottom .lede { max-width: 46ch; }
+.hero__meta {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+@media (max-width: 800px) {
+  .hero__bottom { grid-template-columns: 1fr; }
+  .hero__meta { text-align: left; }
+}
+
+/* Big folio rule under hero */
+.hero__folio {
+  margin-top: clamp(64px, 8vw, 120px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: var(--rule-w) solid var(--rule);
+  padding-top: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-70);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ============================================================
+   07 · MANIFESTO with drop cap
+============================================================ */
+.manifesto__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: clamp(48px, 6vw, 88px);
+  align-items: end;
+}
+.manifesto__head .label { grid-column: 1 / span 4; }
+.manifesto__head .label .num {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+  display: block;
+  color: var(--ink);
+}
+.manifesto__head .label .name {
+  display: block;
+  margin-top: 12px;
+}
+.manifesto__head .title {
+  grid-column: 5 / span 8;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0;
+}
+.manifesto__head .title em {
+  font-style: italic;
+  color: var(--forest);
+}
+.manifesto__body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+.manifesto__cols {
+  grid-column: 3 / span 8;
+  columns: 2;
+  column-gap: 56px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+}
+.manifesto__cols p { margin: 0 0 1em 0; }
+.manifesto__cols p:first-child::first-letter {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 8.4em;
+  line-height: 0.78;
+  float: left;
+  padding: 6px 12px 0 0;
+  margin-top: 4px;
+  color: var(--rust);
+}
+@media (max-width: 900px) {
+  .manifesto__head .label,
+  .manifesto__head .title { grid-column: 1 / -1; }
+  .manifesto__cols { grid-column: 1 / -1; columns: 1; }
+}
+
+/* ============================================================
+   08 · COLOR — editorial swatch grid
+============================================================ */
+.color__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: end;
+  margin-bottom: clamp(40px, 5vw, 72px);
+}
+.color__head .num {
+  grid-column: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+}
+.color__head .meta { grid-column: 3 / span 4; }
+.color__head .title {
+  grid-column: 7 / span 6;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.15;
+  margin: 0;
+}
+.color__head .title em { font-style: italic; }
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  border-top: var(--rule-w) solid var(--rule);
+  border-left: var(--rule-w) solid var(--rule);
+}
+.swatch {
+  border-right: var(--rule-w) solid var(--rule);
+  border-bottom: var(--rule-w) solid var(--rule);
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+.swatch__chip {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+}
+.swatch__meta {
+  padding: 18px 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.swatch__name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.swatch__hex {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-70);
+}
+.swatch__role {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--ink-70);
+  margin-top: auto;
+}
+@media (max-width: 1100px) {
+  .swatches { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 700px) {
+  .swatches { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
+   09 · TYPE SPECIMEN
+============================================================ */
+.specimen__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: clamp(48px, 6vw, 80px);
+  align-items: end;
+}
+.specimen__head .num {
+  grid-column: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+}
+.specimen__head .meta { grid-column: 3 / span 4; }
+.specimen__head .title {
+  grid-column: 7 / span 6;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.15;
+  margin: 0;
+}
+.specimen__head .title em { font-style: italic; }
+
+.specimen-aa {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: stretch;
+  border-top: var(--rule-w) solid var(--rule);
+  border-bottom: var(--rule-w) solid var(--rule);
+  padding: clamp(40px, 5vw, 80px) 0;
+}
+.specimen-aa__big {
+  grid-column: 1 / span 5;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(220px, 28vw, 420px);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+}
+.specimen-aa__big em { font-style: italic; color: var(--rust); margin-left: -0.06em; }
+.specimen-aa__side {
+  grid-column: 6 / span 7;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 32px;
+  align-content: space-between;
+  border-left: var(--rule-w) solid var(--rule);
+  padding-left: clamp(24px, 3vw, 56px);
+}
+.specimen-aa__line {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.specimen-aa__line .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--ink-70);
+  text-transform: uppercase;
+}
+.specimen-aa__line .demo {
+  font-family: var(--serif);
+  color: var(--ink);
+}
+.demo--96 { font-size: clamp(56px, 6vw, 96px); font-variation-settings: "opsz" 144, "SOFT" 50; font-weight: 300; line-height: 1; letter-spacing: -0.018em; }
+.demo--56 { font-size: clamp(36px, 4vw, 56px); font-variation-settings: "opsz" 96, "SOFT" 50;  font-weight: 300; line-height: 1.05; letter-spacing: -0.012em; }
+.demo--32 { font-size: 32px; font-variation-settings: "opsz" 32; font-weight: 400; font-style: italic; line-height: 1.15; }
+
+@media (max-width: 1000px) {
+  .specimen-aa__big { grid-column: 1 / -1; font-size: 60vw; }
+  .specimen-aa__side { grid-column: 1 / -1; border-left: 0; padding-left: 0; padding-top: 32px; border-top: var(--rule-w) solid var(--rule); }
+}
+
+.specimen-pair {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-top: clamp(48px, 5vw, 80px);
+}
+.specimen-pair__head {
+  grid-column: 1 / span 4;
+}
+.specimen-pair__head .h {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  margin: 16px 0 0 0;
+  color: var(--ink);
+}
+.specimen-pair__head .h em { font-style: italic; }
+.specimen-pair__body {
+  grid-column: 6 / span 7;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink);
+}
+.specimen-pair__body p { margin: 0 0 1.1em 0; }
+.specimen-pair__body p:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .specimen-pair__head, .specimen-pair__body { grid-column: 1 / -1; }
+}
+
+/* ============================================================
+   10 · PHOTOGRAPHS — magazine product grid
+   Asymmetric: deliberate spans, varying heights.
+============================================================ */
+.photos__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.photos__head .num {
+  grid-column: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+}
+.photos__head .meta { grid-column: 3 / span 4; }
+.photos__head .title {
+  grid-column: 7 / span 6;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.15;
+  margin: 0;
+}
+.photos__head .title em { font-style: italic; }
+
+.plate-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  row-gap: clamp(40px, 5vw, 80px);
+}
+.plate {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.plate__media {
+  background: var(--bone);
+  overflow: hidden;
+}
+.plate__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.plate__caption {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: baseline;
+  border-top: var(--rule-w) solid var(--rule);
+  padding-top: 12px;
+}
+.plate__plate-no {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-70);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.plate__name {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.plate__name em { font-style: italic; }
+.plate__exif {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-70);
+  letter-spacing: 0.04em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Spans — asymmetric editorial layout */
+.plate--a { grid-column: 1 / span 7; }
+.plate--a .plate__media { aspect-ratio: 4 / 3; }
+
+.plate--b { grid-column: 9 / span 4; align-self: end; }
+.plate--b .plate__media { aspect-ratio: 3 / 4; }
+
+.plate--c { grid-column: 1 / span 3; }
+.plate--c .plate__media { aspect-ratio: 3 / 4; }
+
+.plate--d { grid-column: 5 / span 8; }
+.plate--d .plate__media { aspect-ratio: 16 / 9; }
+
+.plate--e { grid-column: 1 / span 5; align-self: start; }
+.plate--e .plate__media { aspect-ratio: 5 / 4; }
+
+.plate--f { grid-column: 7 / span 3; }
+.plate--f .plate__media { aspect-ratio: 1 / 1; }
+
+.plate--g { grid-column: 10 / span 3; align-self: end; }
+.plate--g .plate__media { aspect-ratio: 4 / 5; }
+
+.plate--h { grid-column: 4 / span 6; margin-top: 24px; }
+.plate--h .plate__media { aspect-ratio: 3 / 2; }
+
+@media (max-width: 1000px) {
+  .plate--a, .plate--b, .plate--c, .plate--d,
+  .plate--e, .plate--f, .plate--g, .plate--h {
+    grid-column: 1 / -1;
+  }
+  .plate--a .plate__media,
+  .plate--d .plate__media,
+  .plate--h .plate__media { aspect-ratio: 4 / 3; }
+}
+
+/* ============================================================
+   11 · PULL QUOTE
+============================================================ */
+.pullquote {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: start;
+}
+.pullquote__num {
+  grid-column: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+  color: var(--ink);
+}
+.pullquote__body {
+  grid-column: 3 / span 9;
+}
+.pullquote__mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(80px, 8vw, 132px);
+  line-height: 0.6;
+  color: var(--rust);
+  display: block;
+  margin-bottom: -8px;
+}
+.pullquote__text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(32px, 4.4vw, 68px);
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0;
+  color: var(--ink);
+  max-width: 22ch;
+}
+.pullquote__attrib {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pullquote__attrib .who {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.pullquote__attrib .role {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-70);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+@media (max-width: 800px) {
+  .pullquote__num,
+  .pullquote__body { grid-column: 1 / -1; }
+}
+
+/* ============================================================
+   12 · COMPONENTS — sharp rectangular UI
+============================================================ */
+.components__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: end;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+.components__head .num {
+  grid-column: 1 / span 2;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144;
+  font-size: clamp(72px, 9vw, 132px);
+  line-height: 0.85;
+  font-weight: 300;
+}
+.components__head .meta { grid-column: 3 / span 4; }
+.components__head .title {
+  grid-column: 7 / span 6;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.15;
+  margin: 0;
+}
+.components__head .title em { font-style: italic; }
+
+.components__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  row-gap: 56px;
+}
+.cmp {
+  border: var(--rule-w) solid var(--rule);
+  padding: 28px 28px 32px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 220px;
+}
+.cmp--buttons { grid-column: 1 / span 5; }
+.cmp--input   { grid-column: 6 / span 4; }
+.cmp--labels  { grid-column: 10 / span 3; }
+@media (max-width: 1000px) {
+  .cmp--buttons, .cmp--input, .cmp--labels { grid-column: 1 / -1; }
+}
+
+.cmp__title {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-70);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 16px 28px;
+  border: var(--rule-w) solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 0;
+  transition: background 200ms ease, color 200ms ease;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn--solid { background: var(--ink); color: var(--paper); }
+.btn--solid:hover { background: var(--forest); border-color: var(--forest); }
+.btn--rust { background: var(--rust); color: var(--paper); border-color: var(--rust); }
+.btn--rust:hover { background: var(--ink); border-color: var(--ink); }
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field__label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+}
+.field__input {
+  font-family: var(--sans);
+  font-size: 14px;
+  background: transparent;
+  color: var(--ink);
+  border: 0;
+  border-bottom: var(--rule-w) solid var(--ink);
+  padding: 12px 0;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+.field__input::placeholder { color: var(--ink-45); }
+.field__input:focus { border-color: var(--rust); }
+.field__hint {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-70);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: var(--rule-w) solid var(--ink);
+  padding: 7px 12px;
+  color: var(--ink);
+}
+.tag--rust  { color: var(--rust); border-color: var(--rust); }
+.tag--sage  { color: var(--sage); border-color: var(--sage); }
+.tag--solid { background: var(--ink); color: var(--paper); }
+
+/* ============================================================
+   13 · COLOPHON FOOTER
+============================================================ */
+.colophon {
+  background: var(--ink);
+  color: var(--paper);
+  padding-top: clamp(80px, 9vw, 128px);
+  padding-bottom: clamp(40px, 5vw, 64px);
+}
+.colophon__top {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  border-top: var(--rule-w) solid rgba(250, 247, 242, 0.22);
+  padding-top: clamp(40px, 5vw, 64px);
+}
+.colophon__title {
+  grid-column: 1 / span 7;
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: clamp(36px, 5vw, 80px);
+  line-height: 0.96;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+.colophon__title em { font-style: italic; color: rgba(250, 247, 242, 0.7); }
+.colophon__sub {
+  grid-column: 9 / span 4;
+  align-self: end;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(250, 247, 242, 0.7);
+  max-width: 38ch;
+}
+@media (max-width: 900px) {
+  .colophon__title, .colophon__sub { grid-column: 1 / -1; }
+  .colophon__sub { margin-top: 24px; }
+}
+
+.colophon__credits {
+  margin-top: clamp(72px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  row-gap: 32px;
+  border-top: var(--rule-w) solid rgba(250, 247, 242, 0.22);
+  padding-top: 36px;
+}
+.colophon__credits dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  grid-column: span 3;
+}
+.colophon__credits dt {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(250, 247, 242, 0.55);
+}
+.colophon__credits dd {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--paper);
+}
+@media (max-width: 900px) { .colophon__credits dl { grid-column: span 6; } }
+@media (max-width: 560px) { .colophon__credits dl { grid-column: span 12; } }
+
+.colophon__base {
+  margin-top: clamp(64px, 7vw, 96px);
+  border-top: var(--rule-w) solid rgba(250, 247, 242, 0.22);
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(250, 247, 242, 0.55);
+  text-transform: uppercase;
+}
+.colophon__wordmark {
+  font-family: var(--serif);
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  text-transform: none;
+}
+.colophon__wordmark em { font-style: italic; color: rgba(250, 247, 242, 0.55); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER / NAV
+============================================================ -->
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="wordmark" href="#">Social Print <em>Studio</em></a>
+    <nav class="nav" aria-label="Primary">
+      <span class="nav__index">N° 01 / Atelier</span>
+      <span class="nav__sep"></span>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#photographs">Photographs</a>
+      <a href="#components">Components</a>
+      <span class="nav__sep"></span>
+      <a href="#colophon">Colophon</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO — full bleed editorial statement
+============================================================ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__top">
+      <div class="hero__issue">
+        <span class="num">01</span>
+        <span class="eyebrow eyebrow--rule">Brand Direction · Atelier</span>
+      </div>
+      <span class="dateline">Spring Quarterly · Vol. XV · MMXXVI</span>
+    </div>
+
+    <h1 class="hero__title">
+      Photographs<br>
+      printed&nbsp;<em>with</em><br>
+      intention.
+    </h1>
+
+    <div class="hero__bottom">
+      <div>
+        <p class="lede">
+          A photo book studio that takes its bookmaking seriously. Fifteen years
+          of presses, papers, and the people who keep their pictures. We are
+          rebuilding the wardrobe — beginning with the type.
+        </p>
+      </div>
+      <div class="hero__meta">
+        <span class="dateline">Direction 01 of 04</span>
+        <span class="dateline">Set in Fraunces &amp; Hanken Grotesk</span>
+        <span class="dateline">Concept · Not for release</span>
+      </div>
+    </div>
+
+    <div class="hero__folio">
+      <span>Folio I</span>
+      <span>Aperture sensibility · Steidl restraint · Pentagram for Phaidon</span>
+      <span>Pp. 01 — 64</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MANIFESTO — drop cap front matter
+============================================================ -->
+<section class="section section--bone" id="manifesto">
+  <div class="wrap">
+    <header class="manifesto__head">
+      <div class="label">
+        <span class="num">02</span>
+        <span class="eyebrow eyebrow--rule name">From the Editor</span>
+      </div>
+      <h2 class="title">
+        Issue 01 · Spring 2026. A studio for the photographers, the camera nerds,
+        and the people who still <em>print the picture.</em>
+      </h2>
+    </header>
+
+    <div class="manifesto__body">
+      <div class="manifesto__cols">
+        <p>
+          Social Print Studio has always been a friend with extraordinary taste.
+          For fifteen years we have made objects out of pictures: tinybooks for
+          the road, layflat albums for the wedding, gallery frames for the wall,
+          photo strips for the fridge. The work has been quiet and the work has
+          been good. What we needed was a wardrobe to match it — a typographic
+          posture that says, without saying, that the people running the press
+          care about the press.
+        </p>
+        <p>
+          This direction proposes that posture. It is editorial. It is patient.
+          It borrows the front-matter cadence of a photo quarterly and the
+          structural confidence of a well-edited book. It treats type as the
+          most important photograph on the page, and it treats the photographs
+          like the type — composed with intent, captioned with metadata, set on
+          a grid that the eye trusts before the brain catches up.
+        </p>
+        <p>
+          The brand is not sacred. The soul is. We are keeping the warmth, the
+          green, the cream, the rust at the edges. We are losing the bubbles, the
+          shouting labels, the arch that has carried us. In their place: a real
+          serif with optical sizes, a grotesk that knows when to be quiet, and
+          monospace where it earns its keep. Our pictures deserve a magazine.
+          This is the magazine.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOR — refined editorial swatch grid
+============================================================ -->
+<section class="section section--paper" id="color">
+  <div class="wrap">
+    <header class="color__head">
+      <span class="num">03</span>
+      <div class="meta">
+        <span class="eyebrow eyebrow--rule">Palette · Refinement of the existing</span>
+      </div>
+      <h2 class="title">
+        Seven colors, edited carefully. The soul of the brand <em>without the noise.</em>
+      </h2>
+    </header>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #1A1A1A;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Ink</span>
+          <span class="swatch__hex">#1A1A1A</span>
+          <span class="swatch__role">True near-black for body, headlines, and the rare emphatic block.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #FAF7F2;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Paper</span>
+          <span class="swatch__hex">#FAF7F2</span>
+          <span class="swatch__role">A warmer cream, replacing white as the primary surface.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #EDE7DD;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Bone</span>
+          <span class="swatch__hex">#EDE7DD</span>
+          <span class="swatch__role">Section rhythm. Alternates with paper to delineate without rules.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #6B7F6A;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Sage</span>
+          <span class="swatch__hex">#6B7F6A</span>
+          <span class="swatch__role">A more refined sage, less yellow than the prior cedar.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #2F3E36;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Forest</span>
+          <span class="swatch__hex">#2F3E36</span>
+          <span class="swatch__role">Deep green for emphasis, italic display words, dark surfaces.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #B8543C;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Rust</span>
+          <span class="swatch__hex">#B8543C</span>
+          <span class="swatch__role">A grown-up terracotta. Drop caps, accents, the loudest voice.</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch__chip" style="background: #C5BDB0;"></div>
+        <div class="swatch__meta">
+          <span class="swatch__name">Rule</span>
+          <span class="swatch__hex">#C5BDB0</span>
+          <span class="swatch__role">A warm hairline color for borders, dividers, and the grid itself.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TYPE SPECIMEN
+============================================================ -->
+<section class="section section--bone" id="type">
+  <div class="wrap">
+    <header class="specimen__head">
+      <span class="num">04</span>
+      <div class="meta">
+        <span class="eyebrow eyebrow--rule">Type Specimen · Fraunces &amp; Hanken Grotesk</span>
+      </div>
+      <h2 class="title">
+        A serif with real character, paired with a grotesk that knows
+        <em>when to be quiet.</em>
+      </h2>
+    </header>
+
+    <div class="specimen-aa">
+      <div class="specimen-aa__big">A<em>a</em></div>
+      <div class="specimen-aa__side">
+        <div class="specimen-aa__line">
+          <span class="label">Display · opsz 144 · 96px</span>
+          <span class="demo demo--96">Photographs printed.</span>
+        </div>
+        <div class="specimen-aa__line">
+          <span class="label">Subhead · opsz 96 · 56px</span>
+          <span class="demo demo--56">A studio for the camera nerds.</span>
+        </div>
+        <div class="specimen-aa__line">
+          <span class="label">Body italic · opsz 32 · 32px</span>
+          <span class="demo demo--32">made with patient hands &amp; warm presses</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="specimen-pair">
+      <div class="specimen-pair__head">
+        <span class="eyebrow eyebrow--rule">Pairing</span>
+        <h3 class="h">Hanken <em>Grotesk</em> · Body proof at 15px / 1.62</h3>
+      </div>
+      <div class="specimen-pair__body">
+        <p>
+          The body face is Hanken Grotesk, a contemporary grotesk with humanist
+          warmth in its terminals and apertures. It is set here at 15 pixels with
+          a line height of 1.62 — generous, but not so airy that the page loses
+          the density of a real magazine. The grotesk is for body, captions,
+          labels, navigation, and buttons. It does its job and steps out of the
+          way.
+        </p>
+        <p>
+          Fraunces handles every display moment. We use its variable optical
+          size axis aggressively: at 144 it is high contrast and beautifully
+          modulated, at 32 it is patient and readable, at 9 it would still hold
+          its shape in a footnote. The italic is the soul of the system —
+          calligraphic, generous, nothing like a slanted roman. We use it for
+          one word in a headline at a time, never for a whole sentence, never
+          for a label.
+        </p>
+        <p>
+          JetBrains Mono carries metadata. Plate numbers, exposure data,
+          timestamps, dimensions, and the dateline at the bottom of every spread.
+          It is the third voice, used sparingly, but its presence is what tells
+          the reader this is a magazine made by people who know what an EXIF
+          string looks like.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PHOTOGRAPHS — asymmetric editorial product grid
+============================================================ -->
+<section class="section section--paper" id="photographs">
+  <div class="wrap">
+    <header class="photos__head">
+      <span class="num">05</span>
+      <div class="meta">
+        <span class="eyebrow eyebrow--rule">Plates · Eight Objects</span>
+      </div>
+      <h2 class="title">
+        The catalogue, set on a magazine grid. Captions in the same monospace
+        a photographer <em>already trusts.</em>
+      </h2>
+    </header>
+
+    <div class="plate-grid">
+      <!-- A · Tinybooks (large feature) -->
+      <figure class="plate plate--a">
+        <div class="plate__media">
+          <img src="../images/tiny-books.jpg" alt="Tinybooks" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. I</span>
+          <span class="plate__name">Tinybooks</span>
+          <span class="plate__exif">35mm · f/4 · 1/125s · ISO 200</span>
+        </figcaption>
+      </figure>
+
+      <!-- B · Layflat Albums (tall portrait beside A) -->
+      <figure class="plate plate--b">
+        <div class="plate__media">
+          <img src="../images/layflat-album.jpg" alt="Layflat Albums" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. II</span>
+          <span class="plate__name">Layflat <em>Albums</em></span>
+          <span class="plate__exif">50mm · f/2.8 · 1/200s</span>
+        </figcaption>
+      </figure>
+
+      <!-- C · Photo Strips (narrow column) -->
+      <figure class="plate plate--c">
+        <div class="plate__media">
+          <img src="../images/photo-strips.jpg" alt="Photo Strips" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. III</span>
+          <span class="plate__name">Photo Strips</span>
+          <span class="plate__exif">85mm · f/5.6</span>
+        </figcaption>
+      </figure>
+
+      <!-- D · Gallery Frames (wide cinematic) -->
+      <figure class="plate plate--d">
+        <div class="plate__media">
+          <img src="../images/gallery-frames.jpg" alt="Gallery Frames" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. IV</span>
+          <span class="plate__name">Gallery <em>Frames</em></span>
+          <span class="plate__exif">24mm · f/8 · 1/60s · daylight</span>
+        </figcaption>
+      </figure>
+
+      <!-- E · Metal Prints (medium left) -->
+      <figure class="plate plate--e">
+        <div class="plate__media">
+          <img src="../images/metal-prints.jpg" alt="Metal Prints" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. V</span>
+          <span class="plate__name">Metal Prints</span>
+          <span class="plate__exif">35mm · f/4 · 1/250s</span>
+        </figcaption>
+      </figure>
+
+      <!-- F · Magnets (small square) -->
+      <figure class="plate plate--f">
+        <div class="plate__media">
+          <img src="../images/magnets.jpg" alt="Magnets" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. VI</span>
+          <span class="plate__name">Magnets</span>
+          <span class="plate__exif">100mm · f/8</span>
+        </figcaption>
+      </figure>
+
+      <!-- G · Brass Print Set (portrait right) -->
+      <figure class="plate plate--g">
+        <div class="plate__media">
+          <img src="../images/brass-print-set.jpg" alt="Brass Print Set" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. VII</span>
+          <span class="plate__name">Brass <em>Set</em></span>
+          <span class="plate__exif">50mm · f/2 · 1/100s</span>
+        </figcaption>
+      </figure>
+
+      <!-- H · Daily Calendar (medium center bottom) -->
+      <figure class="plate plate--h">
+        <div class="plate__media">
+          <img src="../images/daily-calendar.jpg" alt="Daily Calendar" loading="lazy" />
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__plate-no">Pl. VIII</span>
+          <span class="plate__name">Daily Calendar</span>
+          <span class="plate__exif">35mm · f/5.6 · 1/125s · ISO 400</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PULL QUOTE
+============================================================ -->
+<section class="section section--bone">
+  <div class="wrap">
+    <div class="pullquote">
+      <span class="pullquote__num">06</span>
+      <div class="pullquote__body">
+        <span class="pullquote__mark">&ldquo;</span>
+        <p class="pullquote__text">
+          A printed photograph is the only photograph that <em>survives the
+          phone.</em> Everything else is provisional.
+        </p>
+        <div class="pullquote__attrib">
+          <span class="who">Editor's Note</span>
+          <span class="role">Issue 01 · Spring 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPONENTS — sharp rectangular UI
+============================================================ -->
+<section class="section section--paper" id="components">
+  <div class="wrap">
+    <header class="components__head">
+      <span class="num">07</span>
+      <div class="meta">
+        <span class="eyebrow eyebrow--rule">Components · The opposite of bubbly</span>
+      </div>
+      <h2 class="title">
+        Sharp rectangles, hairline borders, small caps. UI that knows
+        <em>it is not the picture.</em>
+      </h2>
+    </header>
+
+    <div class="components__grid">
+      <div class="cmp cmp--buttons">
+        <span class="cmp__title">Buttons</span>
+        <div class="btn-row">
+          <button class="btn btn--solid">Order a sample</button>
+          <button class="btn">View the press</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--rust">Subscribe · $48 / yr</button>
+          <button class="btn">Read the manifesto</button>
+        </div>
+      </div>
+
+      <div class="cmp cmp--input">
+        <span class="cmp__title">Form field</span>
+        <div class="field">
+          <label class="field__label" for="email">Email address</label>
+          <input class="field__input" type="email" id="email" placeholder="reader@example.com" />
+          <span class="field__hint">For the quarterly · No marketing-speak, ever.</span>
+        </div>
+      </div>
+
+      <div class="cmp cmp--labels">
+        <span class="cmp__title">Tags &amp; badges</span>
+        <div class="tag-row">
+          <span class="tag tag--solid">New</span>
+          <span class="tag tag--rust">Sale</span>
+          <span class="tag tag--sage">In stock</span>
+          <span class="tag">Made to order</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOPHON FOOTER
+============================================================ -->
+<footer class="colophon" id="colophon">
+  <div class="wrap">
+    <div class="colophon__top">
+      <h2 class="colophon__title">
+        Set in Fraunces &amp; Hanken Grotesk. Printed in <em>spring,</em> against the rain.
+      </h2>
+      <p class="colophon__sub">
+        Direction 01 of 04 in a brand exploration for Social Print Studio's
+        fifteen-year visual identity refresh. A reference, not a release.
+      </p>
+    </div>
+
+    <div class="colophon__credits">
+      <dl>
+        <dt>Issue</dt>
+        <dd>N° 01 — Atelier</dd>
+      </dl>
+      <dl>
+        <dt>Dateline</dt>
+        <dd>Seattle · April 2026</dd>
+      </dl>
+      <dl>
+        <dt>Display</dt>
+        <dd>Fraunces · variable opsz</dd>
+      </dl>
+      <dl>
+        <dt>Body</dt>
+        <dd>Hanken Grotesk · 400 / 500</dd>
+      </dl>
+      <dl>
+        <dt>Metadata</dt>
+        <dd>JetBrains Mono · 400</dd>
+      </dl>
+      <dl>
+        <dt>Direction</dt>
+        <dd>Atelier · Editorial serif</dd>
+      </dl>
+      <dl>
+        <dt>Companions</dt>
+        <dd>02 Werkstatt · 03 Studio Print · 04 Alias</dd>
+      </dl>
+      <dl>
+        <dt>Status</dt>
+        <dd>Concept · Internal review</dd>
+      </dl>
+    </div>
+
+    <div class="colophon__base">
+      <span class="colophon__wordmark">Social Print <em>Studio</em></span>
+      <span>© MMXI — MMXXVI · Made in Seattle, USA</span>
+      <span>Pp. 64 / End of issue</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

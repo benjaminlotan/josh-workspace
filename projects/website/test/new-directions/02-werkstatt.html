@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Social Print Studio — Werkstatt / Brand Direction 02</title>
+
+<!-- ──────────────────────────────────────────────────────────────────
+     GOOGLE FONTS
+     Bricolage Grotesque (variable, opsz/wdth/wght) — display
+     DM Sans — body / UI
+     IBM Plex Mono — metadata, signature
+     ────────────────────────────────────────────────────────────────── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ──────────────────────────────────────────────────────────────────
+   01 / TOKENS
+   The most restrained palette of the four directions.
+   Two grays, one green, one warm accent. That's it.
+   ────────────────────────────────────────────────────────────────── */
+:root{
+  /* Color */
+  --ink:    #0A0A0A;   /* Almost-true black. Type, primary fills. */
+  --paper:  #FFFFFF;   /* True white. */
+  --mist:   #F4F4F2;   /* Barely-warm gray for alternating panels. */
+  --rule:   #D8D6D2;   /* Hairline border. */
+  --steel:  #5C6663;   /* Cool gray for secondary text. */
+  --moss:   #4A5D4F;   /* Cold, controlled green. */
+  --ochre:  #C97B3A;   /* Single warm accent. SPARINGLY. */
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Grid */
+  --max:    1480px;
+  --gutter: 24px;
+  --pad-x:  40px;
+
+  /* Rhythm */
+  --rule-w: 1px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   02 / RESET + BASE
+   ────────────────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background:var(--paper);
+  color:var(--ink);
+}
+body{
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:15px;
+  line-height:1.55;
+  font-feature-settings:"ss01","cv11";
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+hr{border:0;border-top:var(--rule-w) solid var(--rule);margin:0}
+
+::selection{background:var(--ink);color:var(--paper)}
+
+/* Wrapper */
+.shell{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 var(--pad-x);
+  position:relative;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   03 / TYPOGRAPHY UTILITIES
+   Bricolage = display. DM Sans = body. Plex Mono = metadata.
+   ────────────────────────────────────────────────────────────────── */
+
+/* Mono — the signature voice */
+.mono{
+  font-family:var(--font-mono);
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:0.02em;
+  text-transform:uppercase;
+  color:var(--ink);
+  font-feature-settings:"zero";
+}
+.mono--sm{font-size:10px}
+.mono--lg{font-size:13px;text-transform:none;letter-spacing:0}
+.mono--steel{color:var(--steel)}
+
+/* Display — Bricolage Grotesque */
+.display{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-variation-settings:"wdth" 100, "opsz" 96;
+  line-height:0.95;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin:0;
+}
+
+/* Body */
+p{margin:0 0 1em}
+.lede{
+  font-family:var(--font-body);
+  font-size:18px;
+  line-height:1.5;
+  font-weight:400;
+  color:var(--ink);
+  max-width:62ch;
+}
+
+/* Section title pair: Plex tag on left, Bricolage title on right */
+.section-head{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+  align-items:end;
+  padding:32px 0 28px;
+  border-bottom:var(--rule-w) solid var(--rule);
+  margin-bottom:48px;
+}
+.section-head__tag{
+  grid-column:1 / span 3;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.section-head__tag .dot{
+  width:7px;height:7px;background:var(--ink);display:inline-block;
+}
+.section-head__title{
+  grid-column:4 / span 7;
+  font-family:var(--font-display);
+  font-weight:500;
+  font-variation-settings:"wdth" 100;
+  font-size:clamp(28px,3.2vw,46px);
+  line-height:1;
+  letter-spacing:-0.015em;
+  color:var(--ink);
+}
+.section-head__meta{
+  grid-column:11 / span 2;
+  text-align:right;
+  color:var(--steel);
+}
+
+/* Section wrapper */
+section{padding:64px 0;border-top:var(--rule-w) solid var(--rule)}
+section:first-of-type{border-top:0}
+
+/* ──────────────────────────────────────────────────────────────────
+   04 / TOP BAR
+   Full width, hairline bottom, dense, mono coordinates on right.
+   ────────────────────────────────────────────────────────────────── */
+.topbar{
+  border-bottom:var(--rule-w) solid var(--rule);
+  background:var(--paper);
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter:saturate(140%) blur(6px);
+}
+.topbar__inner{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:14px var(--pad-x);
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:40px;
+}
+.topbar__brand{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:-0.01em;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.topbar__brand::before{
+  content:"";
+  width:14px;height:14px;
+  background:var(--ink);
+  display:inline-block;
+}
+.topbar__nav{
+  display:flex;
+  gap:32px;
+  justify-self:start;
+  margin-left:24px;
+}
+.topbar__nav a{
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+  position:relative;
+  padding:4px 0;
+}
+.topbar__nav a:hover{color:var(--moss)}
+.topbar__coord{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--steel);
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+.topbar__coord .sep{color:var(--rule)}
+
+/* ──────────────────────────────────────────────────────────────────
+   05 / GRID OVERLAY
+   The literal 12-column grid as the first content moment.
+   ────────────────────────────────────────────────────────────────── */
+.grid-show{
+  padding:48px 0 24px;
+  border-top:0;
+}
+.grid-show__head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:18px;
+  color:var(--steel);
+}
+.grid-show__head .left{display:flex;gap:18px;align-items:baseline}
+.grid-show__head .right{display:flex;gap:18px;align-items:baseline}
+.grid-overlay{
+  position:relative;
+  height:140px;
+  border:var(--rule-w) solid var(--rule);
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc((100% - 11 * 1px) / 12),
+      var(--rule) calc((100% - 11 * 1px) / 12),
+      var(--rule) calc((100% - 11 * 1px) / 12 + 1px)
+    );
+}
+.grid-overlay__cols{
+  position:absolute;inset:0;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+}
+.grid-overlay__col{
+  border-right:1px dashed transparent;
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-start;
+  padding:10px;
+}
+.grid-overlay__col span{
+  font-family:var(--font-mono);
+  font-size:9px;
+  color:var(--steel);
+  letter-spacing:0.05em;
+}
+.grid-overlay__col::after{
+  content:"";
+  position:absolute;
+  left:10px;right:10px;bottom:10px;
+  height:34px;
+  background:var(--mist);
+}
+.grid-overlay__col:nth-child(odd)::after{background:#EFEEEB}
+
+/* ──────────────────────────────────────────────────────────────────
+   06 / HERO
+   No image. Type carries everything. Spans 12 cols.
+   ────────────────────────────────────────────────────────────────── */
+.hero{
+  padding:80px 0 96px;
+  border-top:var(--rule-w) solid var(--rule);
+  position:relative;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+}
+.hero__pre{
+  grid-column:1 / span 12;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  color:var(--steel);
+  border-bottom:var(--rule-w) solid var(--rule);
+  padding-bottom:18px;
+  margin-bottom:36px;
+}
+.hero__pre .left{display:flex;gap:18px;align-items:baseline}
+.hero__pre .right{display:flex;gap:18px;align-items:baseline}
+.hero__title{
+  grid-column:1 / span 12;
+  font-family:var(--font-display);
+  font-weight:800;
+  font-variation-settings:"wdth" 95, "opsz" 96;
+  font-size:clamp(56px,11vw,184px);
+  line-height:0.88;
+  letter-spacing:-0.035em;
+  color:var(--ink);
+  margin:0 0 36px;
+}
+.hero__title em{
+  font-style:normal;
+  font-weight:500;
+  font-variation-settings:"wdth" 110, "opsz" 96;
+  color:var(--moss);
+  letter-spacing:-0.025em;
+}
+.hero__lede-wrap{
+  grid-column:1 / span 7;
+  border-top:var(--rule-w) solid var(--rule);
+  padding-top:24px;
+}
+.hero__lede{
+  font-family:var(--font-body);
+  font-size:19px;
+  line-height:1.45;
+  color:var(--ink);
+  max-width:54ch;
+  font-weight:400;
+}
+.hero__side{
+  grid-column:9 / span 4;
+  border-top:var(--rule-w) solid var(--rule);
+  padding-top:24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  align-content:start;
+}
+.hero__side .cell{
+  border-left:var(--rule-w) solid var(--rule);
+  padding-left:14px;
+}
+.hero__side .cell .k{
+  font-family:var(--font-mono);
+  font-size:9px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--steel);
+  display:block;
+  margin-bottom:6px;
+}
+.hero__side .cell .v{
+  font-family:var(--font-body);
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  display:block;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   07 / MANIFESTO / INDEX
+   Numbered list of brand rules. Workshop manual energy.
+   ────────────────────────────────────────────────────────────────── */
+.manifesto__rows{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+}
+.manifesto__rows > *{grid-column:1 / span 12}
+.row{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+  padding:22px 0;
+  border-top:var(--rule-w) solid var(--rule);
+  align-items:start;
+}
+.row:last-child{border-bottom:var(--rule-w) solid var(--rule)}
+.row__num{
+  grid-column:1 / span 1;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+  padding-top:4px;
+}
+.row__title{
+  grid-column:2 / span 4;
+  font-family:var(--font-display);
+  font-weight:600;
+  font-variation-settings:"wdth" 100;
+  font-size:22px;
+  line-height:1.1;
+  letter-spacing:-0.012em;
+  color:var(--ink);
+}
+.row__body{
+  grid-column:6 / span 5;
+  font-family:var(--font-body);
+  font-size:14px;
+  line-height:1.55;
+  color:var(--ink);
+  max-width:54ch;
+}
+.row__tag{
+  grid-column:11 / span 2;
+  text-align:right;
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+  padding-top:6px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   08 / COLOR SYSTEM
+   Full-width strip. Hard edges. Hex in mono. Role in DM Sans.
+   ────────────────────────────────────────────────────────────────── */
+.color-strip{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  border:var(--rule-w) solid var(--rule);
+}
+.swatch{
+  border-right:var(--rule-w) solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  min-height:300px;
+}
+.swatch:last-child{border-right:0}
+.swatch__chip{
+  flex:1;
+  position:relative;
+}
+.swatch__chip .num{
+  position:absolute;
+  top:14px;left:14px;
+  font-family:var(--font-mono);
+  font-size:9px;
+  color:inherit;
+  letter-spacing:0.05em;
+  opacity:0.6;
+}
+.swatch__meta{
+  border-top:var(--rule-w) solid var(--rule);
+  padding:14px;
+  background:var(--paper);
+}
+.swatch__meta .hex{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--ink);
+  display:block;
+  margin-bottom:4px;
+}
+.swatch__meta .name{
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:13px;
+  color:var(--ink);
+  display:block;
+  margin-bottom:2px;
+  text-transform:capitalize;
+}
+.swatch__meta .role{
+  font-family:var(--font-body);
+  font-size:11px;
+  color:var(--steel);
+  display:block;
+  line-height:1.4;
+}
+.swatch--ink   .swatch__chip{background:var(--ink);color:var(--paper)}
+.swatch--paper .swatch__chip{background:var(--paper);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.swatch--mist  .swatch__chip{background:var(--mist);color:var(--ink)}
+.swatch--rule  .swatch__chip{background:var(--rule);color:var(--ink)}
+.swatch--steel .swatch__chip{background:var(--steel);color:var(--paper)}
+.swatch--moss  .swatch__chip{background:var(--moss);color:var(--paper)}
+.swatch--ochre .swatch__chip{background:var(--ochre);color:var(--paper)}
+
+/* ──────────────────────────────────────────────────────────────────
+   09 / TYPE SYSTEM
+   Specimen + scale + body sample + plex mono data table.
+   ────────────────────────────────────────────────────────────────── */
+.type-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+}
+
+.type-spec{
+  grid-column:1 / span 5;
+  border:var(--rule-w) solid var(--rule);
+  padding:36px;
+  position:relative;
+  min-height:380px;
+}
+.type-spec__label{
+  position:absolute;
+  top:14px;left:14px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  color:var(--steel);
+}
+.type-spec__corner{
+  position:absolute;
+  top:14px;right:14px;
+  text-align:right;
+  color:var(--steel);
+}
+.type-spec__giant{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-variation-settings:"wdth" 100, "opsz" 96;
+  font-size:clamp(180px,22vw,300px);
+  line-height:0.85;
+  letter-spacing:-0.04em;
+  color:var(--ink);
+  position:absolute;
+  bottom:8px;
+  left:24px;
+  margin:0;
+}
+.type-spec__bottom{
+  position:absolute;
+  bottom:14px;right:14px;
+  text-align:right;
+  color:var(--steel);
+}
+
+.type-scale{
+  grid-column:6 / span 7;
+  border:var(--rule-w) solid var(--rule);
+  padding:36px;
+}
+.type-scale__row{
+  display:grid;
+  grid-template-columns:60px 1fr 60px;
+  align-items:baseline;
+  padding:14px 0;
+  border-bottom:var(--rule-w) solid var(--rule);
+  gap:18px;
+}
+.type-scale__row:last-child{border-bottom:0}
+.type-scale__row .k{
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+}
+.type-scale__row .sample{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-variation-settings:"wdth" 100;
+  letter-spacing:-0.018em;
+  line-height:1;
+  color:var(--ink);
+}
+.type-scale__row .px{
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--steel);
+  text-align:right;
+}
+.type-scale__row.s1 .sample{font-size:64px;font-weight:700}
+.type-scale__row.s2 .sample{font-size:48px}
+.type-scale__row.s3 .sample{font-size:34px}
+.type-scale__row.s4 .sample{font-size:24px}
+.type-scale__row.s5 .sample{font-size:18px}
+.type-scale__row.s6 .sample{font-size:14px;font-family:var(--font-body);font-weight:500}
+
+.type-body{
+  grid-column:1 / span 7;
+  border:var(--rule-w) solid var(--rule);
+  padding:36px;
+  margin-top:-1px;
+}
+.type-body__head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:var(--rule-w) solid var(--rule);
+  color:var(--steel);
+}
+.type-body p{
+  font-family:var(--font-body);
+  font-size:15px;
+  line-height:1.6;
+  color:var(--ink);
+  max-width:62ch;
+}
+.type-body p + p{margin-top:14px}
+
+.type-mono{
+  grid-column:8 / span 5;
+  border:var(--rule-w) solid var(--rule);
+  padding:0;
+  margin-top:-1px;
+  background:var(--ink);
+  color:var(--paper);
+}
+.type-mono__head{
+  padding:14px 18px;
+  border-bottom:var(--rule-w) solid #2a2a2a;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.type-mono__head .k{
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:#9aa19c;
+}
+.type-mono__head .lights{display:flex;gap:6px}
+.type-mono__head .lights span{
+  width:8px;height:8px;background:#3a3a3a;display:inline-block;
+}
+.type-mono table{
+  width:100%;
+  border-collapse:collapse;
+  font-family:var(--font-mono);
+  font-size:11.5px;
+  color:#dadcd8;
+}
+.type-mono td{
+  padding:9px 18px;
+  border-bottom:1px solid #1c1c1c;
+  letter-spacing:0.01em;
+}
+.type-mono td:first-child{color:#7c8480;width:40%}
+.type-mono td:last-child{color:#dadcd8;text-align:right;font-feature-settings:"zero","tnum"}
+.type-mono tr:last-child td{border-bottom:0}
+.type-mono .ochre{color:var(--ochre)}
+
+/* ──────────────────────────────────────────────────────────────────
+   10 / CATALOG / PRODUCTS
+   Museum catalog. SKU. Price. Spec. Grid-aligned.
+   ────────────────────────────────────────────────────────────────── */
+.catalog{background:var(--mist);}
+.catalog .section-head{margin-bottom:40px}
+.catalog__legend{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--steel);
+  padding:0 0 14px;
+  border-bottom:var(--rule-w) solid var(--rule);
+  margin-bottom:24px;
+}
+.catalog__legend .a{grid-column:1 / span 1}
+.catalog__legend .b{grid-column:2 / span 5}
+.catalog__legend .c{grid-column:7 / span 3}
+.catalog__legend .d{grid-column:10 / span 2}
+.catalog__legend .e{grid-column:12 / span 1;text-align:right}
+
+.catalog__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border:var(--rule-w) solid var(--rule);
+  background:var(--paper);
+}
+.product{
+  border-right:var(--rule-w) solid var(--rule);
+  border-bottom:var(--rule-w) solid var(--rule);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--paper);
+  position:relative;
+}
+.product:nth-child(4n){border-right:0}
+.product:nth-last-child(-n+4){border-bottom:0}
+.product__index{
+  position:absolute;
+  top:14px;right:14px;
+  font-family:var(--font-mono);
+  font-size:9px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+}
+.product__media{
+  background:var(--mist);
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border:var(--rule-w) solid var(--rule);
+  position:relative;
+}
+.product__media img{
+  width:100%;height:100%;object-fit:cover;
+  filter:saturate(0.92) contrast(1.02);
+}
+.product__media .crop{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:6px 10px;
+  font-family:var(--font-mono);
+  font-size:9px;
+  color:var(--paper);
+  background:linear-gradient(to top,rgba(10,10,10,0.55),transparent);
+  display:flex;
+  justify-content:space-between;
+  letter-spacing:0.03em;
+}
+.product__sku{
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+  display:flex;
+  justify-content:space-between;
+  padding-top:4px;
+  border-top:var(--rule-w) solid var(--rule);
+}
+.product__name{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-variation-settings:"wdth" 100;
+  font-size:20px;
+  line-height:1.1;
+  letter-spacing:-0.012em;
+  color:var(--ink);
+  margin:0;
+}
+.product__spec{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  color:var(--steel);
+  letter-spacing:0.02em;
+  line-height:1.5;
+}
+.product__foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top:auto;
+  padding-top:8px;
+}
+.product__price{
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:16px;
+  color:var(--ink);
+  font-feature-settings:"tnum";
+}
+.product__cta{
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--ink);
+  padding-bottom:2px;
+  border-bottom:1px solid var(--ink);
+}
+.product__cta:hover{color:var(--moss);border-color:var(--moss)}
+
+/* ──────────────────────────────────────────────────────────────────
+   11 / COMPONENTS
+   Buttons, fields, tags. Sharp. Technical. On the grid.
+   ────────────────────────────────────────────────────────────────── */
+.components-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+}
+.comp-card{
+  border:var(--rule-w) solid var(--rule);
+  padding:32px;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  min-height:280px;
+}
+.comp-card__label{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding-bottom:14px;
+  border-bottom:var(--rule-w) solid var(--rule);
+  color:var(--steel);
+}
+.comp--buttons{grid-column:1 / span 5}
+.comp--fields {grid-column:6 / span 4}
+.comp--tags   {grid-column:10 / span 3}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:0;
+  padding:14px 24px;
+  border:1px solid var(--ink);
+  border-radius:0;
+  cursor:pointer;
+  text-decoration:none;
+  transition:none;
+  min-width:160px;
+  gap:10px;
+}
+.btn .arrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  display:inline-block;
+  transform:translateY(-1px);
+}
+.btn--filled{background:var(--ink);color:var(--paper)}
+.btn--filled:hover{background:var(--paper);color:var(--ink)}
+.btn--outline{background:transparent;color:var(--ink)}
+.btn--outline:hover{background:var(--ink);color:var(--paper)}
+.btn--ochre{background:var(--ochre);border-color:var(--ochre);color:var(--paper)}
+.btn--ochre:hover{background:var(--paper);color:var(--ochre);border-color:var(--ochre)}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+
+.field{display:flex;flex-direction:column;gap:6px}
+.field__label{
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  color:var(--steel);
+  display:flex;
+  justify-content:space-between;
+}
+.field__label .req{color:var(--ochre)}
+.field__input{
+  font-family:var(--font-body);
+  font-size:14px;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  border-radius:0;
+  padding:12px 14px;
+  outline:none;
+  color:var(--ink);
+}
+.field__input:focus{border-color:var(--ink)}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+  background:var(--mist);
+  color:var(--ink);
+  padding:5px 9px;
+  border-radius:3px;
+  border:1px solid var(--rule);
+}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--moss);display:inline-block}
+.tag--ochre .dot{background:var(--ochre)}
+.tag--ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tag--ink .dot{background:var(--paper)}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ──────────────────────────────────────────────────────────────────
+   12 / COLOPHON
+   Bottom bar. Dense. Archival. Hairline border-top.
+   ────────────────────────────────────────────────────────────────── */
+.colophon{
+  border-top:var(--rule-w) solid var(--rule);
+  padding:48px 0 36px;
+  background:var(--paper);
+}
+.colophon__grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+  border-bottom:var(--rule-w) solid var(--rule);
+  padding-bottom:36px;
+}
+.colophon__brand{
+  grid-column:1 / span 4;
+}
+.colophon__brand .mark{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-variation-settings:"wdth" 100;
+  font-size:38px;
+  line-height:0.95;
+  letter-spacing:-0.025em;
+  color:var(--ink);
+  margin:0 0 14px;
+}
+.colophon__brand .copy{
+  font-family:var(--font-body);
+  font-size:13px;
+  color:var(--steel);
+  line-height:1.5;
+  max-width:34ch;
+}
+.colophon__col{
+  grid-column-end:span 2;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.colophon__col h4{
+  font-family:var(--font-mono);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:var(--steel);
+  margin:0 0 8px;
+  font-weight:500;
+}
+.colophon__col a{
+  font-family:var(--font-body);
+  font-size:13px;
+  color:var(--ink);
+  font-weight:500;
+}
+.colophon__col a:hover{color:var(--moss)}
+.colophon__col.c1{grid-column:5 / span 2}
+.colophon__col.c2{grid-column:7 / span 2}
+.colophon__col.c3{grid-column:9 / span 2}
+.colophon__col.c4{grid-column:11 / span 2}
+
+.colophon__foot{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:var(--gutter);
+  padding-top:24px;
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--steel);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  align-items:center;
+}
+.colophon__foot .a{grid-column:1 / span 5}
+.colophon__foot .b{grid-column:6 / span 4;text-align:center}
+.colophon__foot .c{grid-column:10 / span 3;text-align:right}
+.colophon__foot .b .ochre{color:var(--ochre)}
+
+/* ──────────────────────────────────────────────────────────────────
+   13 / RESPONSIVE
+   The grid loosens but never breaks the discipline.
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width:1100px){
+  .topbar__nav{display:none}
+  .hero__title{font-size:clamp(48px,12vw,120px)}
+  .type-spec{grid-column:1 / span 12;min-height:300px}
+  .type-spec__giant{font-size:200px}
+  .type-scale{grid-column:1 / span 12;margin-top:-1px}
+  .type-body{grid-column:1 / span 12}
+  .type-mono{grid-column:1 / span 12}
+  .catalog__grid{grid-template-columns:repeat(2,1fr)}
+  .product:nth-child(4n){border-right:var(--rule-w) solid var(--rule)}
+  .product:nth-child(2n){border-right:0}
+  .product:nth-last-child(-n+4){border-bottom:var(--rule-w) solid var(--rule)}
+  .product:nth-last-child(-n+2){border-bottom:0}
+  .comp--buttons,.comp--fields,.comp--tags{grid-column:1 / span 12}
+  .colophon__brand{grid-column:1 / span 12;margin-bottom:18px}
+  .colophon__col.c1{grid-column:1 / span 6}
+  .colophon__col.c2{grid-column:7 / span 6}
+  .colophon__col.c3{grid-column:1 / span 6}
+  .colophon__col.c4{grid-column:7 / span 6}
+}
+@media (max-width:760px){
+  :root{--pad-x:20px;--gutter:14px}
+  .topbar__coord{display:none}
+  .grid-overlay{height:90px}
+  .grid-overlay__col span{display:none}
+  .grid-overlay__col:nth-child(n+9){display:none}
+  .hero{padding:48px 0 64px}
+  .hero__pre{flex-direction:column;align-items:flex-start;gap:8px}
+  .hero__lede-wrap{grid-column:1 / span 12}
+  .hero__side{grid-column:1 / span 12;margin-top:32px;padding-top:24px;border-top:var(--rule-w) solid var(--rule)}
+  .section-head__tag{grid-column:1 / span 12;margin-bottom:14px}
+  .section-head__title{grid-column:1 / span 12;margin-bottom:10px}
+  .section-head__meta{grid-column:1 / span 12;text-align:left}
+  .row__num{grid-column:1 / span 2}
+  .row__title{grid-column:3 / span 10}
+  .row__body{grid-column:1 / span 12;margin-top:8px}
+  .row__tag{grid-column:1 / span 12;text-align:left;padding-top:8px}
+  .color-strip{grid-template-columns:repeat(2,1fr)}
+  .swatch:nth-child(2n){border-right:0}
+  .swatch:nth-child(n+3){border-top:var(--rule-w) solid var(--rule)}
+  .catalog__grid{grid-template-columns:1fr}
+  .product{border-right:0!important}
+  .product:not(:last-child){border-bottom:var(--rule-w) solid var(--rule)!important}
+  .catalog__legend{display:none}
+  .type-spec__giant{font-size:140px}
+}
+</style>
+</head>
+<body>
+
+<!-- ────────────── 01 / TOP BAR ────────────── -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="topbar__brand">SOCIAL PRINT STUDIO</div>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="#shop">Shop</a>
+      <a href="#process">Process</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#studio">Studio</a>
+      <a href="#journal">Journal</a>
+    </nav>
+    <div class="topbar__coord" aria-hidden="true">
+      <span>47.6062° N</span><span class="sep">·</span>
+      <span>122.3321° W</span><span class="sep">·</span>
+      <span>SEATTLE WA</span><span class="sep">·</span>
+      <span>EST. 2011</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ────────────── 02 / GRID SHOW ────────────── -->
+  <div class="shell">
+    <section class="grid-show">
+      <div class="grid-show__head">
+        <div class="left">
+          <span class="mono">§ 00 / Grid</span>
+          <span class="mono mono--steel">12 columns · 24px gutter · 40px margin</span>
+        </div>
+        <div class="right">
+          <span class="mono mono--steel">Werkstatt v0.2</span>
+          <span class="mono mono--steel">SPS / Direction 02</span>
+        </div>
+      </div>
+      <div class="grid-overlay" aria-hidden="true">
+        <div class="grid-overlay__cols">
+          <div class="grid-overlay__col"><span>01</span></div>
+          <div class="grid-overlay__col"><span>02</span></div>
+          <div class="grid-overlay__col"><span>03</span></div>
+          <div class="grid-overlay__col"><span>04</span></div>
+          <div class="grid-overlay__col"><span>05</span></div>
+          <div class="grid-overlay__col"><span>06</span></div>
+          <div class="grid-overlay__col"><span>07</span></div>
+          <div class="grid-overlay__col"><span>08</span></div>
+          <div class="grid-overlay__col"><span>09</span></div>
+          <div class="grid-overlay__col"><span>10</span></div>
+          <div class="grid-overlay__col"><span>11</span></div>
+          <div class="grid-overlay__col"><span>12</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────── 03 / HERO ────────────── -->
+    <section class="hero" id="hero">
+      <div class="hero__grid">
+        <div class="hero__pre">
+          <div class="left">
+            <span class="mono">§ 01 / Identity</span>
+            <span class="mono mono--steel">Brand direction · Werkstatt</span>
+          </div>
+          <div class="right">
+            <span class="mono mono--steel">File 02 of 04</span>
+            <span class="mono mono--steel">2026 — MMXXVI</span>
+          </div>
+        </div>
+
+        <h1 class="hero__title">
+          A workshop<br>
+          for <em>photographs</em><br>
+          made into objects.
+        </h1>
+
+        <div class="hero__lede-wrap">
+          <p class="hero__lede">
+            Social Print Studio is a fifteen-year-old print workshop in Seattle.
+            We turn photographs into things you keep — books, frames, prints, calendars —
+            with the precision of a darkroom and the discipline of a typeshop.
+          </p>
+        </div>
+
+        <aside class="hero__side" aria-label="Studio facts">
+          <div class="cell">
+            <span class="k">Founded</span>
+            <span class="v">2011 · Year XV</span>
+          </div>
+          <div class="cell">
+            <span class="k">Headcount</span>
+            <span class="v">10 humans</span>
+          </div>
+          <div class="cell">
+            <span class="k">Output</span>
+            <span class="v">~2.4M prints / yr</span>
+          </div>
+          <div class="cell">
+            <span class="k">Domain</span>
+            <span class="v">socialprintstudio.com</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ────────────── 04 / MANIFESTO ────────────── -->
+    <section class="manifesto" id="manifesto">
+      <div class="section-head">
+        <div class="section-head__tag">
+          <span class="dot"></span>
+          <span class="mono">§ 02 / Manifesto</span>
+        </div>
+        <h2 class="section-head__title">Eight rules for the workshop.</h2>
+        <div class="section-head__meta mono">Index</div>
+      </div>
+
+      <div class="manifesto__rows">
+        <div class="row">
+          <div class="row__num">01</div>
+          <h3 class="row__title">A photograph is an object.</h3>
+          <p class="row__body">
+            We do not make screens. We make paper, ink, glass, metal, brass, and cloth.
+            Every product in this shop is a thing your hands will recognize before your eyes do.
+          </p>
+          <div class="row__tag">PRINCIPLE</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">02</div>
+          <h3 class="row__title">Show the grid.</h3>
+          <p class="row__body">
+            Structure is not embarrassing. The grid is how the work stays honest.
+            We show our columns, our margins, our specifications, and our prices.
+          </p>
+          <div class="row__tag">METHOD</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">03</div>
+          <h3 class="row__title">Numbers are a love language.</h3>
+          <p class="row__body">
+            200 gsm. 1/250s at f/8. ISO 100. Fifteen years. Ten humans.
+            We talk about our work the way photographers talk about their tools — exactly.
+          </p>
+          <div class="row__tag">VOICE</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">04</div>
+          <h3 class="row__title">No decoration without function.</h3>
+          <p class="row__body">
+            Every rule, every tag, every colophon line earns its place by holding information.
+            If it does not, we cut it. The discipline is the design.
+          </p>
+          <div class="row__tag">RESTRAINT</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">05</div>
+          <h3 class="row__title">Two greys, one green, one accent.</h3>
+          <p class="row__body">
+            The whole house operates from a seven-color palette. The work of a print shop
+            is to make photographs sing — the room around them stays quiet.
+          </p>
+          <div class="row__tag">PALETTE</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">06</div>
+          <h3 class="row__title">Treat the catalog like a museum.</h3>
+          <p class="row__body">
+            Each product gets a number, a specification, a price, and a fair amount of light.
+            Customers are not browsers; they are visitors. We label everything.
+          </p>
+          <div class="row__tag">CATALOG</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">07</div>
+          <h3 class="row__title">Hairlines, never shadows.</h3>
+          <p class="row__body">
+            Depth is achieved with rules and adjacencies, not with falsified light.
+            One pixel of true ink will out-perform any blur.
+          </p>
+          <div class="row__tag">SURFACE</div>
+        </div>
+
+        <div class="row">
+          <div class="row__num">08</div>
+          <h3 class="row__title">Built in Seattle, made for the world.</h3>
+          <p class="row__body">
+            47.6062° N, 122.3321° W. We ship from a warehouse you can see from the freeway.
+            International by attitude, Pacific Northwest by address.
+          </p>
+          <div class="row__tag">ORIGIN</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────── 05 / COLOR SYSTEM ────────────── -->
+    <section class="colors" id="colors">
+      <div class="section-head">
+        <div class="section-head__tag">
+          <span class="dot"></span>
+          <span class="mono">§ 03 / Color</span>
+        </div>
+        <h2 class="section-head__title">Seven colors, no more.</h2>
+        <div class="section-head__meta mono">N=7</div>
+      </div>
+
+      <div class="color-strip">
+        <div class="swatch swatch--ink">
+          <div class="swatch__chip"><span class="num">01</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#0A0A0A</span>
+            <span class="name">Ink</span>
+            <span class="role">Primary type, fills, hover state</span>
+          </div>
+        </div>
+        <div class="swatch swatch--paper">
+          <div class="swatch__chip"><span class="num">02</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#FFFFFF</span>
+            <span class="name">Paper</span>
+            <span class="role">Default surface, true white</span>
+          </div>
+        </div>
+        <div class="swatch swatch--mist">
+          <div class="swatch__chip"><span class="num">03</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#F4F4F2</span>
+            <span class="name">Mist</span>
+            <span class="role">Alternating panels, tag fields</span>
+          </div>
+        </div>
+        <div class="swatch swatch--rule">
+          <div class="swatch__chip"><span class="num">04</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#D8D6D2</span>
+            <span class="name">Rule</span>
+            <span class="role">Hairlines, dividers, borders</span>
+          </div>
+        </div>
+        <div class="swatch swatch--steel">
+          <div class="swatch__chip"><span class="num">05</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#5C6663</span>
+            <span class="name">Steel</span>
+            <span class="role">Secondary text, captions, meta</span>
+          </div>
+        </div>
+        <div class="swatch swatch--moss">
+          <div class="swatch__chip"><span class="num">06</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#4A5D4F</span>
+            <span class="name">Moss</span>
+            <span class="role">Brand green, links, hover</span>
+          </div>
+        </div>
+        <div class="swatch swatch--ochre">
+          <div class="swatch__chip"><span class="num">07</span></div>
+          <div class="swatch__meta">
+            <span class="hex">#C97B3A</span>
+            <span class="name">Ochre</span>
+            <span class="role">Single accent, sale, alert — sparingly</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────── 06 / TYPE SYSTEM ────────────── -->
+    <section class="type" id="type">
+      <div class="section-head">
+        <div class="section-head__tag">
+          <span class="dot"></span>
+          <span class="mono">§ 04 / Type</span>
+        </div>
+        <h2 class="section-head__title">Three voices, strict roles.</h2>
+        <div class="section-head__meta mono">3 / families</div>
+      </div>
+
+      <div class="type-grid">
+
+        <div class="type-spec">
+          <div class="type-spec__label">
+            <span class="mono mono--steel">Display</span>
+            <span class="mono mono--steel">Bricolage Grotesque</span>
+          </div>
+          <div class="type-spec__corner">
+            <span class="mono mono--steel">800 / wdth 95</span>
+          </div>
+          <div class="type-spec__giant">Aa</div>
+          <div class="type-spec__bottom">
+            <span class="mono mono--steel">Variable · opsz · wdth · wght</span>
+          </div>
+        </div>
+
+        <div class="type-scale">
+          <div class="type-scale__row s1">
+            <span class="k">D-XL</span>
+            <span class="sample">A workshop.</span>
+            <span class="px">64 / 700</span>
+          </div>
+          <div class="type-scale__row s2">
+            <span class="k">D-L</span>
+            <span class="sample">Hairline rules</span>
+            <span class="px">48 / 600</span>
+          </div>
+          <div class="type-scale__row s3">
+            <span class="k">D-M</span>
+            <span class="sample">A photograph is an object</span>
+            <span class="px">34 / 600</span>
+          </div>
+          <div class="type-scale__row s4">
+            <span class="k">D-S</span>
+            <span class="sample">Eight rules for the workshop</span>
+            <span class="px">24 / 600</span>
+          </div>
+          <div class="type-scale__row s5">
+            <span class="k">D-XS</span>
+            <span class="sample">A label, a number, a price</span>
+            <span class="px">18 / 500</span>
+          </div>
+          <div class="type-scale__row s6">
+            <span class="k">UI</span>
+            <span class="sample">Add to cart · DM Sans 500</span>
+            <span class="px">14 / 500</span>
+          </div>
+        </div>
+
+        <div class="type-body">
+          <div class="type-body__head">
+            <span class="mono">Body / DM Sans</span>
+            <span class="mono mono--steel">15 / 1.6 · 400</span>
+          </div>
+          <p>
+            Social Print Studio has been printing photographs for fifteen years from a
+            warehouse in Seattle. We treat each print like a small piece of architecture —
+            chosen paper, exact margins, considered binding, signed boxes. The catalog is
+            short on purpose. We sell eight things and we make all of them well.
+          </p>
+          <p>
+            DM Sans is the workhorse of the system. It carries body copy, navigation,
+            captions, prices, and product names. It is humanist enough to feel made by a
+            person, geometric enough to disappear into the grid.
+          </p>
+        </div>
+
+        <div class="type-mono" aria-label="Camera metadata sample">
+          <div class="type-mono__head">
+            <span class="k">EXIF / IBM PLEX MONO</span>
+            <span class="lights"><span></span><span></span><span></span></span>
+          </div>
+          <table>
+            <tbody>
+              <tr><td>CAMERA</td><td>Leica M11</td></tr>
+              <tr><td>LENS</td><td>Summicron 35 ƒ/2</td></tr>
+              <tr><td>SHUTTER</td><td>1 / 250 s</td></tr>
+              <tr><td>APERTURE</td><td>ƒ / 8.0</td></tr>
+              <tr><td>ISO</td><td>100</td></tr>
+              <tr><td>FOCAL</td><td>35 mm</td></tr>
+              <tr><td>WHITE BAL.</td><td>5500 K</td></tr>
+              <tr><td>FORMAT</td><td>RAW · DNG</td></tr>
+              <tr><td>FILE</td><td>L1002847.DNG</td></tr>
+              <tr><td>STATUS</td><td><span class="ochre">PRINT READY</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ────────────── 07 / CATALOG ────────────── -->
+  <div class="catalog">
+    <div class="shell">
+      <section class="catalog__inner" id="catalog">
+        <div class="section-head">
+          <div class="section-head__tag">
+            <span class="dot"></span>
+            <span class="mono">§ 05 / Catalog</span>
+          </div>
+          <h2 class="section-head__title">Eight objects, archived.</h2>
+          <div class="section-head__meta mono">N=8</div>
+        </div>
+
+        <div class="catalog__legend">
+          <div class="a">No.</div>
+          <div class="b">Object</div>
+          <div class="c">Specification</div>
+          <div class="d">SKU</div>
+          <div class="e">Price</div>
+        </div>
+
+        <div class="catalog__grid">
+
+          <article class="product">
+            <div class="product__index">001 / 008</div>
+            <div class="product__media">
+              <img src="../images/tiny-books.jpg" alt="Tinybooks">
+              <div class="crop"><span>4 × 4 in</span><span>1:1</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-TB-001</span>
+              <span>EST. 2011</span>
+            </div>
+            <h3 class="product__name">Tinybooks</h3>
+            <div class="product__spec">200 gsm matte · 22 pages · saddle-stitched · 4 × 4 in</div>
+            <div class="product__foot">
+              <span class="product__price">$15.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">002 / 008</div>
+            <div class="product__media">
+              <img src="../images/layflat-album.jpg" alt="Layflat Albums">
+              <div class="crop"><span>10 × 10 in</span><span>1:1</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-LF-002</span>
+              <span>HARDBOUND</span>
+            </div>
+            <h3 class="product__name">Layflat Albums</h3>
+            <div class="product__spec">300 gsm photo · case-bound · 20–80 pp · 8/10/12 in</div>
+            <div class="product__foot">
+              <span class="product__price">$89.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">003 / 008</div>
+            <div class="product__media">
+              <img src="../images/gallery-frames.jpg" alt="Gallery Frames">
+              <div class="crop"><span>11 × 14 in</span><span>4:5</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-GF-003</span>
+              <span>OAK · WHITE · BLACK</span>
+            </div>
+            <h3 class="product__name">Gallery Frames</h3>
+            <div class="product__spec">FSC oak · acid-free mat · museum glass · 5 sizes</div>
+            <div class="product__foot">
+              <span class="product__price">$58.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">004 / 008</div>
+            <div class="product__media">
+              <img src="../images/metal-prints.jpg" alt="Metal Prints">
+              <div class="crop"><span>12 × 18 in</span><span>2:3</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-MP-004</span>
+              <span>DYE-SUB</span>
+            </div>
+            <h3 class="product__name">Metal Prints</h3>
+            <div class="product__spec">brushed aluminum · dye-sub · float-mount · UV stable</div>
+            <div class="product__foot">
+              <span class="product__price">$72.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">005 / 008</div>
+            <div class="product__media">
+              <img src="../images/photo-strips.jpg" alt="Photo Strips">
+              <div class="crop"><span>2 × 6 in</span><span>1:3</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-PS-005</span>
+              <span>SET / 4</span>
+            </div>
+            <h3 class="product__name">Photo Strips</h3>
+            <div class="product__spec">230 gsm lustre · 4-up · matte border · 2 × 6 in</div>
+            <div class="product__foot">
+              <span class="product__price">$8.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">006 / 008</div>
+            <div class="product__media">
+              <img src="../images/magnets.jpg" alt="Magnets">
+              <div class="crop"><span>3 × 3 in</span><span>1:1</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-MG-006</span>
+              <span>SET / 9</span>
+            </div>
+            <h3 class="product__name">Magnets</h3>
+            <div class="product__spec">flexible neodymium · matte top · 3 × 3 in · set of 9</div>
+            <div class="product__foot">
+              <span class="product__price">$18.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">007 / 008</div>
+            <div class="product__media">
+              <img src="../images/brass-print-set.jpg" alt="Brass Print Set">
+              <div class="crop"><span>5 × 7 in</span><span>5:7</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-BR-007</span>
+              <span>EDITION</span>
+            </div>
+            <h3 class="product__name">Brass Print Set</h3>
+            <div class="product__spec">solid brass plate · etched · linen-bound box · ed. of 250</div>
+            <div class="product__foot">
+              <span class="product__price">$140.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product__index">008 / 008</div>
+            <div class="product__media">
+              <img src="../images/daily-calendar.jpg" alt="Daily Calendar">
+              <div class="crop"><span>4 × 5 in</span><span>4:5</span></div>
+            </div>
+            <div class="product__sku">
+              <span>SPS-DC-008</span>
+              <span>365 PP</span>
+            </div>
+            <h3 class="product__name">Daily Calendar</h3>
+            <div class="product__spec">365 pages · uncoated · oak base · daily tear · MMXXVI</div>
+            <div class="product__foot">
+              <span class="product__price">$42.00</span>
+              <a href="#" class="product__cta">View →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ────────────── 08 / COMPONENTS ────────────── -->
+  <div class="shell">
+    <section class="components" id="components">
+      <div class="section-head">
+        <div class="section-head__tag">
+          <span class="dot"></span>
+          <span class="mono">§ 06 / Components</span>
+        </div>
+        <h2 class="section-head__title">Sharp parts, square corners.</h2>
+        <div class="section-head__meta mono">3 / kits</div>
+      </div>
+
+      <div class="components-grid">
+
+        <div class="comp-card comp--buttons">
+          <div class="comp-card__label">
+            <span class="mono">Buttons</span>
+            <span class="mono mono--steel">3 variants · radius 0</span>
+          </div>
+          <div class="btn-row">
+            <a href="#" class="btn btn--filled">Add to cart <span class="arrow">→</span></a>
+            <a href="#" class="btn btn--outline">View specs <span class="arrow">→</span></a>
+          </div>
+          <div class="btn-row">
+            <a href="#" class="btn btn--ochre">On sale — 2/$24 <span class="arrow">→</span></a>
+          </div>
+          <p class="mono mono--steel">DM Sans 600 · 13 px · no transition · invert on hover</p>
+        </div>
+
+        <div class="comp-card comp--fields">
+          <div class="comp-card__label">
+            <span class="mono">Form field</span>
+            <span class="mono mono--steel">Hairline · radius 0</span>
+          </div>
+          <div class="field">
+            <label class="field__label">
+              <span>Email address</span>
+              <span class="req">REQ.</span>
+            </label>
+            <input class="field__input" type="email" placeholder="you@studio.com">
+          </div>
+          <div class="field">
+            <label class="field__label">
+              <span>Print size</span>
+              <span>OPT.</span>
+            </label>
+            <input class="field__input" type="text" value="11 × 14 in / matte">
+          </div>
+        </div>
+
+        <div class="comp-card comp--tags">
+          <div class="comp-card__label">
+            <span class="mono">Tags</span>
+            <span class="mono mono--steel">r=3px · mono</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag"><span class="dot"></span>NEW</span>
+            <span class="tag"><span class="dot"></span>FSC OAK</span>
+            <span class="tag tag--ochre"><span class="dot"></span>SALE</span>
+            <span class="tag tag--ink"><span class="dot"></span>EDITION</span>
+            <span class="tag"><span class="dot"></span>200 GSM</span>
+            <span class="tag"><span class="dot"></span>4 × 4 IN</span>
+          </div>
+          <p class="mono mono--steel">The only rounded element in the system.</p>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- ────────────── 09 / COLOPHON ────────────── -->
+<footer class="colophon">
+  <div class="shell">
+    <div class="colophon__grid">
+      <div class="colophon__brand">
+        <p class="mark">Social Print<br>Studio.</p>
+        <p class="copy">An independent print workshop in Seattle.
+          Photographs into books, frames, prints, and other things you keep.</p>
+      </div>
+      <div class="colophon__col c1">
+        <h4>Shop</h4>
+        <a href="#">Tinybooks</a>
+        <a href="#">Layflat Albums</a>
+        <a href="#">Gallery Frames</a>
+        <a href="#">Metal Prints</a>
+      </div>
+      <div class="colophon__col c2">
+        <h4>Studio</h4>
+        <a href="#">About</a>
+        <a href="#">Process</a>
+        <a href="#">Materials</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="colophon__col c3">
+        <h4>Help</h4>
+        <a href="#">Contact</a>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">FAQ</a>
+      </div>
+      <div class="colophon__col c4">
+        <h4>Follow</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Field notes</a>
+        <a href="#">RSS</a>
+      </div>
+    </div>
+    <div class="colophon__foot">
+      <div class="a">
+        Set in Bricolage Grotesque, DM Sans, IBM Plex Mono · Designed in Seattle, MMXXVI
+      </div>
+      <div class="b">
+        47.6062° N · 122.3321° W · <span class="ochre">●</span> Workshop active
+      </div>
+      <div class="c">
+        © Social Print Studio · Direction 02 / Werkstatt
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

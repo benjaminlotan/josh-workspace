@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Print Studio — Alias / Identity System 2026</title>
+
+<!-- ─── Google Fonts: Syne (display), Plus Jakarta Sans (body), JetBrains Mono (data) ─── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ──────────────────────────────────────────────────────────────────
+   ALIAS — Social Print Studio identity exploration
+   Direction 04 of 04 · contemporary studio · Pentagram-flavored
+   Single rust accent per section · vertical labels · sharp 90deg
+   ────────────────────────────────────────────────────────────── */
+
+/* ─── Tokens ─── */
+:root {
+  /* Color */
+  --ink:    #111111;
+  --ink-80: rgba(17,17,17,0.80);
+  --ink-55: rgba(17,17,17,0.55);
+  --ink-30: rgba(17,17,17,0.30);
+  --bone:   #F5F1EA;
+  --paper:  #FFFFFF;
+  --sage:   #6E7E68;
+  --forest: #1F2D27;
+  --rust:   #C84A2A;
+  --rule:   #DDD6CB;
+  --rule-dark: rgba(245,241,234,0.20);
+
+  /* Type */
+  --display: 'Syne', system-ui, sans-serif;
+  --body:    'Plus Jakarta Sans', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  /* Grid + spacing */
+  --gutter: 24px;
+  --pad-x:  48px;
+  --max:    1440px;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 16px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "ss02", "kern";
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; border: 0; background: none; cursor: pointer; }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+
+/* ─── Layout primitives ─── */
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  position: relative;
+}
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+
+/* ─── Typographic atoms ─── */
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.mono-sm { font-size: 10px; letter-spacing: 0.08em; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow .num {
+  color: var(--rust);
+  font-weight: 600;
+}
+.eyebrow .slash { color: var(--ink-30); }
+.display-1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(48px, 7.4vw, 116px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+.display-2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(36px, 4.6vw, 68px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.display-3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(24px, 2.6vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.lede {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.5;
+  color: var(--ink-80);
+  max-width: 56ch;
+}
+.body {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-80);
+}
+.italic { font-style: italic; font-family: var(--display); font-weight: 700; }
+
+/* ─── Vertical rotated label (ALIAS signature) ─── */
+.vlabel {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  white-space: nowrap;
+}
+.vlabel .pip {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--rust);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   01 — Top navigation
+   ────────────────────────────────────────────────────────────── */
+.nav {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bone);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px var(--pad-x);
+  max-width: var(--max);
+  margin: 0 auto;
+  gap: 32px;
+}
+.wordmark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.wordmark .reg { color: var(--rust); font-size: 10px; transform: translateY(-7px); }
+.nav__links {
+  display: flex;
+  gap: 36px;
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ink);
+}
+.nav__links a {
+  position: relative;
+  padding-bottom: 2px;
+  transition: color .2s ease;
+}
+.nav__links a:hover { color: var(--rust); }
+.nav__meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav__meta .dot {
+  width: 6px; height: 6px; background: var(--rust); display: inline-block;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   02 — Hero
+   ────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: 96px 0 120px;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.hero__shell { position: relative; }
+.hero__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 80px;
+}
+.hero__top-left { display: flex; gap: 28px; align-items: baseline; }
+.hero__crumbs {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.hero__crumbs span + span::before { content: " / "; color: var(--ink-30); margin: 0 6px; }
+.hero__top-right {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  text-align: right;
+  line-height: 1.7;
+}
+
+.hero__main { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter); align-items: start; }
+.hero__num {
+  grid-column: 1 / span 2;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(120px, 18vw, 260px);
+  line-height: 0.78;
+  color: var(--rust);
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.hero__title {
+  grid-column: 3 / span 8;
+  margin-top: 14px;
+}
+.hero__title h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(48px, 7.4vw, 124px);
+  line-height: 0.92;
+  letter-spacing: -0.028em;
+  margin: 0;
+  color: var(--ink);
+}
+.hero__title h1 em {
+  font-style: italic;
+  font-weight: 700;
+}
+.hero__rule {
+  grid-column: 3 / span 9;
+  margin: 56px 0 28px;
+  border-top: 1px solid var(--ink);
+}
+.hero__lede-wrap {
+  grid-column: 3 / span 6;
+}
+.hero__lede {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.5;
+  color: var(--ink-80);
+  max-width: 50ch;
+}
+.hero__meta {
+  grid-column: 10 / span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+.hero__meta dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.hero__meta dt { color: var(--ink-30); }
+.hero__meta dd { margin: 0; color: var(--ink); }
+
+.hero__vlabel {
+  position: absolute;
+  right: -8px;
+  top: 90px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   03 — Identity statement
+   ────────────────────────────────────────────────────────────── */
+.statement {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bone);
+  position: relative;
+}
+.statement__grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter); }
+.statement__head {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.statement__head .meta-list {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  line-height: 1.9;
+  margin-top: 24px;
+}
+.statement__head .meta-list span { color: var(--ink-30); margin-right: 8px; }
+.statement__body {
+  grid-column: 6 / span 7;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.statement__body p {
+  margin: 0;
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.45;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.statement__body p:first-child::first-line { font-weight: 600; }
+.statement__body p .accent {
+  color: var(--rust);
+  font-weight: 500;
+  border-bottom: 2px solid var(--rust);
+  padding-bottom: 1px;
+}
+.statement__sig {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  display: flex;
+  gap: 24px;
+}
+.statement__sig strong { color: var(--ink); font-weight: 600; }
+
+/* ──────────────────────────────────────────────────────────────────
+   04 — Color system
+   ────────────────────────────────────────────────────────────── */
+.palette {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  position: relative;
+}
+.palette__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 64px;
+}
+.palette__head-left { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 18px; }
+.palette__head-right { grid-column: 8 / span 5; display: flex; align-items: end; }
+.palette__head-right p {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-80);
+  margin: 0;
+  max-width: 44ch;
+}
+.palette__title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+.swatch {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--rule);
+}
+.swatch__color {
+  aspect-ratio: 1 / 1;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.swatch__color::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  background: var(--paper);
+  padding: 4px 8px;
+  border: 1px solid var(--rule);
+}
+.swatch__color.dark::after {
+  color: var(--bone);
+  background: rgba(0,0,0,0.30);
+  border-color: rgba(255,255,255,0.30);
+}
+.swatch__meta {
+  padding: 18px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.swatch__name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.swatch__hex {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-55);
+  text-transform: uppercase;
+}
+.swatch__role {
+  font-family: var(--body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-80);
+  margin-top: 8px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   05 — Type system
+   ────────────────────────────────────────────────────────────── */
+.type {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bone);
+  position: relative;
+}
+.type__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 72px;
+}
+.type__head-left { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 18px; }
+.type__head-right { grid-column: 8 / span 5; display: flex; align-items: end; }
+.type__head-right p {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-80);
+  margin: 0;
+  max-width: 44ch;
+}
+
+.specimen {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 80px;
+  align-items: end;
+}
+.specimen:last-child { margin-bottom: 0; }
+
+.specimen__label {
+  grid-column: 1 / span 2;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--ink);
+  padding-top: 14px;
+}
+.specimen__label strong { color: var(--ink); font-weight: 600; font-size: 11px; }
+
+.spec-syne {
+  grid-column: 3 / span 7;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(140px, 22vw, 320px);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin: 0;
+}
+.spec-syne em {
+  font-style: italic;
+  color: var(--rust);
+}
+.spec-meta {
+  grid-column: 11 / span 2;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  line-height: 1.8;
+  border-top: 1px solid var(--ink);
+  padding-top: 14px;
+}
+.spec-meta strong { color: var(--ink); display: block; }
+
+.spec-jakarta {
+  grid-column: 3 / span 7;
+}
+.spec-jakarta__big {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 24px;
+  max-width: 22ch;
+}
+.spec-jakarta__big em { font-style: italic; font-weight: 500; }
+.spec-jakarta__body {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-80);
+  margin: 0;
+  max-width: 60ch;
+}
+
+.spec-mono {
+  grid-column: 3 / span 7;
+  background: var(--ink);
+  color: var(--bone);
+  padding: 32px 36px;
+  border: 1px solid var(--ink);
+}
+.spec-mono pre {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--bone);
+  margin: 0;
+  white-space: pre-wrap;
+}
+.spec-mono .key { color: var(--rust); }
+.spec-mono .com { color: rgba(245,241,234,0.45); }
+
+/* ──────────────────────────────────────────────────────────────────
+   06 — Selected works
+   ────────────────────────────────────────────────────────────── */
+.works {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  position: relative;
+}
+.works__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 72px;
+  align-items: end;
+}
+.works__head-left { grid-column: 1 / span 7; display: flex; flex-direction: column; gap: 18px; }
+.works__head-right {
+  grid-column: 9 / span 4;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.works__head-right strong { color: var(--ink); }
+
+.works-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 96px;
+}
+.works-row:last-of-type { margin-bottom: 0; }
+
+.work {
+  display: flex;
+  flex-direction: column;
+}
+.work__media {
+  background: var(--bone);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  position: relative;
+}
+.work__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s ease;
+}
+.work:hover .work__media img { transform: scale(1.02); }
+.work__media-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 5px 9px;
+  color: var(--ink);
+}
+.work__caption {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--ink);
+  margin-top: 18px;
+  align-items: baseline;
+}
+.work__title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+.work__price {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+.work__edition {
+  grid-column: 1 / span 2;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  margin-top: 2px;
+}
+.work__edition .num { color: var(--rust); }
+
+/* Featured layout: 6 cols + 6 col side panel */
+.work--featured { grid-column: span 7; }
+.work--featured .work__media { aspect-ratio: 4 / 3; }
+.work--featured .work__title { font-size: 32px; }
+
+.featured-side {
+  grid-column: span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 8px;
+}
+.featured-side__num {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(120px, 16vw, 220px);
+  line-height: 0.82;
+  color: var(--ink);
+  margin: 0 0 24px;
+  letter-spacing: -0.04em;
+}
+.featured-side__num span { color: var(--rust); }
+.featured-side__title {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(28px, 2.8vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  max-width: 18ch;
+}
+.featured-side__body {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-80);
+  margin: 0 0 28px;
+  max-width: 36ch;
+}
+.featured-side__meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
+  border-top: 1px solid var(--ink);
+  padding-top: 16px;
+}
+.featured-side__meta dt { color: var(--ink-30); }
+.featured-side__meta dd { margin: 0; color: var(--ink); }
+
+/* Row of three */
+.work--third { grid-column: span 4; }
+.work--third .work__media { aspect-ratio: 1 / 1; }
+
+/* Row of two — wide */
+.work--half { grid-column: span 6; }
+.work--half .work__media { aspect-ratio: 5 / 4; }
+
+/* ──────────────────────────────────────────────────────────────────
+   07 — Dark demo (forest background, rust accent)
+   ────────────────────────────────────────────────────────────── */
+.dark {
+  background: var(--forest);
+  color: var(--bone);
+  padding: 140px 0 140px;
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+  overflow: hidden;
+}
+.dark__top {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: start;
+  margin-bottom: 80px;
+}
+.dark__eyebrow {
+  grid-column: 1 / span 4;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: rgba(245,241,234,0.55);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.dark__eyebrow .num { color: var(--rust); font-weight: 600; }
+.dark__eyebrow .slash { color: rgba(245,241,234,0.30); }
+
+.dark__meta {
+  grid-column: 9 / span 4;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(245,241,234,0.55);
+  text-align: right;
+  line-height: 1.8;
+}
+
+.dark__display {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(56px, 9vw, 156px);
+  line-height: 0.90;
+  letter-spacing: -0.030em;
+  color: var(--bone);
+  margin: 0 0 64px;
+  max-width: 14ch;
+}
+.dark__display em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--rust);
+}
+
+.dark__row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: end;
+  border-top: 1px solid rgba(245,241,234,0.20);
+  padding-top: 32px;
+}
+.dark__row-l { grid-column: 1 / span 5; }
+.dark__row-l p {
+  font-family: var(--body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(245,241,234,0.85);
+  margin: 0;
+  max-width: 42ch;
+}
+.dark__row-c {
+  grid-column: 7 / span 3;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(245,241,234,0.55);
+  line-height: 1.8;
+}
+.dark__row-c strong { color: var(--bone); display: block; }
+
+.dark__cta {
+  grid-column: 10 / span 3;
+  display: flex;
+  justify-content: end;
+}
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--bone);
+  position: relative;
+}
+.btn-dark::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 12px;
+  height: 2px;
+  background: var(--rust);
+}
+
+.dark__vlabel {
+  position: absolute;
+  left: 24px;
+  top: 140px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+}
+.dark__vlabel .vlabel { color: rgba(245,241,234,0.55); }
+
+/* ──────────────────────────────────────────────────────────────────
+   08 — Components / system
+   ────────────────────────────────────────────────────────────── */
+.system {
+  padding: 120px 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bone);
+  position: relative;
+}
+.system__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 72px;
+}
+.system__head-left { grid-column: 1 / span 6; display: flex; flex-direction: column; gap: 18px; }
+.system__head-right { grid-column: 8 / span 5; display: flex; align-items: end; }
+.system__head-right p {
+  font-family: var(--body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-80);
+  margin: 0;
+  max-width: 44ch;
+}
+
+.system__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+.panel {
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-height: 100%;
+}
+.panel__label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 14px;
+}
+.panel__label .id { color: var(--rust); font-weight: 600; }
+
+.panel--buttons { grid-column: span 7; }
+.panel--tags { grid-column: span 5; }
+.panel--form { grid-column: span 12; }
+
+/* Buttons */
+.btn-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bone);
+  position: relative;
+  transition: transform .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--rust {
+  background: var(--ink);
+  color: var(--bone);
+}
+.btn--rust::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: 10px;
+  height: 2px;
+  background: var(--rust);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn--ghost:hover { background: var(--ink); color: var(--bone); }
+.btn--small {
+  padding: 12px 18px;
+  font-size: 11px;
+}
+.btn .arrow {
+  display: inline-block;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+}
+.btn .arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Tags */
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: var(--bone);
+}
+.tag .tag-num { color: var(--ink-55); }
+.tag--solid {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bone);
+}
+.tag--rust {
+  background: var(--rust);
+  border-color: var(--rust);
+  color: var(--bone);
+}
+
+/* Form */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  font-weight: 500;
+}
+.field input, .field select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 0;
+}
+.field input:focus, .field select:focus {
+  outline: none;
+  border-bottom-color: var(--rust);
+}
+.field--full { grid-column: span 3; }
+.form-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+}
+.form-actions .note {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   09 — Colophon footer
+   ────────────────────────────────────────────────────────────── */
+.colophon {
+  background: var(--bone);
+  border-top: 1px solid var(--ink);
+  padding: 64px 0 56px;
+}
+.colophon__top {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 56px;
+}
+.colophon__l { grid-column: 1 / span 4; display: flex; flex-direction: column; gap: 14px; }
+.colophon__l .mark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.colophon__l p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-80);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 32ch;
+}
+.colophon__c { grid-column: 6 / span 3; display: flex; flex-direction: column; gap: 8px; }
+.colophon__c h4, .colophon__r h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.colophon__c a, .colophon__r a {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ink);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease;
+  align-self: flex-start;
+}
+.colophon__c a:hover, .colophon__r a:hover { border-bottom-color: var(--rust); }
+.colophon__r { grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 8px; }
+
+.colophon__base {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  align-items: baseline;
+}
+.colophon__base .a { grid-column: 1 / span 4; }
+.colophon__base .a strong { color: var(--ink); }
+.colophon__base .b { grid-column: 5 / span 4; text-align: center; }
+.colophon__base .c { grid-column: 9 / span 4; text-align: right; }
+.colophon__base .pip {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--rust);
+  margin: 0 8px -1px;
+}
+
+/* ─── Responsive (light touch — this is a showcase) ─── */
+@media (max-width: 1100px) {
+  :root { --pad-x: 32px; }
+  .swatch { grid-column: span 4; }
+  .work--featured { grid-column: span 12; }
+  .featured-side { grid-column: span 12; }
+  .work--third { grid-column: span 6; }
+  .work--half { grid-column: span 12; }
+  .panel--buttons, .panel--tags { grid-column: span 12; }
+  .form-grid { grid-template-columns: 1fr 1fr; }
+  .field--full { grid-column: span 2; }
+  .hero__vlabel, .dark__vlabel { display: none; }
+}
+@media (max-width: 720px) {
+  :root { --pad-x: 20px; }
+  .nav__links { display: none; }
+  .hero { padding: 64px 0 80px; }
+  .hero__num { grid-column: 1 / span 12; font-size: 96px; }
+  .hero__title { grid-column: 1 / span 12; }
+  .hero__rule { grid-column: 1 / span 12; }
+  .hero__lede-wrap, .hero__meta { grid-column: 1 / span 12; }
+  .statement__head, .statement__body,
+  .palette__head-left, .palette__head-right,
+  .type__head-left, .type__head-right,
+  .works__head-left, .works__head-right,
+  .system__head-left, .system__head-right,
+  .colophon__l, .colophon__c, .colophon__r { grid-column: 1 / span 12; }
+  .swatch { grid-column: span 6; }
+  .work--third { grid-column: span 12; }
+  .specimen { display: block; }
+  .spec-syne { font-size: 96px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field--full { grid-column: span 1; }
+  .colophon__base .a, .colophon__base .b, .colophon__base .c {
+    grid-column: 1 / span 12; text-align: left; margin-bottom: 6px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── 01 NAVIGATION ─── -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#" class="wordmark">Social Print Studio<span class="reg">®</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#identity">Identity</a>
+      <a href="#palette">Palette</a>
+      <a href="#type">Type</a>
+      <a href="#works">Works</a>
+      <a href="#system">System</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="dot"></span>
+      <span>STU—04 · ALIAS</span>
+      <span>47.6062°N 122.3321°W</span>
+    </div>
+  </div>
+</header>
+
+<!-- ─── 02 HERO ─── -->
+<section class="hero">
+  <div class="shell hero__shell">
+
+    <div class="hero__top">
+      <div class="hero__top-left">
+        <div class="hero__crumbs">
+          <span>Index</span><span>Brand Direction</span><span>04 / Alias</span>
+        </div>
+      </div>
+      <div class="hero__top-right">
+        Identity proposal · v1<br>
+        Issued MMXXVI · Quarter II
+      </div>
+    </div>
+
+    <div class="hero__main">
+      <h2 class="hero__num">01</h2>
+      <div class="hero__title">
+        <h1>A photo printing<br>studio with <em>opinions</em><br>about photography.</h1>
+      </div>
+
+      <hr class="hero__rule">
+
+      <div class="hero__lede-wrap">
+        <p class="hero__lede">An identity system proposal for Social Print Studio — fifteen years of printing photographs into objects worth keeping. We're stepping out from behind the storefront and showing our hand.</p>
+      </div>
+
+      <dl class="hero__meta">
+        <dt>Discipline</dt><dd>Photo Printing</dd>
+        <dt>Founded</dt><dd>2010</dd>
+        <dt>Studio</dt><dd>Seattle, USA</dd>
+        <dt>Edition</dt><dd>04 / 04</dd>
+      </dl>
+    </div>
+
+    <div class="hero__vlabel">
+      <span class="vlabel"><span class="pip"></span>Working studio · 2010 — 2026 · Direction Alias</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 03 IDENTITY STATEMENT ─── -->
+<section class="statement" id="identity">
+  <div class="shell">
+    <div class="statement__grid">
+
+      <div class="statement__head">
+        <div class="eyebrow"><span class="num">02</span><span class="slash">/</span><span>Identity</span></div>
+        <h3 class="display-3">A studio identity, not a storefront skin.</h3>
+        <div class="meta-list">
+          <div><span>01</span>Studio of record</div>
+          <div><span>02</span>Catalog &amp; editions</div>
+          <div><span>03</span>Print &amp; bind</div>
+          <div><span>04</span>Distribution</div>
+        </div>
+      </div>
+
+      <div class="statement__body">
+        <p>For fifteen years we've been a quiet printer. We sent the boxes, we kept our heads down, and we let the photographs do the talking. That part isn't changing. <span class="accent">What changes is the room around them.</span></p>
+        <p>Alias proposes that Social Print Studio behave like the contemporary art studio it has always been in private — a working operation with a point of view, a catalog, an archive, and an opinion about what a printed photograph is for. The system is rigorous without being cold. There is one accent color, one display face, one body face, one mono. The grid is twelve columns. The corners are sharp.</p>
+        <p>Everything else is in service of the picture.</p>
+
+        <div class="statement__sig">
+          <div><span>Authored</span> <strong>The Studio</strong></div>
+          <div><span>Reviewed</span> <strong>BL · CEO</strong></div>
+          <div><span>Status</span> <strong>For Review</strong></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 04 PALETTE ─── -->
+<section class="palette" id="palette">
+  <div class="shell">
+
+    <div class="palette__head">
+      <div class="palette__head-left">
+        <div class="eyebrow"><span class="num">03</span><span class="slash">/</span><span>Palette</span></div>
+        <h3 class="palette__title">Seven colors,<br>one of them sharp.</h3>
+      </div>
+      <div class="palette__head-right">
+        <p>The palette holds itself in restraint so that the rust accent — used once per section — actually does its job. Bone replaces cream. Forest replaces silken pine. Rust replaces terracotta. Everything else moves out of the way.</p>
+      </div>
+    </div>
+
+    <div class="swatches">
+
+      <div class="swatch">
+        <div class="swatch__color" data-tag="01" style="background: var(--ink);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Ink</div>
+          <div class="swatch__hex">#111111</div>
+          <div class="swatch__role">Primary surface inversion. Body type, rules, primary buttons. Used as anchor.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color" data-tag="02" style="background: var(--bone);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Bone</div>
+          <div class="swatch__hex">#F5F1EA</div>
+          <div class="swatch__role">Default page background. Cooler than the old cream, warmer than paper. The room.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color" data-tag="03" style="background: var(--paper); border-right: 1px solid var(--rule);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Paper</div>
+          <div class="swatch__hex">#FFFFFF</div>
+          <div class="swatch__role">True white. Used as a contrast moment for archival surfaces and grid containers.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color dark" data-tag="04" style="background: var(--rust);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Rust</div>
+          <div class="swatch__hex">#C84A2A</div>
+          <div class="swatch__role">The signature. One element per section. A number, an underline, a single tag — never more.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color dark" data-tag="05" style="background: var(--sage);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Sage</div>
+          <div class="swatch__hex">#6E7E68</div>
+          <div class="swatch__role">A controlled, desaturated descendant of the old cedar. Quiet supporting blocks.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color dark" data-tag="06" style="background: var(--forest);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Forest</div>
+          <div class="swatch__hex">#1F2D27</div>
+          <div class="swatch__role">Almost-black green. Dark sections, full-bleed editorial moments, photographic foils.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color" data-tag="07" style="background: var(--rule);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Rule</div>
+          <div class="swatch__hex">#DDD6CB</div>
+          <div class="swatch__role">Warm hairline. Borders, dividers, sub-rules between objects.</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch__color" style="background: var(--bone); display: flex; align-items: center; justify-content: center;">
+          <div style="font-family: var(--display); font-weight: 800; font-size: 64px; line-height: 1; color: var(--ink); letter-spacing: -0.04em;">07<span style="color: var(--rust);">.</span></div>
+        </div>
+        <div class="swatch__meta">
+          <div class="swatch__name">In Use</div>
+          <div class="swatch__hex">A · B · C · D</div>
+          <div class="swatch__role">The single rust full-stop. A typographic move that costs nothing and signs every page.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 05 TYPE ─── -->
+<section class="type" id="type">
+  <div class="shell">
+
+    <div class="type__head">
+      <div class="type__head-left">
+        <div class="eyebrow"><span class="num">04</span><span class="slash">/</span><span>Typography</span></div>
+        <h3 class="palette__title">Three families.<br>One voice.</h3>
+      </div>
+      <div class="type__head-right">
+        <p>Syne carries display moments — geometric, distinctive, slightly strange. Plus Jakarta Sans handles every paragraph and label. JetBrains Mono handles metadata and the small technical voice that makes a studio feel like a studio.</p>
+      </div>
+    </div>
+
+    <!-- Syne specimen -->
+    <div class="specimen">
+      <div class="specimen__label">
+        <strong>Display · 01</strong>
+        <div>Syne</div>
+        <div>Variable · 500–800</div>
+        <div>Google Fonts</div>
+      </div>
+      <h2 class="spec-syne">A<em>a</em></h2>
+      <div class="spec-meta">
+        <strong>USED FOR</strong>
+        Hero, section heads, big numbers, work titles. Italic 700 for accents only.
+      </div>
+    </div>
+
+    <!-- Plus Jakarta Sans specimen -->
+    <div class="specimen">
+      <div class="specimen__label">
+        <strong>Body · 02</strong>
+        <div>Plus Jakarta Sans</div>
+        <div>300 / 400 / 500 / 600 / 700</div>
+        <div>Google Fonts</div>
+      </div>
+      <div class="spec-jakarta">
+        <p class="spec-jakarta__big">An identity system is a set of <em>quiet decisions</em> made loud enough that nobody on the team has to make them again.</p>
+        <p class="spec-jakarta__body">Plus Jakarta Sans is the workhorse: paragraphs, ledes, captions, button labels, navigation, form fields, and the supporting voice of the studio. It is geometric enough to feel modern and humanist enough to read at small sizes. Numerals are tabular. Italics carry editorial moments without needing a second face.</p>
+      </div>
+      <div class="spec-meta">
+        <strong>USED FOR</strong>
+        Body copy, ledes, UI labels, buttons, form fields, navigation.
+      </div>
+    </div>
+
+    <!-- JetBrains Mono specimen -->
+    <div class="specimen">
+      <div class="specimen__label">
+        <strong>Mono · 03</strong>
+        <div>JetBrains Mono</div>
+        <div>400 / 500 / 600</div>
+        <div>Google Fonts</div>
+      </div>
+      <div class="spec-mono">
+<pre><span class="com">// studio · alias · identity manifest</span>
+<span class="key">studio</span>      = "Social Print Studio"
+<span class="key">founded</span>     = MMX
+<span class="key">latitude</span>    = 47.6062° N
+<span class="key">longitude</span>   = 122.3321° W
+<span class="key">discipline</span>  = "photo printing"
+<span class="key">edition</span>     = 04 / 04
+<span class="key">accent</span>      = #C84A2A  <span class="com">// rust — one per section</span>
+<span class="key">grid</span>        = 12 × 24
+<span class="key">corners</span>     = sharp
+<span class="key">families</span>    = [ syne, jakarta, jetbrains ]
+<span class="key">printed</span>     = paper, metal, brass, magnet, calendar
+<span class="key">status</span>      = working
+<span class="com">// end of file</span></pre>
+      </div>
+      <div class="spec-meta">
+        <strong>USED FOR</strong>
+        Metadata, captions, prices, eyebrows, technical voice, footnotes.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 06 SELECTED WORKS ─── -->
+<section class="works" id="works">
+  <div class="shell">
+
+    <div class="works__head">
+      <div class="works__head-left">
+        <div class="eyebrow"><span class="num">05</span><span class="slash">/</span><span>Selected Works</span></div>
+        <h3 class="palette__title">A working catalog,<br>not a product page.</h3>
+      </div>
+      <div class="works__head-right">
+        <strong>Eight objects in current production</strong>
+        <span>Updated MMXXVI · Quarter II</span>
+        <span>Edition: ongoing</span>
+      </div>
+    </div>
+
+    <!-- Featured row: large + side panel -->
+    <div class="works-row">
+      <div class="work work--featured">
+        <div class="work__media">
+          <span class="work__media-tag">A · Featured</span>
+          <img src="../images/tiny-books.jpg" alt="Tinybooks">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Tinybooks</div>
+          <div class="work__price">$15</div>
+          <div class="work__edition"><span class="num">∞</span> · Edition of infinity · Softbound · 4 × 4 in</div>
+        </div>
+      </div>
+
+      <aside class="featured-side">
+        <h4 class="featured-side__num">0<span>1</span></h4>
+        <h5 class="featured-side__title">The smallest object we make. Still our favorite.</h5>
+        <p class="featured-side__body">A 4×4 inch softbound photo book. Twenty pages of your photographs, printed on uncoated paper, bound by hand, sent in a kraft envelope. The original Social Print Studio object, in production since 2010.</p>
+        <dl class="featured-side__meta">
+          <dt>Format</dt><dd>4 × 4 in · 20 pages</dd>
+          <dt>Stock</dt><dd>Uncoated 100lb</dd>
+          <dt>Bind</dt><dd>Saddle stitch</dd>
+          <dt>Lead time</dt><dd>5–7 days</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <!-- Row of three -->
+    <div class="works-row">
+      <div class="work work--third">
+        <div class="work__media">
+          <span class="work__media-tag">B</span>
+          <img src="../images/layflat-album.jpg" alt="Layflat Albums">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Layflat Albums</div>
+          <div class="work__price">$95</div>
+          <div class="work__edition"><span class="num">02</span> · Hardcover · 8 × 8 / 10 × 10 / 12 × 12 in</div>
+        </div>
+      </div>
+
+      <div class="work work--third">
+        <div class="work__media">
+          <span class="work__media-tag">C</span>
+          <img src="../images/gallery-frames.jpg" alt="Gallery Frames">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Gallery Frames</div>
+          <div class="work__price">$45</div>
+          <div class="work__edition"><span class="num">03</span> · Solid maple · Acrylic glaze · 5 sizes</div>
+        </div>
+      </div>
+
+      <div class="work work--third">
+        <div class="work__media">
+          <span class="work__media-tag">D</span>
+          <img src="../images/metal-prints.jpg" alt="Metal Prints">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Metal Prints</div>
+          <div class="work__price">$60</div>
+          <div class="work__edition"><span class="num">04</span> · Sublimation on aluminum · 8 sizes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row of two -->
+    <div class="works-row">
+      <div class="work work--half">
+        <div class="work__media">
+          <span class="work__media-tag">E</span>
+          <img src="../images/photo-strips.jpg" alt="Photo Strips">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Photo Strips</div>
+          <div class="work__price">$12</div>
+          <div class="work__edition"><span class="num">05</span> · Set of 4 · 2 × 6 in · Photobooth-style</div>
+        </div>
+      </div>
+
+      <div class="work work--half">
+        <div class="work__media">
+          <span class="work__media-tag">F</span>
+          <img src="../images/magnets.jpg" alt="Magnets">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Magnets</div>
+          <div class="work__price">$18</div>
+          <div class="work__edition"><span class="num">06</span> · Set of 9 · 2 × 2 in · Flexible vinyl</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row of two -->
+    <div class="works-row">
+      <div class="work work--half">
+        <div class="work__media">
+          <span class="work__media-tag">G</span>
+          <img src="../images/brass-print-set.jpg" alt="Brass Print Set">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Brass Print Set</div>
+          <div class="work__price">$120</div>
+          <div class="work__edition"><span class="num">07</span> · Solid brass · Edition of MMXXVI</div>
+        </div>
+      </div>
+
+      <div class="work work--half">
+        <div class="work__media">
+          <span class="work__media-tag">H</span>
+          <img src="../images/daily-calendar.jpg" alt="Daily Calendar">
+        </div>
+        <div class="work__caption">
+          <div class="work__title">Daily Calendar</div>
+          <div class="work__price">$38</div>
+          <div class="work__edition"><span class="num">08</span> · 365 photographs · Walnut block · Annual edition</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 07 DARK DEMO ─── -->
+<section class="dark">
+  <div class="shell">
+
+    <div class="dark__top">
+      <div class="dark__eyebrow"><span class="num">A</span><span class="slash">/</span><span>The system on dark</span></div>
+      <div class="dark__meta">
+        Forest · #1F2D27<br>
+        Bone on dark · #F5F1EA<br>
+        Single accent · Rust
+      </div>
+    </div>
+
+    <h2 class="dark__display">Print is a <em>physical act.</em> We just happen to do it well.</h2>
+
+    <div class="dark__row">
+      <div class="dark__row-l">
+        <p>The same grid, the same three families, the same single rust accent — flipped to a dark surface. The system has to read the same way at midnight as it does at noon. No drop shadows, no gradients, no compromise.</p>
+      </div>
+      <div class="dark__row-c">
+        <strong>Edition</strong>
+        04 / 04 · Alias<br>
+        For Internal Review<br>
+        Quarter II · MMXXVI
+      </div>
+      <div class="dark__cta">
+        <a href="#" class="btn-dark">Open the catalog <span class="arrow"></span></a>
+      </div>
+    </div>
+
+    <div class="dark__vlabel">
+      <span class="vlabel"><span class="pip"></span>Identity behaves on dark · Forest #1F2D27</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 08 SYSTEM / COMPONENTS ─── -->
+<section class="system" id="system">
+  <div class="shell">
+
+    <div class="system__head">
+      <div class="system__head-left">
+        <div class="eyebrow"><span class="num">06</span><span class="slash">/</span><span>System</span></div>
+        <h3 class="palette__title">Components, set in<br>their working room.</h3>
+      </div>
+      <div class="system__head-right">
+        <p>Buttons are sharp rectangles. The primary CTA carries a single rust underline beneath the label — the only ornament in the system. Tags are hairline-bordered mono. Form fields strip the box and lean on a baseline rule.</p>
+      </div>
+    </div>
+
+    <div class="system__grid">
+
+      <!-- Buttons panel -->
+      <div class="panel panel--buttons">
+        <div class="panel__label"><span>Buttons · primary &amp; secondary</span> <span class="id">06.A</span></div>
+        <div class="btn-row">
+          <button class="btn btn--rust">Order a sample <span class="arrow"></span></button>
+          <button class="btn">Add to cart</button>
+          <button class="btn btn--ghost">View specs</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn--rust btn--small">Subscribe</button>
+          <button class="btn btn--small">Download</button>
+          <button class="btn btn--ghost btn--small">Share</button>
+        </div>
+        <p class="body" style="font-size: 12px; max-width: 52ch; margin: 0;">Primary CTAs use the rust underline variant — exactly one per section. Secondary buttons fill ink. Ghost buttons invert on hover. No rounded corners, no drop shadows, no exceptions.</p>
+      </div>
+
+      <!-- Tags panel -->
+      <div class="panel panel--tags">
+        <div class="panel__label"><span>Tags &amp; categories</span> <span class="id">06.B</span></div>
+        <div class="tag-row">
+          <span class="tag"><span class="tag-num">01</span> Photo Book</span>
+          <span class="tag"><span class="tag-num">02</span> Album</span>
+          <span class="tag"><span class="tag-num">03</span> Frame</span>
+          <span class="tag"><span class="tag-num">04</span> Metal</span>
+          <span class="tag"><span class="tag-num">05</span> Strip</span>
+          <span class="tag"><span class="tag-num">06</span> Magnet</span>
+          <span class="tag tag--solid">Best Seller</span>
+          <span class="tag tag--rust">New · MMXXVI</span>
+        </div>
+        <p class="body" style="font-size: 12px; max-width: 36ch; margin: 0;">JetBrains Mono in hairline boxes. The rust tag is the section's single accent.</p>
+      </div>
+
+      <!-- Form panel -->
+      <div class="panel panel--form">
+        <div class="panel__label"><span>Form fields · subscribe to the studio dispatch</span> <span class="id">06.C</span></div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="fn">First name</label>
+            <input id="fn" type="text" value="Ben" />
+          </div>
+          <div class="field">
+            <label for="ln">Last name</label>
+            <input id="ln" type="text" value="Lotan" />
+          </div>
+          <div class="field">
+            <label for="em">Email address</label>
+            <input id="em" type="email" value="studio@socialprintstudio.com" />
+          </div>
+          <div class="field field--full">
+            <label for="int">What are you printing</label>
+            <input id="int" type="text" value="35mm, mostly. A few medium format scans." />
+          </div>
+        </div>
+        <div class="form-actions">
+          <span class="note">We will send no more than one dispatch per month.</span>
+          <button class="btn btn--rust">Subscribe <span class="arrow"></span></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── 09 COLOPHON FOOTER ─── -->
+<footer class="colophon">
+  <div class="shell">
+
+    <div class="colophon__top">
+      <div class="colophon__l">
+        <div class="mark">Social Print Studio<span style="color: var(--rust);">.</span></div>
+        <p>An identity system proposal for the studio's fifteenth year. Direction 04 of 04 — Alias. For internal review.</p>
+      </div>
+      <div class="colophon__c">
+        <h4>Studio</h4>
+        <a href="#">Catalog</a>
+        <a href="#">Editions</a>
+        <a href="#">Press</a>
+        <a href="#">Stockists</a>
+      </div>
+      <div class="colophon__r">
+        <h4>Workroom</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+
+    <div class="colophon__base">
+      <div class="a"><strong>Identity system</strong> for Social Print Studio · MMXXVI</div>
+      <div class="b">Set in <strong>Syne</strong><span class="pip"></span><strong>Plus Jakarta Sans</strong><span class="pip"></span><strong>JetBrains Mono</strong></div>
+      <div class="c">47.6062° N · 122.3321° W · STU—04 / ALIAS</div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

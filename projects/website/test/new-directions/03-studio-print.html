@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Social Print Studio — Studio Print, Volume I</title>
+
+<!-- ============================================================
+     STUDIO PRINT — Direction 03
+     A classical bookmaking revival for Social Print Studio.
+     Bodoni Moda (display) · Manrope (body) · Space Mono (meta)
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,900;1,6..96,400;1,6..96,500;1,6..96,700&family=Manrope:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1.  TOKENS
+   ============================================================ */
+:root {
+  /* Color — warm paper with monograph gravitas */
+  --ink:     #1B1B1B;
+  --paper:   #F8F4EC;
+  --vellum:  #EBE3D2;
+  --forest:  #2C3D33;
+  --moss:    #5C7261;
+  --burnt:   #A0432B;
+  --rule:    #C8BFA8;
+  --ink-soft: rgba(27, 27, 27, 0.62);
+
+  /* Type */
+  --font-display: "Bodoni Moda", "Bodoni 72", "Didot", Georgia, serif;
+  --font-body:    "Manrope", -apple-system, system-ui, sans-serif;
+  --font-mono:    "Space Mono", ui-monospace, monospace;
+
+  /* Measure */
+  --measure: 64ch;
+
+  /* Grid */
+  --gutter: 24px;
+  --page-pad: clamp(24px, 5vw, 88px);
+  --max-w: 1320px;
+}
+
+/* ============================================================
+   2.  RESET & BASELINE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.62;
+  font-feature-settings: "kern", "liga", "calt";
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--forest); color: var(--paper); }
+
+/* ============================================================
+   3.  TYPE PRIMITIVES
+   ============================================================ */
+
+/* Bodoni Moda — display only, never below 32px.
+   Optical-size axis tuned per role. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  font-feature-settings: "kern", "liga", "dlig", "onum";
+  letter-spacing: -0.012em;
+  line-height: 1.02;
+  color: var(--ink);
+}
+.display em, .display i {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Hero Bodoni — the title page voice, optical size cranked up. */
+.title-hero {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96, "wght" 400;
+  font-size: clamp(64px, 13vw, 184px);
+  line-height: 0.94;
+  letter-spacing: -0.022em;
+  font-feature-settings: "kern", "liga", "onum";
+}
+.title-hero em { font-style: italic; }
+
+/* Section roman numeral — enormous, anchors each chapter. */
+.roman {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96, "wght" 400;
+  font-size: clamp(96px, 18vw, 240px);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* Section title — Bodoni mid-display. */
+.section-title {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 60, "wght" 400;
+  font-size: clamp(40px, 5.6vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.012em;
+  margin: 0;
+}
+.section-title em { font-style: italic; }
+
+/* Specimen Aa — foundry sheet, monumental. */
+.specimen-aa {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 96, "wght" 400;
+  font-size: clamp(180px, 28vw, 360px);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+/* Pull quote — italic, mid-large, generous. */
+.pull-quote {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72, "wght" 400;
+  font-style: italic;
+  font-size: clamp(34px, 4.6vw, 62px);
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+/* Manrope eyebrow — refined small caps, tracked lightly. */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+.eyebrow--mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.eyebrow--burnt { color: var(--burnt); }
+.eyebrow--moss  { color: var(--moss); }
+
+/* Body type — large reading size, book-grade. */
+.lede {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.56;
+  letter-spacing: -0.005em;
+  max-width: var(--measure);
+}
+.body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: var(--measure);
+}
+.body--narrow { max-width: 48ch; }
+.caption {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.caption--lower { text-transform: none; letter-spacing: 0.01em; }
+
+/* ============================================================
+   4.  LAYOUT PRIMITIVES
+   ============================================================ */
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+.section {
+  padding-top: clamp(80px, 12vw, 168px);
+  padding-bottom: clamp(80px, 12vw, 168px);
+}
+.section--vellum { background: var(--vellum); }
+.section--paper  { background: var(--paper); }
+.section--ink    { background: var(--ink); color: var(--paper); }
+
+.center { text-align: center; }
+.stack-xs > * + * { margin-top: 8px; }
+.stack-sm > * + * { margin-top: 16px; }
+.stack-md > * + * { margin-top: 24px; }
+.stack-lg > * + * { margin-top: 40px; }
+.stack-xl > * + * { margin-top: 64px; }
+
+/* Decorative ornamental rule — hairline with centered Bodoni mark.
+   This is the signature classical detail. */
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--rule);
+  max-width: 240px;
+}
+.ornament__mark {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 24, "wght" 400;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1;
+  transform: translateY(-1px);
+}
+.ornament--narrow::before,
+.ornament--narrow::after { max-width: 80px; }
+.ornament--full::before,
+.ornament--full::after   { max-width: none; }
+
+/* Hairline divider, no ornament. */
+.hairline {
+  height: 1px;
+  background: var(--rule);
+  width: 100%;
+  border: 0;
+  margin: 0;
+}
+
+/* ============================================================
+   5.  TOP MATTER — running head
+   ============================================================ */
+.running-head {
+  padding-top: 36px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+.running-head__mark {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+}
+.running-head__sub {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.running-head .ornament { margin-top: 24px; }
+
+/* ============================================================
+   6.  TITLE PAGE
+   ============================================================ */
+.titlepage {
+  text-align: center;
+  padding-top: clamp(80px, 14vw, 200px);
+  padding-bottom: clamp(80px, 14vw, 180px);
+}
+.titlepage__eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 11px;
+  color: var(--ink);
+}
+.titlepage__rule {
+  width: 56px;
+  height: 1px;
+  background: var(--ink);
+  margin: 28px auto 56px;
+}
+.titlepage__title {
+  margin: 0 auto;
+  max-width: 14ch;
+}
+.titlepage__sub {
+  margin-top: 56px;
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "wght" 400;
+  font-style: italic;
+  font-size: clamp(22px, 2.4vw, 30px);
+  color: var(--ink);
+  line-height: 1.4;
+  max-width: 38ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.titlepage__meta {
+  margin-top: 64px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.titlepage__meta strong {
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+/* ============================================================
+   7.  FRONTISPIECE
+   ============================================================ */
+.frontispiece {
+  text-align: center;
+  padding-top: clamp(80px, 12vw, 168px);
+  padding-bottom: clamp(80px, 12vw, 168px);
+}
+.frontispiece__quote {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72, "wght" 400;
+  font-style: italic;
+  font-size: clamp(28px, 3.6vw, 50px);
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  max-width: 26ch;
+  margin: 0 auto;
+}
+.frontispiece__attr {
+  margin-top: 56px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+}
+.frontispiece__attr span:last-child {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   8.  CHAPTER HEADER (roman + title)
+   ============================================================ */
+.chapter-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: end;
+  padding-bottom: clamp(64px, 9vw, 120px);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(64px, 9vw, 120px);
+}
+.chapter-head__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+.chapter-head__roman { display: block; }
+.chapter-head__title { margin-top: 16px; }
+.chapter-head__lede {
+  margin-top: 28px;
+  max-width: 56ch;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   9.  PALETTE — chapter I
+   ============================================================ */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px 24px;
+  margin-top: 24px;
+}
+.swatch {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+}
+.swatch--wide { grid-column: span 6; }
+.swatch--narrow { grid-column: span 3; }
+.swatch__chip {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--rule);
+}
+.swatch__meta {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.swatch__name {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "wght" 400;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+.swatch__hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+.swatch__role {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-top: 4px;
+  max-width: 32ch;
+}
+
+/* ============================================================
+   10. TYPE SPECIMENS — chapter II
+   ============================================================ */
+.specimen {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+.specimen__aa {
+  grid-column: 1 / span 7;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 32px;
+}
+.specimen__aa-line {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.specimen__aa-meta {
+  grid-column: 9 / span 4;
+  align-self: end;
+  padding-bottom: 32px;
+}
+.specimen__aa-meta dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+}
+.specimen__aa-meta dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.specimen__aa-meta dd {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.specimen__opsz {
+  grid-column: 1 / -1;
+  margin-top: 64px;
+  border-top: 1px solid var(--rule);
+  padding-top: 56px;
+}
+.opsz-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.opsz-row:last-child { border-bottom: 0; }
+.opsz-row__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  flex: 0 0 auto;
+}
+.opsz-row__sample {
+  font-family: var(--font-display);
+  flex: 1 1 auto;
+  text-align: right;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--ink);
+}
+.opsz-6  { font-variation-settings: "opsz" 6,  "wght" 400; font-size: 32px; }
+.opsz-12 { font-variation-settings: "opsz" 12, "wght" 400; font-size: 40px; }
+.opsz-24 { font-variation-settings: "opsz" 24, "wght" 400; font-size: 52px; }
+.opsz-48 { font-variation-settings: "opsz" 48, "wght" 400; font-size: 64px; }
+.opsz-96 { font-variation-settings: "opsz" 96, "wght" 400; font-size: 76px; }
+.opsz-96-italic {
+  font-variation-settings: "opsz" 96, "wght" 400;
+  font-size: 76px;
+  font-style: italic;
+}
+
+.specimen__manrope {
+  grid-column: 1 / span 7;
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 1px solid var(--rule);
+}
+.specimen__mono {
+  grid-column: 9 / span 4;
+  margin-top: 64px;
+  padding-top: 56px;
+  border-top: 1px solid var(--rule);
+}
+.specimen__sample-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+.specimen__manrope-body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.62;
+  max-width: 56ch;
+}
+.specimen__manrope-body p + p { margin-top: 1em; }
+.specimen__mono-block {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.specimen__mono-block strong {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   11. PLATES — chapter III
+   ============================================================ */
+.plates {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 96px 32px;
+}
+
+.plate {
+  display: flex;
+  flex-direction: column;
+}
+.plate__media {
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+.plate__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.plate__caption {
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  gap: 16px;
+  align-items: baseline;
+}
+.plate__numeral {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "wght" 400;
+  font-style: italic;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ink);
+}
+.plate__title {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "wght" 400;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.plate__meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: right;
+}
+.plate__desc {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 42ch;
+}
+
+/* Variable layouts for the plate sequence */
+.plate--full   { grid-column: 1 / -1; }
+.plate--full .plate__media { aspect-ratio: 16 / 9; }
+.plate--full .plate__caption { max-width: 64ch; margin-left: auto; margin-right: auto; width: 100%; }
+
+.plate--half-left  { grid-column: 1 / span 6; }
+.plate--half-right { grid-column: 7 / span 6; }
+.plate--half-left .plate__media,
+.plate--half-right .plate__media { aspect-ratio: 4 / 5; }
+
+.plate--center {
+  grid-column: 3 / span 8;
+  text-align: center;
+}
+.plate--center .plate__media { aspect-ratio: 5 / 4; }
+.plate--center .plate__caption {
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 8px;
+}
+.plate--center .plate__meta { text-align: center; }
+
+.plate--third-l { grid-column: 1 / span 4; }
+.plate--third-c { grid-column: 5 / span 4; }
+.plate--third-r { grid-column: 9 / span 4; }
+.plate--third-l .plate__media,
+.plate--third-c .plate__media,
+.plate--third-r .plate__media { aspect-ratio: 3 / 4; }
+
+.plate--tall  { grid-column: 1 / span 5; }
+.plate--tall .plate__media { aspect-ratio: 3 / 4; }
+.plate--wide  { grid-column: 6 / span 7; }
+.plate--wide .plate__media { aspect-ratio: 5 / 4; }
+
+/* Plate divider — small ornament between plate runs */
+.plate-divider {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+/* ============================================================
+   12. PULL QUOTE — chapter IV
+   ============================================================ */
+.quote-section {
+  text-align: center;
+}
+.quote-section .ornament { margin-bottom: 80px; }
+.quote-section__attr {
+  margin-top: 64px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+}
+.quote-section__attr span:last-child {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   13. COMPONENTS — chapter V
+   ============================================================ */
+.components-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 64px 32px;
+}
+.comp-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+.comp-block__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.comp-block__title {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 36, "wght" 400;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+}
+.comp-block--6 { grid-column: span 6; }
+.comp-block--4 { grid-column: span 4; }
+.comp-block--12 { grid-column: 1 / -1; }
+
+/* Buttons — rectangular, very subtle 2px radius. Sentence case. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  padding: 16px 32px;
+  border-radius: 2px;
+  border: 1px solid var(--forest);
+  background: var(--forest);
+  color: var(--paper);
+  cursor: pointer;
+  transition: background-color 350ms ease, color 350ms ease, border-color 350ms ease;
+  min-width: 180px;
+  text-align: center;
+}
+.btn:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--forest);
+}
+.btn--ghost:hover {
+  background: var(--forest);
+  color: var(--paper);
+}
+.btn--mark {
+  background: var(--burnt);
+  border-color: var(--burnt);
+}
+.btn--mark:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Form input — hairline border, generous padding */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.field__label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+.field__input {
+  font-family: var(--font-body);
+  font-size: 16px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-bottom-color: var(--ink);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  padding: 14px 0;
+  outline: none;
+  color: var(--ink);
+  transition: border-color 250ms ease;
+}
+.field__input::placeholder { color: var(--ink-soft); }
+.field__input:focus { border-bottom-color: var(--burnt); }
+.field__hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Eyebrow / label specimens */
+.label-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.label-stack > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.label-stack > div:last-child { border-bottom: 0; }
+.label-stack .caption { color: var(--ink-soft); }
+
+/* ============================================================
+   14. COLOPHON
+   ============================================================ */
+.colophon {
+  text-align: center;
+  padding-top: clamp(96px, 14vw, 200px);
+  padding-bottom: clamp(80px, 12vw, 160px);
+}
+.colophon__mark {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 60, "wght" 400;
+  font-style: italic;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.colophon__rule {
+  width: 56px;
+  height: 1px;
+  background: var(--ink);
+  margin: 40px auto;
+}
+.colophon__body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 52ch;
+  margin: 0 auto;
+}
+.colophon__meta {
+  margin-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.colophon__meta strong {
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+}
+.colophon .ornament { margin-top: 64px; }
+
+/* ============================================================
+   15. SMALL SCREENS
+   ============================================================ */
+@media (max-width: 900px) {
+  .palette-grid { gap: 32px 16px; }
+  .swatch, .swatch--wide, .swatch--narrow { grid-column: span 6; }
+
+  .specimen__aa,
+  .specimen__aa-meta,
+  .specimen__manrope,
+  .specimen__mono { grid-column: 1 / -1; }
+  .specimen__aa-meta { padding-bottom: 0; padding-top: 24px; border-top: 1px dashed var(--rule); }
+
+  .plates { gap: 64px 16px; }
+  .plate--full,
+  .plate--half-left, .plate--half-right,
+  .plate--center,
+  .plate--third-l, .plate--third-c, .plate--third-r,
+  .plate--tall, .plate--wide { grid-column: 1 / -1; }
+  .plate--full .plate__media { aspect-ratio: 4 / 3; }
+
+  .components-grid { gap: 48px 16px; }
+  .comp-block--6, .comp-block--4 { grid-column: 1 / -1; }
+
+  .opsz-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .opsz-row__sample { text-align: left; font-size: 56px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     RUNNING HEAD — top of page like a title page header
+     ============================================================ -->
+<header class="page running-head">
+  <div class="running-head__mark">Social Print Studio</div>
+  <span class="running-head__sub">A Photographic Press &middot; Est. MMX</span>
+  <div class="ornament" aria-hidden="true">
+    <span class="ornament__mark">&sect;</span>
+  </div>
+</header>
+
+<!-- ============================================================
+     I. TITLE PAGE
+     ============================================================ -->
+<section class="page titlepage">
+  <div class="titlepage__eyebrow">Volume I &middot; Number 1</div>
+  <div class="titlepage__rule" aria-hidden="true"></div>
+  <h1 class="title-hero titlepage__title">
+    Photographs,<br>
+    <em>printed</em><br>
+    with care
+  </h1>
+  <p class="titlepage__sub">
+    A monograph on the craft of returning a photograph to a hand,
+    a wall, a shelf &mdash; from the studio that has been doing it
+    for fifteen years.
+  </p>
+  <div class="titlepage__meta">
+    <strong>Studio Print &middot; Direction III</strong>
+    <span>Seattle, Washington &middot; April MMXXVI</span>
+  </div>
+</section>
+
+<hr class="hairline" style="max-width: var(--max-w); margin: 0 auto;">
+
+<!-- ============================================================
+     FRONTISPIECE — opening quote
+     ============================================================ -->
+<section class="page frontispiece">
+  <div class="ornament ornament--narrow" aria-hidden="true" style="margin-bottom: 64px;">
+    <span class="ornament__mark">*</span>
+  </div>
+  <p class="frontispiece__quote">
+    &ldquo;A photograph held in the hand is an entirely
+    different photograph than the one held in the cloud.&rdquo;
+  </p>
+  <div class="frontispiece__attr">
+    <span>The Studio Manifesto</span>
+    <span>Frontispiece &middot; Volume I</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     I. THE PALETTE
+     ============================================================ -->
+<section class="section section--paper">
+  <div class="page">
+
+    <header class="chapter-head">
+      <div class="chapter-head__top">
+        <div>
+          <span class="eyebrow eyebrow--mono">Chapter</span>
+          <span class="roman chapter-head__roman">I</span>
+        </div>
+        <div class="caption">Plates I&ndash;VII &middot; Six colours, one rule</div>
+      </div>
+      <h2 class="section-title chapter-head__title">The <em>palette.</em></h2>
+      <p class="lede chapter-head__lede">
+        Seven colours pulled from a paper mill at golden hour. Ink
+        for the type, paper and vellum for the substrate, a quiet
+        forest and its companion moss for the brand voice, a single
+        burnt accent for what matters most, and a hairline rule the
+        colour of dried wheat. Nothing more is needed.
+      </p>
+    </header>
+
+    <div class="palette-grid">
+
+      <!-- Ink -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--ink);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Ink</div>
+          <div class="swatch__hex">#1B1B1B</div>
+          <p class="swatch__role">Body type, primary surface on dark ground. The voice of the page.</p>
+        </div>
+      </div>
+
+      <!-- Paper -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--paper); border-color: var(--rule);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Paper</div>
+          <div class="swatch__hex">#F8F4EC</div>
+          <p class="swatch__role">Primary background. A warm cream the colour of an unread first edition.</p>
+        </div>
+      </div>
+
+      <!-- Vellum -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--vellum);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Vellum</div>
+          <div class="swatch__hex">#EBE3D2</div>
+          <p class="swatch__role">Alternating section ground. A richer aged tone for breathing room and contrast.</p>
+        </div>
+      </div>
+
+      <!-- Forest -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--forest);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Forest</div>
+          <div class="swatch__hex">#2C3D33</div>
+          <p class="swatch__role">Authoritative deep green. Primary actions, marks, and quiet authority.</p>
+        </div>
+      </div>
+
+      <!-- Moss -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--moss);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Moss</div>
+          <div class="swatch__hex">#5C7261</div>
+          <p class="swatch__role">Secondary green. Hovers, soft fields, the in-between voice.</p>
+        </div>
+      </div>
+
+      <!-- Burnt -->
+      <div class="swatch">
+        <div class="swatch__chip" style="background: var(--burnt);"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Burnt</div>
+          <div class="swatch__hex">#A0432B</div>
+          <p class="swatch__role">A single burnt sienna for what truly matters. Used as rarely as a colophon mark.</p>
+        </div>
+      </div>
+
+      <!-- Rule (full width row) -->
+      <div class="swatch swatch--wide">
+        <div class="swatch__chip" style="background: var(--rule); aspect-ratio: 4 / 1;"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">Rule</div>
+          <div class="swatch__hex">#C8BFA8</div>
+          <p class="swatch__role">Hairline borders, dividers, the thin lines that make the architecture visible without raising its voice.</p>
+        </div>
+      </div>
+
+      <!-- Combined harmony -->
+      <div class="swatch swatch--wide">
+        <div class="swatch__chip" style="background: linear-gradient(to right, var(--ink) 0 16.6%, var(--paper) 16.6% 33.3%, var(--vellum) 33.3% 50%, var(--forest) 50% 66.6%, var(--moss) 66.6% 83.3%, var(--burnt) 83.3% 100%); aspect-ratio: 4 / 1;"></div>
+        <div class="swatch__meta">
+          <div class="swatch__name">The seven, in chord</div>
+          <div class="swatch__hex">Ink &middot; Paper &middot; Vellum &middot; Forest &middot; Moss &middot; Burnt</div>
+          <p class="swatch__role">Six colours and one rule. The relationships between them are the brand.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     II. TYPE SPECIMENS
+     ============================================================ -->
+<section class="section section--vellum">
+  <div class="page">
+
+    <header class="chapter-head">
+      <div class="chapter-head__top">
+        <div>
+          <span class="eyebrow eyebrow--mono">Chapter</span>
+          <span class="roman chapter-head__roman">II</span>
+        </div>
+        <div class="caption">Three voices, never more</div>
+      </div>
+      <h2 class="section-title chapter-head__title">Type <em>specimens.</em></h2>
+      <p class="lede chapter-head__lede">
+        A Didone for the title pages, a humanist sans for the
+        reading, and a geometric monospace for the metadata. Bodoni
+        Moda is set generously on its variable optical-size axis;
+        below thirty-two pixels it is forbidden.
+      </p>
+    </header>
+
+    <div class="specimen">
+
+      <!-- Aa specimen, monumental -->
+      <div class="specimen__aa">
+        <div class="specimen__sample-label">Display &middot; Bodoni Moda &middot; Optical 96</div>
+        <div class="specimen__aa-line">
+          <span class="specimen-aa">Aa</span>
+        </div>
+      </div>
+
+      <div class="specimen__aa-meta">
+        <dl>
+          <dt>Family</dt><dd>Bodoni Moda</dd>
+          <dt>Class</dt><dd>Didone, variable</dd>
+          <dt>Axes</dt><dd>opsz 6&ndash;96, wght 400&ndash;900</dd>
+          <dt>Designer</dt><dd>Indestructible Type, after Bodoni</dd>
+          <dt>Year</dt><dd>2022</dd>
+          <dt>Use</dt><dd>Display only, &ge; 32px</dd>
+          <dt>Italic</dt><dd>For emphasis, never weight</dd>
+        </dl>
+      </div>
+
+      <!-- Optical size walk -->
+      <div class="specimen__opsz">
+        <div class="specimen__sample-label">Optical size axis &middot; one phrase, six settings</div>
+
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 06 &middot; 32px</span>
+          <span class="opsz-row__sample opsz-6">A photograph in the hand</span>
+        </div>
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 12 &middot; 40px</span>
+          <span class="opsz-row__sample opsz-12">A photograph in the hand</span>
+        </div>
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 24 &middot; 52px</span>
+          <span class="opsz-row__sample opsz-24">A photograph in the hand</span>
+        </div>
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 48 &middot; 64px</span>
+          <span class="opsz-row__sample opsz-48">A photograph in the hand</span>
+        </div>
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 96 &middot; 76px</span>
+          <span class="opsz-row__sample opsz-96">A photograph in the hand</span>
+        </div>
+        <div class="opsz-row">
+          <span class="opsz-row__label">opsz 96 italic &middot; 76px</span>
+          <span class="opsz-row__sample opsz-96-italic">A photograph in the hand</span>
+        </div>
+      </div>
+
+      <!-- Manrope body specimen -->
+      <div class="specimen__manrope">
+        <div class="specimen__sample-label">Body &middot; Manrope &middot; 17 / 28</div>
+        <div class="specimen__manrope-body">
+          <p>
+            Manrope carries the reading. It is a modern humanist
+            sans designed by Mikhail Sharanda, slightly geometric in
+            the bones but warmed by the open apertures and the
+            generous x-height. Set at seventeen pixels with a
+            sixty-two percent line-height, it reads like a
+            well-printed paperback.
+          </p>
+          <p>
+            The face supports four weights in the system &mdash;
+            three hundred for delicate notation, four hundred for
+            running text, five hundred for emphasis and labels, and
+            seven hundred for the rare moment when emphasis must
+            shout. Italics are reserved for titles, foreign words,
+            and the names of works.
+          </p>
+        </div>
+      </div>
+
+      <!-- Space Mono caption block -->
+      <div class="specimen__mono">
+        <div class="specimen__sample-label">Metadata &middot; Space Mono</div>
+        <div class="specimen__mono-block">
+          <strong>Edition Notes</strong>
+          PRESS &middot; SOCIAL PRINT STUDIO<br>
+          PROOF &middot; II / IV<br>
+          PAPER &middot; MOHAWK SUPERFINE<br>
+          INK &middot; SOY-BASED, FOUR PROCESS<br>
+          BIND &middot; SECTION-SEWN, OPEN<br>
+          STAMP &middot; FOIL, BURNT SIENNA<br><br>
+          <strong>Plate Reference</strong>
+          PL.I &mdash; TINYBOOKS<br>
+          PL.II &mdash; LAYFLAT ALBUMS<br>
+          PL.III &mdash; GALLERY FRAMES<br>
+          PL.IV &mdash; METAL PRINTS<br>
+          PL.V &mdash; PHOTO STRIPS<br>
+          PL.VI &mdash; MAGNETS<br>
+          PL.VII &mdash; BRASS PRINT SET<br>
+          PL.VIII &mdash; DAILY CALENDAR
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     III. PLATES
+     ============================================================ -->
+<section class="section section--paper">
+  <div class="page">
+
+    <header class="chapter-head">
+      <div class="chapter-head__top">
+        <div>
+          <span class="eyebrow eyebrow--mono">Chapter</span>
+          <span class="roman chapter-head__roman">III</span>
+        </div>
+        <div class="caption">Plates I&mdash;VIII</div>
+      </div>
+      <h2 class="section-title chapter-head__title">The <em>plates.</em></h2>
+      <p class="lede chapter-head__lede">
+        Eight objects from the studio's catalogue, treated as plates
+        in a photobook rather than items in a grid. Each is captioned
+        with its numeral, its name, and the small details that
+        matter to the photographer who will hold it.
+      </p>
+    </header>
+
+    <div class="plates">
+
+      <!-- PLATE I — Tinybooks (full row, hero) -->
+      <figure class="plate plate--full">
+        <div class="plate__media">
+          <img src="../images/tiny-books.jpg" alt="Tinybooks &mdash; small softcover photo books">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">I.</span>
+          <span class="plate__title">Tinybooks</span>
+          <span class="plate__meta">5&times;5 in &middot; 24 pp &middot; Softcover</span>
+        </figcaption>
+        <p class="plate__desc" style="margin-left: auto; margin-right: auto; text-align: center;">
+          The studio's smallest photobook, sized to a coat pocket. Section-sewn,
+          printed on uncoated stock, pressed and trimmed in Seattle.
+        </p>
+      </figure>
+
+      <!-- Plate divider -->
+      <div class="plate-divider">
+        <div class="ornament ornament--narrow" aria-hidden="true">
+          <span class="ornament__mark">II &middot; III</span>
+        </div>
+      </div>
+
+      <!-- PLATE II — Layflat Albums -->
+      <figure class="plate plate--half-left">
+        <div class="plate__media">
+          <img src="../images/layflat-album.jpg" alt="Layflat Albums">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">II.</span>
+          <span class="plate__title">Layflat Albums</span>
+          <span class="plate__meta">8&times;8 / 10&times;10</span>
+        </figcaption>
+        <p class="plate__desc">
+          Lay-flat hinge for unbroken double-page spreads. The closest
+          we make to a permanent edition.
+        </p>
+      </figure>
+
+      <!-- PLATE III — Gallery Frames -->
+      <figure class="plate plate--half-right">
+        <div class="plate__media">
+          <img src="../images/gallery-frames.jpg" alt="Gallery Frames">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">III.</span>
+          <span class="plate__title">Gallery Frames</span>
+          <span class="plate__meta">Walnut, oak, white</span>
+        </figcaption>
+        <p class="plate__desc">
+          Sustainably milled hardwood, joined and finished by hand,
+          ready for the wall the day it arrives.
+        </p>
+      </figure>
+
+      <!-- Plate divider -->
+      <div class="plate-divider">
+        <div class="ornament ornament--narrow" aria-hidden="true">
+          <span class="ornament__mark">IV</span>
+        </div>
+      </div>
+
+      <!-- PLATE IV — Metal Prints (centered showpiece) -->
+      <figure class="plate plate--center">
+        <div class="plate__media">
+          <img src="../images/metal-prints.jpg" alt="Metal Prints">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">IV.</span>
+          <span class="plate__title">Metal Prints</span>
+          <span class="plate__meta">Brushed aluminium &middot; archival</span>
+        </figcaption>
+        <p class="plate__desc" style="margin-left: auto; margin-right: auto;">
+          Dye-sublimated to white-coated aluminium for an image that
+          appears to glow from inside the surface itself. The studio's
+          most photographed product.
+        </p>
+      </figure>
+
+      <!-- Plate divider -->
+      <div class="plate-divider">
+        <div class="ornament ornament--narrow" aria-hidden="true">
+          <span class="ornament__mark">V &middot; VI &middot; VII</span>
+        </div>
+      </div>
+
+      <!-- PLATE V — Photo Strips -->
+      <figure class="plate plate--third-l">
+        <div class="plate__media">
+          <img src="../images/photo-strips.jpg" alt="Photo Strips">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">V.</span>
+          <span class="plate__title">Photo Strips</span>
+          <span class="plate__meta">2&times;6 in</span>
+        </figcaption>
+      </figure>
+
+      <!-- PLATE VI — Magnets -->
+      <figure class="plate plate--third-c">
+        <div class="plate__media">
+          <img src="../images/magnets.jpg" alt="Magnets">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">VI.</span>
+          <span class="plate__title">Magnets</span>
+          <span class="plate__meta">Set of nine</span>
+        </figcaption>
+      </figure>
+
+      <!-- PLATE VII — Brass Print Set -->
+      <figure class="plate plate--third-r">
+        <div class="plate__media">
+          <img src="../images/brass-print-set.jpg" alt="Brass Print Set">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">VII.</span>
+          <span class="plate__title">Brass Print Set</span>
+          <span class="plate__meta">Engraved &middot; numbered</span>
+        </figcaption>
+      </figure>
+
+      <!-- Plate divider -->
+      <div class="plate-divider">
+        <div class="ornament ornament--narrow" aria-hidden="true">
+          <span class="ornament__mark">VIII</span>
+        </div>
+      </div>
+
+      <!-- PLATE VIII — Daily Calendar (paired wide + tall) -->
+      <figure class="plate plate--wide">
+        <div class="plate__media">
+          <img src="../images/daily-calendar.jpg" alt="Daily Calendar">
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">VIII.</span>
+          <span class="plate__title">Daily Calendar</span>
+          <span class="plate__meta">365 leaves &middot; perfect-bound</span>
+        </figcaption>
+      </figure>
+
+      <figure class="plate plate--tall">
+        <div class="plate__media" style="background: var(--vellum); display: flex; align-items: center; justify-content: center; padding: 32px;">
+          <div style="text-align: center;">
+            <div class="display" style="font-variation-settings: 'opsz' 96, 'wght' 400; font-size: clamp(80px, 10vw, 140px); font-style: italic; line-height: 0.9;">365</div>
+            <div class="caption" style="margin-top: 24px;">Days &middot; one photograph each</div>
+          </div>
+        </div>
+        <figcaption class="plate__caption">
+          <span class="plate__numeral">&mdash;</span>
+          <span class="plate__title">A year, on the desk</span>
+          <span class="plate__meta">Ed. companion</span>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     IV. PULL QUOTE
+     ============================================================ -->
+<section class="section section--vellum quote-section">
+  <div class="page">
+    <div class="ornament ornament--narrow" aria-hidden="true">
+      <span class="ornament__mark">&para;</span>
+    </div>
+    <p class="pull-quote">
+      &ldquo;The job of a press is to make a thing
+      that <em>outlives</em> the screen on which it
+      was first seen.&rdquo;
+    </p>
+    <div class="quote-section__attr">
+      <span>The Studio</span>
+      <span>Volume I &middot; Plate IV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     V. COMPONENTS
+     ============================================================ -->
+<section class="section section--paper">
+  <div class="page">
+
+    <header class="chapter-head">
+      <div class="chapter-head__top">
+        <div>
+          <span class="eyebrow eyebrow--mono">Chapter</span>
+          <span class="roman chapter-head__roman">V</span>
+        </div>
+        <div class="caption">Restraint &middot; not silence</div>
+      </div>
+      <h2 class="section-title chapter-head__title">The <em>components.</em></h2>
+      <p class="lede chapter-head__lede">
+        Sentence-cased buttons, hairline form fields, refined small
+        labels. The interface borrows the manners of a colophon page.
+        Nothing shouts; the proportions carry the elegance.
+      </p>
+    </header>
+
+    <div class="components-grid">
+
+      <!-- Buttons -->
+      <div class="comp-block comp-block--6">
+        <div class="comp-block__label">Buttons &middot; rectangular, sentence case</div>
+        <div class="comp-block__title">Two voices, slow on hover.</div>
+        <div class="btn-row">
+          <a class="btn" href="#">Place an order</a>
+          <a class="btn btn--ghost" href="#">View the catalogue</a>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--mark" href="#">Subscribe to the press</a>
+        </div>
+        <p class="caption caption--lower">Hover transitions ease over 350ms &mdash; deliberate, not eager.</p>
+      </div>
+
+      <!-- Form -->
+      <div class="comp-block comp-block--6">
+        <div class="comp-block__label">Form input &middot; hairline, generous</div>
+        <div class="comp-block__title">A field that respects the reader.</div>
+        <div class="field">
+          <label class="field__label" for="email">Receive the press</label>
+          <input class="field__input" id="email" type="email" placeholder="your.address@elsewhere.com">
+          <span class="field__hint">One letter per quarter &middot; never sold &middot; unsubscribe instantly</span>
+        </div>
+      </div>
+
+      <!-- Labels -->
+      <div class="comp-block comp-block--6">
+        <div class="comp-block__label">Eyebrows &amp; small caps</div>
+        <div class="comp-block__title">Refined tracking, never the SHOUT.</div>
+        <div class="label-stack">
+          <div>
+            <span class="eyebrow">Volume I &middot; Number 1</span>
+            <span class="caption">Manrope 500 &middot; 0.12em</span>
+          </div>
+          <div>
+            <span class="eyebrow eyebrow--burnt">New from the press</span>
+            <span class="caption">Burnt accent</span>
+          </div>
+          <div>
+            <span class="eyebrow eyebrow--moss">Currently in stock</span>
+            <span class="caption">Moss accent</span>
+          </div>
+          <div>
+            <span class="eyebrow--mono">Plate IV &middot; Edition 002</span>
+            <span class="caption">Space Mono 11 &middot; 0.04em</span>
+          </div>
+          <div>
+            <span class="eyebrow--mono" style="color: var(--ink);">$24 &middot; Ships in 3 days</span>
+            <span class="caption">Mono &middot; product meta</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative rule specimens -->
+      <div class="comp-block comp-block--6">
+        <div class="comp-block__label">Ornamental rules</div>
+        <div class="comp-block__title">A line, broken by a single mark.</div>
+        <div style="display: flex; flex-direction: column; gap: 32px; padding-top: 8px;">
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__mark">*</span>
+          </div>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__mark">&sect;</span>
+          </div>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__mark">&para;</span>
+          </div>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__mark">&mdash;</span>
+          </div>
+          <div class="ornament" aria-hidden="true">
+            <span class="ornament__mark">&dagger;</span>
+          </div>
+        </div>
+        <p class="caption caption--lower">A signature classical detail. One ornament centred on a hairline rule, separating chapters and breath.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COLOPHON
+     ============================================================ -->
+<section class="section section--vellum colophon">
+  <div class="page">
+    <div class="colophon__mark">Colophon.</div>
+    <div class="colophon__rule" aria-hidden="true"></div>
+    <p class="colophon__body">
+      This document was set in <em>Bodoni Moda</em>, a contemporary
+      revival of Giambattista Bodoni's late-eighteenth-century
+      Didone, paired with <em>Manrope</em> for the reading and
+      <em>Space Mono</em> for the metadata. It was composed on the
+      occasion of Social Print Studio's sixteenth year of operation,
+      one of four directions explored for the press's next visual
+      identity.
+    </p>
+    <div class="colophon__meta">
+      <strong>Studio Print &middot; Direction III of IV</strong>
+      <span>Set in Seattle, Washington &middot; April MMXXVI</span>
+      <span>Edition 001 &middot; Internal proof</span>
+      <span>Printed in Seattle</span>
+      <span>&copy; MMX&ndash;MMXXVI Social Print Studio</span>
+    </div>
+    <div class="ornament ornament--narrow" aria-hidden="true">
+      <span class="ornament__mark">FIN.</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
