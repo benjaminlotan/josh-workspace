@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Vision B — Built to Order · Social Print Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ───────────────────────────────────────────────
+     VISION B — "Built to Order"
+     Studio catalogue. Tighter, more confident, more
+     retail-forward. Photos in disciplined grids.
+     Forest hero, paper sections.
+     ─────────────────────────────────────────────── */
+  :root {
+    --ink:        #14140F;
+    --paper:      #FFFFFF;
+    --bone:       #F6F1E7;
+    --mist:       #ECE8DF;
+    --forest:     #1F3A33;
+    --sage:       #6B8B7A;
+    --moss:       #DCE4D6;
+    --terracotta: #C8553D;
+    --border:     #E4DFD3;
+    --border-dark:#2A4640;
+
+    --display: "Bricolage Grotesque", system-ui, sans-serif;
+    --body: "DM Sans", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+  @media (max-width: 768px) {
+    .wrap { padding: 0 20px; }
+  }
+
+  /* ─── ANNOUNCEMENT ─── */
+  .announce {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 10px 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .announce strong { color: var(--sage); font-weight: 500; }
+  .announce span { opacity: 0.5; margin: 0 14px; }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: var(--forest);
+    color: var(--paper);
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .site-header__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0 22px;
+    gap: 32px;
+  }
+  .site-header__brand {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    color: var(--paper);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+  .site-header__brand .dot {
+    color: var(--sage);
+    font-weight: 800;
+    margin-left: 2px;
+  }
+  .site-header__search {
+    flex: 1;
+    max-width: 480px;
+    position: relative;
+  }
+  .site-header__search input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: var(--paper);
+    font-family: var(--body);
+    font-size: 14px;
+    padding: 12px 16px 12px 44px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 150ms ease-out;
+  }
+  .site-header__search input::placeholder { color: rgba(255,255,255,0.5); }
+  .site-header__search input:focus { border-color: var(--sage); }
+  .site-header__search svg {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: rgba(255,255,255,0.6);
+  }
+  .site-header__utility {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .util-link {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--paper);
+    opacity: 0.85;
+    transition: opacity 150ms ease-out;
+  }
+  .util-link:hover { opacity: 1; }
+  .util-link[data-cart] {
+    background: var(--sage);
+    color: var(--ink);
+    padding: 10px 16px;
+    border-radius: 4px;
+    opacity: 1;
+    font-weight: 600;
+  }
+  .util-link[data-cart] .count {
+    font-family: var(--mono);
+    margin-left: 4px;
+  }
+  .site-header__nav {
+    display: flex;
+    gap: 36px;
+    padding: 0 0 22px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 18px;
+  }
+  .nav-item {
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--paper);
+    opacity: 0.85;
+    transition: opacity 150ms ease-out;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-item:hover { opacity: 1; }
+  .nav-item .badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--terracotta);
+    color: var(--paper);
+    padding: 2px 6px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--forest);
+    color: var(--paper);
+    padding: 88px 0 104px;
+    border-bottom: 1px solid var(--border-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .hero__eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero__eyebrow .pulse {
+    width: 6px;
+    height: 6px;
+    background: var(--sage);
+    border-radius: 50%;
+  }
+  .hero__title {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 96;
+    font-weight: 700;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--paper);
+    margin: 0 0 24px;
+  }
+  .hero__title .accent {
+    color: var(--sage);
+  }
+  .hero__lede {
+    font-family: var(--body);
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--mist);
+    max-width: 44ch;
+    margin: 0 0 36px;
+    opacity: 0.9;
+  }
+  .hero__cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn {
+    font-family: var(--body);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.005em;
+    padding: 18px 28px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn--accent {
+    background: var(--sage);
+    color: var(--ink);
+  }
+  .btn--accent:hover {
+    background: var(--paper);
+  }
+  .btn--outline-light {
+    background: transparent;
+    color: var(--paper);
+    border-color: rgba(255,255,255,0.4);
+  }
+  .btn--outline-light:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+  .btn__arrow {
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .hero__metrics {
+    display: flex;
+    gap: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    max-width: 480px;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .metric__num {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .metric__label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+  }
+  .hero__media {
+    position: relative;
+  }
+  .hero__media-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .hero__media-grid img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+  .hero__media-grid .tall {
+    grid-row: span 2;
+    aspect-ratio: 4/9;
+  }
+
+  /* ─── PRODUCT GRID SECTION ─── */
+  .grid-section {
+    padding: 96px 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+  }
+  .grid-section__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .grid-section__title-block { max-width: 560px; }
+  .grid-section__eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--forest);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .grid-section__eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--forest);
+  }
+  .grid-section__title {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 64;
+    font-weight: 600;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .grid-section__filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .filter-chip {
+    font-family: var(--body);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 150ms ease-out;
+  }
+  .filter-chip:hover { border-color: var(--ink); }
+  .filter-chip.is-active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+  }
+  @media (max-width: 1024px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .product-grid { grid-template-columns: 1fr; } }
+
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .product-card__media {
+    position: relative;
+    overflow: hidden;
+    background: var(--mist);
+  }
+  .product-card__media img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: transform 350ms ease-out;
+  }
+  .product-card:hover .product-card__media img { transform: scale(1.03); }
+  .product-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 6px 10px;
+    border-radius: 2px;
+  }
+  .product-card__badge--new { background: var(--sage); color: var(--ink); }
+  .product-card__badge--sale { background: var(--terracotta); color: var(--paper); }
+  .product-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 0 0;
+  }
+  .product-card__category {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0.55;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .product-card__title {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 18;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .product-card__meta {
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--ink);
+    opacity: 0.65;
+    margin-top: 2px;
+  }
+  .product-card__price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+  }
+  .product-card__price {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .product-card__price-was {
+    text-decoration: line-through;
+    opacity: 0.45;
+    margin-right: 6px;
+    font-weight: 400;
+  }
+  .product-card__cta {
+    font-family: var(--body);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--forest);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--bone);
+    color: var(--ink);
+    padding: 80px 0 32px;
+    border-top: 1px solid var(--border);
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1.4fr;
+    gap: 48px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  @media (max-width: 900px) { .footer__top { grid-template-columns: 1fr 1fr; } }
+  .footer__brand-block .footer-logo {
+    font-family: var(--display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 36;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .footer__brand-block .footer-logo .dot { color: var(--forest); }
+  .footer__tagline {
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.7;
+    margin: 18px 0 0;
+    max-width: 28ch;
+  }
+  .footer__col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin: 0 0 18px;
+    opacity: 0.6;
+  }
+  .footer__col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__col a {
+    font-family: var(--body);
+    font-size: 14px;
+    color: var(--ink);
+    transition: color 150ms ease-out;
+  }
+  .footer__col a:hover { color: var(--forest); }
+  .footer__newsletter h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin: 0 0 14px;
+    opacity: 0.6;
+  }
+  .footer__newsletter p {
+    font-family: var(--body);
+    font-size: 13px;
+    color: var(--ink);
+    opacity: 0.7;
+    margin: 0 0 16px;
+    line-height: 1.5;
+  }
+  .footer__newsletter form {
+    display: flex;
+    gap: 8px;
+  }
+  .footer__newsletter input {
+    flex: 1;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 14px;
+    padding: 12px 14px;
+    border-radius: 4px;
+    outline: none;
+  }
+  .footer__newsletter input:focus { border-color: var(--ink); }
+  .footer__newsletter button {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    font-family: var(--body);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 150ms ease-out;
+  }
+  .footer__newsletter button:hover { background: var(--forest); }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer__copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0.55;
+  }
+  .footer__legal {
+    display: flex;
+    gap: 24px;
+  }
+  .footer__legal a {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    opacity: 0.55;
+  }
+  .footer__pay {
+    display: flex;
+    gap: 8px;
+  }
+  .pay-pill {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--ink);
+    opacity: 0.6;
+  }
+
+  /* ─── MARKER ─── */
+  .vision-marker {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    z-index: 100;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  Spring sale is on <span>·</span> 20% off photo books with code <strong>SPRING20</strong> <span>·</span> Free shipping over $50
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="site-header__top">
+      <a class="site-header__brand" href="#">SocialPrintStudio<span class="dot">.</span></a>
+      <div class="site-header__search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" placeholder="Search photo books, prints, calendars…" />
+      </div>
+      <div class="site-header__utility">
+        <a class="util-link" href="#">Sign in</a>
+        <a class="util-link" href="#">Help</a>
+        <a class="util-link" data-cart href="#">Cart <span class="count">02</span></a>
+      </div>
+    </div>
+    <nav class="site-header__nav">
+      <a class="nav-item" href="#">Photo books</a>
+      <a class="nav-item" href="#">Prints &amp; framing</a>
+      <a class="nav-item" href="#">Calendars <span class="badge">New</span></a>
+      <a class="nav-item" href="#">Cards &amp; magnets</a>
+      <a class="nav-item" href="#">Gifts under $30</a>
+      <a class="nav-item" href="#">Sale</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <div class="hero__eyebrow"><span class="pulse"></span> Now shipping · Spring 2026</div>
+        <h1 class="hero__title">Your camera roll, <span class="accent">printed beautifully.</span></h1>
+        <p class="hero__lede">
+          Photo books, gallery prints, and calendars made by people who actually look at the photographs. Built to order in Seattle. Shipped in five days. Loved for years.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--accent" href="#">Shop photo books <span class="btn__arrow">→</span></a>
+          <a class="btn btn--outline-light" href="#">See all 24 products</a>
+        </div>
+        <div class="hero__metrics">
+          <div class="metric">
+            <span class="metric__num">15 yrs</span>
+            <span class="metric__label">Studio age</span>
+          </div>
+          <div class="metric">
+            <span class="metric__num">2.4M</span>
+            <span class="metric__label">Photos printed</span>
+          </div>
+          <div class="metric">
+            <span class="metric__num">4.9★</span>
+            <span class="metric__label">12k reviews</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="hero__media-grid">
+          <img class="tall" src="../images/layflat-album.jpg" alt="Layflat photo book" />
+          <img src="../images/daily-calendar.jpg" alt="Daily calendar in hand" />
+          <img src="../images/photo-strips.jpg" alt="Photo strips fanned out" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="grid-section">
+  <div class="wrap">
+    <div class="grid-section__head">
+      <div class="grid-section__title-block">
+        <div class="grid-section__eyebrow">Shop the studio · 24 products</div>
+        <h2 class="grid-section__title">Everything we make, built to order.</h2>
+      </div>
+      <div class="grid-section__filter">
+        <button class="filter-chip is-active">All</button>
+        <button class="filter-chip">Books</button>
+        <button class="filter-chip">Prints</button>
+        <button class="filter-chip">Calendars</button>
+        <button class="filter-chip">Gifts</button>
+      </div>
+    </div>
+    <div class="product-grid">
+
+      <article class="product-card">
+        <div class="product-card__media">
+          <img src="../images/layflat-album.jpg" alt="Layflat photo book" />
+          <span class="product-card__badge product-card__badge--sale">Sale</span>
+        </div>
+        <div class="product-card__info">
+          <span class="product-card__category">Photo book</span>
+          <h3 class="product-card__title">Layflat Album</h3>
+          <p class="product-card__meta">10 × 10 in · 40 pages · 6 covers</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price"><span class="product-card__price-was">$89</span>$71</span>
+            <span class="product-card__cta">Customize →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-card__media">
+          <img src="../images/daily-calendar.jpg" alt="Daily flip calendar" />
+          <span class="product-card__badge product-card__badge--new">New</span>
+        </div>
+        <div class="product-card__info">
+          <span class="product-card__category">Calendar</span>
+          <h3 class="product-card__title">Daily Flip Calendar</h3>
+          <p class="product-card__meta">3 × 3.5 in · 365 pages · linen</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$45</span>
+            <span class="product-card__cta">Customize →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-card__media">
+          <img src="../images/photo-strips.jpg" alt="Photo strips" />
+        </div>
+        <div class="product-card__info">
+          <span class="product-card__category">Print pack</span>
+          <h3 class="product-card__title">Photo Strips</h3>
+          <p class="product-card__meta">2 × 6 in · 4 photos · 5 packs</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$15</span>
+            <span class="product-card__cta">Customize →</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-card__media">
+          <img src="../images/tiny-books.jpg" alt="Tiny books in palm" />
+          <span class="product-card__badge">Bestseller</span>
+        </div>
+        <div class="product-card__info">
+          <span class="product-card__category">Mini book</span>
+          <h3 class="product-card__title">Tiny Books · Set of 3</h3>
+          <p class="product-card__meta">2 × 2 in · 24 pages each</p>
+          <div class="product-card__price-row">
+            <span class="product-card__price">$25</span>
+            <span class="product-card__cta">Customize →</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand-block">
+        <div class="footer-logo">SocialPrintStudio<span class="dot">.</span></div>
+        <p class="footer__tagline">Built to order in Seattle since 2010. By people who really, really like photographs.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Photo books</a></li>
+          <li><a href="#">Prints &amp; frames</a></li>
+          <li><a href="#">Calendars</a></li>
+          <li><a href="#">Cards</a></li>
+          <li><a href="#">Gift cards</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Order status</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Print quality</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Wholesale</a></li>
+        </ul>
+      </div>
+      <div class="footer__newsletter">
+        <h4>Studio dispatch</h4>
+        <p>One short email a month. New products, behind‑the‑scenes, customer stories.</p>
+        <form>
+          <input type="email" placeholder="you@example.com" />
+          <button type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 Social Print Studio · Seattle WA</span>
+      <div class="footer__pay">
+        <span class="pay-pill">Visa</span>
+        <span class="pay-pill">MC</span>
+        <span class="pay-pill">Amex</span>
+        <span class="pay-pill">Apple Pay</span>
+        <span class="pay-pill">Shop Pay</span>
+      </div>
+      <div class="footer__legal">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="vision-marker">Vision B · Built to Order</div>
+
+</body>
+</html>

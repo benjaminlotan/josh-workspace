@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Print Studio — Photos as a force for good (v4 · two voices)</title>
+<meta name="description" content="A fully composed SPS landing page demonstrating two voices: Bricolage Grotesque and Beatrice. Orpheus Pro is removed entirely. Each font has a clear role and each section shows them working together across real brand patterns.">
+
+<!-- Bricolage Grotesque — the lead display face -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────────────
+   BEATRICE — self-hosted brand body face (now also italic accent)
+   ───────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-RegularItalic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   BRAND TOKENS
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* Greens — leading family */
+  --silken-pine:   #465E59;
+  --cedar:         #719483;
+  --moss:          #587C6B;
+  --lichen:        #AABCA7;
+  --sage-mist:     #DFE5DC;
+
+  /* Corals — warming counterweight */
+  --terracotta:    #CA6253;
+  --dusty-coral:   #CC9B83;
+  --warm-peach:    #DFAD94;
+
+  /* Warm neutrals */
+  --carbon:        #333333;
+  --carbon-75:     rgba(51,51,51,0.75);
+  --carbon-30:     rgba(51,51,51,0.30);
+  --alabaster:     #F3F1F0;
+  --cloud:         #F9F8F7;
+  --cream:         #FAF6EF;
+  --paper:         #FFFFFF;
+  --hairline:      #E4E2DF;
+
+  /* ── The two voices ── */
+  /* Bricolage: the confident display face. Heroes, section titles, stats, editorial. */
+  --font-bricolage: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  /* Beatrice: body, labels, UI, AND italic accents (taking over Orpheus's old job). */
+  --font-beatrice:  'Beatrice', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-display:   var(--font-bricolage);
+  --font-body:      var(--font-beatrice);
+  --font-mono:      'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+
+  /* Spacing (8px base) */
+  --space-2xs: 4px;
+  --space-xs:  8px;
+  --space-sm:  16px;
+  --space-md:  24px;
+  --space-lg:  40px;
+  --space-xl:  64px;
+  --space-2xl: 96px;
+  --space-3xl: 144px;
+
+  --radius-card: 16px;
+  --radius-pill: 999px;
+  --radius-input: 10px;
+
+  /* Bricolage variable settings — wider scale to compensate for losing Orpheus */
+  --bricolage-display:  "opsz" 96, "wdth" 100, "wght" 500;
+  --bricolage-display-light: "opsz" 96, "wdth" 100, "wght" 400;
+  --bricolage-display-bold:  "opsz" 96, "wdth" 105, "wght" 700;
+  --bricolage-title:    "opsz" 48, "wdth" 100, "wght" 500;
+  --bricolage-sub:      "opsz" 24, "wdth" 100, "wght" 500;
+  --bricolage-label:    "opsz" 14, "wdth" 100, "wght" 600;
+  --bricolage-stat:     "opsz" 96, "wdth" 90,  "wght" 600;
+  --bricolage-brand:    "opsz" 32, "wdth" 100, "wght" 600;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 62.5%; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--carbon);
+  background: var(--paper);
+  text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* ─────────────────────────────────────────────────────────
+   META BAR
+   ───────────────────────────────────────────────────────── */
+.meta-bar {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: 8px var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.meta-bar__left { opacity: 0.75; }
+.meta-bar__right {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.95rem;
+  align-items: center;
+}
+.meta-bar__swatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.meta-bar__swatch::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.meta-bar__swatch--bricolage::before { background: var(--lichen); }
+.meta-bar__swatch--beatrice::before  { background: var(--alabaster); }
+.meta-bar__toggle {
+  background: transparent;
+  border: 1px solid rgba(243,241,240,0.35);
+  color: var(--alabaster);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  padding: 3px 10px;
+  border-radius: 3px;
+}
+.meta-bar__toggle:hover { border-color: var(--alabaster); }
+.meta-bar__toggle[aria-pressed="true"] { background: var(--alabaster); color: var(--carbon); }
+
+/* ─────────────────────────────────────────────────────────
+   NAVIGATION
+   ───────────────────────────────────────────────────────── */
+.nav {
+  border-bottom: 1px solid var(--hairline);
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.95);
+}
+.nav__brand {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-brand);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--silken-pine);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  flex: 0 0 auto;
+}
+.nav__links {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
+@media (max-width: 800px) { .nav__links { display: none; } }
+.nav__link {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--carbon);
+  transition: color 180ms ease;
+}
+.nav__link:hover { color: var(--cedar); }
+.nav__actions {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+.nav__action {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--carbon);
+}
+.nav__cart {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  border-radius: var(--radius-pill);
+  padding: 10px 20px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   HERO — Bricolage display, Beatrice italic em accent
+   ───────────────────────────────────────────────────────── */
+.hero {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: clamp(80px, 14vh, 180px) var(--space-lg) clamp(80px, 12vh, 140px);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  width: 1200px;
+  height: 1200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(170,188,167,0.18), transparent 60%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero__kicker-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+.hero__rule {
+  flex: 0 0 40px;
+  height: 2px;
+  background: var(--lichen);
+}
+.hero__kicker {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1.3rem;
+  color: var(--alabaster);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.hero__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 100, "wght" 500;
+  font-size: clamp(5.2rem, 10vw, 11rem);
+  line-height: 0.95;
+  color: var(--alabaster);
+  max-width: 14ch;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+}
+.hero__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+  letter-spacing: 0;
+}
+.hero__lede {
+  font-family: var(--font-beatrice);
+  font-size: 1.7rem;
+  line-height: 1.6;
+  color: var(--lichen);
+  max-width: 52ch;
+  margin-bottom: var(--space-lg);
+}
+.hero__ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-beatrice);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 16px 40px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  min-width: 160px;
+  text-decoration: none;
+  transition: background-color 220ms ease-out, color 220ms ease-out, border-color 220ms ease-out;
+}
+.btn--cream {
+  background: var(--alabaster);
+  color: var(--silken-pine);
+}
+.btn--cream:hover { background: var(--cream); }
+.btn--ghost-light {
+  background: transparent;
+  color: var(--alabaster);
+  border-color: var(--lichen);
+}
+.btn--ghost-light:hover { background: rgba(243,241,240,0.1); }
+.btn--primary {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+}
+.btn--primary:hover { background: var(--cedar); }
+.btn--ghost {
+  background: transparent;
+  color: var(--carbon);
+  border-color: var(--carbon);
+}
+.btn--ghost:hover { background: var(--carbon); color: var(--alabaster); }
+.btn--accent {
+  background: var(--terracotta);
+  color: var(--alabaster);
+}
+.btn--accent:hover { background: #b3554a; }
+
+.hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(170,188,167,0.25);
+}
+.hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+.hero__meta-label {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--lichen);
+}
+.hero__meta-value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 48, "wdth" 95, "wght" 600;
+  font-size: 3.2rem;
+  color: var(--alabaster);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+.hero__meta-suffix {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--lichen);
+  margin-top: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION PRIMITIVES
+   ───────────────────────────────────────────────────────── */
+.section { padding: var(--space-2xl) var(--space-lg); }
+.section--tight { padding: var(--space-xl) var(--space-lg); }
+.section--cream { background: var(--cream); }
+.section--cloud { background: var(--cloud); }
+.section--paper { background: var(--paper); }
+.section--sage  { background: var(--sage-mist); }
+.section--dark  { background: var(--silken-pine); color: var(--alabaster); }
+
+.container { max-width: 1280px; margin: 0 auto; }
+.container--narrow { max-width: 760px; margin: 0 auto; }
+.container--wide   { max-width: 1480px; margin: 0 auto; }
+
+.eyebrow {
+  font-family: var(--font-beatrice);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--silken-pine);
+  display: inline-block;
+  margin-bottom: var(--space-md);
+}
+.section--dark .eyebrow { color: var(--lichen); }
+
+/* Section header */
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-xl);
+  align-items: end;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--space-xl);
+}
+@media (max-width: 800px) {
+  .section-header { grid-template-columns: 1fr; gap: var(--space-md); }
+}
+.section-header__num {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--carbon-75);
+}
+.section-header__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-title);
+  font-size: clamp(3.6rem, 5.5vw, 6rem);
+  line-height: 1;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+}
+/* Italic em now flows to Beatrice italic — the warmth comes from there */
+.section-header__title em {
+  font-family: var(--font-beatrice);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cedar);
+  letter-spacing: 0;
+}
+.section--dark .section-header { border-bottom-color: rgba(170,188,167,0.3); }
+.section--dark .section-header__num { color: var(--lichen); }
+.section--dark .section-header__title { color: var(--alabaster); }
+.section--dark .section-header__title em { color: var(--lichen); }
+
+/* ─────────────────────────────────────────────────────────
+   PILLARS / VALUE PROPS
+   ───────────────────────────────────────────────────────── */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+@media (max-width: 900px) { .pillars { grid-template-columns: 1fr; gap: var(--space-lg); } }
+.pillar__num {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cedar);
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+.pillar__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-sub);
+  font-size: 2.8rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--silken-pine);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.005em;
+}
+.pillar__body {
+  font-family: var(--font-beatrice);
+  font-size: 1.5rem;
+  line-height: 1.65;
+  color: var(--carbon);
+  max-width: 42ch;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FEATURED PRODUCTS GRID
+   ───────────────────────────────────────────────────────── */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+@media (max-width: 1100px) { .products { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .products { grid-template-columns: 1fr; } }
+.product {
+  background: var(--paper);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  text-align: left;
+  position: relative;
+}
+.product__media {
+  aspect-ratio: 1 / 1;
+  background: var(--sage-mist);
+  overflow: hidden;
+  position: relative;
+}
+.product__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+.product:hover .product__media img { transform: scale(1.03); }
+.product__badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  background: var(--terracotta);
+  color: var(--alabaster);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+}
+.product__badge--new { background: var(--silken-pine); }
+.product__body {
+  padding: var(--space-md) 0 0;
+}
+.product__category {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+  margin-bottom: var(--space-2xs);
+}
+/* Product name now in Beatrice italic — carries the warmth Orpheus used to */
+.product__name {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--carbon);
+  line-height: 1.2;
+  margin-bottom: var(--space-xs);
+}
+.product__name em { font-style: italic; color: var(--cedar); }
+.product__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+.product__price {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 1.8rem;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+}
+.product__price-from {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+}
+
+/* ─────────────────────────────────────────────────────────
+   JOURNAL / EDITORIAL
+   ───────────────────────────────────────────────────────── */
+.journal {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+@media (max-width: 1000px) {
+  .journal { grid-template-columns: 1fr; }
+}
+.journal__feature {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--sage-mist);
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.journal__feature img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.journal__feature::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(70,94,89,0.92) 0%, rgba(70,94,89,0.55) 45%, transparent 75%);
+}
+.journal__feature-body {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  color: var(--alabaster);
+}
+.journal__category {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--lichen);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+.journal__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 64, "wdth" 100, "wght" 500;
+  font-size: clamp(3.2rem, 5vw, 5.2rem);
+  line-height: 1;
+  color: var(--alabaster);
+  max-width: 16ch;
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+/* Pull quote now Beatrice italic — warmth without Orpheus */
+.journal__pullquote {
+  font-family: var(--font-beatrice);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--lichen);
+  max-width: 40ch;
+  margin-bottom: var(--space-md);
+  line-height: 1.5;
+}
+.journal__meta {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--lichen);
+}
+
+.journal__side {
+  display: grid;
+  gap: var(--space-lg);
+  align-content: start;
+}
+.journal__card {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--space-md);
+}
+.journal__card-category {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cedar);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+.journal__card-title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 32, "wdth" 100, "wght" 500;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  color: var(--silken-pine);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.005em;
+}
+.journal__card-excerpt {
+  font-family: var(--font-beatrice);
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--carbon-75);
+  margin-bottom: var(--space-xs);
+}
+.journal__card-meta {
+  font-family: var(--font-beatrice);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+}
+
+/* ─────────────────────────────────────────────────────────
+   BY THE NUMBERS
+   ───────────────────────────────────────────────────────── */
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--carbon-30);
+  border-bottom: 1px solid var(--carbon-30);
+}
+@media (max-width: 1000px) { .numbers { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .numbers { grid-template-columns: 1fr; } }
+.number {
+  padding: var(--space-xl) var(--space-md);
+  border-right: 1px solid var(--carbon-30);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.number:last-child { border-right: none; }
+@media (max-width: 1000px) {
+  .number:nth-child(2) { border-right: none; }
+  .number:nth-child(1), .number:nth-child(2) { border-bottom: 1px solid var(--carbon-30); }
+}
+@media (max-width: 600px) {
+  .number { border-right: none; border-bottom: 1px solid var(--carbon-30); }
+  .number:last-child { border-bottom: none; }
+}
+.number__label {
+  font-family: var(--font-beatrice);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+}
+.number__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-stat);
+  font-size: clamp(5.4rem, 8vw, 8.8rem);
+  font-weight: 600;
+  color: var(--silken-pine);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: var(--space-xs) 0;
+}
+.number__value sup {
+  font-size: 0.4em;
+  font-weight: 500;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+/* Detail line now Beatrice italic — the warmth carrier */
+.number__detail {
+  font-family: var(--font-beatrice);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--cedar);
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────────────────────
+   MANIFESTO — Beatrice italic large, Bricolage roman emphasis
+   The relationship inverts: italic body, roman emphasis.
+   ───────────────────────────────────────────────────────── */
+.manifesto {
+  background: var(--cream);
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+}
+.manifesto__eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--cedar);
+  margin-bottom: var(--space-lg);
+  display: block;
+}
+.manifesto__quote {
+  font-family: var(--font-beatrice);
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.25;
+  max-width: 22ch;
+  margin: 0 auto var(--space-lg);
+  color: var(--silken-pine);
+}
+.manifesto__quote em {
+  /* Inverted emphasis: roman Bricolage punches through the italic body */
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 100, "wght" 600;
+  font-style: normal;
+  letter-spacing: -0.01em;
+}
+.manifesto__attribution {
+  font-family: var(--font-beatrice);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--carbon-75);
+}
+
+/* ─────────────────────────────────────────────────────────
+   TESTIMONIAL
+   ───────────────────────────────────────────────────────── */
+.testimonial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  margin-top: var(--space-xl);
+}
+@media (max-width: 900px) { .testimonial { grid-template-columns: 1fr; gap: var(--space-xl); } }
+.testimonial__featured {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: var(--space-xl);
+  border-radius: var(--radius-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+}
+.testimonial__quote-mark {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 100, "wght" 700;
+  font-size: 8rem;
+  line-height: 0.7;
+  color: var(--lichen);
+  display: block;
+}
+/* Featured testimonial in Beatrice italic — the intimate voice */
+.testimonial__quote {
+  font-family: var(--font-beatrice);
+  font-size: 2.2rem;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--alabaster);
+  max-width: 32ch;
+  margin-top: var(--space-md);
+}
+.testimonial__attribution {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(170,188,167,0.25);
+}
+.testimonial__name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 20, "wdth" 100, "wght" 600;
+  font-size: 1.6rem;
+  color: var(--alabaster);
+  letter-spacing: -0.005em;
+  margin-bottom: 2px;
+}
+.testimonial__role {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lichen);
+}
+
+.testimonial__list {
+  display: grid;
+  gap: var(--space-lg);
+  align-content: start;
+}
+.testimonial__item {
+  border-top: 1px solid var(--hairline);
+  padding-top: var(--space-md);
+}
+.testimonial__stars {
+  color: var(--cedar);
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+}
+.testimonial__item-quote {
+  font-family: var(--font-beatrice);
+  font-size: 1.5rem;
+  line-height: 1.55;
+  color: var(--carbon);
+  max-width: 48ch;
+  margin-bottom: var(--space-sm);
+}
+.testimonial__item-name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 16, "wdth" 100, "wght" 600;
+  font-size: 1.2rem;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+}
+.testimonial__item-role {
+  font-family: var(--font-beatrice);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SALE BANNER
+   ───────────────────────────────────────────────────────── */
+.sale {
+  background: var(--cream);
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.sale__eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--terracotta);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+.sale__huge {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 110, "wght" 700;
+  font-size: clamp(6.4rem, 14vw, 16rem);
+  line-height: 0.9;
+  color: var(--silken-pine);
+  letter-spacing: -0.025em;
+  margin-bottom: var(--space-md);
+}
+.sale__huge sup {
+  font-size: 0.45em;
+  font-weight: 500;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+.sale__huge .for {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.45em;
+  color: var(--cedar);
+  letter-spacing: 0;
+  font-variation-settings: normal;
+}
+.sale__descriptor {
+  font-family: var(--font-beatrice);
+  font-size: clamp(2rem, 2.6vw, 2.8rem);
+  font-style: italic;
+  color: var(--cedar);
+  margin-bottom: var(--space-md);
+}
+.sale__fine-print {
+  font-family: var(--font-beatrice);
+  font-size: 1.2rem;
+  color: var(--carbon-75);
+  max-width: 52ch;
+  margin: 0 auto var(--space-lg);
+}
+.sale__cta { display: inline-flex; gap: var(--space-md); }
+
+/* ─────────────────────────────────────────────────────────
+   NEWSLETTER
+   ───────────────────────────────────────────────────────── */
+.newsletter {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.newsletter::before {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(170,188,167,0.18), transparent 60%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.newsletter__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.newsletter__eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--lichen);
+  display: block;
+  margin-bottom: var(--space-lg);
+}
+.newsletter__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 72, "wdth" 100, "wght" 500;
+  font-size: clamp(3.6rem, 5vw, 5.6rem);
+  line-height: 1.05;
+  color: var(--alabaster);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.01em;
+}
+.newsletter__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+  letter-spacing: 0;
+}
+.newsletter__sub {
+  font-family: var(--font-beatrice);
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--lichen);
+  margin-bottom: var(--space-xl);
+}
+.newsletter__form {
+  display: flex;
+  gap: var(--space-xs);
+  max-width: 520px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .newsletter__form { flex-direction: column; }
+}
+.newsletter__input {
+  flex: 1;
+  font-family: var(--font-beatrice);
+  font-size: 1.4rem;
+  background: var(--alabaster);
+  color: var(--carbon);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 16px 24px;
+  outline: none;
+}
+.newsletter__input:focus { border-color: var(--cedar); }
+.newsletter__consent {
+  font-family: var(--font-beatrice);
+  font-size: 1.05rem;
+  color: var(--lichen);
+  margin-top: var(--space-md);
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────── */
+.footer {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: var(--space-xl);
+  max-width: 1280px;
+  margin: 0 auto var(--space-xl);
+  padding-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(243,241,240,0.15);
+}
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .footer__grid { grid-template-columns: 1fr; }
+}
+.footer__brand {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 48, "wdth" 100, "wght" 600;
+  font-size: 2.8rem;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-sm);
+}
+.footer__tagline {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.55;
+  color: var(--lichen);
+  max-width: 32ch;
+}
+.footer__col-title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--bricolage-label);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--alabaster);
+  margin-bottom: var(--space-md);
+}
+.footer__list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-xs);
+}
+.footer__list a {
+  font-family: var(--font-beatrice);
+  font-size: 1.25rem;
+  color: var(--lichen);
+  transition: color 180ms ease;
+}
+.footer__list a:hover { color: var(--alabaster); }
+
+.colophon {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+.colophon__meta {
+  font-family: var(--font-beatrice);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lichen);
+}
+.colophon__type {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 500;
+  font-size: 1rem;
+  color: var(--lichen);
+  letter-spacing: 0.02em;
+}
+.colophon__type em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  color: var(--cream);
+}
+
+/* ─────────────────────────────────────────────────────────
+   ROLE LABELS — toggleable inspector
+   ───────────────────────────────────────────────────────── */
+body.show-labels [data-font-role] {
+  position: relative;
+  outline: 1px dashed rgba(113,148,131,0.35);
+  outline-offset: 2px;
+}
+body.show-labels [data-font-role]::after {
+  content: attr(data-font-role);
+  position: absolute;
+  top: -14px;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--alabaster);
+  background: var(--carbon);
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  z-index: 20;
+  pointer-events: none;
+  white-space: nowrap;
+}
+body.show-labels [data-font-role="bricolage"]::after { background: var(--silken-pine); }
+body.show-labels [data-font-role="beatrice"]::after  { background: var(--carbon-75); }
+body.show-labels [data-font-role="beatrice-italic"]::after { background: var(--cedar); content: "beatrice italic"; }
+</style>
+</head>
+<body>
+
+<!-- ────────────────────────────────────────────────────────
+     META BAR
+     ──────────────────────────────────────────────────────── -->
+<div class="meta-bar">
+  <div class="meta-bar__left">SPS · font-directions-v4 · two voices · no Orpheus</div>
+  <div class="meta-bar__right">
+    <span class="meta-bar__swatch meta-bar__swatch--bricolage">Bricolage Grotesque · display</span>
+    <span class="meta-bar__swatch meta-bar__swatch--beatrice">Beatrice · body, UI, italic accents</span>
+    <button class="meta-bar__toggle" id="labelToggle" aria-pressed="false">Show font labels</button>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────────
+     NAVIGATION
+     ──────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav__brand" href="#" data-font-role="bricolage">Social Print Studio</a>
+  <ul class="nav__links">
+    <li><a class="nav__link" href="#shop" data-font-role="beatrice">Shop</a></li>
+    <li><a class="nav__link" href="#journal" data-font-role="beatrice">Journal</a></li>
+    <li><a class="nav__link" href="#about">About</a></li>
+    <li><a class="nav__link" href="#gift">Gift cards</a></li>
+  </ul>
+  <div class="nav__actions">
+    <a class="nav__action" href="#account">Account</a>
+    <a class="nav__cart" href="#cart">Cart · 2</a>
+  </div>
+</nav>
+
+<!-- ────────────────────────────────────────────────────────
+     HERO
+     ──────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero__inner">
+    <div class="hero__kicker-row">
+      <span class="hero__rule"></span>
+      <span class="hero__kicker" data-font-role="bricolage">Photo Books · Frames · Prints — Since 2010</span>
+    </div>
+    <h1 class="hero__title" data-font-role="bricolage">Photos <em data-font-role="beatrice-italic">as a force</em> for good.</h1>
+    <p class="hero__lede" data-font-role="beatrice">
+      We make photo objects you'd actually keep. Warm, intimate, quietly crafted — a friend
+      with incredible taste, never a factory. Fifteen years in, still printing by hand with
+      the people who started it.
+    </p>
+    <div class="hero__ctas">
+      <a class="btn btn--cream">Start a book</a>
+      <a class="btn btn--ghost-light">Shop all products</a>
+    </div>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <span class="hero__meta-label" data-font-role="bricolage">Photographers served</span>
+        <span class="hero__meta-value" data-font-role="bricolage">10,000<sup>+</sup></span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label" data-font-role="bricolage">Years in print</span>
+        <span class="hero__meta-value" data-font-role="bricolage">15</span>
+      </div>
+      <div class="hero__meta-item">
+        <span class="hero__meta-label" data-font-role="bricolage">Printed and shipped</span>
+        <span class="hero__meta-value" data-font-role="bricolage">2.3M</span>
+        <span class="hero__meta-suffix" data-font-role="beatrice-italic">photo objects, so far</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ────────────────────────────────────────────────────────
+     PILLARS
+     ──────────────────────────────────────────────────────── -->
+<section class="section section--paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-header__num">01 · How we print</span>
+      <h2 class="section-header__title" data-font-role="bricolage">Made by photographers, <em data-font-role="beatrice-italic">for photographers</em>.</h2>
+    </div>
+
+    <div class="pillars">
+      <article>
+        <span class="pillar__num">— 01</span>
+        <h3 class="pillar__title" data-font-role="bricolage">Handmade photo books</h3>
+        <p class="pillar__body" data-font-role="beatrice">
+          Layflat binding, archival ink, and paper that holds color for decades. Every book
+          is assembled by the same three people who started doing it in 2010, in a shop
+          the size of a garage.
+        </p>
+      </article>
+      <article>
+        <span class="pillar__num">— 02</span>
+        <h3 class="pillar__title" data-font-role="bricolage">Museum-grade prints</h3>
+        <p class="pillar__body" data-font-role="beatrice">
+          Giclée on cotton rag, silver halide on metallic, matte on bamboo. We print only
+          on stock we'd hang on our own walls, which means we say no to a lot of paper.
+        </p>
+      </article>
+      <article>
+        <span class="pillar__num">— 03</span>
+        <h3 class="pillar__title" data-font-role="bricolage">Frames, done right</h3>
+        <p class="pillar__body" data-font-role="beatrice">
+          Solid wood from mills we visited in person. No particleboard, no foil laminate,
+          no stapled corners. The frames outlast the prints, which outlast the phones that
+          took the photos.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     FEATURED PRODUCTS GRID
+     ──────────────────────────────────────────────────────── -->
+<section class="section section--cloud">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-header__num">02 · The catalog</span>
+      <h2 class="section-header__title" data-font-role="bricolage">Eight ways to keep <em data-font-role="beatrice-italic">a photograph</em>.</h2>
+    </div>
+
+    <div class="products">
+      <article class="product">
+        <div class="product__media">
+          <span class="product__badge product__badge--new">New</span>
+          <img src="images/layflat-album.jpg" alt="Layflat photo album open on a table">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Photo Books</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Layflat album</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">From</span>
+            <span class="product__price" data-font-role="bricolage">$49</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/gallery-frames.jpg" alt="Gallery frames on a wall">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Frames</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Gallery frame</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">From</span>
+            <span class="product__price" data-font-role="bricolage">$38</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <span class="product__badge">2 for $24</span>
+          <img src="images/tiny-books.jpg" alt="Stack of tiny photo books">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Photo Books</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Tiny book</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">Pair</span>
+            <span class="product__price" data-font-role="bricolage">$24</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/brass-print-set.jpg" alt="Brass-mounted print set">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Prints</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Brass print set</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">Set of 4</span>
+            <span class="product__price" data-font-role="bricolage">$64</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/metal-prints.jpg" alt="Metal print leaning on a wall">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Prints</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Metal print</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">From</span>
+            <span class="product__price" data-font-role="bricolage">$58</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/daily-calendar.jpg" alt="Daily desk calendar with photograph">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Calendars</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Daily calendar</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">Each</span>
+            <span class="product__price" data-font-role="bricolage">$32</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/photo-strips.jpg" alt="Photo booth strips">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Prints</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Photo strips</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">Pack of 12</span>
+            <span class="product__price" data-font-role="bricolage">$14</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="images/magnets.jpg" alt="Photo magnets on a fridge">
+        </div>
+        <div class="product__body">
+          <p class="product__category" data-font-role="beatrice">Gifts</p>
+          <h3 class="product__name" data-font-role="beatrice-italic">Photo magnets</h3>
+          <div class="product__price-row">
+            <span class="product__price-from" data-font-role="beatrice">Set of 9</span>
+            <span class="product__price" data-font-role="bricolage">$18</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     JOURNAL
+     ──────────────────────────────────────────────────────── -->
+<section class="section section--paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-header__num">03 · From the journal</span>
+      <h2 class="section-header__title" data-font-role="bricolage">Stories from the <em data-font-role="beatrice-italic">workshop</em>.</h2>
+    </div>
+
+    <div class="journal">
+      <article class="journal__feature">
+        <img src="images/layflat-album.jpg" alt="Layflat photo album in progress">
+        <div class="journal__feature-body">
+          <span class="journal__category" data-font-role="bricolage">Process · 14 min read</span>
+          <h3 class="journal__title" data-font-role="bricolage">How a photo book gets made, from upload to doorstep.</h3>
+          <p class="journal__pullquote" data-font-role="beatrice-italic">
+            "The photograph is half the book. The paper, the binding, the smell of the ink —
+            that's the other half."
+          </p>
+          <p class="journal__meta" data-font-role="beatrice">March 28, 2026 · Workshop</p>
+        </div>
+      </article>
+
+      <div class="journal__side">
+        <article class="journal__card">
+          <span class="journal__card-category" data-font-role="bricolage">Field Notes</span>
+          <h4 class="journal__card-title" data-font-role="bricolage">Ten photographers changing how we see home.</h4>
+          <p class="journal__card-excerpt" data-font-role="beatrice">
+            From Brooklyn stoops to Oaxacan courtyards, a list of photographers whose work
+            reminds us what "home" can mean.
+          </p>
+          <p class="journal__card-meta" data-font-role="beatrice">March 22, 2026 · 8 min read</p>
+        </article>
+
+        <article class="journal__card">
+          <span class="journal__card-category" data-font-role="bricolage">Craft</span>
+          <h4 class="journal__card-title" data-font-role="bricolage">The secret to printing black and white.</h4>
+          <p class="journal__card-excerpt" data-font-role="beatrice">
+            Why most "black and white" prints are actually brown, and how we keep ours
+            honest — a primer on the chemistry and the eye.
+          </p>
+          <p class="journal__card-meta" data-font-role="beatrice">March 14, 2026 · 6 min read</p>
+        </article>
+
+        <article class="journal__card">
+          <span class="journal__card-category" data-font-role="bricolage">Long Read</span>
+          <h4 class="journal__card-title" data-font-role="bricolage">Why we still print on paper.</h4>
+          <p class="journal__card-excerpt" data-font-role="beatrice">
+            A fifteen-year case for ink, fiber, and the kind of object you pass down
+            without a charger.
+          </p>
+          <p class="journal__card-meta" data-font-role="beatrice">February 28, 2026 · 12 min read</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     BY THE NUMBERS
+     ──────────────────────────────────────────────────────── -->
+<section class="section section--cream">
+  <div class="container container--wide">
+    <div class="section-header">
+      <span class="section-header__num">04 · By the numbers</span>
+      <h2 class="section-header__title" data-font-role="bricolage">Fifteen years of <em data-font-role="beatrice-italic">printing photos</em>.</h2>
+    </div>
+
+    <div class="numbers">
+      <div class="number">
+        <span class="number__label" data-font-role="beatrice">Photographers</span>
+        <span class="number__value" data-font-role="bricolage">10K<sup>+</sup></span>
+        <span class="number__detail" data-font-role="beatrice-italic">served, in over 50 countries</span>
+      </div>
+      <div class="number">
+        <span class="number__label" data-font-role="beatrice">Years in print</span>
+        <span class="number__value" data-font-role="bricolage">15</span>
+        <span class="number__detail" data-font-role="beatrice-italic">same shop, same three founders</span>
+      </div>
+      <div class="number">
+        <span class="number__label" data-font-role="beatrice">Photo objects</span>
+        <span class="number__value" data-font-role="bricolage">2.3M</span>
+        <span class="number__detail" data-font-role="beatrice-italic">printed, bound, shipped</span>
+      </div>
+      <div class="number">
+        <span class="number__label" data-font-role="beatrice">Fridges adorned</span>
+        <span class="number__value" data-font-role="bricolage">∞</span>
+        <span class="number__detail" data-font-role="beatrice-italic">we stopped counting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     MANIFESTO — italic body, roman emphasis (inverted)
+     ──────────────────────────────────────────────────────── -->
+<section class="manifesto">
+  <span class="manifesto__eyebrow" data-font-role="bricolage">Our north star</span>
+  <p class="manifesto__quote" data-font-role="beatrice-italic">
+    We make photo objects you'd actually <em data-font-role="bricolage">keep</em>. Warm, intimate, and quietly crafted — a friend with incredible taste, never a factory.
+  </p>
+  <p class="manifesto__attribution" data-font-role="beatrice">— The SPS manifesto, 2010</p>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     TESTIMONIALS
+     ──────────────────────────────────────────────────────── -->
+<section class="section section--paper">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-header__num">05 · What photographers say</span>
+      <h2 class="section-header__title" data-font-role="bricolage">Fifteen years of <em data-font-role="beatrice-italic">kind letters</em>.</h2>
+    </div>
+
+    <div class="testimonial">
+      <div class="testimonial__featured">
+        <div>
+          <span class="testimonial__quote-mark" data-font-role="bricolage">"</span>
+          <blockquote class="testimonial__quote" data-font-role="beatrice-italic">
+            I've ordered photo books from four different places. SPS is the only one where
+            I opened the package and actually cried a little. The paper, the weight, the way
+            the spread lies completely flat. It feels like a thing someone made, because it is.
+          </blockquote>
+        </div>
+        <div class="testimonial__attribution">
+          <p class="testimonial__name" data-font-role="bricolage">Maya Fernández</p>
+          <p class="testimonial__role" data-font-role="beatrice">Documentary photographer · Oakland, CA</p>
+        </div>
+      </div>
+
+      <div class="testimonial__list">
+        <article class="testimonial__item">
+          <div class="testimonial__stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial__item-quote" data-font-role="beatrice">
+            Ordered a layflat album for my grandmother's 90th. She cried. My mom cried. I cried.
+            The binding is unreal. Worth every dollar and then some.
+          </p>
+          <p class="testimonial__item-name" data-font-role="bricolage">Jordan Kim</p>
+          <p class="testimonial__item-role" data-font-role="beatrice">Brooklyn, NY</p>
+        </article>
+        <article class="testimonial__item">
+          <div class="testimonial__stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial__item-quote" data-font-role="beatrice">
+            The brass prints are museum-grade. I've ordered three sets and each time the
+            packaging alone has me convinced these are the only people I'll ever use.
+          </p>
+          <p class="testimonial__item-name" data-font-role="bricolage">Dev Patel</p>
+          <p class="testimonial__item-role" data-font-role="beatrice">Toronto, ON</p>
+        </article>
+        <article class="testimonial__item">
+          <div class="testimonial__stars">★ ★ ★ ★ ★</div>
+          <p class="testimonial__item-quote" data-font-role="beatrice">
+            Customer service is ridiculous in the best way. I emailed at 2am about a reprint
+            and had a real human reply by 9am. Nobody does this anymore. SPS does.
+          </p>
+          <p class="testimonial__item-name" data-font-role="bricolage">Sam Oyelaran</p>
+          <p class="testimonial__item-role" data-font-role="beatrice">Lagos, NG</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     SALE BANNER
+     ──────────────────────────────────────────────────────── -->
+<section class="sale">
+  <div class="container">
+    <span class="sale__eyebrow" data-font-role="bricolage">Limited time · Through Sunday</span>
+    <p class="sale__huge" data-font-role="bricolage">2 <span class="for" data-font-role="beatrice-italic">for</span> $24</p>
+    <p class="sale__descriptor" data-font-role="beatrice-italic">two tiny books, one flat price.</p>
+    <p class="sale__fine-print" data-font-role="beatrice">
+      Our most popular keepsake. Upload a set of photos, pick a cover, and we'll print two
+      matching tiny books — one for you, one for someone you love.
+    </p>
+    <div class="sale__cta">
+      <a class="btn btn--accent">Start a pair</a>
+      <a class="btn btn--ghost">See all books</a>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     NEWSLETTER
+     ──────────────────────────────────────────────────────── -->
+<section class="newsletter">
+  <div class="newsletter__inner">
+    <span class="newsletter__eyebrow" data-font-role="bricolage">The quiet letter</span>
+    <h2 class="newsletter__title" data-font-role="bricolage">Good photography, <em data-font-role="beatrice-italic">delivered to your inbox</em>.</h2>
+    <p class="newsletter__sub" data-font-role="beatrice-italic">
+      one letter a month, never more.
+    </p>
+    <form class="newsletter__form">
+      <input type="email" class="newsletter__input" placeholder="hello@yourhouse.com" aria-label="Email address">
+      <button type="submit" class="btn btn--cream">Subscribe</button>
+    </form>
+    <p class="newsletter__consent" data-font-role="beatrice">
+      No spam, no upsells, no "don't miss out." Unsubscribe in one click.
+    </p>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     FOOTER
+     ──────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div>
+      <div class="footer__brand" data-font-role="bricolage">Social Print Studio</div>
+      <p class="footer__tagline" data-font-role="beatrice-italic">
+        Photos as a force for good. Printed by hand in Brooklyn since 2010.
+      </p>
+    </div>
+    <div>
+      <h4 class="footer__col-title" data-font-role="bricolage">Shop</h4>
+      <ul class="footer__list">
+        <li><a href="#">Photo books</a></li>
+        <li><a href="#">Frames</a></li>
+        <li><a href="#">Prints</a></li>
+        <li><a href="#">Calendars</a></li>
+        <li><a href="#">Gift cards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer__col-title" data-font-role="bricolage">Read</h4>
+      <ul class="footer__list">
+        <li><a href="#">Journal</a></li>
+        <li><a href="#">Guides</a></li>
+        <li><a href="#">Photographer interviews</a></li>
+        <li><a href="#">The quiet letter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer__col-title" data-font-role="bricolage">About</h4>
+      <ul class="footer__list">
+        <li><a href="#">Our story</a></li>
+        <li><a href="#">How we print</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer__col-title" data-font-role="bricolage">Help</h4>
+      <ul class="footer__list">
+        <li><a href="#">Order status</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="colophon">
+    <p class="colophon__meta" data-font-role="beatrice">© 2026 Social Print Studio · Brooklyn &amp; Seattle</p>
+    <p class="colophon__type">
+      Set in Bricolage Grotesque and <em>Beatrice</em>.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('labelToggle');
+  btn.addEventListener('click', () => {
+    const pressed = btn.getAttribute('aria-pressed') === 'true';
+    btn.setAttribute('aria-pressed', String(!pressed));
+    document.body.classList.toggle('show-labels');
+    btn.textContent = pressed ? 'Show font labels' : 'Hide font labels';
+  });
+</script>
+</body>
+</html>

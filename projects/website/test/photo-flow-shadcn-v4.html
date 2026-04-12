@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPS · Photo book builder (v4 brand · shadcn-style flow)</title>
+<meta name="description" content="A static-HTML mockup of the SPS photo book creation flow: upload, arrange, preview. Themed in v4 brand, built with shadcn-style component patterns.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────────────
+   BEATRICE
+   ───────────────────────────────────────────────────────── */
+@font-face { font-family: 'Beatrice'; src: url('beatrice-fonts/Beatrice-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Beatrice'; src: url('beatrice-fonts/Beatrice-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Beatrice'; src: url('beatrice-fonts/Beatrice-RegularItalic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Beatrice'; src: url('beatrice-fonts/Beatrice-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Beatrice'; src: url('beatrice-fonts/Beatrice-Semibold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+
+:root {
+  --silken-pine: #465E59;
+  --cedar:       #719483;
+  --moss:        #587C6B;
+  --lichen:      #AABCA7;
+  --sage-mist:   #DFE5DC;
+  --terracotta:  #CA6253;
+  --dusty-coral: #CC9B83;
+  --warm-peach:  #DFAD94;
+  --carbon:      #333333;
+  --carbon-75:   rgba(51,51,51,0.75);
+  --carbon-50:   rgba(51,51,51,0.5);
+  --carbon-30:   rgba(51,51,51,0.3);
+  --alabaster:   #F3F1F0;
+  --cloud:       #F9F8F7;
+  --cream:       #FAF6EF;
+  --paper:       #FFFFFF;
+  --hairline:    #E4E2DF;
+
+  --background:           var(--cream);
+  --foreground:           var(--carbon);
+  --card:                 var(--paper);
+  --primary:              var(--silken-pine);
+  --secondary:            var(--sage-mist);
+  --muted:                var(--cloud);
+  --accent:               var(--cedar);
+  --destructive:          var(--terracotta);
+  --border:               var(--hairline);
+  --ring:                 var(--cedar);
+  --radius:               12px;
+
+  --font-bricolage: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-beatrice:  'Beatrice', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+
+  --br-h1:     "opsz" 48, "wdth" 100, "wght" 600;
+  --br-h2:     "opsz" 32, "wdth" 100, "wght" 600;
+  --br-h3:     "opsz" 24, "wdth" 100, "wght" 600;
+  --br-h4:     "opsz" 18, "wdth" 100, "wght" 600;
+  --br-stat:   "opsz" 48, "wdth" 95,  "wght" 600;
+  --br-label:  "opsz" 12, "wdth" 100, "wght" 600;
+
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-beatrice);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "kern", "liga", "tnum";
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ─────────────────────────────────────────────────────────
+   META BAR
+   ───────────────────────────────────────────────────────── */
+.meta-bar {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: 6px var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+.meta-bar__left { opacity: 0.75; }
+.meta-bar__right { display: flex; gap: var(--s-3); align-items: center; }
+.meta-bar__swatch { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; }
+.meta-bar__swatch::before { content: ''; width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.meta-bar__swatch--bricolage::before { background: var(--lichen); }
+.meta-bar__swatch--beatrice::before { background: var(--alabaster); }
+
+/* ─────────────────────────────────────────────────────────
+   APP TOP BAR — sticky brand + project + actions
+   ───────────────────────────────────────────────────────── */
+.app-bar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: var(--s-4) var(--s-6);
+  display: flex;
+  align-items: center;
+  gap: var(--s-6);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.app-bar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex: 0 0 auto;
+}
+.app-bar__brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--silken-pine);
+  display: grid;
+  place-items: center;
+  color: var(--alabaster);
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 700;
+  font-size: 16px;
+}
+.app-bar__brand-text {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 14px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+.app-bar__brand-sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+}
+.app-bar__divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+}
+.app-bar__project {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+.app-bar__project-label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+}
+.app-bar__project-name {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.app-bar__project-name-text {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 16, "wdth" 100, "wght" 500;
+  font-size: 15px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.app-bar__project-name-text em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.app-bar__edit {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  color: var(--carbon-75);
+}
+.app-bar__edit:hover { background: var(--cloud); color: var(--carbon); }
+.app-bar__edit svg { width: 12px; height: 12px; }
+.app-bar__autosave {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  color: var(--cedar);
+  font-style: italic;
+}
+.app-bar__autosave-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cedar);
+}
+.app-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex: 0 0 auto;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+.btn svg { width: 14px; height: 14px; }
+.btn--primary { background: var(--silken-pine); color: var(--alabaster); }
+.btn--primary:hover { background: var(--cedar); }
+.btn--ghost { background: transparent; color: var(--carbon); border-color: var(--border); }
+.btn--ghost:hover { border-color: var(--carbon); }
+.btn--accent { background: var(--terracotta); color: var(--alabaster); }
+.btn--accent:hover { background: #b3554a; }
+.btn--cream { background: var(--alabaster); color: var(--silken-pine); }
+.btn--cream:hover { background: var(--cream); }
+.btn--lg { padding: 16px 36px; font-size: 13px; }
+.btn--sm { padding: 8px 18px; font-size: 11px; }
+.btn--icon-only {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--carbon-75);
+}
+.btn--icon-only:hover { border-color: var(--carbon); color: var(--carbon); }
+
+/* ─────────────────────────────────────────────────────────
+   STEPPER
+   ───────────────────────────────────────────────────────── */
+.stepper {
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: var(--s-5) var(--s-6);
+}
+.stepper__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  flex: 1;
+  min-width: 0;
+}
+.step__circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 13px;
+  color: var(--carbon-75);
+  background: var(--paper);
+  flex: 0 0 32px;
+  letter-spacing: -0.005em;
+  transition: all 200ms ease;
+}
+.step__circle svg { width: 14px; height: 14px; }
+.step__text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.step__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  font-weight: 600;
+}
+.step__name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 500;
+  font-size: 13px;
+  color: var(--carbon-75);
+  letter-spacing: -0.005em;
+}
+.step--done .step__circle {
+  background: var(--silken-pine);
+  border-color: var(--silken-pine);
+  color: var(--alabaster);
+}
+.step--done .step__name { color: var(--carbon); }
+.step--done .step__label { color: var(--cedar); }
+.step--current .step__circle {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--alabaster);
+}
+.step--current .step__name { color: var(--silken-pine); font-weight: 600; }
+.step--current .step__label { color: var(--terracotta); }
+.step__connector {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  min-width: 20px;
+}
+.step__connector--done { background: var(--silken-pine); }
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN MARKER — labels each screen section
+   ───────────────────────────────────────────────────────── */
+.screen-marker {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: var(--s-4) var(--s-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  border-top: 4px solid var(--terracotta);
+}
+.screen-marker__left { display: flex; align-items: center; gap: var(--s-4); }
+.screen-marker__num {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(243,241,240,0.15);
+  border: 1px solid rgba(243,241,240,0.3);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 16, "wdth" 100, "wght" 700;
+  font-size: 14px;
+  color: var(--alabaster);
+}
+.screen-marker__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 18, "wdth" 100, "wght" 600;
+  font-size: 16px;
+  color: var(--alabaster);
+  letter-spacing: -0.005em;
+}
+.screen-marker__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+}
+.screen-marker__sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--lichen);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN CONTAINER (each step gets one)
+   ───────────────────────────────────────────────────────── */
+.screen {
+  padding: var(--s-12) var(--s-6);
+}
+.screen__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.screen__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--s-6);
+  margin-bottom: var(--s-8);
+  padding-bottom: var(--s-6);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.screen__header-left { flex: 1; min-width: 280px; }
+.screen__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-2);
+}
+.screen__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h1);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  color: var(--silken-pine);
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+.screen__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.screen__sub {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  color: var(--carbon-75);
+  max-width: 56ch;
+  margin-top: var(--s-3);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN 1 · UPLOAD
+   ───────────────────────────────────────────────────────── */
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--s-6);
+}
+@media (max-width: 1000px) { .upload-grid { grid-template-columns: 1fr; } }
+
+.dropzone {
+  background: var(--paper);
+  border: 2px dashed var(--cedar);
+  border-radius: var(--radius);
+  padding: var(--s-16) var(--s-8);
+  text-align: center;
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+.dropzone:hover {
+  background: rgba(113,148,131,0.04);
+  border-color: var(--silken-pine);
+}
+.dropzone__icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  margin: 0 auto var(--s-5);
+  color: var(--silken-pine);
+}
+.dropzone__icon svg { width: 32px; height: 32px; }
+.dropzone__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h2);
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--silken-pine);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--s-2);
+}
+.dropzone__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.dropzone__sub {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-5);
+}
+.dropzone__or {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-4);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  justify-content: center;
+}
+.dropzone__or::before, .dropzone__or::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--border);
+}
+.dropzone__buttons {
+  display: flex;
+  gap: var(--s-3);
+  justify-content: center;
+  margin-bottom: var(--s-5);
+  flex-wrap: wrap;
+}
+.dropzone__source {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--carbon);
+  cursor: pointer;
+  transition: border-color 180ms ease;
+}
+.dropzone__source:hover { border-color: var(--carbon); }
+.dropzone__source svg { width: 14px; height: 14px; color: var(--carbon-75); }
+.dropzone__hint {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+  margin-top: var(--s-3);
+}
+
+/* Upload sidebar — what's been uploaded */
+.upload-sidebar {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+}
+.upload-sidebar__head {
+  padding: var(--s-5);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.upload-sidebar__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 14px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.upload-sidebar__count {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 12px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+  background: var(--sage-mist);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.upload-sidebar__list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.uploading {
+  padding: var(--s-3) var(--s-5);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  border-bottom: 1px solid var(--border);
+}
+.uploading:last-child { border-bottom: none; }
+.uploading__thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--cloud);
+  flex: 0 0 40px;
+  position: relative;
+}
+.uploading__thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+.uploading__thumb--done img { opacity: 1; }
+.uploading__check {
+  position: absolute;
+  inset: 0;
+  background: rgba(70,94,89,0.6);
+  display: grid;
+  place-items: center;
+  color: var(--alabaster);
+}
+.uploading__check svg { width: 16px; height: 16px; }
+.uploading__info { flex: 1; min-width: 0; }
+.uploading__name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--carbon);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.uploading__bar {
+  height: 4px;
+  background: var(--cloud);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.uploading__bar-fill {
+  height: 100%;
+  background: var(--silken-pine);
+  border-radius: 999px;
+}
+.uploading__bar-fill--done { background: var(--cedar); width: 100%; }
+.uploading__pct {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 11, "wdth" 100, "wght" 600;
+  font-size: 11px;
+  color: var(--silken-pine);
+  margin-top: 3px;
+  letter-spacing: -0.005em;
+}
+.uploading__pct--done { color: var(--cedar); font-style: italic; font-family: var(--font-beatrice); font-weight: 400; }
+.uploading__size {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  color: var(--carbon-75);
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+/* Recent uploads gallery */
+.recent-uploads {
+  margin-top: var(--s-8);
+}
+.recent-uploads__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--s-4);
+}
+.recent-uploads__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 16px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.recent-uploads__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.recent-uploads__meta {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+}
+.recent-uploads__grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: var(--s-2);
+}
+@media (max-width: 1100px) { .recent-uploads__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px) { .recent-uploads__grid { grid-template-columns: repeat(3, 1fr); } }
+.recent-thumb {
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cloud);
+  position: relative;
+  border: 1px solid var(--border);
+}
+.recent-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.recent-thumb__check {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cedar);
+  color: var(--alabaster);
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--paper);
+}
+.recent-thumb__check svg { width: 9px; height: 9px; stroke-width: 3; }
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN BOTTOM BAR — back / continue actions
+   ───────────────────────────────────────────────────────── */
+.screen-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--s-12);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border);
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.screen-actions__info {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+  font-style: italic;
+}
+.screen-actions__info strong {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  color: var(--silken-pine);
+  font-style: normal;
+  letter-spacing: -0.005em;
+}
+.screen-actions__buttons { display: flex; gap: var(--s-3); }
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN 2 · ARRANGE
+   ───────────────────────────────────────────────────────── */
+.arrange-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--s-6);
+}
+@media (max-width: 1000px) { .arrange-grid { grid-template-columns: 1fr; } }
+
+.arrange-toolbar {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: var(--s-3) var(--s-4);
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+.arrange-toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding-right: var(--s-3);
+  border-right: 1px solid var(--border);
+}
+.arrange-toolbar__group:last-child { border-right: none; padding-right: 0; }
+.tool-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon);
+  padding: 7px 12px;
+  border-radius: 6px;
+  transition: background 150ms ease;
+}
+.tool-btn:hover { background: var(--cloud); }
+.tool-btn svg { width: 13px; height: 13px; opacity: 0.7; }
+.tool-btn--active { background: var(--silken-pine); color: var(--alabaster); }
+.tool-btn--active svg { opacity: 1; }
+
+.arrange-canvas {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: var(--s-5);
+  position: relative;
+  min-height: 600px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-3);
+}
+@media (max-width: 1100px) { .photo-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 600px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.photo-tile {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  cursor: grab;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.photo-tile img { width: 100%; height: 100%; object-fit: cover; }
+.photo-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--cedar);
+}
+.photo-tile__num {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(70,94,89,0.92);
+  color: var(--alabaster);
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 12, "wdth" 100, "wght" 700;
+  font-size: 11px;
+  display: grid;
+  place-items: center;
+  letter-spacing: -0.005em;
+}
+.photo-tile__handle {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(243,241,240,0.92);
+  color: var(--carbon);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+.photo-tile:hover .photo-tile__handle { opacity: 1; }
+.photo-tile__handle svg { width: 12px; height: 12px; }
+.photo-tile--missing {
+  background: transparent;
+  border: 2px dashed var(--border);
+}
+
+/* The ghost of the photo being dragged sits in its original spot */
+.photo-tile--ghost {
+  opacity: 0.3;
+  filter: saturate(0.5);
+  border-style: dashed;
+}
+.photo-tile--ghost::after {
+  content: 'moving';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+  background: rgba(250,246,239,0.85);
+}
+
+/* The dragged photo — floating, rotated, elevated */
+.photo-floating {
+  position: absolute;
+  width: 162px;
+  height: 162px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 2px solid var(--silken-pine);
+  box-shadow: 0 16px 40px rgba(70,94,89,0.25), 0 4px 12px rgba(51,51,51,0.15);
+  transform: rotate(-3deg) scale(1.04);
+  pointer-events: none;
+  z-index: 5;
+  /* Position over a target row */
+  top: 220px;
+  left: 280px;
+}
+@media (max-width: 1100px) { .photo-floating { display: none; } }
+.photo-floating img { width: 100%; height: 100%; object-fit: cover; }
+.photo-floating__num {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 700;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--paper);
+}
+.photo-floating__cursor {
+  position: absolute;
+  bottom: -32px;
+  right: -16px;
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  border: 2px solid var(--paper);
+}
+.photo-floating__cursor svg { width: 11px; height: 11px; }
+
+/* Drop indicator — shows where the dragged item will land */
+.drop-indicator {
+  position: absolute;
+  width: 4px;
+  background: var(--terracotta);
+  border-radius: 999px;
+  z-index: 4;
+  /* Vertical line between tiles in target row */
+  top: 196px;
+  left: 470px;
+  height: 162px;
+  box-shadow: 0 0 0 3px rgba(202,98,83,0.18);
+}
+@media (max-width: 1100px) { .drop-indicator { display: none; } }
+.drop-indicator::before, .drop-indicator::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  transform: translateX(-50%);
+}
+.drop-indicator::before { top: -6px; }
+.drop-indicator::after  { bottom: -6px; }
+
+/* Arrange sidebar */
+.arrange-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.sidebar-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+.sidebar-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--s-3);
+}
+.sidebar-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 14px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.sidebar-card__action {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--silken-pine);
+}
+.sidebar-card__action:hover { color: var(--cedar); }
+
+.book-mini {
+  aspect-ratio: 1 / 1;
+  background: var(--sage-mist);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: var(--s-3);
+}
+.book-mini img { width: 100%; height: 100%; object-fit: cover; }
+.mini-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--border);
+}
+.mini-stat__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  display: block;
+  margin-bottom: 2px;
+}
+.mini-stat__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 18, "wdth" 100, "wght" 600;
+  font-size: 18px;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.mini-stat__value em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.tip-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+  display: flex;
+  gap: var(--s-3);
+}
+.tip-card__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  color: var(--silken-pine);
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+}
+.tip-card__icon svg { width: 14px; height: 14px; }
+.tip-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 13, "wdth" 100, "wght" 600;
+  font-size: 12px;
+  color: var(--silken-pine);
+  margin-bottom: 3px;
+  letter-spacing: -0.005em;
+}
+.tip-card__body {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--carbon-75);
+}
+
+/* ─────────────────────────────────────────────────────────
+   SCREEN 3 · PREVIEW
+   ───────────────────────────────────────────────────────── */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--s-6);
+}
+@media (max-width: 1000px) { .preview-grid { grid-template-columns: 1fr; } }
+
+.preview-stage {
+  background: var(--silken-pine);
+  border-radius: var(--radius);
+  padding: var(--s-12) var(--s-8) var(--s-8);
+  position: relative;
+  overflow: hidden;
+}
+.preview-stage::before {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(170,188,167,0.15), transparent 60%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.preview-stage__inner { position: relative; z-index: 1; }
+
+/* Photo book mockup — two-page spread */
+.book-mockup {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto var(--s-8);
+  aspect-ratio: 2 / 1.25;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--paper);
+  border-radius: 4px 16px 16px 4px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 8px 20px rgba(0,0,0,0.18);
+  overflow: hidden;
+  position: relative;
+  transform: perspective(1800px) rotateX(2deg);
+}
+.book-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  background: linear-gradient(to right,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.18) 35%,
+    rgba(0,0,0,0.32) 50%,
+    rgba(0,0,0,0.18) 65%,
+    rgba(0,0,0,0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.book-page {
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  position: relative;
+}
+.book-page--left { padding-right: var(--s-6); }
+.book-page--right { padding-left: var(--s-6); }
+.book-page__photo {
+  flex: 1;
+  background: var(--cloud);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.book-page__photo img { width: 100%; height: 100%; object-fit: cover; }
+.book-page__caption {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 10px;
+  color: var(--carbon-75);
+  text-align: center;
+  margin-top: 6px;
+}
+.book-page__num {
+  position: absolute;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--carbon-75);
+}
+.book-page--left .book-page__num { left: 16px; }
+.book-page--right .book-page__num { right: 16px; }
+
+/* Stage caption */
+.preview-stage__caption {
+  text-align: center;
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--lichen);
+  margin-bottom: var(--s-5);
+}
+.preview-stage__caption strong {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  color: var(--alabaster);
+  font-style: normal;
+  letter-spacing: -0.005em;
+}
+
+/* Spread thumbnails strip */
+.spread-strip {
+  display: flex;
+  gap: var(--s-3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.spread-thumb {
+  width: 90px;
+  aspect-ratio: 2 / 1.2;
+  background: var(--paper);
+  border-radius: 3px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 180ms ease;
+  position: relative;
+}
+.spread-thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.spread-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.spread-thumb--active { border-color: var(--terracotta); }
+.spread-thumb__num {
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--alabaster);
+  background: rgba(0,0,0,0.4);
+  padding: 1px 4px;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+/* Preview sidebar */
+.summary-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+}
+.summary-card__head {
+  padding: var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.summary-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 18px;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.summary-card__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.summary-card__sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+  margin-top: 4px;
+}
+.summary-list {
+  padding: var(--s-4) var(--s-5);
+  display: grid;
+  gap: var(--s-3);
+  border-bottom: 1px solid var(--border);
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+.summary-row__key {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  font-weight: 600;
+}
+.summary-row__val {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon);
+  text-align: right;
+  font-style: italic;
+}
+.summary-row__val--strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--silken-pine);
+}
+
+.summary-edit {
+  display: block;
+  text-align: center;
+  padding: var(--s-3) var(--s-5);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--silken-pine);
+  background: var(--cloud);
+}
+.summary-edit:hover { background: var(--alabaster); color: var(--cedar); }
+
+.price-block {
+  padding: var(--s-5);
+}
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon);
+  margin-bottom: var(--s-2);
+}
+.price-line__label { color: var(--carbon-75); }
+.price-line__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.price-line--total {
+  padding-top: var(--s-3);
+  margin-top: var(--s-3);
+  border-top: 1px solid var(--border);
+  margin-bottom: var(--s-4);
+}
+.price-line--total .price-line__label {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon);
+  font-weight: 600;
+}
+.price-line--total .price-line__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 32, "wdth" 100, "wght" 600;
+  font-size: 28px;
+  color: var(--silken-pine);
+  letter-spacing: -0.02em;
+}
+.shipping-note {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--cedar);
+  text-align: center;
+  margin-bottom: var(--s-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.shipping-note svg { width: 12px; height: 12px; }
+
+.delivery-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.delivery-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  color: var(--silken-pine);
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+}
+.delivery-card__icon svg { width: 18px; height: 18px; }
+.delivery-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 13, "wdth" 100, "wght" 600;
+  font-size: 12px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+}
+.delivery-card__sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+}
+</style>
+</head>
+<body>
+
+<div class="meta-bar">
+  <div class="meta-bar__left">SPS · photo-flow-shadcn-v4 · upload → arrange → preview · two voices</div>
+  <div class="meta-bar__right">
+    <span class="meta-bar__swatch meta-bar__swatch--bricolage">Bricolage</span>
+    <span class="meta-bar__swatch meta-bar__swatch--beatrice">Beatrice</span>
+  </div>
+</div>
+
+<!-- APP TOP BAR -->
+<header class="app-bar">
+  <div class="app-bar__brand">
+    <div class="app-bar__brand-mark">S</div>
+    <div>
+      <div class="app-bar__brand-text">Social Print Studio</div>
+      <div class="app-bar__brand-sub">photo book builder</div>
+    </div>
+  </div>
+  <div class="app-bar__divider"></div>
+  <div class="app-bar__project">
+    <span class="app-bar__project-label">Project</span>
+    <div class="app-bar__project-name">
+      <span class="app-bar__project-name-text">Family Trip · <em>April 2026</em></span>
+      <button class="app-bar__edit" aria-label="Rename project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="app-bar__autosave">
+    <span class="app-bar__autosave-dot"></span>
+    Saved 2 sec ago
+  </div>
+  <div class="app-bar__actions">
+    <button class="btn--icon-only" aria-label="Help">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </button>
+    <button class="btn btn--ghost btn--sm">Save & exit</button>
+  </div>
+</header>
+
+<!-- STEPPER -->
+<div class="stepper">
+  <div class="stepper__inner">
+    <div class="step step--done">
+      <div class="step__circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="step__text">
+        <span class="step__label">Step 1</span>
+        <span class="step__name">Upload</span>
+      </div>
+    </div>
+    <div class="step__connector step__connector--done"></div>
+    <div class="step step--current">
+      <div class="step__circle">2</div>
+      <div class="step__text">
+        <span class="step__label">Step 2 · current</span>
+        <span class="step__name">Arrange</span>
+      </div>
+    </div>
+    <div class="step__connector"></div>
+    <div class="step">
+      <div class="step__circle">3</div>
+      <div class="step__text">
+        <span class="step__label">Step 3</span>
+        <span class="step__name">Customize</span>
+      </div>
+    </div>
+    <div class="step__connector"></div>
+    <div class="step">
+      <div class="step__circle">4</div>
+      <div class="step__text">
+        <span class="step__label">Step 4</span>
+        <span class="step__name">Preview</span>
+      </div>
+    </div>
+    <div class="step__connector"></div>
+    <div class="step">
+      <div class="step__circle">5</div>
+      <div class="step__text">
+        <span class="step__label">Step 5</span>
+        <span class="step__name">Order</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────────────────────
+     SCREEN 1 · UPLOAD
+     ──────────────────────────────────────────────────────── -->
+<div class="screen-marker">
+  <div class="screen-marker__left">
+    <div class="screen-marker__num">1</div>
+    <div>
+      <div class="screen-marker__title">Screen 1 · <em>Upload your photos</em></div>
+      <div class="screen-marker__sub">drop, browse, or pull from a connected source — multi-file with progress</div>
+    </div>
+  </div>
+</div>
+
+<section class="screen">
+  <div class="screen__inner">
+    <div class="screen__header">
+      <div class="screen__header-left">
+        <div class="screen__num">Step 1 of 5</div>
+        <h2 class="screen__title">Upload your <em>photos</em>.</h2>
+        <p class="screen__sub">Drag photos here, browse your machine, or pull straight from a connected library. Twenty photos make a great pocket book — pick more if you want a longer story.</p>
+      </div>
+      <div style="display:flex;gap:var(--s-2);align-items:center;">
+        <span style="font-family:var(--font-beatrice);font-style:italic;font-size:13px;color:var(--carbon-75);">Need a hand?</span>
+        <button class="btn btn--ghost btn--sm">Watch a 30-sec walkthrough</button>
+      </div>
+    </div>
+
+    <div class="upload-grid">
+      <!-- DROP ZONE -->
+      <div class="dropzone">
+        <div class="dropzone__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <h3 class="dropzone__title">Drop your photos <em>here</em></h3>
+        <p class="dropzone__sub">JPG, PNG, HEIC up to 50MB each · max 200 photos per book</p>
+        <div class="dropzone__or">Or pull from</div>
+        <div class="dropzone__buttons">
+          <button class="dropzone__source">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Photos library
+          </button>
+          <button class="dropzone__source">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Google Photos
+          </button>
+          <button class="dropzone__source">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 5c0-1.66 4-3 9-3s9 1.34 9 3-4 3-9 3-9-1.34-9-3z"/></svg>
+            Dropbox
+          </button>
+          <button class="dropzone__source">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+            Instagram
+          </button>
+        </div>
+        <p class="dropzone__hint">Your photos stay private. We delete originals 30 days after your order ships.</p>
+      </div>
+
+      <!-- UPLOAD SIDEBAR -->
+      <aside class="upload-sidebar">
+        <div class="upload-sidebar__head">
+          <span class="upload-sidebar__title">Uploading now</span>
+          <span class="upload-sidebar__count">4 in progress</span>
+        </div>
+        <div class="upload-sidebar__list">
+          <div class="uploading">
+            <div class="uploading__thumb"><img src="images/layflat-album.jpg" alt=""></div>
+            <div class="uploading__info">
+              <div class="uploading__name">IMG_4821.HEIC</div>
+              <div class="uploading__bar"><div class="uploading__bar-fill" style="width:84%"></div></div>
+              <div class="uploading__pct">84%</div>
+            </div>
+            <span class="uploading__size">3.2 MB</span>
+          </div>
+          <div class="uploading">
+            <div class="uploading__thumb"><img src="images/gallery-frames.jpg" alt=""></div>
+            <div class="uploading__info">
+              <div class="uploading__name">IMG_4822.HEIC</div>
+              <div class="uploading__bar"><div class="uploading__bar-fill" style="width:62%"></div></div>
+              <div class="uploading__pct">62%</div>
+            </div>
+            <span class="uploading__size">4.1 MB</span>
+          </div>
+          <div class="uploading">
+            <div class="uploading__thumb"><img src="images/metal-prints.jpg" alt=""></div>
+            <div class="uploading__info">
+              <div class="uploading__name">IMG_4823.HEIC</div>
+              <div class="uploading__bar"><div class="uploading__bar-fill" style="width:38%"></div></div>
+              <div class="uploading__pct">38%</div>
+            </div>
+            <span class="uploading__size">2.8 MB</span>
+          </div>
+          <div class="uploading">
+            <div class="uploading__thumb"><img src="images/brass-print-set.jpg" alt=""></div>
+            <div class="uploading__info">
+              <div class="uploading__name">IMG_4824.HEIC</div>
+              <div class="uploading__bar"><div class="uploading__bar-fill" style="width:12%"></div></div>
+              <div class="uploading__pct">12%</div>
+            </div>
+            <span class="uploading__size">5.4 MB</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- ALREADY UPLOADED -->
+    <div class="recent-uploads">
+      <div class="recent-uploads__head">
+        <h3 class="recent-uploads__title"><em>16 photos</em> uploaded so far</h3>
+        <span class="recent-uploads__meta">Total · 87 MB · all detected as portrait</span>
+      </div>
+      <div class="recent-uploads__grid">
+        <div class="recent-thumb"><img src="images/tiny-books.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/photo-strips.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/daily-calendar.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/magnets.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/layflat-album.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/gallery-frames.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/brass-print-set.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+        <div class="recent-thumb"><img src="images/metal-prints.jpg" alt=""><div class="recent-thumb__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div></div>
+      </div>
+    </div>
+
+    <div class="screen-actions">
+      <div class="screen-actions__info">
+        <strong>16 of 20</strong> photos uploaded · the rest are processing in the background
+      </div>
+      <div class="screen-actions__buttons">
+        <button class="btn btn--ghost">Save and finish later</button>
+        <button class="btn btn--primary btn--lg">Continue to arrange →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     SCREEN 2 · ARRANGE
+     ──────────────────────────────────────────────────────── -->
+<div class="screen-marker">
+  <div class="screen-marker__left">
+    <div class="screen-marker__num">2</div>
+    <div>
+      <div class="screen-marker__title">Screen 2 · <em>Arrange the order</em></div>
+      <div class="screen-marker__sub">drag-and-drop with sequence numbers · auto-arrange options · live spread count</div>
+    </div>
+  </div>
+</div>
+
+<section class="screen">
+  <div class="screen__inner">
+    <div class="screen__header">
+      <div class="screen__header-left">
+        <div class="screen__num">Step 2 of 5</div>
+        <h2 class="screen__title">Arrange your <em>spreads</em>.</h2>
+        <p class="screen__sub">Drag any photo to a new spot. Two photos to a spread, ten spreads to a 20-photo pocket book. Click "auto-arrange" to start with the order they were taken.</p>
+      </div>
+    </div>
+
+    <div class="arrange-grid">
+      <!-- CANVAS -->
+      <div>
+        <div class="arrange-toolbar">
+          <div class="arrange-toolbar__group">
+            <button class="tool-btn tool-btn--active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Grid
+            </button>
+            <button class="tool-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              List
+            </button>
+          </div>
+          <div class="arrange-toolbar__group">
+            <button class="tool-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Sort by date
+            </button>
+            <button class="tool-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              Auto-arrange
+            </button>
+            <button class="tool-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Reset
+            </button>
+          </div>
+          <div class="arrange-toolbar__group" style="margin-left:auto;">
+            <button class="tool-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add more
+            </button>
+          </div>
+        </div>
+
+        <div class="arrange-canvas">
+          <div class="photo-grid">
+            <div class="photo-tile"><img src="images/layflat-album.jpg" alt=""><span class="photo-tile__num">1</span><div class="photo-tile__handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg></div></div>
+            <div class="photo-tile"><img src="images/gallery-frames.jpg" alt=""><span class="photo-tile__num">2</span><div class="photo-tile__handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg></div></div>
+            <div class="photo-tile"><img src="images/tiny-books.jpg" alt=""><span class="photo-tile__num">3</span><div class="photo-tile__handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg></div></div>
+            <div class="photo-tile"><img src="images/brass-print-set.jpg" alt=""><span class="photo-tile__num">4</span></div>
+            <div class="photo-tile"><img src="images/metal-prints.jpg" alt=""><span class="photo-tile__num">5</span></div>
+
+            <div class="photo-tile"><img src="images/photo-strips.jpg" alt=""><span class="photo-tile__num">6</span></div>
+            <!-- The ghost — photo #7 being moved -->
+            <div class="photo-tile photo-tile--ghost"><img src="images/daily-calendar.jpg" alt=""><span class="photo-tile__num">7</span></div>
+            <div class="photo-tile"><img src="images/magnets.jpg" alt=""><span class="photo-tile__num">8</span></div>
+            <div class="photo-tile"><img src="images/layflat-album.jpg" alt=""><span class="photo-tile__num">9</span></div>
+            <div class="photo-tile"><img src="images/gallery-frames.jpg" alt=""><span class="photo-tile__num">10</span></div>
+
+            <div class="photo-tile"><img src="images/tiny-books.jpg" alt=""><span class="photo-tile__num">11</span></div>
+            <div class="photo-tile"><img src="images/brass-print-set.jpg" alt=""><span class="photo-tile__num">12</span></div>
+            <div class="photo-tile"><img src="images/metal-prints.jpg" alt=""><span class="photo-tile__num">13</span></div>
+            <div class="photo-tile"><img src="images/photo-strips.jpg" alt=""><span class="photo-tile__num">14</span></div>
+            <div class="photo-tile"><img src="images/daily-calendar.jpg" alt=""><span class="photo-tile__num">15</span></div>
+
+            <div class="photo-tile"><img src="images/magnets.jpg" alt=""><span class="photo-tile__num">16</span></div>
+            <div class="photo-tile"><img src="images/layflat-album.jpg" alt=""><span class="photo-tile__num">17</span></div>
+            <div class="photo-tile"><img src="images/gallery-frames.jpg" alt=""><span class="photo-tile__num">18</span></div>
+            <div class="photo-tile"><img src="images/tiny-books.jpg" alt=""><span class="photo-tile__num">19</span></div>
+            <div class="photo-tile"><img src="images/brass-print-set.jpg" alt=""><span class="photo-tile__num">20</span></div>
+          </div>
+
+          <!-- Drop indicator (where photo #7 will land) -->
+          <div class="drop-indicator"></div>
+
+          <!-- Floating dragged photo -->
+          <div class="photo-floating">
+            <img src="images/daily-calendar.jpg" alt="">
+            <span class="photo-floating__num">7</span>
+            <div class="photo-floating__cursor">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7 19 2-8 8-2z"/></svg>
+              moving to position 4
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="arrange-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card__head">
+            <span class="sidebar-card__title">Your book</span>
+            <a class="sidebar-card__action">Change</a>
+          </div>
+          <div class="book-mini">
+            <img src="images/layflat-album.jpg" alt="">
+          </div>
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <span class="mini-stat__label">Photos</span>
+              <span class="mini-stat__value">20</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat__label">Spreads</span>
+              <span class="mini-stat__value">10 <em>· 20 pages</em></span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat__label">Size</span>
+              <span class="mini-stat__value" style="font-size:14px;">8×10</span>
+            </div>
+            <div class="mini-stat">
+              <span class="mini-stat__label">Cover</span>
+              <span class="mini-stat__value" style="font-size:14px;">Linen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div>
+            <div class="tip-card__title">Quick tip</div>
+            <div class="tip-card__body">Drag a photo onto another spread to swap positions. Hold shift to select multiple at once.</div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card__head">
+            <span class="sidebar-card__title">Shortcuts</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-family:var(--font-beatrice);font-size:12px;color:var(--carbon);">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span>Undo</span><span style="font-family:var(--font-mono);font-size:10px;background:var(--cloud);border:1px solid var(--border);border-radius:4px;padding:2px 6px;color:var(--carbon-75);">⌘Z</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span>Redo</span><span style="font-family:var(--font-mono);font-size:10px;background:var(--cloud);border:1px solid var(--border);border-radius:4px;padding:2px 6px;color:var(--carbon-75);">⌘⇧Z</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span>Select all</span><span style="font-family:var(--font-mono);font-size:10px;background:var(--cloud);border:1px solid var(--border);border-radius:4px;padding:2px 6px;color:var(--carbon-75);">⌘A</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span>Auto-arrange</span><span style="font-family:var(--font-mono);font-size:10px;background:var(--cloud);border:1px solid var(--border);border-radius:4px;padding:2px 6px;color:var(--carbon-75);">⌘R</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="screen-actions">
+      <div class="screen-actions__info">
+        <strong>20 photos</strong> arranged into <strong>10 spreads</strong> · last edit was 2 seconds ago
+      </div>
+      <div class="screen-actions__buttons">
+        <button class="btn btn--ghost">← Back to upload</button>
+        <button class="btn btn--primary btn--lg">Continue to preview →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────────────────────────────────────────────────
+     SCREEN 3 · PREVIEW
+     ──────────────────────────────────────────────────────── -->
+<div class="screen-marker">
+  <div class="screen-marker__left">
+    <div class="screen-marker__num">3</div>
+    <div>
+      <div class="screen-marker__title">Screen 3 · <em>Preview the finished book</em></div>
+      <div class="screen-marker__sub">3D-feel mockup of an open spread · spread navigator · order summary</div>
+    </div>
+  </div>
+</div>
+
+<section class="screen">
+  <div class="screen__inner">
+    <div class="screen__header">
+      <div class="screen__header-left">
+        <div class="screen__num">Step 4 of 5</div>
+        <h2 class="screen__title">Preview your <em>finished book</em>.</h2>
+        <p class="screen__sub">Here's how spread three will look once it's bound and on your shelf. Click any thumbnail below to flip to a different spread, or click "looks great" to add to cart.</p>
+      </div>
+    </div>
+
+    <div class="preview-grid">
+      <!-- STAGE -->
+      <div class="preview-stage">
+        <div class="preview-stage__inner">
+
+          <!-- Mocked open book spread -->
+          <div class="book-mockup">
+            <div class="book-page book-page--left">
+              <div class="book-page__photo"><img src="images/gallery-frames.jpg" alt=""></div>
+              <div class="book-page__caption">Brooklyn · April 14</div>
+              <span class="book-page__num">04</span>
+            </div>
+            <div class="book-page book-page--right">
+              <div class="book-page__photo"><img src="images/layflat-album.jpg" alt=""></div>
+              <div class="book-page__caption">Same morning, different light</div>
+              <span class="book-page__num">05</span>
+            </div>
+          </div>
+
+          <p class="preview-stage__caption">
+            Spread <strong>3 of 10</strong> · <em>Family Trip · April 2026</em> · 8×10 layflat with linen cover
+          </p>
+
+          <!-- Spread navigator -->
+          <div class="spread-strip">
+            <div class="spread-thumb">
+              <img src="images/layflat-album.jpg" alt="">
+              <img src="images/gallery-frames.jpg" alt="">
+              <span class="spread-thumb__num">1</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/tiny-books.jpg" alt="">
+              <img src="images/brass-print-set.jpg" alt="">
+              <span class="spread-thumb__num">2</span>
+            </div>
+            <div class="spread-thumb spread-thumb--active">
+              <img src="images/gallery-frames.jpg" alt="">
+              <img src="images/layflat-album.jpg" alt="">
+              <span class="spread-thumb__num">3</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/metal-prints.jpg" alt="">
+              <img src="images/photo-strips.jpg" alt="">
+              <span class="spread-thumb__num">4</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/daily-calendar.jpg" alt="">
+              <img src="images/magnets.jpg" alt="">
+              <span class="spread-thumb__num">5</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/layflat-album.jpg" alt="">
+              <img src="images/gallery-frames.jpg" alt="">
+              <span class="spread-thumb__num">6</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/tiny-books.jpg" alt="">
+              <img src="images/brass-print-set.jpg" alt="">
+              <span class="spread-thumb__num">7</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/metal-prints.jpg" alt="">
+              <img src="images/photo-strips.jpg" alt="">
+              <span class="spread-thumb__num">8</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/daily-calendar.jpg" alt="">
+              <img src="images/magnets.jpg" alt="">
+              <span class="spread-thumb__num">9</span>
+            </div>
+            <div class="spread-thumb">
+              <img src="images/layflat-album.jpg" alt="">
+              <img src="images/brass-print-set.jpg" alt="">
+              <span class="spread-thumb__num">10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <aside class="summary-card">
+        <div class="summary-card__head">
+          <h3 class="summary-card__title">Order summary</h3>
+          <p class="summary-card__sub">Family Trip · April 2026</p>
+        </div>
+
+        <div class="summary-list">
+          <div class="summary-row">
+            <span class="summary-row__key">Product</span>
+            <span class="summary-row__val summary-row__val--strong">Layflat album</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row__key">Size</span>
+            <span class="summary-row__val">8×10 in.</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row__key">Cover</span>
+            <span class="summary-row__val">Linen · sage</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row__key">Paper</span>
+            <span class="summary-row__val">Cotton rag · matte</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row__key">Photos</span>
+            <span class="summary-row__val">20</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-row__key">Spreads</span>
+            <span class="summary-row__val">10 spreads · 20 pages</span>
+          </div>
+        </div>
+
+        <a class="summary-edit">← Edit details</a>
+
+        <div class="price-block">
+          <div class="price-line">
+            <span class="price-line__label">Layflat album · 8×10</span>
+            <span class="price-line__value">$49.00</span>
+          </div>
+          <div class="price-line">
+            <span class="price-line__label">Linen hardcover</span>
+            <span class="price-line__value">+$12.00</span>
+          </div>
+          <div class="price-line">
+            <span class="price-line__label">Cotton rag paper</span>
+            <span class="price-line__value">included</span>
+          </div>
+          <div class="price-line price-line--total">
+            <span class="price-line__label">Total</span>
+            <span class="price-line__value">$61.00</span>
+          </div>
+
+          <div class="shipping-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            free shipping included
+          </div>
+
+          <button class="btn btn--accent btn--lg" style="width:100%;">Add to cart · $61</button>
+          <button class="btn btn--ghost btn--sm" style="width:100%;margin-top:8px;">Save for later</button>
+        </div>
+      </aside>
+    </div>
+
+    <div style="margin-top:var(--s-6);">
+      <div class="delivery-card">
+        <div class="delivery-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div>
+          <div class="delivery-card__title">Estimated delivery: April 19 — April 22</div>
+          <div class="delivery-card__sub">Made by hand in Brooklyn · ships in 5 business days · free shipping over $50</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-actions">
+      <div class="screen-actions__info">
+        <strong>Looks great?</strong> Add to cart and we'll start printing in the morning.
+      </div>
+      <div class="screen-actions__buttons">
+        <button class="btn btn--ghost">← Back to arrange</button>
+        <button class="btn btn--primary btn--lg">Add to cart →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

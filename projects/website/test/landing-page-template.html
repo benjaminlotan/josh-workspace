@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wedding album for Mother's Day · Social Print Studio</title>
+
+<!-- ─────────────────────────────────────────────────────────────
+     SPS BRAND v4 — LANDING PAGE TEMPLATE
+     Two-voice system: Bricolage Grotesque + Beatrice (italic = warmth)
+     Built from styleguide-v4.md.
+
+     Sections:
+       01  Promo bar (terracotta, hard deadline)
+       02  Topbar (brand + single CTA — landing-page mode, no cart)
+       03  Hero (split, italic-em pattern in headline)
+       04  "Three reasons you'll love it" (photo cards — features/benefits)
+       05  Featured product (image + spec list + price)
+       06  Customer pull quote
+       07  Closing CTA (silken-pine block)
+       (OPTIONAL) "Three steps to something special" (process — sits above footer)
+       08  Footer
+     ───────────────────────────────────────────────────────────── -->
+
+<!-- Bricolage Grotesque (variable: opsz, wdth, wght) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   00 / BEATRICE — self-hosted from S3 with local fallback
+   ───────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605293941-2nrb2w-Beatrice-Light.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605295340-xop3mj-Beatrice-Regular.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296011-hpzuh8-Beatrice-RegularItalic.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-RegularItalic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296631-zqku46-Beatrice-Medium.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605297264-a1imlg-Beatrice-Semibold.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   01 / TOKENS  (from styleguide-v4 §3 + §4 + §5)
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Greens — leading family */
+  --silken-pine: #465E59;
+  --cedar:       #719483;
+  --moss:        #587C6B;
+  --lichen:      #AABCA7;
+  --sage-mist:   #DFE5DC;
+
+  /* Corals — counterweight */
+  --terracotta:  #CA6253;
+  --dusty-coral: #CC9B83;
+  --warm-peach:  #DFAD94;
+
+  /* Warm neutrals */
+  --carbon:      #333333;
+  --carbon-75:   rgba(51,51,51,0.75);
+  --carbon-50:   rgba(51,51,51,0.5);
+  --carbon-30:   rgba(51,51,51,0.3);
+  --alabaster:   #F3F1F0;
+  --cloud:       #F9F8F7;
+  --cream:       #FAF6EF;
+  --paper:       #FFFFFF;
+  --hairline:    #E4E2DF;
+
+  /* Type */
+  --font-bricolage: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-beatrice:  "Beatrice", "Helvetica Neue", Arial, sans-serif;
+
+  /* Bricolage variable shortcuts */
+  --br-display:      "opsz" 96, "wdth" 100, "wght" 500;
+  --br-display-bold: "opsz" 96, "wdth" 105, "wght" 700;
+  --br-h1:           "opsz" 48, "wdth" 100, "wght" 600;
+  --br-h2:           "opsz" 32, "wdth" 100, "wght" 600;
+  --br-h3:           "opsz" 24, "wdth" 100, "wght" 600;
+  --br-stat:         "opsz" 48, "wdth" 95,  "wght" 600;
+  --br-label:        "opsz" 12, "wdth" 100, "wght" 600;
+
+  /* Spacing (4px grid) */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px;
+  --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px;
+  --s-16:64px; --s-20:80px; --s-24:96px; --s-32:128px;
+
+  /* Layout */
+  --max:    1320px;
+  --pad-x:  64px;
+  --radius: 12px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   02 / RESET + BASE
+   ───────────────────────────────────────────────────────────── */
+*,*::before,*::after { box-sizing:border-box }
+html,body { margin:0; padding:0 }
+html { font-size:15px; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility }
+body {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--carbon);
+  background: var(--cream);
+}
+img { display:block; max-width:100%; height:auto }
+a { color: inherit; text-decoration:none }
+button { font:inherit; color:inherit; background:none; border:0; cursor:pointer }
+
+::selection { background: var(--silken-pine); color: var(--alabaster) }
+
+.shell {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+/* Sections butt edge to edge */
+section, header, footer, .promo { padding-left:0; padding-right:0 }
+
+/* ─────────────────────────────────────────────────────────────
+   03 / TYPOGRAPHY UTILITIES
+   ───────────────────────────────────────────────────────────── */
+
+/* The signature SPS headline pattern: Bricolage with italic em flowing
+   to Beatrice italic. Used in hero, section headers, closing CTA. */
+h1 em, h2 em, h3 em, .display em, .closing-cta__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--silken-pine);
+}
+
+.display {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-display);
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  margin: 0;
+  color: var(--carbon);
+}
+
+.h1 {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h1);
+  letter-spacing: -0.018em;
+  line-height: 1.05;
+  margin: 0;
+}
+.h2 {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h2);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0;
+}
+.h3 {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--silken-pine);
+  display: inline-block;
+}
+
+.label {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+}
+
+.lede {
+  font-family: var(--font-beatrice);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--carbon-75);
+}
+
+.italic { font-family: var(--font-beatrice); font-style: italic }
+
+/* ─────────────────────────────────────────────────────────────
+   04 / BUTTON — pill, brand signature
+   ───────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn--primary { background: var(--silken-pine); color: var(--alabaster) }
+.btn--primary:hover { background: var(--cedar) }
+.btn--ghost   { border-color: var(--carbon); color: var(--carbon) }
+.btn--ghost:hover { background: var(--carbon); color: var(--alabaster) }
+.btn--cream   { background: var(--alabaster); color: var(--silken-pine) }
+.btn--cream:hover { background: var(--paper) }
+.btn--lg { padding: 16px 36px; font-size: 13px; min-width: 200px }
+
+/* ─────────────────────────────────────────────────────────────
+   05 / SECTION 01  PROMO BAR
+   ───────────────────────────────────────────────────────────── */
+.promo {
+  background: var(--terracotta);
+  color: var(--alabaster);
+  text-align: center;
+  padding: 11px var(--pad-x);
+}
+.promo .eyebrow {
+  color: var(--alabaster);
+  font-size: 11px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   06 / SECTION 02  TOPBAR — landing page version
+   Brand mark + single primary CTA. No nav, no cart.
+   ───────────────────────────────────────────────────────────── */
+.topbar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--hairline);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+}
+.topbar__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 18px var(--pad-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.topbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--silken-pine);
+}
+.topbar__heart {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--silken-pine);
+}
+.topbar__wordmark {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 16, "wdth" 100, "wght" 600;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  color: var(--silken-pine);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   07 / SECTION 03  HERO — split layout
+   Cream background, copy left, image right. The italic em swap
+   on "in her hands" is the v4 signature move.
+   ───────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--cream);
+  padding: 80px 0 100px;
+}
+.hero__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+.hero__copy { max-width: 560px }
+.hero__eyebrow { margin-bottom: 24px }
+.hero__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-display);
+  font-size: clamp(40px, 5.5vw, 72px);
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  color: var(--carbon);
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+.hero__lede {
+  font-family: var(--font-beatrice);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--carbon-75);
+  margin: 0 0 36px;
+  max-width: 46ch;
+}
+.hero__ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.hero__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sage-mist);
+  aspect-ratio: 4 / 5;
+}
+.hero__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   08 / SECTION HEADER (shared by 04A, 04B, 05, 07)
+   ───────────────────────────────────────────────────────────── */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.section-head__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h1);
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--carbon);
+  margin: 0;
+  max-width: 22ch;
+  text-wrap: balance;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   09 / SECTION 04A  "THREE STEPS TO SOMETHING SPECIAL"
+   The default process / how-it-works section.
+   ───────────────────────────────────────────────────────────── */
+.steps {
+  background: var(--cloud);
+  padding: 96px 0;
+}
+.steps__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.step-card {
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.step-card__tile {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 14px;
+  color: var(--silken-pine);
+}
+.step-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 20px;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--carbon);
+}
+.step-card__body {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--carbon-75);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   10 / SECTION 04B  "THREE REASONS YOU'LL LOVE IT"  (alternative)
+   Photo cards explaining benefits/details. Pick one of 04A or 04B.
+   ───────────────────────────────────────────────────────────── */
+.reasons {
+  background: var(--alabaster);
+  padding: 96px 0;
+}
+.reasons__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.reason-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.reason-card__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sage-mist);
+  aspect-ratio: 4 / 5;
+}
+.reason-card__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 600ms ease;
+}
+.reason-card:hover .reason-card__media img { transform: scale(1.04) }
+.reason-card__eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--silken-pine);
+  margin: 0;
+}
+.reason-card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+  color: var(--carbon);
+  margin: 4px 0 8px;
+}
+.reason-card__body {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--carbon-75);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   11 / SECTION 05  FEATURED PRODUCT
+   ───────────────────────────────────────────────────────────── */
+.feature {
+  background: var(--paper);
+  padding: 96px 0;
+}
+.feature__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+}
+.feature__media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--sage-mist);
+  aspect-ratio: 1 / 1;
+}
+.feature__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.feature__category {
+  margin: 0 0 16px;
+}
+.feature__name {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 4vw, 48px);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  color: var(--carbon);
+  margin: 0 0 20px;
+}
+.feature__desc {
+  font-family: var(--font-beatrice);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--carbon-75);
+  margin: 0 0 28px;
+}
+.feature__specs {
+  border-top: 1px solid var(--hairline);
+  margin-bottom: 32px;
+}
+.feature__specs dl {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0;
+  margin: 0;
+}
+.feature__specs dt,
+.feature__specs dd {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline);
+  margin: 0;
+}
+.feature__specs dt {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-50);
+  align-self: center;
+}
+.feature__specs dd {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--carbon);
+}
+.feature__price-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.feature__price-from {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-50);
+  margin-right: 6px;
+}
+.feature__price {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-stat);
+  font-size: 44px;
+  letter-spacing: -0.02em;
+  color: var(--silken-pine);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   12 / SECTION 06  PULL QUOTE
+   ───────────────────────────────────────────────────────────── */
+.quote {
+  background: var(--sage-mist);
+  padding: 120px 0;
+  text-align: center;
+}
+.quote__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+.quote__eyebrow { margin-bottom: 32px }
+.quote__text {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.4;
+  letter-spacing: -0.008em;
+  color: var(--silken-pine);
+  margin: 0 0 32px;
+  text-wrap: balance;
+}
+.quote__attr {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--silken-pine);
+  opacity: 0.7;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   13 / SECTION 07  CLOSING CTA
+   ───────────────────────────────────────────────────────────── */
+.closing-cta {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: 120px 0;
+  text-align: center;
+}
+.closing-cta__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+.closing-cta__eyebrow {
+  color: var(--lichen);
+  margin-bottom: 24px;
+}
+.closing-cta__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-display);
+  font-size: clamp(36px, 5vw, 56px);
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  color: var(--alabaster);
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+.closing-cta__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+}
+.closing-cta__sub {
+  font-family: var(--font-beatrice);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--lichen);
+  margin: 0 0 36px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   14 / SECTION 08  FOOTER
+   ───────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--cream);
+  padding: 64px 0 40px;
+}
+.footer__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+.footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--hairline);
+}
+.footer__brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.footer__brand-mark .topbar__heart { width: 24px; height: 24px }
+.footer__wordmark {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 18, "wdth" 100, "wght" 600;
+  font-size: 18px;
+  letter-spacing: -0.005em;
+  color: var(--silken-pine);
+}
+.footer__tag {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--carbon-75);
+  max-width: 36ch;
+  margin: 0;
+}
+.footer__col h4 {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--silken-pine);
+  margin: 0 0 16px;
+}
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__col a {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  color: var(--carbon);
+  opacity: 0.78;
+  transition: opacity 150ms ease, color 150ms ease;
+}
+.footer__col a:hover { color: var(--silken-pine); opacity: 1 }
+
+.footer__bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-50);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   15 / RESPONSIVE
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  :root { --pad-x: 32px }
+  .hero__inner,
+  .feature__inner { grid-template-columns: 1fr; gap: 48px }
+  .footer__top { grid-template-columns: 1fr 1fr; gap: 48px }
+  .steps__grid,
+  .reasons__grid { grid-template-columns: 1fr; gap: 24px }
+}
+@media (max-width: 700px) {
+  :root { --pad-x: 20px }
+  .hero { padding: 56px 0 72px }
+  .steps, .reasons, .feature { padding: 64px 0 }
+  .closing-cta, .quote { padding: 80px 0 }
+  .footer__top { grid-template-columns: 1fr; gap: 36px }
+  .footer__bot { flex-direction: column; align-items: flex-start; gap: 12px }
+  .feature__specs dl { grid-template-columns: 1fr }
+  .feature__specs dt { padding-bottom: 0; border-bottom: 0 }
+  .feature__specs dd { padding-top: 4px }
+}
+</style>
+</head>
+<body>
+
+<!-- ────────────── 01 / PROMO BAR ────────────── -->
+<div class="promo">
+  <span class="eyebrow">Mother's Day delivery · Order by May 8 · Free shipping</span>
+</div>
+
+<!-- ────────────── 02 / TOPBAR — LANDING PAGE MODE ──────────────
+     Brand left, single primary CTA right.
+     No multi-link nav, no cart — keep the eye on the page goal.
+     ────────────────────────────────────────────────────────────── -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="#" class="topbar__brand" aria-label="Social Print Studio">
+      <span class="topbar__heart" aria-hidden="true"></span>
+      <span class="topbar__wordmark">Social Print Studio</span>
+    </a>
+    <a href="#start" class="btn btn--primary">Start her album</a>
+  </div>
+</header>
+
+<!-- ────────────── 03 / HERO ────────────── -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <span class="eyebrow hero__eyebrow">Mother's Day · Order by May 8</span>
+      <h1 class="hero__title">
+        Give her your wedding day <em>in her hands</em>.
+      </h1>
+      <p class="hero__lede">
+        A layflat album of your wedding day, made by hand in Brooklyn. Delivered before Mother's Day.
+      </p>
+      <div class="hero__ctas">
+        <a href="#start" class="btn btn--primary btn--lg">Make her album</a>
+        <a href="#example" class="btn btn--ghost btn--lg">See an example</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt="An open layflat wedding album, hand-bound in Brooklyn">
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── 04 / "THREE REASONS YOU'LL LOVE IT" ──────────────
+     Photo cards leading with features/benefits/details.
+     (An optional process-oriented "Three steps" section lives just above
+     the footer — pick whichever fits the campaign.)
+     ────────────────────────────────────────────────────────────────── -->
+<section class="reasons">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Why this album</span>
+      <h2 class="section-head__title">Three reasons you'll <em>love it</em>.</h2>
+    </div>
+
+    <div class="reasons__grid">
+      <article class="reason-card">
+        <div class="reason-card__media">
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt="A layflat album spread, the gutter sitting flat across two pages">
+        </div>
+        <span class="reason-card__eyebrow">Lay-flat spreads</span>
+        <h3 class="reason-card__title">Your portraits never break across the gutter.</h3>
+        <p class="reason-card__body">Lay-flat binding lets every spread open completely flat, so the first kiss, the first dance, the family portrait — none of them crack down the middle.</p>
+      </article>
+
+      <article class="reason-card">
+        <div class="reason-card__media">
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605360932-gmiufv-brass-print-set.jpg" alt="Hands binding a photo book in the Brooklyn workshop">
+        </div>
+        <span class="reason-card__eyebrow">Hand-bound in Brooklyn</span>
+        <h3 class="reason-card__title">Made by people, not a print farm.</h3>
+        <p class="reason-card__body">Every album is bound by hand at our Brooklyn workshop. Linen-wrapped covers, foil-stamped names, cotton thread. The kind of object you can feel was touched by a person.</p>
+      </article>
+
+      <article class="reason-card">
+        <div class="reason-card__media">
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605362597-uw6rta-gallery-frames.jpg" alt="A close-up of the linen cover and foil-stamped detailing">
+        </div>
+        <span class="reason-card__eyebrow">Heirloom materials</span>
+        <h3 class="reason-card__title">Built to last for generations.</h3>
+        <p class="reason-card__body">200 gsm archival photo paper, acid-free interior, and a real linen cover that ages well. Your kids will pull this album off the shelf in twenty years and it will still feel new.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── 05 / FEATURED PRODUCT ────────────── -->
+<section class="feature" id="example">
+  <div class="feature__inner">
+    <div class="feature__media">
+      <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt="The layflat wedding album, 12×12, linen cover">
+    </div>
+    <div class="feature__copy">
+      <span class="eyebrow feature__category">The Product · 12 sizes · 3 covers</span>
+      <h2 class="feature__name">The Layflat Wedding Album.</h2>
+      <p class="feature__desc">
+        Lay-flat pages so the gutter never breaks a portrait. Heavy 200gsm photo paper. Linen-wrapped cover, foil-stamped name, hand-bound in Brooklyn.
+      </p>
+
+      <div class="feature__specs">
+        <dl>
+          <dt>Sizes</dt>     <dd>8×8 / 10×10 / 12×12</dd>
+          <dt>Pages</dt>     <dd>20 to 60 lay-flat spreads</dd>
+          <dt>Cover</dt>     <dd>Linen, leather, or photo wrap</dd>
+          <dt>Lead time</dt> <dd>5 days · ships free</dd>
+        </dl>
+      </div>
+
+      <div class="feature__price-row">
+        <div>
+          <span class="feature__price-from">From</span>
+          <span class="feature__price">$89</span>
+        </div>
+        <a href="#start" class="btn btn--primary btn--lg">Start her album</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── 06 / PULL QUOTE ────────────── -->
+<section class="quote">
+  <div class="quote__inner">
+    <span class="eyebrow quote__eyebrow">From a customer</span>
+    <p class="quote__text">
+      &ldquo;My mom opened it on Mother's Day morning and just sat with it for an hour. She kept turning the pages slowly. It was the only gift I've ever given that made her cry the good kind of crying.&rdquo;
+    </p>
+    <div class="quote__attr">Maya R. &nbsp;·&nbsp; Brooklyn &nbsp;·&nbsp; Verified order</div>
+  </div>
+</section>
+
+<!-- ────────────── 07 / CLOSING CTA ────────────── -->
+<section class="closing-cta" id="start">
+  <div class="closing-cta__inner">
+    <span class="eyebrow closing-cta__eyebrow">Mother's Day · May 11</span>
+    <h2 class="closing-cta__title">
+      Order by May 8 to make <em>her morning</em>.
+    </h2>
+    <p class="closing-cta__sub">Hand-bound in Brooklyn. Free shipping. Five day production.</p>
+    <a href="#" class="btn btn--cream btn--lg">Make her album</a>
+  </div>
+</section>
+
+<!-- ────────────── (OPTIONAL SECTION) / "THREE STEPS TO SOMETHING SPECIAL" ──────────────
+     Process-oriented alternative to the "Three reasons" photo cards above.
+     Lives at the bottom of the page so it can also work as a closing
+     reassurance block. Delete or comment out if you don't need it.
+     ─────────────────────────────────────────────────────────────────────────────────── -->
+<section class="steps">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">(Optional section) · How it works</span>
+      <h2 class="section-head__title">Three steps to <em>something special</em>.</h2>
+    </div>
+
+    <div class="steps__grid">
+      <article class="step-card">
+        <div class="step-card__tile">01</div>
+        <h3 class="step-card__title">Upload your wedding photos</h3>
+        <p class="step-card__body">Drop in the photos that matter — from your phone, Google Photos, or Dropbox.</p>
+      </article>
+      <article class="step-card">
+        <div class="step-card__tile">02</div>
+        <h3 class="step-card__title">We design the album</h3>
+        <p class="step-card__body">Our team picks the best layout. You see a preview before anything is printed.</p>
+      </article>
+      <article class="step-card">
+        <div class="step-card__tile">03</div>
+        <h3 class="step-card__title">Hand-delivered for Mother's Day</h3>
+        <p class="step-card__body">Made in Brooklyn, hand-bound, shipped free. Order by May 8 to make her day.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ────────────── 08 / FOOTER ────────────── -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#" class="footer__brand-mark">
+          <span class="topbar__heart" aria-hidden="true"></span>
+          <span class="footer__wordmark">Social Print Studio</span>
+        </a>
+        <p class="footer__tag">Photos as a force for good. Made by hand in Brooklyn since 2010.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Wedding albums</a></li>
+          <li><a href="#">Layflat books</a></li>
+          <li><a href="#">Gallery frames</a></li>
+          <li><a href="#">Photo strips</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#">Our story</a></li>
+          <li><a href="#">Process</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Order status</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Gift cards</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bot">
+      <div>© 2026 Social Print Studio · Brooklyn, NY</div>
+      <div>Privacy · Terms · Accessibility</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

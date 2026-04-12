@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPS Operations · v4 brand · shadcn-style dashboard</title>
+<meta name="description" content="A static-HTML demo of a shadcn-style dashboard themed in the Social Print Studio v4 brand: Bricolage Grotesque + Beatrice, no Orpheus.">
+
+<!-- Bricolage Grotesque (variable) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────────────
+   BEATRICE — self-hosted brand body face
+   ───────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-RegularItalic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('beatrice-fonts/Beatrice-Semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   shadcn variable names mapped to SPS v4 brand tokens.
+   This is the EXACT mapping you'd put in a real shadcn project.
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* SPS brand atoms */
+  --silken-pine:   #465E59;
+  --cedar:         #719483;
+  --moss:          #587C6B;
+  --lichen:        #AABCA7;
+  --sage-mist:     #DFE5DC;
+  --terracotta:    #CA6253;
+  --dusty-coral:   #CC9B83;
+  --warm-peach:    #DFAD94;
+  --carbon:        #333333;
+  --carbon-75:     rgba(51,51,51,0.75);
+  --carbon-50:     rgba(51,51,51,0.5);
+  --carbon-30:     rgba(51,51,51,0.30);
+  --alabaster:     #F3F1F0;
+  --cloud:         #F9F8F7;
+  --cream:         #FAF6EF;
+  --paper:         #FFFFFF;
+  --hairline:      #E4E2DF;
+
+  /* shadcn semantic tokens — would live in :root in globals.css */
+  --background:           var(--cream);
+  --foreground:           var(--carbon);
+  --card:                 var(--paper);
+  --card-foreground:      var(--carbon);
+  --popover:              var(--paper);
+  --popover-foreground:   var(--carbon);
+  --primary:              var(--silken-pine);
+  --primary-foreground:   var(--alabaster);
+  --secondary:            var(--sage-mist);
+  --secondary-foreground: var(--silken-pine);
+  --muted:                var(--cloud);
+  --muted-foreground:     var(--carbon-75);
+  --accent:               var(--cedar);
+  --accent-foreground:    var(--alabaster);
+  --destructive:          var(--terracotta);
+  --destructive-foreground: var(--alabaster);
+  --border:               var(--hairline);
+  --input:                var(--hairline);
+  --ring:                 var(--cedar);
+  --radius:               10px;
+
+  /* Sidebar uses a tinted background to set it apart */
+  --sidebar:              var(--alabaster);
+  --sidebar-border:       var(--hairline);
+  --sidebar-foreground:   var(--carbon);
+  --sidebar-muted:        var(--carbon-75);
+
+  /* Fonts */
+  --font-bricolage: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-beatrice:  'Beatrice', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono:      'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+
+  /* Bricolage variable shortcuts */
+  --br-h1:    "opsz" 32, "wdth" 100, "wght" 600;
+  --br-h2:    "opsz" 24, "wdth" 100, "wght" 600;
+  --br-h3:    "opsz" 18, "wdth" 100, "wght" 600;
+  --br-stat:  "opsz" 48, "wdth" 95,  "wght" 600;
+  --br-label: "opsz" 12, "wdth" 100, "wght" 600;
+
+  /* 4px spacing scale (shadcn convention) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESET + BASE
+   ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  font-family: var(--font-beatrice);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "kern", "liga", "tnum";
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font: inherit; color: inherit; }
+table { border-collapse: collapse; width: 100%; }
+
+/* ─────────────────────────────────────────────────────────
+   APP SHELL — sidebar + main
+   ───────────────────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 248px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+/* ─────────────────────────────────────────────────────────
+   SIDEBAR
+   ───────────────────────────────────────────────────────── */
+.sidebar {
+  background: var(--sidebar);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar__brand {
+  padding: var(--s-6) var(--s-5) var(--s-5);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  border-bottom: 1px solid var(--sidebar-border);
+}
+.sidebar__brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--silken-pine);
+  display: grid;
+  place-items: center;
+  color: var(--alabaster);
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 700;
+  font-size: 16px;
+}
+.sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.sidebar__brand-name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 14px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+}
+.sidebar__brand-sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+  margin-top: 1px;
+}
+.sidebar__nav {
+  flex: 1;
+  padding: var(--s-4) var(--s-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.nav-section__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  padding: 0 var(--s-3);
+  margin-bottom: var(--s-2);
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 8px var(--s-3);
+  border-radius: 8px;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--carbon);
+  transition: background 150ms ease, color 150ms ease;
+  margin-bottom: 1px;
+}
+.nav-link:hover {
+  background: rgba(70,94,89,0.06);
+  color: var(--silken-pine);
+}
+.nav-link--active {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  font-weight: 500;
+}
+.nav-link--active:hover { background: var(--silken-pine); color: var(--alabaster); }
+.nav-link svg { flex: 0 0 16px; width: 16px; height: 16px; opacity: 0.85; }
+.nav-link--active svg { opacity: 1; }
+.nav-link__badge {
+  margin-left: auto;
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 10px;
+  background: var(--terracotta);
+  color: var(--alabaster);
+  padding: 1px 6px;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+.nav-link--active .nav-link__badge { background: var(--alabaster); color: var(--silken-pine); }
+
+.sidebar__user {
+  margin: var(--s-3);
+  padding: var(--s-3);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 12px;
+  color: var(--silken-pine);
+  flex: 0 0 32px;
+}
+.sidebar__user-info { flex: 1; min-width: 0; line-height: 1.2; }
+.sidebar__user-name {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--carbon);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar__user-email {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  color: var(--carbon-75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sidebar__user-menu {
+  flex: 0 0 24px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  color: var(--carbon-75);
+}
+.sidebar__user-menu:hover { background: var(--cloud); }
+
+/* ─────────────────────────────────────────────────────────
+   MAIN
+   ───────────────────────────────────────────────────────── */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* TOPBAR */
+.topbar {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding: var(--s-3) var(--s-6);
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background: rgba(250,246,239,0.92);
+}
+.topbar__search {
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px var(--s-3);
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon-75);
+  transition: border-color 150ms ease;
+}
+.topbar__search:hover { border-color: var(--carbon-30); }
+.topbar__search svg { width: 14px; height: 14px; opacity: 0.6; }
+.topbar__search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon);
+}
+.topbar__search-input::placeholder { color: var(--carbon-75); }
+.kbd {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--cloud);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--carbon-75);
+  margin-left: auto;
+}
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-left: auto;
+}
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--carbon-75);
+  background: transparent;
+  border: 1px solid transparent;
+  position: relative;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+.icon-btn:hover { background: var(--paper); border-color: var(--border); color: var(--carbon); }
+.icon-btn svg { width: 16px; height: 16px; }
+.icon-btn__dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  border: 2px solid var(--background);
+}
+.date-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px var(--s-3);
+  cursor: pointer;
+}
+.date-pill svg { width: 13px; height: 13px; opacity: 0.6; }
+.date-pill:hover { border-color: var(--carbon-30); }
+
+/* CONTENT */
+.content {
+  padding: var(--s-8) var(--s-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  max-width: 1440px;
+}
+@media (max-width: 800px) {
+  .content { padding: var(--s-6) var(--s-4); }
+}
+
+/* PAGE HEADER */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.breadcrumbs {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-2);
+}
+.page-title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 32, "wdth" 100, "wght" 600;
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--silken-pine);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--s-2);
+}
+.page-title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+  letter-spacing: 0;
+}
+.page-subtitle {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  color: var(--carbon-75);
+  max-width: 56ch;
+}
+.page-actions {
+  display: flex;
+  gap: var(--s-2);
+}
+
+/* BUTTONS — pills, on-brand */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+}
+.btn svg { width: 14px; height: 14px; }
+.btn--primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn--primary:hover { background: var(--cedar); }
+.btn--secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+.btn--secondary:hover { background: #d2dccf; }
+.btn--ghost {
+  background: transparent;
+  color: var(--carbon);
+  border-color: var(--border);
+}
+.btn--ghost:hover { background: var(--paper); border-color: var(--carbon); }
+.btn--destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+.btn--destructive:hover { background: #b3554a; }
+.btn--link {
+  background: transparent;
+  color: var(--silken-pine);
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+.btn--link:hover { color: var(--cedar); }
+.btn--sm { padding: 6px 14px; font-size: 11px; }
+.btn--lg { padding: 14px 32px; font-size: 13px; }
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--cloud);
+  padding: 4px;
+  border-radius: 10px;
+  width: fit-content;
+  border: 1px solid var(--border);
+}
+.tab {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--carbon-75);
+  padding: 7px 14px;
+  border-radius: 7px;
+  transition: all 180ms ease;
+}
+.tab:hover { color: var(--carbon); }
+.tab--active {
+  background: var(--paper);
+  color: var(--silken-pine);
+  box-shadow: 0 1px 2px rgba(51,51,51,0.04);
+}
+
+/* CARD PRIMITIVE */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card__header {
+  padding: var(--s-5) var(--s-5) var(--s-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s-3);
+}
+.card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 16px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+  margin-bottom: 2px;
+}
+.card__description {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+}
+.card__body { padding: var(--s-3) var(--s-5) var(--s-5); }
+.card__divider { height: 1px; background: var(--border); }
+
+/* ─────────────────────────────────────────────────────────
+   STAT CARDS
+   ───────────────────────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 1100px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .stat-grid { grid-template-columns: 1fr; } }
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.stat__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stat__label {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+}
+.stat__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  color: var(--silken-pine);
+}
+.stat__icon svg { width: 14px; height: 14px; }
+.stat__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-stat);
+  font-size: 36px;
+  color: var(--silken-pine);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: var(--s-2);
+}
+.stat__delta {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.stat__delta-value {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.stat__delta--up    .stat__delta-value { color: var(--cedar); }
+.stat__delta--down  .stat__delta-value { color: var(--terracotta); }
+.stat__delta svg { width: 11px; height: 11px; }
+
+/* ─────────────────────────────────────────────────────────
+   GRID 2-1 (chart + sidebar card)
+   ───────────────────────────────────────────────────────── */
+.row-2-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--s-4);
+}
+@media (max-width: 1100px) { .row-2-1 { grid-template-columns: 1fr; } }
+
+/* CHART CARD */
+.chart-wrap {
+  padding: 0 var(--s-5) var(--s-5);
+}
+.chart {
+  width: 100%;
+  height: 260px;
+}
+.chart__legend {
+  display: flex;
+  gap: var(--s-4);
+  padding: 0 var(--s-5) var(--s-3);
+}
+.chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  color: var(--carbon-75);
+}
+.chart__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* TOP PRODUCTS LIST */
+.top-list { display: flex; flex-direction: column; }
+.top-item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-5);
+  border-top: 1px solid var(--border);
+}
+.top-item:first-child { border-top: none; }
+.top-item__media {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--cloud);
+  overflow: hidden;
+  flex: 0 0 40px;
+}
+.top-item__media img { width: 100%; height: 100%; object-fit: cover; }
+.top-item__info { flex: 1; min-width: 0; }
+.top-item__name {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--carbon);
+  line-height: 1.2;
+}
+.top-item__category {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  margin-top: 2px;
+}
+.top-item__value {
+  text-align: right;
+  flex: 0 0 auto;
+}
+.top-item__amount {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 16, "wdth" 100, "wght" 600;
+  font-size: 14px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+}
+.top-item__delta {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  color: var(--cedar);
+  margin-top: 2px;
+}
+.top-item__delta--down { color: var(--terracotta); }
+
+/* ─────────────────────────────────────────────────────────
+   TABLE
+   ───────────────────────────────────────────────────────── */
+.table-wrap { padding: 0; }
+.table {
+  width: 100%;
+  font-family: var(--font-beatrice);
+}
+.table thead {
+  background: var(--cloud);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.table th {
+  text-align: left;
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  padding: var(--s-3) var(--s-5);
+}
+.table th:last-child { text-align: right; }
+.table td {
+  padding: var(--s-4) var(--s-5);
+  font-size: 13px;
+  color: var(--carbon);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tr:last-child td { border-bottom: none; }
+.table td:last-child { text-align: right; }
+.table tbody tr { transition: background 120ms ease; }
+.table tbody tr:hover { background: var(--cloud); }
+.table__order-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--carbon-75);
+}
+.table__customer {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.table__customer-name { font-weight: 400; color: var(--carbon); }
+.table__product {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  color: var(--carbon);
+}
+.table__amount {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+  font-size: 13px;
+}
+
+/* BADGE */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.badge--default {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+}
+.badge--secondary {
+  background: var(--sage-mist);
+  color: var(--silken-pine);
+}
+.badge--outline {
+  background: transparent;
+  color: var(--carbon);
+  border-color: var(--border);
+}
+.badge--destructive {
+  background: var(--terracotta);
+  color: var(--alabaster);
+}
+.badge--success {
+  background: rgba(113,148,131,0.15);
+  color: var(--moss);
+  border-color: rgba(113,148,131,0.3);
+}
+.badge--warning {
+  background: rgba(204,155,131,0.18);
+  color: #8a5a3f;
+  border-color: rgba(204,155,131,0.4);
+}
+.badge--info {
+  background: rgba(113,148,131,0.12);
+  color: var(--silken-pine);
+}
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* ─────────────────────────────────────────────────────────
+   ACTIVITY FEED
+   ───────────────────────────────────────────────────────── */
+.activity {
+  padding: 0 var(--s-5) var(--s-4);
+  display: flex;
+  flex-direction: column;
+}
+.activity__item {
+  display: flex;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  position: relative;
+}
+.activity__item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 30px;
+  bottom: -4px;
+  width: 1px;
+  background: var(--border);
+}
+.activity__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 12, "wdth" 100, "wght" 600;
+  font-size: 11px;
+  color: var(--silken-pine);
+  flex: 0 0 28px;
+  z-index: 1;
+}
+.activity__avatar--system {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+}
+.activity__body { flex: 1; min-width: 0; }
+.activity__text {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon);
+  line-height: 1.45;
+}
+.activity__text strong { font-weight: 500; color: var(--silken-pine); }
+.activity__time {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--carbon-75);
+  margin-top: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   COMPONENTS SHOWCASE
+   ───────────────────────────────────────────────────────── */
+.showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-6);
+  padding: 0 var(--s-5) var(--s-5);
+}
+@media (max-width: 900px) { .showcase { grid-template-columns: 1fr; } }
+.showcase__group { display: flex; flex-direction: column; gap: var(--s-3); }
+.showcase__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  font-weight: 600;
+}
+.showcase__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  align-items: center;
+}
+
+/* INPUT */
+.input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(113,148,131,0.15);
+}
+.input::placeholder { color: var(--carbon-75); }
+.input-label {
+  display: block;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon);
+  margin-bottom: 6px;
+}
+.input-help {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+  margin-top: 4px;
+}
+
+/* SWITCH */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch__slider {
+  position: absolute;
+  inset: 0;
+  background: var(--carbon-30);
+  border-radius: 999px;
+  transition: background 180ms ease;
+}
+.switch__slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--paper);
+  border-radius: 50%;
+  transition: transform 180ms ease;
+}
+.switch input:checked + .switch__slider { background: var(--silken-pine); }
+.switch input:checked + .switch__slider::before { transform: translateX(16px); }
+
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.switch-row:last-child { border-bottom: none; }
+.switch-row__info { flex: 1; }
+.switch-row__title {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--carbon);
+}
+.switch-row__desc {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  color: var(--carbon-75);
+  font-style: italic;
+}
+
+/* PROGRESS */
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.progress__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.progress__label {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon);
+}
+.progress__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 12, "wdth" 100, "wght" 600;
+  font-size: 12px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+}
+.progress__bar {
+  height: 6px;
+  background: var(--cloud);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.progress__fill {
+  height: 100%;
+  background: var(--silken-pine);
+  border-radius: 999px;
+}
+.progress__fill--accent { background: var(--terracotta); }
+.progress__fill--cedar  { background: var(--cedar); }
+
+/* ALERT */
+.alert {
+  padding: var(--s-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--paper);
+  display: flex;
+  gap: var(--s-3);
+}
+.alert__icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  background: var(--sage-mist);
+  color: var(--silken-pine);
+}
+.alert__icon svg { width: 16px; height: 16px; }
+.alert--info .alert__icon { background: rgba(113,148,131,0.15); color: var(--moss); }
+.alert--warning .alert__icon { background: rgba(204,155,131,0.2); color: #8a5a3f; }
+.alert--error { border-color: rgba(202,98,83,0.3); }
+.alert--error .alert__icon { background: rgba(202,98,83,0.15); color: var(--terracotta); }
+.alert__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 14, "wdth" 100, "wght" 600;
+  font-size: 13px;
+  color: var(--carbon);
+  margin-bottom: 2px;
+  letter-spacing: -0.003em;
+}
+.alert__message {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+  line-height: 1.5;
+}
+.alert__message em { color: var(--silken-pine); font-style: italic; }
+
+/* DROPDOWN MENU (visual mockup of an open state) */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown__menu {
+  background: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px;
+  min-width: 200px;
+  box-shadow: 0 4px 16px rgba(51,51,51,0.06);
+}
+.dropdown__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  padding: 6px 8px;
+  font-weight: 600;
+}
+.dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon);
+  cursor: pointer;
+}
+.dropdown__item:hover { background: var(--cloud); }
+.dropdown__item--destructive { color: var(--terracotta); }
+.dropdown__item svg { width: 14px; height: 14px; opacity: 0.7; }
+.dropdown__sep { height: 1px; background: var(--border); margin: 4px 0; }
+.dropdown__shortcut {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--carbon-75);
+}
+
+/* DIALOG (visual mockup of an open state) */
+.dialog-shell {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-6);
+  max-width: 460px;
+  box-shadow: 0 8px 32px rgba(51,51,51,0.08);
+}
+.dialog-shell__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 20, "wdth" 100, "wght" 600;
+  font-size: 18px;
+  color: var(--carbon);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.dialog-shell__desc {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  color: var(--carbon-75);
+  line-height: 1.5;
+  margin-bottom: var(--s-5);
+}
+.dialog-shell__actions {
+  display: flex;
+  gap: var(--s-2);
+  justify-content: flex-end;
+  margin-top: var(--s-5);
+}
+
+/* ─────────────────────────────────────────────────────────
+   META BAR (file label)
+   ───────────────────────────────────────────────────────── */
+.meta-bar {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: 6px var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.meta-bar__left { opacity: 0.75; }
+.meta-bar__right { display: flex; gap: var(--s-3); align-items: center; }
+.meta-bar__swatch { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; }
+.meta-bar__swatch::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.meta-bar__swatch--bricolage::before { background: var(--lichen); }
+.meta-bar__swatch--beatrice::before  { background: var(--alabaster); }
+</style>
+</head>
+<body>
+
+<!-- ────────────────────────────────────────────────────────
+     META BAR
+     ──────────────────────────────────────────────────────── -->
+<div class="meta-bar">
+  <div class="meta-bar__left">SPS · dashboard-shadcn-v4 · brand exploration · two voices</div>
+  <div class="meta-bar__right">
+    <span class="meta-bar__swatch meta-bar__swatch--bricolage">Bricolage</span>
+    <span class="meta-bar__swatch meta-bar__swatch--beatrice">Beatrice</span>
+  </div>
+</div>
+
+<div class="app">
+
+  <!-- ──────────────────────────────────────────────────────
+       SIDEBAR
+       ────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__brand-mark">S</div>
+      <div class="sidebar__brand-text">
+        <span class="sidebar__brand-name">Social Print Studio</span>
+        <span class="sidebar__brand-sub">operations</span>
+      </div>
+    </div>
+
+    <nav class="sidebar__nav">
+      <div class="nav-section">
+        <div class="nav-section__title">Workspace</div>
+        <a class="nav-link nav-link--active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
+          Inbox
+          <span class="nav-link__badge">12</span>
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Calendar
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section__title">Catalog</div>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          Products
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Orders
+          <span class="nav-link__badge">3</span>
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+          Inventory
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Returns
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section__title">Customers</div>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          All customers
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Reviews
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section__title">Reports</div>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Analytics
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Exports
+        </a>
+        <a class="nav-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar__user">
+      <div class="avatar">BL</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name">Ben Lotan</div>
+        <div class="sidebar__user-email">ben@socialprintstudio.com</div>
+      </div>
+      <button class="sidebar__user-menu" aria-label="User menu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ──────────────────────────────────────────────────────
+       MAIN
+       ────────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar__search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="topbar__search-input" placeholder="Search orders, products, customers...">
+        <span class="kbd">⌘K</span>
+      </div>
+      <div class="topbar__actions">
+        <button class="date-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Mar 1 — Mar 30, 2026
+        </button>
+        <button class="icon-btn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="icon-btn__dot"></span>
+        </button>
+        <button class="icon-btn" aria-label="Help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </button>
+        <div class="avatar" style="width:36px;height:36px;">BL</div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div>
+          <div class="breadcrumbs">Workspace · Dashboard · Overview</div>
+          <h1 class="page-title">Welcome back, <em>Ben</em>.</h1>
+          <p class="page-subtitle">Here's what's happening in your shop today. Three orders need your attention before noon.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn--ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download report
+          </button>
+          <button class="btn btn--primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New order
+          </button>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="tabs" role="tablist">
+        <button class="tab tab--active">Overview</button>
+        <button class="tab">Analytics</button>
+        <button class="tab">Reports</button>
+        <button class="tab">Notifications</button>
+      </div>
+
+      <!-- STAT CARDS -->
+      <div class="stat-grid">
+        <div class="stat">
+          <div class="stat__header">
+            <span class="stat__label">Total revenue</span>
+            <div class="stat__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="stat__value">$48,394</div>
+          <div class="stat__delta stat__delta--up">
+            <span class="stat__delta-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              12.4%
+            </span>
+            from last month
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat__header">
+            <span class="stat__label">Orders</span>
+            <div class="stat__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+          </div>
+          <div class="stat__value">1,283</div>
+          <div class="stat__delta stat__delta--up">
+            <span class="stat__delta-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              4.7%
+            </span>
+            from last month
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat__header">
+            <span class="stat__label">New customers</span>
+            <div class="stat__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+            </div>
+          </div>
+          <div class="stat__value">412</div>
+          <div class="stat__delta stat__delta--up">
+            <span class="stat__delta-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              18.2%
+            </span>
+            from last month
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat__header">
+            <span class="stat__label">Avg order value</span>
+            <div class="stat__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+          </div>
+          <div class="stat__value">$37.71</div>
+          <div class="stat__delta stat__delta--down">
+            <span class="stat__delta-value">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+              2.1%
+            </span>
+            from last month
+          </div>
+        </div>
+      </div>
+
+      <!-- CHART + TOP PRODUCTS -->
+      <div class="row-2-1">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3 class="card__title">Sales over time</h3>
+              <p class="card__description">Daily revenue, last 30 days</p>
+            </div>
+            <button class="icon-btn" style="border-color:var(--border);background:var(--paper);" aria-label="Chart options">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+            </button>
+          </div>
+
+          <div class="chart__legend">
+            <div class="chart__legend-item">
+              <span class="chart__legend-dot" style="background:var(--silken-pine);"></span>
+              This month
+            </div>
+            <div class="chart__legend-item">
+              <span class="chart__legend-dot" style="background:var(--lichen);"></span>
+              Last month
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <svg class="chart" viewBox="0 0 600 260" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="fill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#465E59" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#465E59" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Y gridlines -->
+              <g stroke="#E4E2DF" stroke-width="1">
+                <line x1="40" y1="20"  x2="590" y2="20"/>
+                <line x1="40" y1="80"  x2="590" y2="80"/>
+                <line x1="40" y1="140" x2="590" y2="140"/>
+                <line x1="40" y1="200" x2="590" y2="200"/>
+                <line x1="40" y1="240" x2="590" y2="240"/>
+              </g>
+
+              <!-- Y labels -->
+              <g font-family="'Beatrice', sans-serif" font-size="9" fill="#7a7a7a" text-anchor="end">
+                <text x="34" y="24">$3K</text>
+                <text x="34" y="84">$2K</text>
+                <text x="34" y="144">$1K</text>
+                <text x="34" y="204">$500</text>
+                <text x="34" y="244">$0</text>
+              </g>
+
+              <!-- LAST MONTH (lighter) -->
+              <path d="M 50 175 L 70 185 L 90 170 L 110 160 L 130 168 L 150 155 L 170 162 L 190 145 L 210 152 L 230 138 L 250 128 L 270 134 L 290 122 L 310 130 L 330 115 L 350 122 L 370 105 L 390 112 L 410 100 L 430 108 L 450 95 L 470 100 L 490 88 L 510 96 L 530 80 L 550 88 L 570 75 L 580 82"
+                    fill="none" stroke="#AABCA7" stroke-width="2" stroke-dasharray="3,4" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- THIS MONTH area -->
+              <path d="M 50 165 L 70 158 L 90 168 L 110 145 L 130 152 L 150 138 L 170 144 L 190 122 L 210 128 L 230 110 L 250 116 L 270 95 L 290 102 L 310 85 L 330 92 L 350 70 L 370 78 L 390 60 L 410 68 L 430 50 L 450 56 L 470 42 L 490 48 L 510 35 L 530 42 L 550 30 L 570 38 L 580 32 L 580 240 L 50 240 Z"
+                    fill="url(#fill)"/>
+
+              <!-- THIS MONTH line -->
+              <path d="M 50 165 L 70 158 L 90 168 L 110 145 L 130 152 L 150 138 L 170 144 L 190 122 L 210 128 L 230 110 L 250 116 L 270 95 L 290 102 L 310 85 L 330 92 L 350 70 L 370 78 L 390 60 L 410 68 L 430 50 L 450 56 L 470 42 L 490 48 L 510 35 L 530 42 L 550 30 L 570 38 L 580 32"
+                    fill="none" stroke="#465E59" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <!-- Highlighted point + tooltip -->
+              <circle cx="430" cy="50" r="5" fill="#465E59"/>
+              <circle cx="430" cy="50" r="8" fill="#465E59" fill-opacity="0.18"/>
+              <g transform="translate(380, 5)">
+                <rect x="0" y="0" width="115" height="38" rx="6" fill="#FFFFFF" stroke="#E4E2DF"/>
+                <text x="10" y="15" font-family="'Beatrice', sans-serif" font-size="9" fill="#7a7a7a" text-transform="uppercase" letter-spacing="0.05em">MAR 22 · MONDAY</text>
+                <text x="10" y="30" font-family="'Bricolage Grotesque', sans-serif" font-size="13" font-weight="600" fill="#465E59">$2,418</text>
+              </g>
+
+              <!-- X labels -->
+              <g font-family="'Beatrice', sans-serif" font-size="9" fill="#7a7a7a" text-anchor="middle">
+                <text x="50"  y="256">Mar 1</text>
+                <text x="170" y="256">Mar 8</text>
+                <text x="290" y="256">Mar 15</text>
+                <text x="410" y="256">Mar 22</text>
+                <text x="530" y="256">Mar 29</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- TOP PRODUCTS -->
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3 class="card__title">Top products</h3>
+              <p class="card__description">By revenue, last 30 days</p>
+            </div>
+          </div>
+
+          <div class="top-list">
+            <div class="top-item">
+              <div class="top-item__media"><img src="images/layflat-album.jpg" alt=""></div>
+              <div class="top-item__info">
+                <div class="top-item__name">Layflat album</div>
+                <div class="top-item__category">Photo Books</div>
+              </div>
+              <div class="top-item__value">
+                <div class="top-item__amount">$12,840</div>
+                <div class="top-item__delta">↑ 8.2%</div>
+              </div>
+            </div>
+
+            <div class="top-item">
+              <div class="top-item__media"><img src="images/gallery-frames.jpg" alt=""></div>
+              <div class="top-item__info">
+                <div class="top-item__name">Gallery frame</div>
+                <div class="top-item__category">Frames</div>
+              </div>
+              <div class="top-item__value">
+                <div class="top-item__amount">$8,720</div>
+                <div class="top-item__delta">↑ 14.1%</div>
+              </div>
+            </div>
+
+            <div class="top-item">
+              <div class="top-item__media"><img src="images/tiny-books.jpg" alt=""></div>
+              <div class="top-item__info">
+                <div class="top-item__name">Tiny book</div>
+                <div class="top-item__category">Photo Books</div>
+              </div>
+              <div class="top-item__value">
+                <div class="top-item__amount">$6,440</div>
+                <div class="top-item__delta">↑ 22.5%</div>
+              </div>
+            </div>
+
+            <div class="top-item">
+              <div class="top-item__media"><img src="images/brass-print-set.jpg" alt=""></div>
+              <div class="top-item__info">
+                <div class="top-item__name">Brass print set</div>
+                <div class="top-item__category">Prints</div>
+              </div>
+              <div class="top-item__value">
+                <div class="top-item__amount">$4,880</div>
+                <div class="top-item__delta top-item__delta--down">↓ 3.4%</div>
+              </div>
+            </div>
+
+            <div class="top-item">
+              <div class="top-item__media"><img src="images/metal-prints.jpg" alt=""></div>
+              <div class="top-item__info">
+                <div class="top-item__name">Metal print</div>
+                <div class="top-item__category">Prints</div>
+              </div>
+              <div class="top-item__value">
+                <div class="top-item__amount">$3,920</div>
+                <div class="top-item__delta">↑ 1.9%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECENT ORDERS + ACTIVITY -->
+      <div class="row-2-1">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3 class="card__title">Recent orders</h3>
+              <p class="card__description">Last 7 days · Newest first</p>
+            </div>
+            <button class="btn btn--link">View all →</button>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29841</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">MF</div><span class="table__customer-name">Maya Fernández</span></div></td>
+                  <td><span class="table__product">Layflat album · 8×10</span></td>
+                  <td><span class="badge badge--success"><span class="badge__dot"></span>Shipped</span></td>
+                  <td><span class="table__amount">$84.00</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29840</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">JK</div><span class="table__customer-name">Jordan Kim</span></div></td>
+                  <td><span class="table__product">Tiny book · pair</span></td>
+                  <td><span class="badge badge--warning"><span class="badge__dot"></span>Processing</span></td>
+                  <td><span class="table__amount">$24.00</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29839</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">DP</div><span class="table__customer-name">Dev Patel</span></div></td>
+                  <td><span class="table__product">Brass print set · 4-up</span></td>
+                  <td><span class="badge badge--info"><span class="badge__dot"></span>In production</span></td>
+                  <td><span class="table__amount">$64.00</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29838</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">SO</div><span class="table__customer-name">Sam Oyelaran</span></div></td>
+                  <td><span class="table__product">Gallery frame · 11×14</span></td>
+                  <td><span class="badge badge--success"><span class="badge__dot"></span>Delivered</span></td>
+                  <td><span class="table__amount">$58.00</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29837</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">EW</div><span class="table__customer-name">Eliza Walsh</span></div></td>
+                  <td><span class="table__product">Daily calendar · 2026</span></td>
+                  <td><span class="badge badge--destructive"><span class="badge__dot"></span>Refund req.</span></td>
+                  <td><span class="table__amount">$32.00</span></td>
+                </tr>
+                <tr>
+                  <td><span class="table__order-id">#SPS-29836</span></td>
+                  <td><div class="table__customer"><div class="avatar" style="width:24px;height:24px;font-size:9px;">RC</div><span class="table__customer-name">Rohan Choudhury</span></div></td>
+                  <td><span class="table__product">Metal print · 12×18</span></td>
+                  <td><span class="badge badge--success"><span class="badge__dot"></span>Shipped</span></td>
+                  <td><span class="table__amount">$72.00</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ACTIVITY FEED -->
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3 class="card__title">Activity feed</h3>
+              <p class="card__description">Live updates from the shop floor</p>
+            </div>
+          </div>
+          <div class="activity">
+            <div class="activity__item">
+              <div class="activity__avatar">MF</div>
+              <div class="activity__body">
+                <div class="activity__text"><strong>Maya Fernández</strong> left a 5-star review on the Layflat album. "Made me cry a little. Worth every dollar."</div>
+                <div class="activity__time">2 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity__item">
+              <div class="activity__avatar activity__avatar--system">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="activity__body">
+                <div class="activity__text">Order <strong>#SPS-29841</strong> shipped via USPS Priority. Tracking emailed.</div>
+                <div class="activity__time">14 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity__item">
+              <div class="activity__avatar">JK</div>
+              <div class="activity__body">
+                <div class="activity__text"><strong>Jordan Kim</strong> placed a new order — Tiny book pair, "Grandma's 90th."</div>
+                <div class="activity__time">38 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity__item">
+              <div class="activity__avatar activity__avatar--system">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="activity__body">
+                <div class="activity__text">Inventory low: <strong>Brass print set frames</strong> at 18 units. Reorder threshold is 25.</div>
+                <div class="activity__time">1 hour ago</div>
+              </div>
+            </div>
+            <div class="activity__item">
+              <div class="activity__avatar">EW</div>
+              <div class="activity__body">
+                <div class="activity__text"><strong>Eliza Walsh</strong> requested a refund on order #SPS-29837. Reason: wrong size.</div>
+                <div class="activity__time">2 hours ago</div>
+              </div>
+            </div>
+            <div class="activity__item">
+              <div class="activity__avatar activity__avatar--system">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              </div>
+              <div class="activity__body">
+                <div class="activity__text">Daily revenue passed yesterday's total at <strong>2:14 PM</strong> — strongest Monday this quarter.</div>
+                <div class="activity__time">3 hours ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ────────────────────────────────────────────────
+           COMPONENT SHOWCASE — buttons, badges, inputs, etc.
+           ──────────────────────────────────────────────── -->
+      <div class="card">
+        <div class="card__header">
+          <div>
+            <h3 class="card__title">Component library · v4 brand</h3>
+            <p class="card__description">A few common shadcn primitives themed in the SPS two-voice system. Same patterns translate 1:1 to a real shadcn project.</p>
+          </div>
+        </div>
+
+        <div class="showcase">
+
+          <!-- LEFT COLUMN -->
+          <div class="showcase__group">
+            <div>
+              <div class="showcase__label">Buttons</div>
+              <div class="showcase__row">
+                <button class="btn btn--primary">Primary</button>
+                <button class="btn btn--secondary">Secondary</button>
+                <button class="btn btn--ghost">Ghost</button>
+                <button class="btn btn--destructive">Destructive</button>
+                <button class="btn btn--link">Link</button>
+              </div>
+              <div class="showcase__row" style="margin-top:8px;">
+                <button class="btn btn--primary btn--sm">Small</button>
+                <button class="btn btn--primary">Default</button>
+                <button class="btn btn--primary btn--lg">Large</button>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Badges</div>
+              <div class="showcase__row">
+                <span class="badge badge--default">Default</span>
+                <span class="badge badge--secondary">Secondary</span>
+                <span class="badge badge--outline">Outline</span>
+                <span class="badge badge--success"><span class="badge__dot"></span>Shipped</span>
+                <span class="badge badge--warning"><span class="badge__dot"></span>Pending</span>
+                <span class="badge badge--destructive"><span class="badge__dot"></span>Refund</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Form inputs</div>
+              <div style="display:grid;gap:14px;max-width:340px;">
+                <div>
+                  <label class="input-label" for="customer-name">Customer name</label>
+                  <input class="input" id="customer-name" type="text" value="Maya Fernández">
+                  <p class="input-help">As it appears on the shipping label.</p>
+                </div>
+                <div>
+                  <label class="input-label" for="customer-email">Email</label>
+                  <input class="input" id="customer-email" type="email" placeholder="maya@example.com">
+                </div>
+                <div>
+                  <label class="input-label" for="order-notes">Order notes</label>
+                  <textarea class="input" id="order-notes" rows="3" placeholder="Anything we should know about this order?"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Progress</div>
+              <div style="display:grid;gap:14px;max-width:340px;">
+                <div class="progress">
+                  <div class="progress__row">
+                    <span class="progress__label">Layflat covers in stock</span>
+                    <span class="progress__value">68 / 100</span>
+                  </div>
+                  <div class="progress__bar"><div class="progress__fill" style="width:68%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__row">
+                    <span class="progress__label">Brass frame stock</span>
+                    <span class="progress__value">18 / 100</span>
+                  </div>
+                  <div class="progress__bar"><div class="progress__fill progress__fill--accent" style="width:18%"></div></div>
+                </div>
+                <div class="progress">
+                  <div class="progress__row">
+                    <span class="progress__label">Daily revenue goal</span>
+                    <span class="progress__value">$2,418 / $2,000</span>
+                  </div>
+                  <div class="progress__bar"><div class="progress__fill progress__fill--cedar" style="width:100%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="showcase__group">
+
+            <div>
+              <div class="showcase__label">Switches & toggles</div>
+              <div style="background:var(--cloud);border:1px solid var(--border);border-radius:var(--radius);padding:0 16px;max-width:380px;">
+                <div class="switch-row">
+                  <div class="switch-row__info">
+                    <div class="switch-row__title">Auto-print packing slips</div>
+                    <div class="switch-row__desc">when an order moves to "in production"</div>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="switch__slider"></span></label>
+                </div>
+                <div class="switch-row">
+                  <div class="switch-row__info">
+                    <div class="switch-row__title">Customer email on ship</div>
+                    <div class="switch-row__desc">notify when tracking is generated</div>
+                  </div>
+                  <label class="switch"><input type="checkbox" checked><span class="switch__slider"></span></label>
+                </div>
+                <div class="switch-row">
+                  <div class="switch-row__info">
+                    <div class="switch-row__title">Daily revenue digest</div>
+                    <div class="switch-row__desc">9pm summary email to founders</div>
+                  </div>
+                  <label class="switch"><input type="checkbox"><span class="switch__slider"></span></label>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Alerts</div>
+              <div style="display:grid;gap:12px;">
+                <div class="alert alert--info">
+                  <div class="alert__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  </div>
+                  <div>
+                    <div class="alert__title">Sales are up 12.4% this month</div>
+                    <div class="alert__message">Strongest March in five years. Most of the lift is coming from <em>Tiny book pairs</em> and the new gallery frame size.</div>
+                  </div>
+                </div>
+                <div class="alert alert--warning">
+                  <div class="alert__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  </div>
+                  <div>
+                    <div class="alert__title">Brass frame inventory low</div>
+                    <div class="alert__message">18 units left, threshold is 25. Reorder lead time is 9 days — start the PO before <em>Friday</em>.</div>
+                  </div>
+                </div>
+                <div class="alert alert--error">
+                  <div class="alert__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </div>
+                  <div>
+                    <div class="alert__title">Three refund requests need a decision</div>
+                    <div class="alert__message">All three are wrong-size complaints on the new daily calendar. Worth checking the size chart copy.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Dropdown menu (open state)</div>
+              <div class="dropdown">
+                <div class="dropdown__menu">
+                  <div class="dropdown__label">Order #SPS-29841</div>
+                  <div class="dropdown__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    Edit order
+                    <span class="dropdown__shortcut">⌘E</span>
+                  </div>
+                  <div class="dropdown__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    Reprint label
+                  </div>
+                  <div class="dropdown__item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    Message customer
+                  </div>
+                  <div class="dropdown__sep"></div>
+                  <div class="dropdown__item dropdown__item--destructive">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    Cancel order
+                    <span class="dropdown__shortcut">⌘⌫</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="showcase__label">Dialog (open state)</div>
+              <div class="dialog-shell">
+                <div class="dialog-shell__title">Issue refund?</div>
+                <p class="dialog-shell__desc">
+                  This will refund <strong>$32.00</strong> to Eliza Walsh for order #SPS-29837. The customer will be emailed automatically and the inventory unit will be released back to stock.
+                </p>
+                <div class="dialog-shell__actions">
+                  <button class="btn btn--ghost btn--sm">Cancel</button>
+                  <button class="btn btn--destructive btn--sm">Confirm refund</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

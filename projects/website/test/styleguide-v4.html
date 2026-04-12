@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Print Studio · Brand Style Guide v4</title>
+<meta name="description" content="The canonical Social Print Studio brand style guide v4. A two-voice typographic system (Bricolage Grotesque + Beatrice) over a warm sage and cream palette, with shadcn-style component patterns and direct-response ecommerce principles.">
+
+<link rel="icon" type="image/png" href="https://socialprintstudio.com/cdn/shop/files/android-chrome-192x192.png">
+
+<!-- Bricolage Grotesque from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&display=swap" rel="stylesheet">
+
+<style>
+/* ─────────────────────────────────────────────────────────
+   BEATRICE — S3 (canonical) with local relative path fallback
+   S3 has no CORS today; local fallback ensures the file works
+   from disk. For production, self-host fonts to a CDN with CORS.
+   ───────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605293941-2nrb2w-Beatrice-Light.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Light.woff2') format('woff2');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605295340-xop3mj-Beatrice-Regular.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296011-hpzuh8-Beatrice-RegularItalic.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-RegularItalic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296631-zqku46-Beatrice-Medium.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Beatrice';
+  src: url('https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605297264-a1imlg-Beatrice-Semibold.woff2') format('woff2'),
+       url('beatrice-fonts/Beatrice-Semibold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS — see styleguide-v4.md §3 for the canonical reference.
+   This block maps brand atoms to shadcn variable names so it can
+   drop directly into a real shadcn project's globals.css.
+   ───────────────────────────────────────────────────────── */
+:root {
+  /* Brand atoms */
+  --silken-pine: #465E59;
+  --cedar:       #719483;
+  --moss:        #587C6B;
+  --lichen:      #AABCA7;
+  --sage-mist:   #DFE5DC;
+  --terracotta:  #CA6253;
+  --dusty-coral: #CC9B83;
+  --warm-peach:  #DFAD94;
+  --carbon:      #333333;
+  --carbon-75:   rgba(51,51,51,0.75);
+  --carbon-50:   rgba(51,51,51,0.5);
+  --carbon-30:   rgba(51,51,51,0.3);
+  --alabaster:   #F3F1F0;
+  --cloud:       #F9F8F7;
+  --cream:       #FAF6EF;
+  --paper:       #FFFFFF;
+  --hairline:    #E4E2DF;
+
+  /* shadcn semantic tokens */
+  --background:           var(--cream);
+  --foreground:           var(--carbon);
+  --card:                 var(--paper);
+  --card-foreground:      var(--carbon);
+  --popover:              var(--paper);
+  --popover-foreground:   var(--carbon);
+  --primary:              var(--silken-pine);
+  --primary-foreground:   var(--alabaster);
+  --secondary:            var(--sage-mist);
+  --secondary-foreground: var(--silken-pine);
+  --muted:                var(--cloud);
+  --muted-foreground:     var(--carbon-75);
+  --accent:               var(--cedar);
+  --accent-foreground:    var(--alabaster);
+  --destructive:          var(--terracotta);
+  --destructive-foreground: var(--alabaster);
+  --border:               var(--hairline);
+  --input:                var(--hairline);
+  --ring:                 var(--cedar);
+  --radius:               12px;
+
+  /* Fonts */
+  --font-bricolage: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-beatrice:  'Beatrice', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+
+  /* Bricolage variable shortcuts */
+  --br-display:       "opsz" 96, "wdth" 100, "wght" 500;
+  --br-display-bold:  "opsz" 96, "wdth" 105, "wght" 700;
+  --br-h1:            "opsz" 48, "wdth" 100, "wght" 600;
+  --br-h2:            "opsz" 32, "wdth" 100, "wght" 600;
+  --br-h3:            "opsz" 24, "wdth" 100, "wght" 600;
+  --br-h4:            "opsz" 18, "wdth" 100, "wght" 600;
+  --br-stat:          "opsz" 48, "wdth" 95,  "wght" 600;
+  --br-label:         "opsz" 12, "wdth" 100, "wght" 600;
+
+  /* Spacing — 4px grid */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   RESET + BASE
+   ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-beatrice);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "kern", "liga", "tnum";
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input, textarea, select { font: inherit; color: inherit; }
+
+/* ─────────────────────────────────────────────────────────
+   META BAR
+   ───────────────────────────────────────────────────────── */
+.meta-bar {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: 6px var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.meta-bar__left { opacity: 0.75; }
+.meta-bar__right { display: flex; gap: var(--s-3); }
+.meta-bar__swatch { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; }
+.meta-bar__swatch::before { content: ''; width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.meta-bar__swatch--bricolage::before { background: var(--lichen); }
+.meta-bar__swatch--beatrice::before  { background: var(--alabaster); }
+
+/* ─────────────────────────────────────────────────────────
+   HEADER (the styleguide's own header)
+   ───────────────────────────────────────────────────────── */
+.sg-header {
+  background: var(--silken-pine);
+  color: var(--alabaster);
+  padding: var(--s-16) var(--s-8) var(--s-12);
+  position: relative;
+  overflow: hidden;
+}
+.sg-header::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; left: 50%;
+  width: 1200px; height: 1200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(170,188,167,0.18), transparent 60%);
+  transform: translateX(-50%);
+}
+.sg-header__inner { max-width: 1320px; margin: 0 auto; position: relative; z-index: 1; }
+.sg-header__brand-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  margin-bottom: var(--s-12);
+}
+.sg-header__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--alabaster);
+  padding: 6px;
+  display: grid;
+  place-items: center;
+}
+.sg-header__logo img { width: 100%; height: 100%; object-fit: contain; }
+.sg-header__brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.sg-header__brand-name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 22px;
+  color: var(--alabaster);
+  letter-spacing: -0.01em;
+}
+.sg-header__brand-sub {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--lichen);
+  margin-top: 4px;
+}
+.sg-header__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 100, "wght" 500;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 0.98;
+  color: var(--alabaster);
+  letter-spacing: -0.025em;
+  max-width: 16ch;
+  margin-bottom: var(--s-6);
+}
+.sg-header__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+  letter-spacing: 0;
+}
+.sg-header__lede {
+  font-family: var(--font-beatrice);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--lichen);
+  max-width: 60ch;
+  margin-bottom: var(--s-8);
+}
+.sg-header__lede em { color: var(--alabaster); font-style: italic; }
+.sg-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-12);
+  padding-top: var(--s-6);
+  border-top: 1px solid rgba(170,188,167,0.25);
+}
+.sg-header__meta-item { display: flex; flex-direction: column; gap: 2px; }
+.sg-header__meta-label {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lichen);
+}
+.sg-header__meta-value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 18px;
+  color: var(--alabaster);
+  letter-spacing: -0.005em;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TABLE OF CONTENTS — sticky
+   ───────────────────────────────────────────────────────── */
+.toc {
+  background: var(--paper);
+  border-bottom: 1px solid var(--border);
+  padding: var(--s-3) var(--s-8);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,0.95);
+}
+.toc__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.toc__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+}
+.toc__list {
+  display: flex;
+  gap: var(--s-1);
+  flex-wrap: wrap;
+  list-style: none;
+}
+.toc__item {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--carbon);
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: background 150ms ease;
+}
+.toc__item:hover { background: var(--cloud); }
+.toc__num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--carbon-75);
+  margin-right: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SECTION PRIMITIVES
+   ───────────────────────────────────────────────────────── */
+.section { padding: var(--s-20) var(--s-8); }
+.section--cream { background: var(--cream); }
+.section--cloud { background: var(--cloud); }
+.section--paper { background: var(--paper); }
+.section--sage  { background: var(--sage-mist); }
+.section--dark  { background: var(--silken-pine); color: var(--alabaster); }
+.container { max-width: 1320px; margin: 0 auto; }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--s-6);
+  padding-bottom: var(--s-6);
+  margin-bottom: var(--s-10);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.section--dark .section-header { border-bottom-color: rgba(170,188,167,0.25); }
+.section-header__left { flex: 1; min-width: 280px; }
+.section-header__num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-2);
+}
+.section--dark .section-header__num { color: var(--lichen); }
+.section-header__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h1);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+  color: var(--silken-pine);
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+}
+.section--dark .section-header__title { color: var(--alabaster); }
+.section-header__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+  letter-spacing: 0;
+}
+.section--dark .section-header__title em { color: var(--lichen); }
+.section-header__sub {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  color: var(--carbon-75);
+  max-width: 56ch;
+  margin-top: var(--s-3);
+}
+.section--dark .section-header__sub { color: var(--lichen); }
+
+.eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--silken-pine);
+  display: inline-block;
+}
+.section--dark .eyebrow { color: var(--lichen); }
+
+/* ─────────────────────────────────────────────────────────
+   §1 · TYPOGRAPHY SPECIMEN
+   ───────────────────────────────────────────────────────── */
+.specimen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-12);
+}
+@media (max-width: 900px) { .specimen { grid-template-columns: 1fr; } }
+.specimen__col { display: flex; flex-direction: column; gap: var(--s-5); }
+.specimen__col h3 {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--carbon-75);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+}
+.specimen__big {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 96, "wdth" 100, "wght" 600;
+  font-size: clamp(120px, 18vw, 200px);
+  line-height: 0.85;
+  color: var(--silken-pine);
+  letter-spacing: -0.04em;
+}
+.specimen__big--italic {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(120px, 18vw, 200px);
+  line-height: 0.85;
+  color: var(--cedar);
+  letter-spacing: -0.02em;
+  margin-top: -0.4em;
+}
+.specimen__sample {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 64, "wdth" 100, "wght" 500;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--silken-pine);
+  letter-spacing: -0.015em;
+  max-width: 14ch;
+}
+.specimen__sample em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+  letter-spacing: 0;
+}
+.specimen__caption {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+}
+
+.scale-list {
+  display: grid;
+  gap: var(--s-3);
+  list-style: none;
+}
+.scale-list li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  align-items: baseline;
+  gap: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--border);
+}
+.scale-list li:last-child { border-bottom: none; }
+.scale-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--carbon-75);
+}
+.scale-sample-display {
+  font-family: var(--font-bricolage);
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+}
+.scale-sample-body {
+  font-family: var(--font-beatrice);
+  color: var(--carbon);
+}
+
+.weights-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+  padding-top: var(--s-6);
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 900px) { .weights-row { grid-template-columns: repeat(2, 1fr); } }
+.weight {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.weight__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--carbon-75);
+}
+.weight__sample {
+  font-family: var(--font-beatrice);
+  font-size: 28px;
+  color: var(--silken-pine);
+  line-height: 1;
+}
+
+.italic-pattern {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-6);
+  margin-top: var(--s-6);
+}
+.italic-pattern__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-3);
+  display: block;
+}
+.italic-pattern__samples { display: grid; gap: var(--s-3); }
+.italic-pattern__sample {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h2);
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+}
+.italic-pattern__sample em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+  letter-spacing: 0;
+}
+.italic-pattern__note {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--carbon-75);
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--border);
+}
+
+/* ─────────────────────────────────────────────────────────
+   §2 · COLOR PALETTE
+   ───────────────────────────────────────────────────────── */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.swatch {
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+.swatch__role {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: var(--s-2);
+  opacity: 0.7;
+}
+.swatch__name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.swatch__hex {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: var(--s-1);
+  opacity: 0.8;
+}
+.swatch__token {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  margin-top: 2px;
+  opacity: 0.6;
+}
+.swatch--silken    { grid-column: span 6; background: var(--silken-pine); color: var(--alabaster); }
+.swatch--cedar     { grid-column: span 3; background: var(--cedar);       color: var(--alabaster); }
+.swatch--moss      { grid-column: span 3; background: var(--moss);        color: var(--alabaster); }
+.swatch--lichen    { grid-column: span 4; background: var(--lichen);      color: var(--silken-pine); }
+.swatch--sage      { grid-column: span 4; background: var(--sage-mist);   color: var(--silken-pine); }
+.swatch--cream     { grid-column: span 4; background: var(--cream);       color: var(--carbon);     }
+.swatch--terracotta{ grid-column: span 4; background: var(--terracotta);  color: var(--alabaster);  }
+.swatch--dusty     { grid-column: span 4; background: var(--dusty-coral); color: var(--alabaster);  }
+.swatch--peach     { grid-column: span 4; background: var(--warm-peach);  color: var(--alabaster);  }
+.swatch--carbon    { grid-column: span 3; background: var(--carbon);      color: var(--alabaster);  }
+.swatch--alabaster { grid-column: span 3; background: var(--alabaster);   color: var(--carbon);     border-right: 1px solid var(--hairline); }
+.swatch--cloud     { grid-column: span 3; background: var(--cloud);       color: var(--carbon);     border-right: 1px solid var(--hairline); }
+.swatch--paper     { grid-column: span 3; background: var(--paper);       color: var(--carbon);     border-right: 1px solid var(--hairline); }
+@media (max-width: 900px) {
+  .palette { grid-template-columns: repeat(2, 1fr); }
+  .swatch  { grid-column: span 1 !important; min-height: 140px; }
+}
+
+/* shadcn token mapping table */
+.token-table {
+  margin-top: var(--s-10);
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.token-table table { width: 100%; border-collapse: collapse; }
+.token-table thead { background: var(--cloud); border-bottom: 1px solid var(--border); }
+.token-table th, .token-table td {
+  padding: 12px 20px;
+  text-align: left;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+}
+.token-table th {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+}
+.token-table td { border-bottom: 1px solid var(--border); }
+.token-table tr:last-child td { border-bottom: none; }
+.token-table .mono { font-family: var(--font-mono); font-size: 11px; color: var(--silken-pine); }
+.token-table .swatch-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 6px;
+  border: 1px solid var(--border);
+}
+
+/* ─────────────────────────────────────────────────────────
+   §3 · BUTTONS
+   ───────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 13px 30px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+  white-space: nowrap;
+}
+.btn svg { width: 14px; height: 14px; }
+.btn--primary { background: var(--silken-pine); color: var(--alabaster); }
+.btn--primary:hover { background: var(--cedar); }
+.btn--secondary { background: var(--sage-mist); color: var(--silken-pine); }
+.btn--secondary:hover { background: #d2dccf; }
+.btn--ghost { background: transparent; color: var(--carbon); border-color: var(--border); }
+.btn--ghost:hover { border-color: var(--carbon); }
+.btn--ghost-light { background: transparent; color: var(--alabaster); border-color: var(--lichen); }
+.btn--ghost-light:hover { background: rgba(243,241,240,0.1); }
+.btn--accent { background: var(--terracotta); color: var(--alabaster); }
+.btn--accent:hover { background: #b3554a; }
+.btn--cream { background: var(--alabaster); color: var(--silken-pine); }
+.btn--cream:hover { background: var(--cream); }
+.btn--link { background: transparent; color: var(--silken-pine); text-transform: none; letter-spacing: 0; padding: 4px 8px; font-size: 13px; }
+.btn--sm { padding: 8px 18px; font-size: 11px; }
+.btn--lg { padding: 16px 36px; font-size: 13px; }
+.btn--xl { padding: 18px 42px; font-size: 14px; min-width: 200px; }
+
+.demo {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-6);
+}
+.demo__label {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+  margin-bottom: var(--s-4);
+  display: block;
+  font-weight: 600;
+}
+.demo__row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+.demo__stack { display: flex; flex-direction: column; gap: var(--s-3); }
+.demo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+@media (max-width: 800px) { .demo__grid { grid-template-columns: 1fr; } }
+.demo__group { display: grid; gap: var(--s-3); }
+
+/* ─────────────────────────────────────────────────────────
+   §4 · BADGES
+   ───────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.badge--default     { background: var(--silken-pine); color: var(--alabaster); }
+.badge--secondary   { background: var(--sage-mist);   color: var(--silken-pine); }
+.badge--outline     { background: transparent; color: var(--carbon); border: 1px solid var(--border); }
+.badge--accent      { background: var(--terracotta);  color: var(--alabaster); }
+.badge--success     { background: rgba(113,148,131,0.18); color: var(--moss); }
+.badge--warning     { background: rgba(204,155,131,0.2);  color: #8a5a3f; }
+.badge--cedar       { background: rgba(113,148,131,0.18); color: var(--moss); }
+.badge__dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+/* ─────────────────────────────────────────────────────────
+   §5 · FORMS
+   ───────────────────────────────────────────────────────── */
+.input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(113,148,131,0.15);
+}
+.input-label {
+  display: block;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon);
+  margin-bottom: 6px;
+}
+.input-help {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--carbon-75);
+  margin-top: 4px;
+}
+
+/* Switch */
+.switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch__slider { position: absolute; inset: 0; background: var(--carbon-30); border-radius: 999px; transition: background 180ms ease; }
+.switch__slider::before { content: ''; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; background: var(--paper); border-radius: 50%; transition: transform 180ms ease; }
+.switch input:checked + .switch__slider { background: var(--silken-pine); }
+.switch input:checked + .switch__slider::before { transform: translateX(16px); }
+
+/* ─────────────────────────────────────────────────────────
+   §6 · CARDS + STAT CARDS
+   ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.card__header {
+  padding: var(--s-5) var(--s-5) var(--s-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.card__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 16px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+  margin-bottom: 2px;
+}
+.card__description {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+}
+.card__body { padding: var(--s-3) var(--s-5) var(--s-5); }
+
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.stat__header { display: flex; justify-content: space-between; align-items: center; }
+.stat__label {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+}
+.stat__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  display: grid;
+  place-items: center;
+  color: var(--silken-pine);
+}
+.stat__icon svg { width: 14px; height: 14px; }
+.stat__value {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-stat);
+  font-size: 36px;
+  color: var(--silken-pine);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: var(--s-2);
+}
+.stat__delta {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+}
+.stat__delta-up { color: var(--cedar); font-weight: 500; }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 1100px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .stat-grid { grid-template-columns: 1fr; } }
+
+/* ─────────────────────────────────────────────────────────
+   §7 · PRODUCT CARD (the brand-defining pattern)
+   ───────────────────────────────────────────────────────── */
+.product {
+  background: var(--paper);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+}
+.product__media {
+  aspect-ratio: 1 / 1;
+  background: var(--cloud);
+  position: relative;
+  overflow: hidden;
+}
+.product__media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 600ms ease;
+}
+.product:hover .product__media img { transform: scale(1.04); }
+.product__badge-row {
+  position: absolute; top: var(--s-3); left: var(--s-3);
+  display: flex; gap: 4px; z-index: 1;
+}
+.product__heart {
+  position: absolute; top: var(--s-3); right: var(--s-3);
+  width: 32px; height: 32px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  display: grid; place-items: center;
+  color: var(--carbon-75);
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+.product__heart:hover { color: var(--terracotta); }
+.product__heart svg { width: 14px; height: 14px; }
+.product__body {
+  padding: var(--s-4) var(--s-5) var(--s-5);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.product__category {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+}
+.product__name {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--carbon);
+  line-height: 1.2;
+}
+.product__rating { display: flex; align-items: center; gap: 5px; margin-top: 2px; }
+.product__rating-stars { display: flex; gap: 1px; color: var(--cedar); font-size: 11px; }
+.product__rating-count { font-family: var(--font-beatrice); font-size: 11px; color: var(--carbon-75); }
+.product__price-row { display: flex; align-items: baseline; gap: var(--s-2); margin-top: var(--s-2); }
+.product__price {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 24, "wdth" 100, "wght" 600;
+  font-size: 20px;
+  color: var(--silken-pine);
+  letter-spacing: -0.01em;
+}
+.product__price-from {
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--carbon-75);
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 1000px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .product-grid { grid-template-columns: 1fr; } }
+
+.callout {
+  background: var(--cream);
+  border-left: 3px solid var(--cedar);
+  padding: var(--s-4) var(--s-5);
+  border-radius: 0 8px 8px 0;
+  margin-top: var(--s-6);
+}
+.callout strong {
+  display: block;
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--silken-pine);
+  margin-bottom: 4px;
+}
+.callout p {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--carbon);
+}
+.callout p em { color: var(--silken-pine); font-style: italic; }
+
+/* ─────────────────────────────────────────────────────────
+   §8 · DR landing page sample
+   ───────────────────────────────────────────────────────── */
+.dr-sample {
+  background: var(--silken-pine);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 800px) { .dr-sample { grid-template-columns: 1fr; } }
+.dr-sample__visual {
+  aspect-ratio: 5 / 6;
+  background: var(--sage-mist);
+  overflow: hidden;
+}
+.dr-sample__visual img { width: 100%; height: 100%; object-fit: cover; }
+.dr-sample__body {
+  padding: var(--s-12) var(--s-10);
+  color: var(--alabaster);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dr-sample__eyebrow {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--lichen);
+  display: block;
+  margin-bottom: var(--s-4);
+}
+.dr-sample__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 64, "wdth" 100, "wght" 500;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  color: var(--alabaster);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s-4);
+  max-width: 14ch;
+}
+.dr-sample__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--lichen);
+}
+.dr-sample__body-text {
+  font-family: var(--font-beatrice);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--lichen);
+  max-width: 44ch;
+  margin-bottom: var(--s-6);
+}
+.dr-sample__body-text em { color: var(--alabaster); font-style: italic; }
+.dr-sample__cta { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-bottom: var(--s-5); }
+.dr-sample__steps {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding-top: var(--s-5);
+  border-top: 1px solid rgba(170,188,167,0.25);
+}
+.dr-sample__step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-beatrice);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--lichen);
+}
+.dr-sample__step-num {
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--lichen);
+  color: var(--silken-pine);
+  display: grid; place-items: center;
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 11, "wdth" 100, "wght" 700;
+  font-size: 9px;
+}
+.dr-sample__step-arrow { color: rgba(170,188,167,0.5); font-size: 10px; }
+
+.dr-rules {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-10);
+}
+@media (max-width: 900px) { .dr-rules { grid-template-columns: 1fr; } }
+.dr-rule {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+.dr-rule__num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cedar);
+  display: block;
+  margin-bottom: 6px;
+}
+.dr-rule__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 18px;
+  color: var(--silken-pine);
+  letter-spacing: -0.005em;
+  margin-bottom: var(--s-2);
+  line-height: 1.2;
+}
+.dr-rule__title em {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--cedar);
+}
+.dr-rule__body {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--carbon);
+}
+.dr-rule__body em { color: var(--silken-pine); font-style: italic; }
+
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+@media (max-width: 800px) { .do-dont { grid-template-columns: 1fr; } }
+.do-dont__col {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-5);
+}
+.do-dont__col h4 {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-label);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: var(--s-3);
+}
+.do-dont__col--do h4 { color: var(--cedar); }
+.do-dont__col--dont h4 { color: var(--terracotta); }
+.do-dont__list { list-style: none; display: grid; gap: var(--s-2); }
+.do-dont__list li {
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--carbon);
+  padding-left: var(--s-3);
+  border-left: 2px solid var(--cedar);
+}
+.do-dont__col--dont .do-dont__list li {
+  border-left-color: var(--terracotta);
+  color: var(--carbon-75);
+  text-decoration: line-through;
+  text-decoration-color: rgba(202,98,83,0.4);
+  text-decoration-thickness: 1px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   §9 · Component patterns showcase
+   ───────────────────────────────────────────────────────── */
+.alert {
+  padding: var(--s-4);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--paper);
+  display: flex;
+  gap: var(--s-3);
+}
+.alert__icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: var(--sage-mist);
+  color: var(--silken-pine);
+  display: grid; place-items: center;
+  flex: 0 0 32px;
+}
+.alert__icon svg { width: 16px; height: 16px; }
+.alert__title {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 13px;
+  color: var(--carbon);
+  letter-spacing: -0.003em;
+  margin-bottom: 2px;
+}
+.alert__message {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  color: var(--carbon-75);
+  line-height: 1.5;
+}
+.alert__message em { color: var(--silken-pine); font-style: italic; }
+
+/* Tabs */
+.tabs-list {
+  display: flex; gap: 4px;
+  background: var(--paper);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  width: fit-content;
+}
+.tab {
+  font-family: var(--font-beatrice);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--carbon-75);
+  padding: 9px 18px;
+  border-radius: 8px;
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tab--active { background: var(--silken-pine); color: var(--alabaster); }
+.tab__count {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 11, "wdth" 100, "wght" 600;
+  font-size: 10px;
+  background: rgba(255,255,255,0.2);
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   §10 · shadcn integration block
+   ───────────────────────────────────────────────────────── */
+.shadcn-block {
+  background: var(--carbon);
+  color: var(--alabaster);
+  border-radius: var(--radius);
+  padding: var(--s-8);
+  margin-top: var(--s-6);
+}
+.shadcn-block h3 {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h3);
+  font-size: 20px;
+  color: var(--alabaster);
+  margin-bottom: var(--s-4);
+  letter-spacing: -0.01em;
+}
+.shadcn-block h3 em { font-family: var(--font-beatrice); font-style: italic; font-weight: 400; color: var(--lichen); }
+.shadcn-block p {
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--lichen);
+  margin-bottom: var(--s-3);
+  max-width: 60ch;
+}
+.shadcn-block p em { color: var(--alabaster); font-style: italic; }
+.shadcn-block code {
+  display: block;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(243,241,240,0.1);
+  padding: var(--s-4);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--lichen);
+  overflow-x: auto;
+  margin: var(--s-3) 0;
+}
+.shadcn-block code em { color: var(--alabaster); font-style: normal; }
+.shadcn-block ol {
+  padding-left: var(--s-5);
+  font-family: var(--font-beatrice);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--lichen);
+}
+.shadcn-block ol li { margin-bottom: 6px; }
+.shadcn-block ol li strong { color: var(--alabaster); font-weight: 500; }
+
+/* ─────────────────────────────────────────────────────────
+   §11 · Asset reference grid
+   ───────────────────────────────────────────────────────── */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+  margin-top: var(--s-6);
+}
+@media (max-width: 1000px) { .asset-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .asset-grid { grid-template-columns: 1fr; } }
+.asset-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.asset-card__media {
+  aspect-ratio: 1 / 1;
+  background: var(--cloud);
+  overflow: hidden;
+}
+.asset-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.asset-card__body { padding: var(--s-3) var(--s-4); }
+.asset-card__name {
+  font-family: var(--font-bricolage);
+  font-variation-settings: var(--br-h4);
+  font-size: 13px;
+  color: var(--carbon);
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+}
+.asset-card__url {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--carbon-75);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.font-asset {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s-4);
+}
+.font-asset__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-3) 0;
+  border-bottom: 1px solid var(--border);
+}
+.font-asset__row:last-child { border-bottom: none; }
+.font-asset__name {
+  font-family: var(--font-beatrice);
+  font-size: 22px;
+  color: var(--carbon);
+  flex: 0 0 auto;
+}
+.font-asset__weight {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--carbon-75);
+  text-transform: uppercase;
+  flex: 0 0 80px;
+}
+.font-asset__url {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--carbon-75);
+  text-align: right;
+  word-break: break-all;
+  flex: 1;
+  line-height: 1.4;
+}
+
+/* Voice rules table */
+.voice-table {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: var(--s-6);
+}
+.voice-table table { width: 100%; border-collapse: collapse; }
+.voice-table thead { background: var(--cloud); }
+.voice-table th {
+  font-family: var(--font-beatrice);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--carbon-75);
+  padding: 12px 20px;
+  text-align: left;
+}
+.voice-table th:first-child { color: var(--terracotta); }
+.voice-table th:last-child { color: var(--cedar); }
+.voice-table td {
+  padding: 14px 20px;
+  font-family: var(--font-beatrice);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  color: var(--carbon);
+  vertical-align: top;
+}
+.voice-table td:first-child {
+  color: var(--carbon-75);
+  text-decoration: line-through;
+  text-decoration-color: rgba(202,98,83,0.4);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER
+   ───────────────────────────────────────────────────────── */
+.footer {
+  background: var(--carbon);
+  color: var(--alabaster);
+  padding: var(--s-12) var(--s-8) var(--s-8);
+  text-align: center;
+}
+.footer__mark {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 32, "wdth" 100, "wght" 600;
+  font-size: 26px;
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  margin-bottom: var(--s-2);
+}
+.footer__tagline {
+  font-family: var(--font-beatrice);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--lichen);
+  margin-bottom: var(--s-5);
+}
+.footer__type {
+  font-family: var(--font-bricolage);
+  font-variation-settings: "opsz" 12, "wdth" 100, "wght" 500;
+  font-size: 11px;
+  color: var(--lichen);
+}
+.footer__type em { font-family: var(--font-beatrice); font-style: italic; color: var(--cream); }
+</style>
+</head>
+<body>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-bar__left">SPS · styleguide-v4 · canonical · the brand book</div>
+  <div class="meta-bar__right">
+    <span class="meta-bar__swatch meta-bar__swatch--bricolage">Bricolage Grotesque</span>
+    <span class="meta-bar__swatch meta-bar__swatch--beatrice">Beatrice</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="sg-header">
+  <div class="sg-header__inner">
+    <div class="sg-header__brand-row">
+      <div class="sg-header__logo">
+        <img src="https://socialprintstudio.com/cdn/shop/files/android-chrome-192x192.png" alt="Social Print Studio">
+      </div>
+      <div class="sg-header__brand">
+        <div class="sg-header__brand-name">Social Print Studio</div>
+        <div class="sg-header__brand-sub">brand &amp; design system · v4</div>
+      </div>
+    </div>
+    <h1 class="sg-header__title">Photos <em>as a force</em> for good.</h1>
+    <p class="sg-header__lede">
+      The canonical brand reference for Social Print Studio. Two voices (Bricolage Grotesque and Beatrice),
+      a warm sage-and-cream palette, shadcn-style component patterns, and a direct-response sensibility for
+      the surfaces that need to <em>convert</em>. This is the source of truth — read it before you build.
+    </p>
+    <div class="sg-header__meta">
+      <div class="sg-header__meta-item">
+        <span class="sg-header__meta-label">Version</span>
+        <span class="sg-header__meta-value">4.0 · canonical</span>
+      </div>
+      <div class="sg-header__meta-item">
+        <span class="sg-header__meta-label">Last updated</span>
+        <span class="sg-header__meta-value">April 2026</span>
+      </div>
+      <div class="sg-header__meta-item">
+        <span class="sg-header__meta-label">Companion file</span>
+        <span class="sg-header__meta-value">styleguide-v4.md</span>
+      </div>
+      <div class="sg-header__meta-item">
+        <span class="sg-header__meta-label">Source URL</span>
+        <span class="sg-header__meta-value">socialprintstudio.com</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TABLE OF CONTENTS -->
+<nav class="toc">
+  <div class="toc__inner">
+    <span class="toc__label">Sections</span>
+    <ul class="toc__list">
+      <li><a class="toc__item" href="#typography"><span class="toc__num">01</span>Typography</a></li>
+      <li><a class="toc__item" href="#color"><span class="toc__num">02</span>Color</a></li>
+      <li><a class="toc__item" href="#buttons"><span class="toc__num">03</span>Buttons</a></li>
+      <li><a class="toc__item" href="#badges"><span class="toc__num">04</span>Badges</a></li>
+      <li><a class="toc__item" href="#forms"><span class="toc__num">05</span>Forms</a></li>
+      <li><a class="toc__item" href="#cards"><span class="toc__num">06</span>Cards &amp; Stats</a></li>
+      <li><a class="toc__item" href="#products"><span class="toc__num">07</span>Product cards</a></li>
+      <li><a class="toc__item" href="#dr"><span class="toc__num">08</span>Direct response</a></li>
+      <li><a class="toc__item" href="#patterns"><span class="toc__num">09</span>Patterns</a></li>
+      <li><a class="toc__item" href="#shadcn"><span class="toc__num">10</span>shadcn</a></li>
+      <li><a class="toc__item" href="#assets"><span class="toc__num">11</span>Asset URLs</a></li>
+      <li><a class="toc__item" href="#voice"><span class="toc__num">12</span>Voice</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     §1 · TYPOGRAPHY
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cream" id="typography">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">01 · Type</div>
+        <h2 class="section-header__title">Two voices, <em>strict roles</em>.</h2>
+        <p class="section-header__sub">
+          v4 is a two-voice typographic system. Bricolage Grotesque carries display work — hero
+          titles, section headers, prices, stats. Beatrice carries body, UI, and the warm
+          italic accents that used to be Orpheus. There is no third typeface.
+        </p>
+      </div>
+    </div>
+
+    <div class="specimen">
+      <div class="specimen__col">
+        <h3>Bricolage Grotesque <span style="font-family:var(--font-mono);font-size:9px;color:var(--carbon-75);">→ google fonts · variable</span></h3>
+        <div class="specimen__big">Aa</div>
+        <div class="specimen__sample">Photos you'd actually keep.</div>
+        <div class="specimen__caption">Variable axes: opsz 12–96 · wdth 75–125 · wght 200–800. One font, every size.</div>
+
+        <ul class="scale-list">
+          <li><span class="scale-label">opsz 96/600</span><span class="scale-sample-display" style="font-size:48px;line-height:1;font-variation-settings:'opsz' 96, 'wdth' 100, 'wght' 600;">Hero title</span></li>
+          <li><span class="scale-label">opsz 48/600</span><span class="scale-sample-display" style="font-size:32px;line-height:1.05;font-variation-settings:'opsz' 48, 'wdth' 100, 'wght' 600;">Section header</span></li>
+          <li><span class="scale-label">opsz 24/600</span><span class="scale-sample-display" style="font-size:18px;line-height:1.1;font-variation-settings:'opsz' 24, 'wdth' 100, 'wght' 600;">Card title</span></li>
+          <li><span class="scale-label">opsz 12/600</span><span class="scale-sample-display" style="font-size:11px;line-height:1.4;font-variation-settings:'opsz' 12, 'wdth' 100, 'wght' 600;text-transform:uppercase;letter-spacing:0.16em;">UPPERCASE LABEL</span></li>
+        </ul>
+
+        <div class="weights-row">
+          <div class="weight"><span class="weight__label">wght 300</span><span class="weight__sample" style="font-variation-settings:'wght' 300;">Aa</span></div>
+          <div class="weight"><span class="weight__label">wght 400</span><span class="weight__sample" style="font-variation-settings:'wght' 400;">Aa</span></div>
+          <div class="weight"><span class="weight__label">wght 500</span><span class="weight__sample" style="font-variation-settings:'wght' 500;">Aa</span></div>
+          <div class="weight"><span class="weight__label">wght 600</span><span class="weight__sample" style="font-variation-settings:'wght' 600;">Aa</span></div>
+          <div class="weight"><span class="weight__label">wght 700</span><span class="weight__sample" style="font-variation-settings:'wght' 700;">Aa</span></div>
+        </div>
+      </div>
+
+      <div class="specimen__col">
+        <h3>Beatrice <span style="font-family:var(--font-mono);font-size:9px;color:var(--carbon-75);">→ s3 hosted · 5 weights + italic</span></h3>
+        <div class="specimen__big" style="font-family:var(--font-beatrice);font-weight:500;color:var(--silken-pine);">Aa</div>
+        <div class="specimen__big--italic">Aa</div>
+        <div class="specimen__caption">Roman for body and labels. Italic for warmth — pull quotes, helper text, product names, italic em accents inside Bricolage headlines.</div>
+
+        <ul class="scale-list">
+          <li><span class="scale-label">17/400</span><span class="scale-sample-body" style="font-size:17px;">Hero lede paragraph (max 56ch)</span></li>
+          <li><span class="scale-label">14/400</span><span class="scale-sample-body" style="font-size:14px;">Default body copy at 14px</span></li>
+          <li><span class="scale-label">13/400</span><span class="scale-sample-body" style="font-size:13px;">Card body, list items, table cells</span></li>
+          <li><span class="scale-label">11/500</span><span class="scale-sample-body" style="font-size:11px;text-transform:uppercase;letter-spacing:0.18em;font-weight:500;">UI LABEL · UPPERCASE TRACKED</span></li>
+        </ul>
+
+        <div class="weights-row">
+          <div class="weight"><span class="weight__label">300 light</span><span class="weight__sample" style="font-weight:300;">Aa</span></div>
+          <div class="weight"><span class="weight__label">400 reg</span><span class="weight__sample" style="font-weight:400;">Aa</span></div>
+          <div class="weight"><span class="weight__label">400 italic</span><span class="weight__sample" style="font-weight:400;font-style:italic;">Aa</span></div>
+          <div class="weight"><span class="weight__label">500 med</span><span class="weight__sample" style="font-weight:500;">Aa</span></div>
+          <div class="weight"><span class="weight__label">600 semi</span><span class="weight__sample" style="font-weight:600;">Aa</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="italic-pattern">
+      <span class="italic-pattern__label">The signature pattern · italic em accents inside Bricolage headlines</span>
+      <div class="italic-pattern__samples">
+        <p class="italic-pattern__sample">Photos <em>as a force</em> for good.</p>
+        <p class="italic-pattern__sample">Made by photographers, <em>for photographers</em>.</p>
+        <p class="italic-pattern__sample">Eight ways to keep <em>a photograph</em>.</p>
+        <p class="italic-pattern__sample">Fifteen years of <em>kind letters</em>.</p>
+      </div>
+      <p class="italic-pattern__note">
+        Bricolage carries the straight text. Beatrice italic carries the warm phrase. This pattern
+        should appear on every section header throughout SPS surfaces — it's the v4 signature move.
+        Implement with <code style="font-family:var(--font-mono);font-size:11px;background:var(--cloud);padding:2px 6px;border-radius:3px;color:var(--silken-pine);">&lt;em&gt;</code> wrapping the warm phrase, and CSS that swaps the em to Beatrice italic.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §2 · COLOR
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--paper" id="color">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">02 · Color</div>
+        <h2 class="section-header__title">Greens lead, <em>corals warm</em>.</h2>
+        <p class="section-header__sub">
+          Three families: greens lead, corals counterweight, warm neutrals make the room.
+          Every color should look like it could appear in a Pacific Northwest forest at golden
+          hour. No synthetic blues, no purples, no neons. Token names below map directly into
+          shadcn's CSS variable system.
+        </p>
+      </div>
+    </div>
+
+    <div class="palette">
+      <div class="swatch swatch--silken">
+        <div>
+          <div class="swatch__role">Primary · Hero · Headers</div>
+          <div class="swatch__name">Silken Pine</div>
+        </div>
+        <div>
+          <div class="swatch__hex">#465E59</div>
+          <div class="swatch__token">--silken-pine · --primary</div>
+        </div>
+      </div>
+      <div class="swatch swatch--cedar">
+        <div><div class="swatch__role">Hover · Success</div><div class="swatch__name">Cedar</div></div>
+        <div><div class="swatch__hex">#719483</div><div class="swatch__token">--cedar · --accent</div></div>
+      </div>
+      <div class="swatch swatch--moss">
+        <div><div class="swatch__role">Muted green</div><div class="swatch__name">Moss</div></div>
+        <div><div class="swatch__hex">#587C6B</div><div class="swatch__token">--moss</div></div>
+      </div>
+      <div class="swatch swatch--lichen">
+        <div><div class="swatch__role">Type on dark · Dividers</div><div class="swatch__name">Lichen</div></div>
+        <div><div class="swatch__hex">#AABCA7</div><div class="swatch__token">--lichen</div></div>
+      </div>
+      <div class="swatch swatch--sage">
+        <div><div class="swatch__role">Section bg · Icon tile</div><div class="swatch__name">Sage Mist</div></div>
+        <div><div class="swatch__hex">#DFE5DC</div><div class="swatch__token">--sage-mist · --secondary</div></div>
+      </div>
+      <div class="swatch swatch--cream">
+        <div><div class="swatch__role">Page background · Default</div><div class="swatch__name">Cream</div></div>
+        <div><div class="swatch__hex">#FAF6EF</div><div class="swatch__token">--cream · --background</div></div>
+      </div>
+      <div class="swatch swatch--terracotta">
+        <div><div class="swatch__role">Sale · Error · Use rarely</div><div class="swatch__name">Terracotta</div></div>
+        <div><div class="swatch__hex">#CA6253</div><div class="swatch__token">--terracotta · --destructive</div></div>
+      </div>
+      <div class="swatch swatch--dusty">
+        <div><div class="swatch__role">Promo · Warm accent</div><div class="swatch__name">Dusty Coral</div></div>
+        <div><div class="swatch__hex">#CC9B83</div><div class="swatch__token">--dusty-coral</div></div>
+      </div>
+      <div class="swatch swatch--peach">
+        <div><div class="swatch__role">Decorative · Tinted bg</div><div class="swatch__name">Warm Peach</div></div>
+        <div><div class="swatch__hex">#DFAD94</div><div class="swatch__token">--warm-peach</div></div>
+      </div>
+      <div class="swatch swatch--carbon">
+        <div><div class="swatch__role">Body text</div><div class="swatch__name">Carbon</div></div>
+        <div><div class="swatch__hex">#333333</div><div class="swatch__token">--carbon · --foreground</div></div>
+      </div>
+      <div class="swatch swatch--alabaster">
+        <div><div class="swatch__role">Type on dark · Sidebar</div><div class="swatch__name">Alabaster</div></div>
+        <div><div class="swatch__hex">#F3F1F0</div><div class="swatch__token">--alabaster</div></div>
+      </div>
+      <div class="swatch swatch--cloud">
+        <div><div class="swatch__role">Section bg · Alt</div><div class="swatch__name">Cloud</div></div>
+        <div><div class="swatch__hex">#F9F8F7</div><div class="swatch__token">--cloud · --muted</div></div>
+      </div>
+      <div class="swatch swatch--paper">
+        <div><div class="swatch__role">Cards · Modals</div><div class="swatch__name">Paper</div></div>
+        <div><div class="swatch__hex">#FFFFFF</div><div class="swatch__token">--paper · --card</div></div>
+      </div>
+    </div>
+
+    <div class="token-table">
+      <table>
+        <thead><tr><th>shadcn variable</th><th>SPS token</th><th>Hex</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">--background</td><td class="mono">--cream</td><td><span class="swatch-dot" style="background:#FAF6EF;"></span><span class="mono">#FAF6EF</span></td><td>Page background</td></tr>
+          <tr><td class="mono">--foreground</td><td class="mono">--carbon</td><td><span class="swatch-dot" style="background:#333;"></span><span class="mono">#333333</span></td><td>Body text</td></tr>
+          <tr><td class="mono">--card</td><td class="mono">--paper</td><td><span class="swatch-dot" style="background:#FFF;"></span><span class="mono">#FFFFFF</span></td><td>Card bg, modals</td></tr>
+          <tr><td class="mono">--primary</td><td class="mono">--silken-pine</td><td><span class="swatch-dot" style="background:#465E59;"></span><span class="mono">#465E59</span></td><td>Primary buttons, dark sections</td></tr>
+          <tr><td class="mono">--primary-foreground</td><td class="mono">--alabaster</td><td><span class="swatch-dot" style="background:#F3F1F0;"></span><span class="mono">#F3F1F0</span></td><td>Type on primary</td></tr>
+          <tr><td class="mono">--secondary</td><td class="mono">--sage-mist</td><td><span class="swatch-dot" style="background:#DFE5DC;"></span><span class="mono">#DFE5DC</span></td><td>Secondary surfaces, icon tiles</td></tr>
+          <tr><td class="mono">--muted</td><td class="mono">--cloud</td><td><span class="swatch-dot" style="background:#F9F8F7;"></span><span class="mono">#F9F8F7</span></td><td>Muted backgrounds, alt sections</td></tr>
+          <tr><td class="mono">--muted-foreground</td><td class="mono">--carbon-75</td><td><span class="swatch-dot" style="background:rgba(51,51,51,0.75);"></span><span class="mono">rgba(51,51,51,.75)</span></td><td>Secondary text</td></tr>
+          <tr><td class="mono">--accent</td><td class="mono">--cedar</td><td><span class="swatch-dot" style="background:#719483;"></span><span class="mono">#719483</span></td><td>Hover, success states</td></tr>
+          <tr><td class="mono">--destructive</td><td class="mono">--terracotta</td><td><span class="swatch-dot" style="background:#CA6253;"></span><span class="mono">#CA6253</span></td><td>Sale, error, urgent CTAs</td></tr>
+          <tr><td class="mono">--border</td><td class="mono">--hairline</td><td><span class="swatch-dot" style="background:#E4E2DF;"></span><span class="mono">#E4E2DF</span></td><td>All borders, dividers</td></tr>
+          <tr><td class="mono">--ring</td><td class="mono">--cedar</td><td><span class="swatch-dot" style="background:#719483;"></span><span class="mono">#719483</span></td><td>Focus rings on inputs</td></tr>
+          <tr><td class="mono">--radius</td><td class="mono">12px</td><td><span class="mono">12px</span></td><td>Default corner radius</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>How this maps to a real shadcn project</strong>
+      <p>Drop the <em>:root</em> block from this page (or styleguide-v4.md §3.2) directly into <em>app/globals.css</em>. shadcn components inherit the brand automatically. The only meaningful component-level override is the Button — change its rounded radius to <em>rounded-full</em> for the brand pill shape.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §3 · BUTTONS
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cloud" id="buttons">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">03 · Buttons</div>
+        <h2 class="section-header__title">Pills, <em>always</em>.</h2>
+        <p class="section-header__sub">
+          SPS buttons are pills (border-radius 999px). This is the strongest brand override on
+          top of shadcn's default rounded-rect Button. Pills are kept even at small sizes — the
+          shape is the brand signature across dashboard, homepage, and product flows.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo__grid">
+      <div class="demo">
+        <span class="demo__label">Variants</span>
+        <div class="demo__row">
+          <button class="btn btn--primary">Primary</button>
+          <button class="btn btn--secondary">Secondary</button>
+          <button class="btn btn--ghost">Ghost</button>
+          <button class="btn btn--accent">Destructive</button>
+          <button class="btn btn--link">Link button</button>
+        </div>
+      </div>
+      <div class="demo">
+        <span class="demo__label">Sizes</span>
+        <div class="demo__row">
+          <button class="btn btn--primary btn--sm">Small</button>
+          <button class="btn btn--primary">Default</button>
+          <button class="btn btn--primary btn--lg">Large</button>
+          <button class="btn btn--primary btn--xl">Extra large</button>
+        </div>
+      </div>
+      <div class="demo">
+        <span class="demo__label">CTAs (verb-first, brand voice)</span>
+        <div class="demo__row">
+          <button class="btn btn--primary btn--lg">Make a book</button>
+          <button class="btn btn--primary btn--lg">Frame a photo</button>
+          <button class="btn btn--accent btn--lg">Send a gift</button>
+          <button class="btn btn--ghost btn--lg">See how it's made</button>
+        </div>
+      </div>
+      <div class="demo" style="background:var(--silken-pine);">
+        <span class="demo__label" style="color:var(--lichen);">On dark backgrounds</span>
+        <div class="demo__row">
+          <button class="btn btn--cream">Cream button</button>
+          <button class="btn btn--ghost-light">Ghost light</button>
+          <button class="btn btn--cream btn--lg">Start a book</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>shadcn override · Button radius</strong>
+      <p>shadcn's default Button uses <em>rounded-md</em>. For SPS, change it to <em>rounded-full</em>. That's the entire override — every other Button variant works as-is once the color tokens in §2 are applied.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §4 · BADGES
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--paper" id="badges">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">04 · Badges</div>
+        <h2 class="section-header__title">Small, <em>tracked</em>, on-brand.</h2>
+        <p class="section-header__sub">
+          Pill, 10px Bricolage 600, 0.16em tracking. Badges sit on product cards, in tables for
+          status, and inline in headlines for "verified buyer" or "customer favorite" callouts.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo">
+      <span class="demo__label">Variants</span>
+      <div class="demo__row">
+        <span class="badge badge--default">Default</span>
+        <span class="badge badge--secondary">Secondary</span>
+        <span class="badge badge--outline">Outline</span>
+        <span class="badge badge--cedar">Customer favorite</span>
+        <span class="badge badge--success"><span class="badge__dot"></span>Shipped</span>
+        <span class="badge badge--warning"><span class="badge__dot"></span>Processing</span>
+        <span class="badge badge--accent"><span class="badge__dot"></span>Refund req.</span>
+        <span class="badge badge--accent">2 for $24</span>
+        <span class="badge badge--default">New · 12×12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §5 · FORMS
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cream" id="forms">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">05 · Forms</div>
+        <h2 class="section-header__title">Quiet inputs, <em>warm helpers</em>.</h2>
+        <p class="section-header__sub">
+          Inputs use cedar focus rings and italic Beatrice helper text. The italic helper is
+          the brand signature for forms — it's where the warmth lives in otherwise functional
+          chrome.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo__grid">
+      <div class="demo">
+        <span class="demo__label">Text input with label and italic helper</span>
+        <div style="display:grid;gap:14px;max-width:360px;">
+          <div>
+            <label class="input-label">Customer name</label>
+            <input class="input" type="text" value="Maya Fernández">
+            <p class="input-help">As it appears on the shipping label.</p>
+          </div>
+          <div>
+            <label class="input-label">Email address</label>
+            <input class="input" type="email" placeholder="hello@yourhouse.com">
+            <p class="input-help">We'll only use it for order updates.</p>
+          </div>
+          <div>
+            <label class="input-label">Notes for the printer</label>
+            <textarea class="input" rows="3" placeholder="Anything you'd like us to know?"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="demo">
+        <span class="demo__label">Switches</span>
+        <div style="display:grid;gap:16px;max-width:360px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-family:var(--font-beatrice);font-size:13px;font-weight:500;color:var(--carbon);">Email me when shipped</div>
+              <div style="font-family:var(--font-beatrice);font-style:italic;font-size:11px;color:var(--carbon-75);">we'll send a tracking link</div>
+            </div>
+            <label class="switch"><input type="checkbox" checked><span class="switch__slider"></span></label>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <div>
+              <div style="font-family:var(--font-beatrice);font-size:13px;font-weight:500;color:var(--carbon);">Subscribe to the quiet letter</div>
+              <div style="font-family:var(--font-beatrice);font-style:italic;font-size:11px;color:var(--carbon-75);">one letter a month, never more</div>
+            </div>
+            <label class="switch"><input type="checkbox"><span class="switch__slider"></span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §6 · CARDS + STATS
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--paper" id="cards">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">06 · Cards &amp; stats</div>
+        <h2 class="section-header__title">Hairline borders, <em>no shadows</em>.</h2>
+        <p class="section-header__sub">
+          Cards use a 12px radius and a single hairline border. No shadows. Stat cards use
+          Bricolage at 36px for the value, sage-mist icon tiles, and cedar/terracotta deltas.
+        </p>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat__header">
+          <span class="stat__label">Total revenue</span>
+          <div class="stat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+        </div>
+        <div class="stat__value">$48,394</div>
+        <div class="stat__delta"><span class="stat__delta-up">↑ 12.4%</span> from last month</div>
+      </div>
+      <div class="stat">
+        <div class="stat__header">
+          <span class="stat__label">Photographers served</span>
+          <div class="stat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+        </div>
+        <div class="stat__value">10,000+</div>
+        <div class="stat__delta"><span class="stat__delta-up">↑ 4.7%</span> from last month</div>
+      </div>
+      <div class="stat">
+        <div class="stat__header">
+          <span class="stat__label">Years in print</span>
+          <div class="stat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+        </div>
+        <div class="stat__value">15</div>
+        <div class="stat__delta">same shop, same founders</div>
+      </div>
+      <div class="stat">
+        <div class="stat__header">
+          <span class="stat__label">Photo objects</span>
+          <div class="stat__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+        </div>
+        <div class="stat__value">2.3M</div>
+        <div class="stat__delta">printed, bound, shipped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §7 · PRODUCT CARDS — the brand-defining pattern
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cloud" id="products">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">07 · Product cards</div>
+        <h2 class="section-header__title">The brand on <em>one tile</em>.</h2>
+        <p class="section-header__sub">
+          The product card is the clearest expression of the v4 system. Three deliberate font
+          choices on one small unit: category in tracked Beatrice, name in italic Beatrice
+          (warmth), price in Bricolage (data). If this card feels right, the whole brand works.
+        </p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <article class="product">
+        <div class="product__media">
+          <div class="product__badge-row"><span class="badge badge--default">New</span></div>
+          <button class="product__heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt="Layflat album">
+        </div>
+        <div class="product__body">
+          <span class="product__category">Photo Books · 12 sizes</span>
+          <h3 class="product__name">Layflat album</h3>
+          <div class="product__rating"><span class="product__rating-stars">★ ★ ★ ★ ★</span><span class="product__rating-count">4.9 (1,247)</span></div>
+          <div class="product__price-row"><span class="product__price-from">From</span><span class="product__price">$49</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <div class="product__badge-row"><span class="badge badge--accent">2 for $24</span></div>
+          <button class="product__heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605367468-f9y06u-tiny-books.jpg" alt="Tiny book">
+        </div>
+        <div class="product__body">
+          <span class="product__category">Photo Books · pocket size</span>
+          <h3 class="product__name">Tiny book pair</h3>
+          <div class="product__rating"><span class="product__rating-stars">★ ★ ★ ★ ★</span><span class="product__rating-count">4.9 (3,084)</span></div>
+          <div class="product__price-row"><span class="product__price">$24</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <button class="product__heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605362597-uw6rta-gallery-frames.jpg" alt="Gallery frame">
+        </div>
+        <div class="product__body">
+          <span class="product__category">Frames · 8 styles</span>
+          <h3 class="product__name">Gallery frame</h3>
+          <div class="product__rating"><span class="product__rating-stars">★ ★ ★ ★ ★</span><span class="product__rating-count">4.8 (892)</span></div>
+          <div class="product__price-row"><span class="product__price-from">From</span><span class="product__price">$38</span></div>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product__media">
+          <div class="product__badge-row"><span class="badge badge--cedar">Customer favorite</span></div>
+          <button class="product__heart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+          <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605360932-gmiufv-brass-print-set.jpg" alt="Brass print set">
+        </div>
+        <div class="product__body">
+          <span class="product__category">Prints · set of 4</span>
+          <h3 class="product__name">Brass print set</h3>
+          <div class="product__rating"><span class="product__rating-stars">★ ★ ★ ★ ★</span><span class="product__rating-count">4.9 (612)</span></div>
+          <div class="product__price-row"><span class="product__price">$64</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="callout">
+      <strong>The product card pattern · three voices, one unit</strong>
+      <p>Category in tracked Beatrice · Name in <em>italic Beatrice</em> · Price in Bricolage. The italic name is the warmth carrier. Roman product names feel like spec sheets; italic ones feel like the friend with incredible taste who's recommending the thing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §8 · DIRECT-RESPONSE PRINCIPLES
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cream" id="dr">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">08 · Direct response</div>
+        <h2 class="section-header__title">Design for the <em>job</em>, not the catalog.</h2>
+        <p class="section-header__sub">
+          SPS is an ecommerce business. Landing pages and product creation flows benefit from
+          direct-response thinking. These principles are <em>guidance, not handcuffs</em> — fold
+          them in where they sharpen the work. They apply to marketing surfaces, not dashboards
+          or admin tools.
+        </p>
+      </div>
+    </div>
+
+    <!-- Sample landing page composition -->
+    <div class="dr-sample">
+      <div class="dr-sample__visual">
+        <img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt="Layflat album in use">
+      </div>
+      <div class="dr-sample__body">
+        <span class="dr-sample__eyebrow">For Mother's Day · Through May 12</span>
+        <h3 class="dr-sample__title">A book she'll keep <em>on the kitchen counter</em>.</h3>
+        <p class="dr-sample__body-text">
+          Pull the photos from your phone. We bind them by hand, on layflat paper that opens
+          completely flat, in a linen cover that survives spilled coffee. <em>Made in five
+          business days.</em> Yours by Mother's Day if you order this week.
+        </p>
+        <div class="dr-sample__cta">
+          <a class="btn btn--cream btn--lg">Start her book</a>
+          <a class="btn btn--ghost-light btn--lg">See all sizes</a>
+        </div>
+        <div class="dr-sample__steps">
+          <div class="dr-sample__step"><span class="dr-sample__step-num">1</span>Upload photos</div>
+          <span class="dr-sample__step-arrow">→</span>
+          <div class="dr-sample__step"><span class="dr-sample__step-num">2</span>Pick the cover</div>
+          <span class="dr-sample__step-arrow">→</span>
+          <div class="dr-sample__step"><span class="dr-sample__step-num">3</span>Send to her door</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dr-rules">
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 01</span>
+        <h4 class="dr-rule__title">Think in <em>jobs</em>, not products</h4>
+        <p class="dr-rule__body">Customers don't want "framed prints" — they want to <em>frame a meaningful photo</em>. Headlines describe what the customer accomplishes, not what the product is.</p>
+      </div>
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 02</span>
+        <h4 class="dr-rule__title">Lead with <em>action</em></h4>
+        <p class="dr-rule__body">Every page has one thing it wants the user to do. CTAs start with <em>verbs</em>: "Make a book", "Frame a photo", "Send a gift". Never "Shop now" or "Learn more".</p>
+      </div>
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 03</span>
+        <h4 class="dr-rule__title">Guide, <em>don't catalog</em></h4>
+        <p class="dr-rule__body">Instead of a wall of options, walk the user through a flow. <em>One decision at a time.</em> Use the stepper component for multi-step builders.</p>
+      </div>
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 04</span>
+        <h4 class="dr-rule__title">Maintain the <em>scent</em></h4>
+        <p class="dr-rule__body">If a user clicks an ad about "the perfect gift for grandma", the landing page should echo it visually, verbally, tonally. Build contextual landing pages, not generic ones.</p>
+      </div>
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 05</span>
+        <h4 class="dr-rule__title">Customer is the <em>hero</em></h4>
+        <p class="dr-rule__body">Position the customer as the protagonist. SPS is the guide. Empathy + authority. Not "look at our great products" — "you have a story, here's how to keep it."</p>
+      </div>
+      <div class="dr-rule">
+        <span class="dr-rule__num">— 06</span>
+        <h4 class="dr-rule__title">Benefit-driven <em>copy</em></h4>
+        <p class="dr-rule__body">Lead with what the customer <em>gains</em>, not what we built. "Memories that last forever" before "archival ink." Use the "so what?" test.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-dont__col do-dont__col--dont">
+        <h4>Don't write</h4>
+        <ul class="do-dont__list">
+          <li>Shop our products</li>
+          <li>Learn more about photo books</li>
+          <li>Unlock unparalleled photo experiences</li>
+          <li>Click here for our innovative ecosystem</li>
+        </ul>
+      </div>
+      <div class="do-dont__col do-dont__col--do">
+        <h4>Do write</h4>
+        <ul class="do-dont__list">
+          <li>Make a book</li>
+          <li>See how a layflat album gets made</li>
+          <li>Photos you'd actually keep</li>
+          <li>Start her gift in 90 seconds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>When this applies · when it doesn't</strong>
+      <p>DR thinking applies to <em>marketing surfaces</em>: landing pages, product detail pages, campaign entry points, creation flows. It does <em>not</em> apply to internal dashboards, admin tools, developer documentation, or pure informational pages — those should be clear, dense, and direct rather than persuasive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §9 · COMPONENT PATTERNS
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--paper" id="patterns">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">09 · Patterns</div>
+        <h2 class="section-header__title">Common <em>component patterns</em>.</h2>
+        <p class="section-header__sub">
+          A collection of common shadcn-style patterns themed in v4: tabs, alerts, and the
+          "soft container" icon-tile pattern that signals warmth across the system.
+        </p>
+      </div>
+    </div>
+
+    <div class="demo__grid">
+      <div class="demo">
+        <span class="demo__label">Tabs (segmented)</span>
+        <div class="tabs-list">
+          <button class="tab tab--active">Description</button>
+          <button class="tab">Specs</button>
+          <button class="tab">Reviews <span class="tab__count">1247</span></button>
+          <button class="tab">FAQ</button>
+        </div>
+      </div>
+      <div class="demo">
+        <span class="demo__label">Alerts</span>
+        <div style="display:grid;gap:12px;">
+          <div class="alert">
+            <div class="alert__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </div>
+            <div>
+              <div class="alert__title">Sales are up 12.4% this month</div>
+              <div class="alert__message">Most of the lift is from <em>Tiny book pairs</em>. Worth a follow-up campaign.</div>
+            </div>
+          </div>
+          <div class="alert" style="border-color: rgba(202,98,83,0.3);">
+            <div class="alert__icon" style="background: rgba(202,98,83,0.15); color: var(--terracotta);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <div class="alert__title">Brass frame inventory low</div>
+              <div class="alert__message">18 units left. Reorder before <em>Friday</em> to keep up with demand.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>The "soft container" icon tile pattern</strong>
+      <p>Notice the small sage-mist rounded squares around every icon — in stat cards, alerts, feature strips, and sidebar items. This <em>soft container</em> pattern is a strong v4 signature. Use it for any small icon throughout the system to give it a warm halo without resorting to shadows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §10 · SHADCN INTEGRATION
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cloud" id="shadcn">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">10 · Building real shadcn</div>
+        <h2 class="section-header__title">Drop the tokens, <em>get the brand</em>.</h2>
+        <p class="section-header__sub">
+          When scaffolding a real Next.js + shadcn project for SPS, the entire brand transfer
+          is one CSS variable block plus one component override. Here's the recipe.
+        </p>
+      </div>
+    </div>
+
+    <div class="shadcn-block">
+      <h3>The 8-step shadcn setup for <em>SPS v4</em></h3>
+      <ol>
+        <li><strong>Scaffold:</strong> <code style="display:inline;background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:3px;">npx create-next-app@latest sps-project --typescript --tailwind --app</code></li>
+        <li><strong>Init shadcn:</strong> <code style="display:inline;background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:3px;">cd sps-project &amp;&amp; npx shadcn@latest init</code></li>
+        <li><strong>Add components:</strong> <code style="display:inline;background:rgba(0,0,0,0.3);padding:1px 6px;border-radius:3px;">npx shadcn@latest add button card table badge input switch alert dialog dropdown-menu tabs sheet select radio-group separator avatar</code></li>
+        <li><strong>Theme:</strong> Open <em>app/globals.css</em> and paste the entire <em>:root</em> block from §2 of this styleguide (or styleguide-v4.md §3.2) into the file. shadcn's default <em>:root</em> can be replaced wholesale.</li>
+        <li><strong>Fonts:</strong> Add Bricolage Grotesque via <em>next/font/google</em> and Beatrice via <em>next/font/local</em> using the woff2 files (or reference the S3 URLs from §11 of this guide).</li>
+        <li><strong>Tailwind config:</strong> In <em>tailwind.config.ts</em>, add <em>fontFamily.sans = ['var(--font-beatrice)', ...]</em> and <em>fontFamily.display = ['var(--font-bricolage)', ...]</em>.</li>
+        <li><strong>Pill button override:</strong> Open <em>components/ui/button.tsx</em>, find the Button's <em>cva()</em> base classes, and change <em>rounded-md</em> to <em>rounded-full</em>. This is the only meaningful brand override on top of shadcn defaults.</li>
+        <li><strong>Build:</strong> Use the page archetypes in §12 of styleguide-v4.md as references. The dashboard, homepage, photo flow, and PDP are all built from these primitives.</li>
+      </ol>
+      <p style="margin-top:24px;">That's the entire brand transfer. The CSS variable block does 95% of the work. The Button override does the remaining 5%.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §11 · ASSET URLs
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--paper" id="assets">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">11 · Assets</div>
+        <h2 class="section-header__title">Every URL you'll <em>ever need</em>.</h2>
+        <p class="section-header__sub">
+          Brand mark, fonts, and product images all hosted at stable URLs. Use these directly
+          in any SPS page. Do not re-host or re-upload unless the source is broken.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-bricolage);font-variation-settings:var(--br-h3);font-size:18px;color:var(--silken-pine);margin-bottom:12px;letter-spacing:-0.005em;">Brand mark</h3>
+    <div class="asset-card" style="max-width:380px;margin-bottom:48px;">
+      <div class="asset-card__media" style="background:var(--sage-mist);padding:32px;">
+        <img src="https://socialprintstudio.com/cdn/shop/files/android-chrome-192x192.png" alt="SPS heart logo" style="width:100%;height:100%;object-fit:contain;">
+      </div>
+      <div class="asset-card__body">
+        <div class="asset-card__name">SPS heart · 192×192 PNG</div>
+        <div class="asset-card__url">https://socialprintstudio.com/cdn/shop/files/android-chrome-192x192.png</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-bricolage);font-variation-settings:var(--br-h3);font-size:18px;color:var(--silken-pine);margin-bottom:12px;letter-spacing:-0.005em;">Beatrice fonts · S3 woff2</h3>
+    <div class="font-asset" style="margin-bottom:48px;">
+      <div class="font-asset__row">
+        <span class="font-asset__name" style="font-weight:300;">Beatrice</span>
+        <span class="font-asset__weight">300 light</span>
+        <span class="font-asset__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605293941-2nrb2w-Beatrice-Light.woff2</span>
+      </div>
+      <div class="font-asset__row">
+        <span class="font-asset__name" style="font-weight:400;">Beatrice</span>
+        <span class="font-asset__weight">400 regular</span>
+        <span class="font-asset__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605295340-xop3mj-Beatrice-Regular.woff2</span>
+      </div>
+      <div class="font-asset__row">
+        <span class="font-asset__name" style="font-weight:400;font-style:italic;">Beatrice</span>
+        <span class="font-asset__weight">400 italic</span>
+        <span class="font-asset__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296011-hpzuh8-Beatrice-RegularItalic.woff2</span>
+      </div>
+      <div class="font-asset__row">
+        <span class="font-asset__name" style="font-weight:500;">Beatrice</span>
+        <span class="font-asset__weight">500 medium</span>
+        <span class="font-asset__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605296631-zqku46-Beatrice-Medium.woff2</span>
+      </div>
+      <div class="font-asset__row">
+        <span class="font-asset__name" style="font-weight:600;">Beatrice</span>
+        <span class="font-asset__weight">600 semi</span>
+        <span class="font-asset__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605297264-a1imlg-Beatrice-Semibold.woff2</span>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--font-bricolage);font-variation-settings:var(--br-h3);font-size:18px;color:var(--silken-pine);margin-bottom:12px;letter-spacing:-0.005em;">Bricolage Grotesque</h3>
+    <div class="callout" style="margin-top:0;margin-bottom:48px;background:var(--paper);">
+      <strong>Loaded via Google Fonts</strong>
+      <p style="font-family:var(--font-mono);font-size:11px;">https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..125,200..800&amp;display=swap</p>
+    </div>
+
+    <h3 style="font-family:var(--font-bricolage);font-variation-settings:var(--br-h3);font-size:18px;color:var(--silken-pine);margin-bottom:12px;letter-spacing:-0.005em;">Product images · S3 JPG</h3>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Layflat album</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605363393-wungp0-layflat-album.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605362597-uw6rta-gallery-frames.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Gallery frames</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605362597-uw6rta-gallery-frames.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605367468-f9y06u-tiny-books.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Tiny books</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605367468-f9y06u-tiny-books.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605360932-gmiufv-brass-print-set.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Brass print set</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605360932-gmiufv-brass-print-set.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605365365-h7d6j1-metal-prints.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Metal prints</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605365365-h7d6j1-metal-prints.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605361747-u79gnw-daily-calendar.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Daily calendar</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605361747-u79gnw-daily-calendar.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605366488-jtssaj-photo-strips.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Photo strips</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605366488-jtssaj-photo-strips.jpg</div>
+        </div>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card__media"><img src="https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605364330-gx6epl-magnets.jpg" alt=""></div>
+        <div class="asset-card__body">
+          <div class="asset-card__name">Magnets</div>
+          <div class="asset-card__url">https://serverless-image-handler-test-sps.s3.amazonaws.com/claude/1775605364330-gx6epl-magnets.jpg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     §12 · VOICE
+     ═══════════════════════════════════════════════════ -->
+<section class="section section--cream" id="voice">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__left">
+        <div class="section-header__num">12 · Voice</div>
+        <h2 class="section-header__title">A friend with <em>incredible taste</em>.</h2>
+        <p class="section-header__sub">
+          We sound like a friend who happens to print things beautifully. Direct but warm.
+          Plain words. No marketing-speak. Sentence case for headings, never Title Case.
+        </p>
+      </div>
+    </div>
+
+    <div class="voice-table">
+      <table>
+        <thead><tr><th>Don't write</th><th>Do write</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Unlock unparalleled photo experiences with our best-in-class platform.</td>
+            <td>Beautiful prints, made with care, sent to your door.</td>
+          </tr>
+          <tr>
+            <td>Leverage cutting-edge personalization to delight your loved ones.</td>
+            <td>Make something they'll keep on the fridge for years.</td>
+          </tr>
+          <tr>
+            <td>Our innovative ecosystem empowers creators.</td>
+            <td>We help photographers turn their work into objects.</td>
+          </tr>
+          <tr>
+            <td>Order now — limited time only!!!</td>
+            <td>Two for $24, through Sunday.</td>
+          </tr>
+          <tr>
+            <td>Shop our products</td>
+            <td>Make a book</td>
+          </tr>
+          <tr>
+            <td>Learn more about our innovative features</td>
+            <td>See how a layflat album gets made</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <strong>Banned words · automatic rewrite</strong>
+      <p>unlock · leverage · empower · seamless · innovative · cutting-edge · best-in-class · revolutionary · disruptive · game-changing · synergy · unparalleled · ecosystem · solutions · curate (overused) · craft (as a verb)</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__mark">Social Print Studio</div>
+  <p class="footer__tagline">Photos as a force for good. Made by hand in Brooklyn since 2010.</p>
+  <p class="footer__type">Set in Bricolage Grotesque and <em>Beatrice</em> · Brand &amp; design system v4 · April 2026</p>
+</footer>
+
+</body>
+</html>
