@@ -49,7 +49,7 @@ If the file doesn't exist yet, create it with `writeFile` with a header and this
 
 ## Step 4: DM Ben and George
 
-Send a group DM to the private channel C0ASC3P8J5S (this is the group DM with Ben, George, and Josh — confirmed from context).
+Send a group DM to the private channel C0AS8HRNZL6 (this is the group DM with Ben, George, and Josh).
 
 Keep it short — this is a daily summary, not an essay. Format:
 
