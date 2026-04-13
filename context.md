@@ -380,6 +380,11 @@ I do not yet know what the company's long-term thesis is. There's a mention of a
 - Pricing strategy
 - Product strategy
 
+## To Do / Pending
+- **CS channel review** — Ben pointed me to C03BXUC256E (customer service channel). Need to be added before I can read history. Will review last 50+ messages once access is granted and share observations with Ben.
+- **Design session with Ben** — Ben wants to work on this together. Next session: pick one specific fix (buttons or accent color), come out with a committed decision. Longer term: find outside creative partner.
+- **Decades Magnet** — parking the project. Model quality (1-in-4 good likeness) makes economics unworkable at current API costs. Revisit when models improve (6-12 months). Ben aligned.
+
 ---
 
 ## Current Strategic Priorities
