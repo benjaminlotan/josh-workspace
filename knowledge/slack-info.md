@@ -36,6 +36,12 @@
 - **Participants:** Ben (U06RVS14K), Josh (U0ARKNHKCCX), Marcus
 - **What it's about:** Leadership coordination channel.
 
+### Private Channel — Ben, George, Josh
+- **Channel ID:** `C0AS8HRNZL6`
+- **Type:** Private channel / small group
+- **Participants:** Ben (U06RVS14K), George (U071RMK2P), Josh (U0ARKNHKCCX)
+- **What it's about:** Three-way leadership channel for Ben, George, and Josh. Where Josh briefs both founders, shares CS review findings, and discusses sensitive operational/strategic topics. CS daily summaries post here.
+
 ---
 
 ## Notes on Slack Usage
