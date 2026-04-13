@@ -375,6 +375,13 @@ I do not yet know what the company's long-term thesis is. There's a mention of a
 
 ---
 
+## Agenda for Next Ben Session
+- Brand direction (not visual — where is SPS headed as a brand)
+- Pricing strategy
+- Product strategy
+
+---
+
 ## Current Strategic Priorities
 *Inferred from the transcript — to be confirmed with Ben at our first real session.*
 1. **Mother's Day 2026 execution (deadline May 10)** — landing pages, design guidelines, hero product marketing. ~33 days remaining.
