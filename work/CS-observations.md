@@ -6,6 +6,33 @@
 
 ---
 
+## 2026-04-15 — Daily CS Review
+
+*Volume:* Moderate. 58 messages over ~24 hours (Apr 14 noon PT through Apr 15 noon PT). Slightly down from yesterday's ~85, which likely included some backlog from the integration going live. This feels like a more normalized daily pace.
+
+*Themes:*
+- **Reprints/remakes continue to dominate the queue.** Multiple remake confirmations flowing through Print Pro (Heather Trujillo coordinating). Includes the photos-in-wrong-books issue flagged yesterday (SPS2306979-REMAKE confirmed), a rush reprint for a processing error on SPS's end (SPS2308994), and the ongoing binding/quality threads.
+- **Dust jacket issues (2 threads).** Katelyn (order #697317, prior dust cover problem) getting a dust jacket reprint. Separate BR_6491991 dust jacket reprint confirmed by Philip at Bay Photo. Two dust jacket complaints in one window — worth watching alongside yesterday's TinyBook binding rips for a pattern.
+- **Shipping/delivery problems continuing.** Returned order due to missing apartment number (Jean-Sebastien Thery — Rachyel handled reship cleanly). Melissa Branham's package still going the wrong direction. UPS lost-package claim from Holly. Address change via portal (Diane Matzke — took a couple of back-and-forths but resolved).
+- **Coupon/promo confusion.** Customer asked about stacking a 25% "heirloom" code — Rachyel clarified it's Layflat Albums only. Customer was satisfied and praised the service. Minor signal: if "heirloom" code naming is confusing customers, consider whether the naming or placement needs adjustment.
+- **Calendar editor UX friction.** Live chat opened: "Trying to change cover photo for calendar." Missed the chat initially (Rachyel followed up by email). Suggests the cover-photo editing flow isn't obvious.
+- **Saved project access issue.** Customer couldn't open her saved project — Rachyel resolved with a direct editor link. Relevant to the Cloud Saved Projects work in progress.
+- **Big spender orders (2).** $420 postcard order (25 line items from ksachar@ksachar.com) and $312 framed grid poster order. Healthy high-value orders.
+- **Mother's Day campaign continuing to generate inbound.** ON-IT shipping refund tied to Early Bird email. Volume expected to ramp through end of April.
+- **Return request for Signature Stand.** Customer wants to return a display item — possible product confusion on what they were ordering.
+- **External pitches/spam.** CXPlained Team following up on George interview invitation (2nd attempt). Photopress Shopify app pitch via Instagram DM. Imatec Photo Printing Paper spam.
+- **Customer sentiment: notably positive.** Multiple customers explicitly praising service quality: "excellent service and swift resolution," "Great customer service. I will definitely order again." Rachyel earning real goodwill.
+
+*Flags:*
+- ⚠️ **Dust jacket issues emerging as a theme.** Two dust jacket reprints today, plus yesterday's TinyBook binding rips. Not yet a crisis, but if dust jacket/binding quality issues persist through this week, it's worth flagging to Print Pro as a potential batch quality concern.
+- ⚠️ **Calendar cover photo UX confusion** — a customer opened a live chat specifically about this. Worth noting for the product/editor team. If this is a common friction point, it's a conversion issue too (people who can't figure it out might just abandon).
+- ⚠️ **Saved project access failure** — resolved manually, but this is exactly the kind of thing Cloud Saved Projects should prevent. Signal that the current state is fragile.
+- **CXPlained Team interview request for George** — second follow-up, unanswered. Probably low priority but George should know it's sitting there if he cares about PR/brand visibility.
+
+*Observations:* Day 2 of real data and the pattern from yesterday is holding: the CS queue is primarily a quality/fulfillment pipeline. Rachyel is the workhorse — she's handling 90%+ of the volume with consistent professionalism, clear communication, and fast turnaround. Customer sentiment in replies is genuinely warm, which is a credit to how she manages these interactions. The reprint coordination with Print Pro (Heather, Philip) seems smooth and well-practiced. No dropped balls visible. The dust jacket issue is the new thing to watch — two in one day on top of yesterday's binding rips could indicate a production quality trend rather than normal variance. The calendar cover-photo UX friction and saved-project access failure are both product signals worth tracking even though each only appeared once today.
+
+---
+
 ## 2026-04-14 — Daily CS Review
 
 *Volume:* Moderate-to-high. ~85 messages in 24 hours (Apr 13 afternoon through Apr 14 noon). First real data day — the HelpScout integration is now flowing. Rachyel handling the overwhelming majority; Catherine lighter but present in fulfillment coordination threads.
