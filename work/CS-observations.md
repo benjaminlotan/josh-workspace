@@ -6,6 +6,33 @@
 
 ---
 
+## 2026-04-16 — Daily CS Review
+
+*Volume:* Moderate. 89 messages over ~23 hours (Apr 15 12:30 PM PT through Apr 16 11:50 AM PT). Consistent with yesterday. Steady-state pace — no spikes, no dropoff.
+
+*Themes:*
+- **Project resizing frustration (notable).** Stuart M. Bryan (70 years old, self-described as "technically challenged") ordered the wrong size and was told he'd need to start his project over from scratch. Escalating frustration over multiple replies: "you're kidding me," "I spent over 2 hours," "I can't believe your people can't make that simple fix," "I should have asked my kids to do this!" Rachyel handled it well — offered a free code for a replacement order. But the underlying UX issue is real: *customers cannot resize a project after creation*. For a customer who spent hours building something, "start over" is a devastating answer. This is a conversion and retention risk, especially for older or less tech-savvy users.
+- **Print darkness/quality complaints (2 threads).** Leslie received a calendar with images "much darker than last year" — same customer, same product type, different year. Print Pro (Heather) confirmed files were dark and it "printed true." Separately, Sharon received faded mini prints. Both offered replacement codes. The year-over-year darkness comparison is notable — could indicate a processing or calibration change.
+- **Missing items from orders continue.** TinyBook shelf missing from order SPS2308517 (reshipped UPS 2-day via Print Pro). Brass stand missing from prior order (reorder confirmed). This is the third consecutive day with missing-component complaints.
+- **Saved project editing confusion.** Lauren Stark wanted to cancel her order because she "can't figure out how to edit it." Rachyel provided a direct editor link and offered both options (edit or cancel). Consistent with the saved-project access friction flagged yesterday.
+- **TinyBooks only sold in sets of 3.** Diane Burke asked to buy 2 books — told that's not possible. Potential conversion barrier worth noting.
+- **Special character limitation in photo book editor.** Jackie Chong wants captions with special characters. Cannot do on cover; inside pages escalated to tech team. Minor editor limitation.
+- **New CS agent: Julia B.** Two replies near the end of the window — an Instagram story thank-you and an address change via customer portal link. Tone is friendly and professional. First time I've seen this name in the queue.
+- **Instagram spam.** Two "Chat AI" bot accounts sending attachments via Instagram DM. Low-value noise.
+- **Big spender orders (3).** $374 flat cards, $341 classic prints (17 line items), $315 classic prints (21 line items). Healthy high-value activity.
+- **Positive organic social.** Erin Wilson shared SPS in an Instagram Story — Julia B responded with "Hope your mom loves it!" Mother's Day social engagement is happening.
+- **Customer sentiment: warm.** Multiple positive customer replies: "Love you guys" (Morgan), "Very generous; thank you" (Stuart), hearts and thanks from several others. Even the frustrated interactions resolved positively.
+
+*Flags:*
+- ⚠️ **"Can't resize a project" is a real UX gap.** Stuart Bryan's frustration thread is a concrete example of a customer who invested significant time, made an honest mistake, and was told the only option is starting over. For a 70-year-old customer this is borderline deal-breaking. The current answer is a free replacement code — generous but doesn't fix the underlying problem. Worth asking: how often does this come up, and is project resizing technically feasible?
+- ⚠️ **Missing items from orders — 3 days running.** Shelves, brass stands, components not making it into packages. This is consistent enough to suggest a systemic packaging/QA issue at Print Pro rather than random variance.
+- ⚠️ **Print darkness year-over-year change.** Leslie's calendar printing darker than the same product last year is a specific, testable claim. If Print Pro changed calibration or processing, that affects every customer silently. Worth flagging to Ben as something to investigate with Print Pro.
+- **New CS agent (Julia B)** — only 2 replies today, but she's handling things capably. Worth confirming with Ben who this is.
+
+*Observations:* Day 3 of real data and the pattern is increasingly clear: the CS queue is a quality/fulfillment pipeline with Rachyel as the anchor. Today's most interesting signal is the Stuart Bryan thread — not because one frustrated customer is a crisis, but because "you can't resize your project" is the kind of limitation that quietly kills conversions. People who hit that wall and DON'T write in to CS just leave. The missing-items pattern (3 consecutive days) is crossing from "variance" to "trend" territory. Print darkness complaints are now 2 in this window alone — if this is a calibration issue at Print Pro, it's affecting orders silently beyond just the people who complain. Julia B is a new name in the queue — good to see coverage beyond Rachyel alone.
+
+---
+
 ## 2026-04-15 — Daily CS Review
 
 *Volume:* Moderate. 58 messages over ~24 hours (Apr 14 noon PT through Apr 15 noon PT). Slightly down from yesterday's ~85, which likely included some backlog from the integration going live. This feels like a more normalized daily pace.
