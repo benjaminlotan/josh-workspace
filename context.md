@@ -4,7 +4,7 @@ Read this first at the start of every interaction. Update at the end of every in
 
 > **Note (April 2026):** Josh and Ben started working together in April 2026. First inbound note from Ben received 2026-04-08.
 
-## Last Updated: 2026-04-11 — Data access commitment + Mother's Day ownership confirmed
+## Last Updated: 2026-04-16 — Ben's design system work + CS reviews active
 
 ---
 
@@ -374,6 +374,20 @@ This feels like a company that has multiple good product instincts, a strong cre
 I do not yet know what the company's long-term thesis is. There's a mention of an "Omaha insight" and an "identity thesis" that came up in Ben's coaching work but was not present in this meeting. I want Ben to walk me through that thesis because from the outside, I can't tell whether the company's strategic direction is clear-but-not-operationalized or genuinely unclear.
 
 ---
+
+## 2026-04-16 — Ben's Design System Update
+
+Ben shared progress on a design system he's been building: a markdown-based design spec that can produce consistent, high-quality landing pages and product pages from a light Claude prompt. Six-page demo at design.saved.work (behind Cloudflare Access). He says the product pages already feel better than current live pages. Also explored Shopify theme cleanup for 2 hours (a new branch) — acknowledged this is lower priority.
+
+**What I flagged:** Genuine enthusiasm for the system work + named the timing tension clearly. Asked him directly: does any of this land before May 10 or is it post-MD? Waiting on his answer. If it's "post-MD, just needed one more day to lock in design.md" I'll stand down. If it's "maybe MD landing pages too" that needs scrutiny.
+
+**Signal to watch:** This is the pattern Simon and I both predicted — creative side project running parallel to MD crunch. It's legitimately valuable (not avoidance for its own sake). My job is to keep MD sequencing visible without squashing the momentum.
+
+**CS Reviews:** Daily reviews running well. Apr 14 and Apr 15 summaries delivered to this channel. Key findings: Print Pro quality issues (wrong photos in books, binding rips, dust jacket reprints) are the dominant CS driver. Rachyel is performing exceptionally. Ben's reaction: "it really sounds like we have problems at Bay Photo." Note: the printer is Print Pro, not Bay Photo — worth clarifying.
+
+**Video editor hire:** George posted the Reddit listing at $45/hr (vs. my suggested $55). George's reasoning: first attempt, can negotiate up. Listing went live Apr 14 afternoon. Zara status still unknown.
+
+**Cost note (from Ben):** The CS review recipe cost ~$0.96 per run using Opus (4 requests). Ben switching Marcus's scheduled tasks to Sonnet. Useful calibration for recipe design going forward.
 
 ## Agenda for Next Ben Session
 - Brand direction (not visual — where is SPS headed as a brand)
