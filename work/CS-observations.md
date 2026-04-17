@@ -6,6 +6,36 @@
 
 ---
 
+## 2026-04-17 — Daily CS Review
+
+*Volume:* Moderate. ~80 messages over ~22.5 hours (Apr 16 1:30 PM PT through Apr 17 11:55 AM PT). Consistent with the last three days — steady-state pace, no spikes.
+
+*Themes:*
+- **Julia B carrying the entire queue solo.** Rachyel is completely absent from today's window — zero replies. Julia handled every single inbound. This is the first day where Rachyel doesn't appear at all. Julia is performing well: friendly, thorough, fast turnaround, solid product knowledge across TinyBooks, editors, guest books, calendars. She's escalating to Print Pro appropriately and managing multi-message threads without dropping any. Impressive shift coverage.
+- **Missing items from orders — day 4.** Bookshelf missing from order SPS2308518 (Julia filed for reshipment). Bookshelf missing from order #741618 (Carla Cruz — replacement shipping). Damaged stand refunded $39.60 (Zhongyang Li). Plus order SPS2307485 labelled but never shipped (reprint submitted). Four fulfillment failures in one day's window. This is now a clear trend, not variance.
+- **TinyBook magnet polarity defect (new).** Steph Perry reported magnets in TinyBook covers don't align correctly — books only stack properly when upside down. "The magnetic poles aren't correct for stacking them on the bookshelf." Novel defect not seen in previous reviews. Julia forwarded to production. If this is a batch issue, it could affect multiple orders.
+- **Editor UX friction — heavy hand-holding threads.** Jennifer Browne (Creative Director, Neal Porter Books) required extensive back-and-forth to get the guest book editor working: couldn't add photo to back cover, couldn't type on spine, no understanding of proofing flow. Tom Fielder (first-time TinyBook buyer) needed help with photo count, cloning books, text limitations, double-page spreads. Janice Carter couldn't figure out photo cropping. All resolved, but each took 5-8 messages. These are engaged, willing-to-buy customers who nearly bounced on editor confusion.
+- **Photo Journal discontinued — still discoverable.** Haley Campbell: "That is super disappointing as they were our favorite thing to order after trips." Julia committed to asking the team to make discontinuation more visible on app/website. If discontinued products are still in the app or findable via search, it creates false expectation and frustration.
+- **Lost/delayed shipments.** Order #740378 confirmed lost in mail — reprint with UPS 2-day upgrade. Tracking #740062 bouncing around (Richmond, VA — USPS error). Malory Larson's delivery marked but not received — Julia gave it a day before reprinting. USPS reliability continues to be a source of CS tickets.
+- **Mother's Day sale activity.** Multiple references to "ON-IT" (20% off sitewide through Apr 19) and "HEIRLOOM" code ($149 → $111 for layflat albums). Customers actively using the sale. Fernanda asked about first-time customer discount — told the MD sale is better. No confusion or complaints about the sale mechanics.
+- **Instagram integration still generating tickets.** Anna asked about connecting Instagram — Julia explained Meta disabled it and offered the phone-folder workaround. This keeps coming up and will continue to.
+- **Tax exempt inquiry.** Mae from a nonprofit (nm.org email) asked about tax exemption process for a layflat book order. Also confused about production vs. shipping timeline (asked if she should allow 20 business days total). Unclear if SPS has a tax exempt process.
+- **Magnet safety question for TinyBooks.** Customer asked if magnets inside covers are child-safe. Julia handled well — magnets are embedded, require significant force to access. Recommended adult supervision.
+- **Instagram collab outreach.** Remina Baca reached out via Instagram — Julia directed to Cara. Healthy organic interest.
+- **Big spender orders (2).** $322 (Metal Prints), $335.25 (Layflat Photo Album). Continued strong high-value activity.
+- **Customer sentiment: very warm.** Multiple positive replies: Jennifer Browne praised the company as recommended by someone who said "you did good work and your team was very supportive." Tom Fielder: "You're the best! Can't wait to get a book!!" Devin Goldstein expressed sincere appreciation for the shipping upgrade courtesy. Amy Dood was understanding about the can't-modify-in-production policy. Julia is building real goodwill.
+
+*Flags:*
+- ⚠️ **Missing items/fulfillment failures — 4 days running, escalating.** Bookshelves, stands, labelled-but-not-shipped orders. Four incidents today alone. This has crossed from "trend" to "pattern that needs a conversation with Print Pro." Either their packing process has a systemic gap or something changed recently.
+- ⚠️ **TinyBook magnet polarity defect** — new issue. If the magnets in a production batch are installed with reversed polarity, this could affect many orders. Worth asking Print Pro if this is a known issue or isolated.
+- ⚠️ **Rachyel absent from the queue today.** Not necessarily a problem — could be a day off, shift rotation, or Julia taking a full shift. But if Rachyel is the CS anchor (she has been every previous day), worth confirming this was planned coverage and not a gap.
+- **Discontinued products still discoverable.** Photo Journal being findable but unavailable creates unnecessary frustration. Quick win: remove or clearly mark as discontinued wherever it appears.
+- **Editor UX continues to be the #1 source of multi-message support threads.** Every day, the longest CS conversations are about navigating the editor. This is a product problem, not a CS problem.
+
+*Observations:* The big story today is Julia B running the entire queue solo — and doing it extremely well. She's handling the same volume and complexity Rachyel typically carries, with the same professionalism and speed. That's excellent bench depth and a meaningful signal about CS team capability. The fulfillment issue pattern is now impossible to ignore: four consecutive days of missing components, labelled-but-not-shipped orders, and damaged items. This is a Print Pro conversation waiting to happen. The TinyBook magnet polarity issue is novel and potentially batch-wide — worth tracking closely. Editor UX friction remains the most consistent driver of high-touch support conversations, and every one of those threads represents ten customers who hit the same wall and just left without buying.
+
+---
+
 ## 2026-04-16 — Daily CS Review
 
 *Volume:* Moderate. 89 messages over ~23 hours (Apr 15 12:30 PM PT through Apr 16 11:50 AM PT). Consistent with yesterday. Steady-state pace — no spikes, no dropoff.
