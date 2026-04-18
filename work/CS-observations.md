@@ -6,6 +6,31 @@
 
 ---
 
+## 2026-04-18 — Daily CS Review
+
+*Volume:* Low-to-moderate. 34 messages over ~23 hours (Apr 17 12:02 PM PT through Apr 18 11:14 AM PT). Noticeably down from the 80-89 range of previous days — roughly 40% of recent volume. Could be natural Friday variation or a genuinely quieter inbox day.
+
+*Themes:*
+- **Catherine C running the queue solo.** Every outbound reply in this window is Catherine's. Rachyel and Julia B appear only in customer replies to their prior threads. Catherine is handling the full range capably: editor walk-throughs, order holds, rush requests, shipping problems, returns/refund policy, Spanish-language Instagram DMs, and product inquiries. Solid all-around performance.
+- **Editor UX confusion remains the #1 support driver.** Nadia (elderly customer, computer-only user) couldn't figure out how to upload photos to TinyBook editor — drag-and-drop wasn't working. Athina needed to edit a wedding album cover post-order. Julie needed help cloning multi-book orders. Andrea needed to know how to delete/replace images. Four separate editor hand-holding threads in a quieter-than-usual day. Each represents a willing buyer confused by the interface.
+- **Shipping/fulfillment — lower incident volume.** Ana Lopez's order lost in USPS transfer (well explained by Catherine). Kristin Woodlock's zipcode error (already shipped, can't redirect). Rush request for SPS2309472. No missing components, no wrong-photo issues. The multi-day streak of missing bookshelves/stands did not recur today.
+- **Framed print sizing confusion → returns friction.** Ambika Castle didn't realize frame/mat dimensions add to print size. Surprised by final product size. No-returns policy for custom products applied; 20% off new order offered. Professional handling, but the root cause is a product page clarity issue — final framed dimensions apparently not obvious enough.
+- **Expired saved project — 6-month limit.** Jeneen Mustafa couldn't open a saved project. Catherine explained the 6-month expiration policy. Directly relevant to Cloud Saved Projects initiative — if the new system doesn't address expiration, this keeps generating tickets.
+- **Spanish-language support.** Catherine handled an Instagram DM from Ana Fons De Rotunno entirely in Spanish — rush delivery request. Clean, professional. Good to see this capability.
+- **Product feature request.** Shane McKinley asked about a smaller print size SPS doesn't offer. Catherine passed to the team.
+- **Discount/coupon activity.** Robin Terres got a personalized 25% off TinyBooks code. Chip got a $21 refund. Active Mother's Day promotion period.
+- **Big spender:** $329.44 order (Canvas + Metal Prints, 9 line items).
+- **Customer sentiment: warm across the board.** Multiple thank-you replies. No frustrated or escalated threads today. Nadia was genuinely grateful for the editor walk-through help.
+
+*Flags:*
+- **Framed print sizing confusion** — the Ambika Castle thread suggests final framed dimensions aren't clear enough on the product page. If customers are regularly surprised by how much frame/mat adds to total size, this is a preventable returns-attempt trigger. Low-effort fix: add "final framed dimensions: X × Y" to the product listing or cart summary.
+- **Missing items streak appears paused** — no component complaints today after four consecutive days. One quiet day doesn't break a trend; will keep watching next week.
+- **Saved project expiration** — continues to generate tickets. Relevant to the Cloud Saved Projects initiative Ben and Diego are working on.
+
+*Observations:* Quietest day so far — about 40% of recent daily volume. Catherine ran the entire queue solo and did it cleanly. No Print Pro quality issues surfaced today, which is notable after four days of escalating fulfillment complaints. The missing-items streak may have been a blip, or this could just be Friday variance — next week will tell. The consistent throughline across all five days of data: editor UX friction is the single biggest category of multi-message support threads. Every day, multiple customers who are actively trying to buy something need extensive hand-holding to complete their order. These are the customers who write in — the ones who don't write in just leave.
+
+---
+
 ## 2026-04-17 — Daily CS Review
 
 *Volume:* Moderate. ~80 messages over ~22.5 hours (Apr 16 1:30 PM PT through Apr 17 11:55 AM PT). Consistent with the last three days — steady-state pace, no spikes.
