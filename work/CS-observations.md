@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-04-19 — Daily CS Review
+
+*Volume:* Moderate. 57 messages over ~22.5 hours (Apr 18 1:22 PM PT through Apr 19 11:54 AM PT). Up from yesterday's quiet 34 but still below the 80-89 range from earlier in the week. Feels like a normal Saturday pace — not a spike, not dead.
+
+*Themes:*
+- **Rachyel back in the saddle, running the queue.** After yesterday's solo Catherine shift, Rachyel is handling the vast majority of today's replies — fast, clean, professional as always. Catherine and Julia B appear only in customer replies to their prior threads.
+- **Retroactive discount code requests (ON-IT) — biggest theme today.** Multiple customers who ordered without applying the 20% Mother's Day code asking for a post-purchase adjustment. Rachyel handling these smoothly: Linda Erb (20% off refunded), Jhoseline Vasquez ($13.64), Megan Norman ($15), Lynn Shield (retroactive on order #742914). Rachyel noted the sale runs Apr 14-19 — today is the last day, so this is a predictable end-of-sale spike. Each one requires a manual refund, which is labor-intensive.
+- **App/editor navigation confusion — still the #1 multi-message thread driver.** Debbie Gates Bostrom on Instagram couldn't figure out how to add a project to cart from the app (extended back-and-forth, resolved with "click book 3 then it will let you add to cart" — confusing UI). Sonja Rodriguez confused about green trim lines. num1yanks@yahoo.com needed help with softcover book on the app. Jackie Chong's photo book editor issue is now a multi-day thread waiting on tech team.
+- **Order modifications after submission — inconsistent customer experience.** Ellen Kliavkoff and Sharon Dickson both told "already in production, can't change." Brianna Plathe got a successful photo swap + reprocessing. The difference is timing, but from the customer's perspective, one person gets a yes and two get a no — can feel arbitrary.
+- **White lines on cards (print quality).** Megan Kirk's thread continuing from yesterday — 8+ cards with white lines on the front edge. Rachyel requested a photo of all 12 laid out to send to production. This is a cutting or alignment issue at the printer.
+- **Custom TinyBook covers — not available.** Jeffrey Thelin asked, Rachyel said no. Feature request signal.
+- **$918 order (biggest I've seen).** Robin Terres — 34 line items, TinyBooks. Same customer replied warmly thanking for a discount she'd received earlier.
+- **B2B/bulk gifting lead.** NatiLee Booth is making bags and Rachyel offered her journals with codes from "our CEO." This is a corporate/event gifting use case worth noting.
+- **Auth/login issue.** Customer couldn't log in, directed to auth.socialprintstudio.com. Quick resolution.
+- **No invoices in packages — confirmed policy.** Useful for gift orders (Mother's Day especially).
+- **Tech team escalation still open.** Jackie Chong's photo book editor issue (special characters, multi-day) — Rachyel offered to rush the order once tech resolves. Good service recovery.
+
+*Flags:*
+- **Retroactive discount code refunds are labor-intensive.** Four separate manual refunds today for customers who forgot to apply ON-IT at checkout. If this pattern holds through every sale, an auto-apply mechanism or a more prominent code reminder at checkout would save CS time and prevent customer friction. Worth raising as a product improvement.
+- **White lines on cards (Megan Kirk)** — active investigation. If this is a cutting/alignment issue at Print Pro, it could affect more orders. Waiting on customer photos.
+- **Jackie Chong tech escalation — multi-day wait.** Customer explicitly said "I'm trying to finish this project today." Rachyel escalated but tech team wasn't available (weekend). The gap between CS availability and engineering availability on weekends is visible here.
+
+*Observations:* The most notable pattern today is the end-of-sale discount code retroactive request spike — four customers in one window asking for the 20% Mother's Day code to be applied after purchase. Each one is a manual refund that Rachyel handles cleanly, but it's preventable work. Auto-applying the active sale discount at checkout, or a more prominent code reminder before order confirmation, would eliminate this entire category. Editor/app navigation confusion continues to be the consistent multi-message thread driver across all seven days of data now. The missing-items and Print Pro quality streak from earlier in the week hasn't resurfaced in the last two days — possible resolution or just weekend timing variance. Customer sentiment remains very warm. Rachyel continues to be excellent.
+
+---
+
 ## 2026-04-18 — Daily CS Review
 
 *Volume:* Low-to-moderate. 34 messages over ~23 hours (Apr 17 12:02 PM PT through Apr 18 11:14 AM PT). Noticeably down from the 80-89 range of previous days — roughly 40% of recent volume. Could be natural Friday variation or a genuinely quieter inbox day.
