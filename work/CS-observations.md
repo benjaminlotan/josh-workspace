@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-04-21 — Daily CS Review
+
+*Volume:* Moderate. 100+ messages over ~21.5 hours (Apr 20 2:03 PM PT through Apr 21 11:42 AM PT). Back up to the 80-100 range after the weekend dip. Monday morning pace is active.
+
+*Themes:*
+- **Rachyel running the full queue solo — Sunday through Monday morning.** Every outbound reply is Rachyel. No Catherine, no Julia B visible. She's handling the complete range: Print Pro coordination, order modifications, discount refunds, live chat, editor troubleshooting, address changes, and inbound pitches. Consistently excellent.
+- **Print Pro / Bay Photo coordination is the dominant workload.** Six separate coordination threads with Bay Photo (Heather Trujillo, Philip Buckley) in one window: lost-in-transit remake (SPS2307658), books damaged on edges — credit (SPS2307009), returned package reship (SPS2288568 → new SF address), hanger removal request (SPS2310048), cover embossing defect → remake with UPS 2-Day (6566261), hold/release for BR_6565452. Print Pro fulfillment issues continue to be the single biggest driver of CS workload.
+- **Fulfillment quality issues persist.** Damaged book edges, cover embossing defect, lost-in-transit orders, labelled-but-not-shipped reship to Germany (SPS2302255). The pattern from the last week has not resolved.
+- **Expired discount code requests continuing.** Cheryl's 20% code expired, Rachyel honored via post-purchase refund. Kaya got $28.92 ON-IT retroactive refund. Same pattern as the Apr 19 end-of-sale spike — now it's the post-sale tail.
+- **Complex order modification handled well.** Abriel Spence ($335 Layflat Wedding Album, 3 books to 2 addresses including Canada) required cancel + reprocess + separate order link + discount code to cover cost. Multi-step, multi-message, resolved cleanly. Rachyel's ability to handle these complex cases without escalation is notable.
+- **Address change portal actively used.** Multiple customers directed to the self-serve portal (Sarah Giesel, Dake Gonzalez). It's working. Missing street number caught by Bay Photo (chelsey hogan) — Rachyel contacted customer and resolved.
+- **Discontinued product still buildable.** David couldn't load a saved project for a book SPS no longer offers — Rachyel provided the template link so he could still order. Inconsistent experience: product is not listed but can be built and ordered if you have the link.
+- **Editor/product UX friction.** Photo upload errors (2 threads), customer confused about checkout flow (live chat, missed initially), customer wanting single prints (sold in sets only), customer wanting unframed grid poster (not available without frame). Ongoing pattern.
+- **Inbound UGC/collab pitches (3).** Rachael Layne "Pregnant Mom" UGC idea → directed to Cara. Pippit AI and AhaCreator partnership pitches → declined.
+- **Big spender orders (3).** $569.60 Wood Prints (8 items), $335.25 Layflat Wedding Album, $312 Framed Grid Posters. Strong high-value activity continuing.
+- **Customer sentiment: warm.** No frustrated or angry threads. Multiple thank-yous. Even complex modification resolved cheerfully.
+
+*Flags:*
+- ⚠️ **Print Pro quality/fulfillment issues — now 8 days of data and no sign of improvement.** Damaged edges, embossing defects, lost/never-shipped orders, missing components. This is systemic, not variance. The volume of Print Pro coordination threads per day (6 today alone) represents a significant chunk of Rachyel's time. This needs a direct conversation with Print Pro about their QC process.
+- **Rachyel solo coverage — Sunday through Monday.** She's handling everything alone. If she gets sick or needs time off, there's a visible gap. Catherine and Julia B haven't appeared in this window at all. Shift scheduling seems to put heavy weight on Rachyel.
+- **Discontinued products still buildable via template links** — creates an inconsistent experience. If a product is discontinued, the template should either be fully removed or the product should be clearly marked as "legacy/archive" with expectations set.
+
+*Observations:* The Print Pro quality/fulfillment pipeline continues to be the dominant story in CS. After 8 days of data, I can now say with confidence: the majority of Rachyel's workload is coordinating remakes, reprints, reships, and credits with Bay Photo/Print Pro — not answering customer questions about products or helping them order. That ratio is inverted from what you'd want. A well-running production partner should generate very few CS tickets; instead, Print Pro issues are the #1 category every single day. The Abriel Spence thread is a good example of Rachyel's skill — a genuinely complex multi-order, multi-address, international modification handled without any escalation. She's operating at a very high level. The post-sale discount code refund tail continues but should taper off this week.
+
+---
+
 ## 2026-04-19 — Daily CS Review
 
 *Volume:* Moderate. 57 messages over ~22.5 hours (Apr 18 1:22 PM PT through Apr 19 11:54 AM PT). Up from yesterday's quiet 34 but still below the 80-89 range from earlier in the week. Feels like a normal Saturday pace — not a spike, not dead.
