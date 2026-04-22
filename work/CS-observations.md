@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-04-22 — Daily CS Review
+
+*Volume:* Moderate-to-high. 92 messages over ~23 hours (Apr 21 12:04 PM PT through Apr 22 11:02 AM PT). Consistent with yesterday's 100+ and typical Monday→Tuesday pace. No spikes, no dropoff.
+
+*Themes:*
+- **Rachyel ran the full Monday afternoon shift; Catherine picked up Tuesday morning.** Clean handoff. Both performing well — Rachyel handled the heavier volume (rush requests, Bay Photo coordination, refunds, editor troubleshooting) and Catherine opened Tuesday with order modifications, editor walk-throughs, and a processing error fix.
+- **Bay Photo / Print Pro coordination still the #1 workload driver.** 4-5 coordination threads with Heather Trujillo in one window: missing street number on address hold, order labeled but never shipped (SPS2309088 → UPS 2-day rush reprint), delivered-but-not-received reprint (SPS2309067), two rush flags (SPS2309376, SPS2309768 — both shipping Wed). The pattern from the past 9 days continues unbroken.
+- **Rush/expedite requests — unusually heavy.** Matthew Watts (birthday gift by Sat 4/24), Vicki Laframboise (business day 3, deadline-driven), two internal rush flags. Likely early Mother's Day pressure as customers realize lead times. Rachyel managing expectations well without overpromising.
+- **Processing error: 4 images dropped from a complete project.** Catherine identified that Tammi Westberg's order processed with 4 missing images despite the project looking full. Called it a "processing error," had an engineer fix it, and placed a new order (#743725). This is a system bug — not customer error. Worth flagging to engineering.
+- **Template/editor tech bug.** ysanhinguyen hit "Template Option 'utm_source' not found for template: 19978" when trying to create a photo magazine — UTM parameter leaking into the editor. Catherine redirected to Chrome desktop as a workaround, but the root cause is a URL-handling bug.
+- **Magnet editor UX — mobile ordering hides editing controls.** Svetlana GRINMAN ordered magnets on phone, faces cut off, didn't realize drag/edit features existed. Rachyel demonstrated the controls; Catherine provided a $34 replacement code. Mobile UX hiding key controls = preventable quality complaints.
+- **Fixed quantity model creating friction.** Hector: can't remove pages from minibooks (50-page minimum). Rosie O'Donnell: 108/120 photos for 4x6 prints, couldn't check out (sets of 24 only). Wrote in twice about the same issue. This is a recurring pattern — the set-quantity model confuses and frustrates customers who want fewer items.
+- **Expired promo code tail declining.** One ON-IT inquiry (heatherruthphotography thought it ran through end of April). Volume is way down from the Apr 19 spike — the post-sale tail is nearly done.
+- **Big spender: $558 order** (18 line items, Tiny Books + Photo Magazine). Healthy high-value activity continues.
+- **Joanne handling Pet Portrait previews.** Separate workflow from main CS — custom product requiring manual approval cycles.
+- **Customer sentiment: warm.** Multiple thank-yous and positive replies. Cheryl: "You are awesome! Can't wait to get my tiny books." Matthew Watts: "really appreciate you doing that." No frustrated or escalated threads.
+
+*Flags:*
+- ⚠️ **Processing error dropping images from complete projects** — Tammi Westberg's order lost 4 images despite the project being full. Catherine called it a "processing error" and involved an engineer. If this can happen silently, other orders may have shipped with missing images that customers haven't reported yet. Worth flagging to Ben/engineering as a potential systemic issue.
+- ⚠️ **UTM parameter leaking into editor** — "Template Option 'utm_source' not found" error blocking a customer from creating a photo magazine. Tech bug, not customer error. Should be a quick fix if someone looks at it.
+- **Bay Photo fulfillment pattern — now 9 days of data.** The ratio of CS time spent on Print Pro coordination vs. actual customer questions remains inverted. This is the structural story of the CS queue and it hasn't changed.
+
+*Observations:* Nine days in, and the fundamental shape of the CS queue is clear and stable: the majority of Rachyel's and Catherine's time goes to coordinating remakes, reprints, rush requests, and address issues with Bay Photo/Print Pro — not helping customers buy things or answering product questions. Today's two tech bugs (processing error dropping images, UTM parameter in editor URL) are the kind of silent issues that affect more customers than just the ones who write in. The rush-request volume is picking up, which I'd attribute to early Mother's Day pressure — customers ordering gifts are more deadline-sensitive. Both Rachyel and Catherine are performing well, and customer sentiment remains consistently warm. The team is doing excellent work within the constraints they're operating in.
+
+---
+
 ## 2026-04-21 — Daily CS Review
 
 *Volume:* Moderate. 100+ messages over ~21.5 hours (Apr 20 2:03 PM PT through Apr 21 11:42 AM PT). Back up to the 80-100 range after the weekend dip. Monday morning pace is active.
