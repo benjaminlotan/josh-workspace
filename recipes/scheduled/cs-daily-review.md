@@ -1,8 +1,8 @@
 ---
-schedule: "0 12 * * *"
+schedule: "0 12 * MON *"
 timezone: "America/Los_Angeles"
 enabled: true
-description: "Daily noon sweep of #helpscout CS channel — log observations and DM Ben + George"
+description: "Weekly Monday noon sweep of #helpscout CS channel — log observations and DM Ben + George"
 model: claude-opus-4-6
 ---
 
