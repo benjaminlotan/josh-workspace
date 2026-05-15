@@ -1,5 +1,5 @@
 ---
-schedule: "0 12 * MON *"
+schedule: "0 12 * * 1"
 timezone: "America/Los_Angeles"
 enabled: true
 description: "Weekly Monday noon sweep of #helpscout CS channel — log observations and DM Ben + George"
