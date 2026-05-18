@@ -6,6 +6,31 @@
 
 ---
 
+## 2026-05-18 — Daily CS Review
+
+*Volume:* Low-to-moderate. 45 messages over ~23.5 hours (May 17 12:01 PM PT through May 18 11:38 AM PT). Typical Sunday-weekend pace — roughly half of weekday averages.
+
+*Themes:*
+- **Rachyel running the full weekend queue solo.** Every outbound reply is hers. No Catherine, no Julia B visible. Full range of work: Print Pro coordination, shipping, order mods, product questions, editor troubleshooting, social media engagement, rush requests.
+- **Print Pro coordination remains the dominant workload.** Six coordination threads with Bay Photo (Heather Trujillo) in one window: SPS2309767-REMAKE (delivered not received → UPS 2-day reship), SPS2310763-REMAKE (never received → overnight rush), SPS2312917 (flag to ship by 5/19), BR_6493303 (checking if reprint was ever placed), BR_6576232 (wedding deadline → ship by 5/21), SPS2311591 (Bay Photo confirmed "printed true to files" — quality issue is source files, not production). The structural ratio — most of CS time spent on fulfillment partner coordination vs. actual customer questions — has not changed.
+- **Lost customer due to repeat quality failure.** Samantha Winthein (Order #745293) received reprinted photos that came out "exactly the same" — poor quality on both attempts. Full refund issued. Customer is leaving SPS to print elsewhere. Direct churn from quality issues.
+- **Post-Mother's Day shipping anxiety.** Multiple customers anxious about delivery timing: Molly/Moo confused about shipping method and mail hold, Rocio Lopez asking about rush/local pickup, Divija Sharma needing deadline confirmation, EllieClaire Stinson following up on a rush reprint. The post-MD urgency tail is still generating CS load.
+- **TinyBook production delays acknowledged.** Rachyel told a customer: "Sorry for the delay! We are working through a lot of Tiny Book orders." Direct signal that TinyBook volume is stretching production capacity. Good problem commercially, needs management.
+- **Instagram integration — still recurring.** Marika Perrow asked about connecting Instagram. Rachyel explained Meta disabled it, offered phone-folder workaround. This keeps coming up week after week.
+- **Discontinued product inquiry (Photo Journals).** Kristina Rodriguez asked about Photo Journals — told discontinued. Same recurring pattern.
+- **PDF-to-book feature request.** Sidney Brod asked about printing a book from a PDF — told no, must upload each image individually. Feature gap.
+- **Address change workflow friction.** Jonell Anderson's address change flagged as "false" by the system — couldn't be processed, had to route through partner portal. Minor but avoidable friction.
+- **Positive organic social engagement.** Victoria White mentioned SPS in an Instagram Story — Rachyel responded warmly, customer sent hearts back.
+
+*Flags:*
+- ⚠️ **Lost customer (Samantha Winthein) — repeat quality failure on reprinted order.** Reprint came out identical to the original complaint. Full refund, customer going elsewhere. When a reprint doesn't fix the issue, the root cause investigation failed. Bay Photo confirmed on a separate thread (SPS2311591) that another order "printed true to files" — so some quality complaints are source-file quality, not production. But this customer was promised a fix and got the same result twice.
+- **TinyBook production delays visible to customers.** Rachyel explicitly apologized for delays due to TinyBook order volume. If this is a sustained capacity issue, it needs proactive communication (e.g., updated production time estimates on the site) rather than reactive apologies.
+- **Print Pro coordination ratio unchanged.** Six fulfillment partner threads in a quiet weekend window. The structural pattern — most CS time going to Print Pro coordination rather than customer-facing product help — continues unbroken since April 14.
+
+*Observations:* Quieter weekend window, but the structural story hasn't changed: the CS queue is primarily a fulfillment-coordination pipeline with Rachyel as the anchor. The Samantha Winthein thread is the most concerning signal today — a customer who gave SPS two chances (original order + reprint) and still got an unacceptable result. That's the kind of experience that generates negative word-of-mouth. The TinyBook production delay mention is a double-edged signal: volume is strong (good), but capacity is strained (needs attention). Rachyel continues to perform at a high level across the full range of CS work, solo on weekends. Customer sentiment is warm overall despite the shipping anxiety.
+
+---
+
 ## 2026-04-22 — Daily CS Review
 
 *Volume:* Moderate-to-high. 92 messages over ~23 hours (Apr 21 12:04 PM PT through Apr 22 11:02 AM PT). Consistent with yesterday's 100+ and typical Monday→Tuesday pace. No spikes, no dropoff.
