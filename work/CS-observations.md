@@ -6,6 +6,31 @@
 
 ---
 
+## 2026-05-25 — Daily CS Review (Weekend Window: Fri 5/23 1:30 PM – Sun 5/25 10:09 AM PT)
+
+*Volume:* Low. 92 messages over ~45 hours. Sunday itself is very quiet (10 messages in the last 24h, mostly Big Spender alerts and customer replies with no team responses yet). Typical quiet-weekend pace. No spikes.
+
+*Themes:*
+- **TinyBook batch bug driving mass reprints.** Rachyel is using a templated response referencing "a bug in the original TinyBook order that affected many people" and distributing a standard 25% off code (TINY-OOPS-947-8776). Multiple customers getting reprints — at least 3 distinct threads in this window (Cara Olinger #748352, linuanu14 #747654, Inger Hanson #747620). One customer's TinyBooks were a birthday gift that couldn't arrive on time — genuinely disappointed. This appears to be a known production/processing bug that triggered a batch of reprints. Worth understanding the scope: how many orders were affected, what was the root cause, and is it resolved?
+- **Big spender orders — very strong weekend.** Seven big spender alerts: $578.83 (Classic Prints + Layflat Wedding Album), two $447 orders (Metal Prints; Layflat Photo Album), $379.95 (Layflat Photo Album), $345.10 (Metal Prints), $335.25 (Layflat Wedding Album). Layflat Albums and Metal Prints are dominating the high-value order mix. Healthy signal.
+- **Julia B ran Friday; Rachyel ran Saturday.** Clean shift handoff. Julia handled ~25 messages Friday afternoon — reprints (warped 8x10s, falling-apart calendar), editor walk-throughs (TinyBook set confusion, postcard text limitations), email typo corrections, shipping inquiries. Rachyel took Saturday morning with heavier workload including TinyBook bug responses, shipping delays, address changes, rush flags, and Print Pro coordination. Both performing well.
+- **Print Pro / fulfillment coordination — unchanged structural pattern.** Lost-in-transit rush reprint (SPS2312342 via UPS), order flagged to ship by deadline (SPS2313509), Bay Photo address hold (SPS2313506), UPS lost package reprint (order #746184 — Katelyn Mellow). Rachyel spending significant time on fulfillment partner coordination as usual.
+- **"Printed true to files" — dark photos in wedding album.** Michelle F.'s wedding album came out dark. Rachyel explained files were edited very dark and printed true. Offered the editor link to brighten. Same pattern seen repeatedly since April — customer expectation vs. production reality on dark/underexposed photos.
+- **Product limitation friction.** Wedding Layflat books capped at 38 pages (Catherine Dodd wanted more — told no). TinyBook cover styles being discontinued (Heather Stephens asked about composition and solid colors — told only pink solid remaining, all eventually discontinuing). Classic prints sold in fixed sets (Jill had 714/720 photos). These are recurring conversion friction points.
+- **Memorial Day sale — discount stacking denied.** Kendra Parrott tried to use her first-time 10% code alongside the Memorial Day sale. Rachyel denied. Expect this pattern to repeat through the end of the sale window.
+- **Customer-caused damage — creative service recovery.** Jenna Morrison's wedding coffee table book was damaged (she said "this happens more than you would think" — likely pet/child damage). Rachyel offered a free dust jacket to cover it, or the customer can re-scan pages and repurchase. Empathetic, practical options.
+- **iOS app ordering confusion.** Customer (angewiegand) stuck trying to order from iPhone, sent a screenshot. Sunday morning, no reply yet — weekend gap.
+- **Ambassador interest.** Shelby Rhodes followed up on her April application via Instagram. Rachyel directed to Cara/ambassador page. Organic brand interest continuing.
+
+*Flags:*
+- ⚠️ **TinyBook batch bug — scope unclear.** Multiple customers receiving reprints for a known bug "that affected many people." The standard TINY-OOPS code and templated response suggest this was a coordinated response. I'd like to understand: how many orders total were affected? What was the bug? Is the root cause fixed? This is both an operational cost (rush reprints + 25% off codes) and a customer trust issue.
+- **Product line discontinuations generating customer disappointment.** Heather Stephens specifically asked about composition-style and solid-color TinyBook covers — both discontinued or discontinuing. When repeat customers can't get what they previously loved, that's churn risk. The cover transition needs proactive communication on the site, not reactive CS responses.
+- **USPS reliability remains poor.** Multiple lost/delayed packages (Katelyn Mellow, Mariana Bianchi, Andrea's 50% refund for late delivery). Each one generates reprints and refunds — real margin cost.
+
+*Observations:* Quiet weekend with the TinyBook batch bug as the most notable operational signal. The standard TINY-OOPS response suggests Ben or the team identified a systemic issue and set up a coordinated response — good incident management. But the downstream costs add up: rush reprints, 25% off codes for every affected customer, plus the emotional cost to customers who had these as gifts. The big spender mix is encouraging — Layflat Albums and Metal Prints are clearly the high-value anchors. Julia and Rachyel continue to split weekend coverage cleanly, with both performing at a high level. The structural story hasn't changed: most of CS time goes to Print Pro coordination, shipping issues, and production quality — not helping customers discover or buy products.
+
+---
+
 ## 2026-05-18 — Daily CS Review
 
 *Volume:* Low-to-moderate. 45 messages over ~23.5 hours (May 17 12:01 PM PT through May 18 11:38 AM PT). Typical Sunday-weekend pace — roughly half of weekday averages.
