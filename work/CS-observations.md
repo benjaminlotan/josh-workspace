@@ -6,6 +6,34 @@
 
 ---
 
+## 2026-06-01 — Daily CS Review (Weekend Window: Sat 5/31 12:03 PM – Mon 6/1 11:59 AM PT)
+
+*Volume:* Low. 90 messages over ~24 hours. Sunday-into-Monday morning window. However, a significant portion (~20+) is spam/bot noise from fake welcome email signups, so real customer volume is notably light — maybe 65-70 legitimate messages.
+
+*Themes:*
+- **Spam wave on welcome email flow.** 20+ replies to "Welcome to Social Print Studio" emails from Vietnamese-language accounts with gibberish names (Gfvbb Hgghg, Yesue Esyue, Uhs Ins, etc.) and templated responses ("it's interesting thank you!", "we will get in touch ASAP", "sound good", "I will call you soon"). This is a coordinated bot/spam attack on the signup flow — fake accounts creating welcome emails and auto-replying. Polluting the CS queue and could inflate customer/email list metrics.
+- **TinyBook reprint delays — systemic and generating real frustration.** At least 5 customers waiting on reprints that haven't shipped: Brenda Stewart (day 9 since remake, ordered May 14), Brenda Ciardiello (reprint missed a *second* graduation), Charlene Dupray, Amanda Schuh, Debbie Kasle. Rachyel using a templated apology: "we were unfortunately not able to produce the remakes as quickly as we had hoped." Upgrading all to UPS 2-day as courtesy. This is not isolated — it's a production capacity or prioritization issue on remakes.
+- **Wrong photos in book — recurrence of April pattern.** Sarah Harper received a book with her photos but not her final selection. Multi-message investigation with Rachyel — customer confirmed she didn't edit after ordering, and the preview links show the correct version. Suggests a processing/versioning bug where the final saved state didn't propagate to production. Same class of issue as the April photo-swapping complaints.
+- **Envelope sizing issue (internal flag).** Rachyel flagged to team: customer received 4x4 envelopes with 4x4 flat cards — too small to mail without extra postage. Rachyel believed they used to send larger envelopes (4x5 or 4x6). Possible recent change in fulfillment specs.
+- **Customer frustration with platform inconsistencies.** Stephanie Farrell wrote a detailed complaint: order visible on web but not app, live chat redirects to email only, was told email response time was "a couple hours" but waited longer. Still engaged but trust is eroding. Multiple broken promises in the onboarding experience.
+- **Shipping/delivery anxiety.** Nancy Perry (order #747754, birthday gift June 13 — no shipping notification yet), Laurie Erickson (order never delivered to son), Joy Martin (reprint shows unfulfilled/refunded, wants status clarity). Amy Sullivan pressing for same-day ship. Diane Ward discovered 2 wedding prints missing from album after ordering — wants to stop the order and add them.
+- **Father's Day orders emerging.** Kathryn Beebe's TinyBook reprint is a Father's Day gift — "hoping for arrival by then." First FD signal in the queue. Father's Day is June 21 — 20 days out.
+- **Bay Photo/Print Pro coordination — unchanged structural pattern.** SPS2313447 resubmitted, SPS2314106 Japan address updated, SPS2313451 ornaments confirmed packed beneath acrylic, SPS2314148 flagged to ship Tuesday, SPS2313727 rush flag. Catherine handling the partner coordination threads as usual.
+- **Rachyel running the full Sunday-Monday queue.** Handling reprints, fulfillment coordination, editor troubleshooting, cancellations, discount refunds ($10 review coupon, full bleed reprocess), shipping upgrades, product questions (TinyBook text editing, reorder after 6 months, discontinued double-sided 4x4 prints, 4x4 envelope sizing). Consistently excellent.
+- **Big spender orders (3).** $592 Acrylic Photo Blocks (13 line items), $345.50 Framed Fine Art Print, $335.25 Layflat Photo Albums (2). Strong high-value order activity.
+- **Discontinued products still generating tickets.** Double-sided 4x4 prints discontinued (Breanne Rodgers). Consistent with prior weeks.
+- **Expedite requests.** Taylor Skillin (overnight for $29.50), Jamie Buckley (overnight for $35). Active gift-deadline orders.
+
+*Flags:*
+- ⚠️ **Welcome email spam wave — needs investigation.** 20+ fake signups from Vietnamese bot accounts replying to welcome emails with canned responses. This pollutes the CS queue, inflates email list size, and could affect deliverability metrics if these addresses bounce or mark-as-spam later. Worth investigating: is the signup form protected by captcha? Are these accounts being added to Klaviyo flows? Need to stop the inflow and clean the list.
+- ⚠️ **TinyBook reprint delays — now a pattern across multiple weeks.** At least 5 customers waiting 9+ days for reprints. Rachyel's templated apology ("not able to produce remakes as quickly as we hoped") confirms this is known internally. But reprints are supposed to be the service recovery — when the recovery itself fails, customer trust takes a serious hit. Brenda Ciardiello's reprint has now missed *two* graduation dates. This needs visibility with Ben.
+- ⚠️ **Wrong-photos-in-book bug may still be active.** Sarah Harper's case (photos were hers but not final selection, despite correct preview links) suggests a versioning/processing bug where edits don't fully propagate to the production file. This is the same class of issue flagged in April. If the root cause wasn't fixed, it's still silently affecting orders.
+- **Father's Day is 20 days out (June 21).** First FD-related CS thread appeared today. Production capacity is already strained on reprints — if FD order volume spikes, turnaround times will be under pressure.
+
+*Observations:* The spam wave is new and operationally concerning — 20+ bot signups in one window is enough to be visible in list metrics and CS queue noise. The TinyBook reprint delay is the most customer-impactful issue: when the service recovery (reprint) takes 9+ days and misses the occasion the customer ordered for, there's no second chance. Rachyel is handling it with grace — courtesy shipping upgrades, empathetic templated language — but the problem is upstream in production prioritization, not CS. The Sarah Harper wrong-photos thread is worth watching: if the April processing bug wasn't fully resolved, it's still creating expensive reprints and damaging trust. Father's Day orders are starting to appear, which means production capacity needs to be healthy in the next 2-3 weeks. Overall CS sentiment from real customers remains warm despite the issues, which is a credit to Rachyel's consistency.
+
+---
+
 ## 2026-05-25 — Daily CS Review (Weekend Window: Fri 5/23 1:30 PM – Sun 5/25 10:09 AM PT)
 
 *Volume:* Low. 92 messages over ~45 hours. Sunday itself is very quiet (10 messages in the last 24h, mostly Big Spender alerts and customer replies with no team responses yet). Typical quiet-weekend pace. No spikes.
