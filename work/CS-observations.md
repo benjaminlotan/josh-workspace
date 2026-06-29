@@ -6,6 +6,33 @@
 
 ---
 
+## 2026-06-29 — Weekly CS Review (Window: Sat 6/28 12:13 PM – Sun 6/29 11:43 AM PT)
+
+*Volume:* Moderate. 68 messages over ~23.5 hours. Typical weekend pace. Rachyel ran the entire Sunday queue solo — every outbound reply is hers. Catherine visible only in Print Pro coordination threads from earlier. No spikes.
+
+*Themes:*
+- **Foil stamping quality issues — 4 threads in one window.** James Jones ("Faulty Product" — rush reprint needed by 7/10), Kaylyn Pasterick (wedding guest book with "inconsistent foil lettering" — offered refund or reprint), plus Rachyel proactively filed two rush reprints (BR_6585824 and BR_6588008) for books with light/poor foil stamping — both requesting UPS 2-day with extra QC. Four foil-related quality issues in one weekend. The foil stamping machine breakdown flagged on 6/22 may be producing downstream quality problems even after the repair.
+- **Print Pro declining reprints — "printed true to files" / "standard quality."** Two instances: Heather Trujillo told Catherine (SPS2315574) that "a reprint would not yield better results, the 'grittiness' is the standard press printed quality." Rachyel told Vy Vo (#1544760) the same. When production says the issue IS the quality standard, the customer has no path to satisfaction beyond refund or gift code. Dead end for customer trust.
+- **Order placed without images — checkout validation bug.** Customer (kimmetal@comcast.net) somehow placed a TinyBook order with no images at all. Rachyel: "I am not sure how you did that!" Canceled and refunded. The system should prevent image-less orders from being submitted — this is a checkout guard that's missing.
+- **Wrong photos in order — still recurring.** SPS2315667 — customer received someone else's photos. Rush reprint UPS 2-day submitted. This is the most trust-damaging fulfillment failure (privacy dimension) and it continues to surface every few weeks.
+- **Promo code friction — manual adjustments continuing.** Libbie had an old 20% code (probably Mother's Day) — Rachyel honored it and refunded $7.20. Sara's SUMMER-BOOKS code wouldn't apply to her 8x8 Hardcover — told to order as-is, Rachyel will refund the difference. Same structural pattern seen with every promotion since April.
+- **Product limitation friction — recurring.** TinyBooks in sets of 3 only (Eliza Colon wanted 100 for her org — had to choose 99 or 102). Can't save/reuse photos across products (Kim — compared to Shutterfly: "is there a place to upload photos to then sort through and pick different sizes?"). Can't change bordered-to-full-bleed without starting over (Christy). App and web orders not connected (Pristine Chen). Same patterns every week.
+- **B2B / bulk interest.** Eliza Colon (The Bronx Defenders, Communications Manager) wants ~100 TinyBooks — organizational use case, Rachyel checking on bulk discount. Nora from hyperke LLC following up on a retailer inquiry that got an OOO response. Two B2B leads in one window.
+- **Wedding guest book inquiries — healthy.** Elizabeth Bourne and Gabrielle both asking about pens for signing. Standard pre-wedding buying signals. Rachyel provided detailed recommendations from the FAQ.
+- **App saved project failure.** Gina Davenport: "The app didn't save my project." Had to restart. Ongoing reliability issue.
+- **Customer confused SPS with another company.** Sheila Wagner looking for "SP Swell" — Rachyel redirected. Minor noise.
+- **Ambassador inbound.** Hadley Sanders via Instagram — directed to ambassador page and Cara. Organic interest continuing.
+- **Daily Calendar storage question.** Dixie Dies confused about whether SPS prints the daily calendar photos and whether there's a storage binder for them. Told SPS does print them but doesn't offer a binder. Product gap / accessory opportunity.
+
+*Flags:*
+- ⚠️ **Foil stamping quality — 4 issues in one weekend.** This is elevated. The 6/22 machine breakdown was reportedly repaired, but four foil-related quality complaints (two customer-initiated, two Rachyel proactively catching on QC) suggest the repair may not have fully resolved the issue, or post-repair calibration is off. Worth confirming with Print Pro.
+- ⚠️ **Checkout validation bug — image-less order submitted.** A customer placed a TinyBook order with zero images. This should be impossible. Engineering should investigate how this got through.
+- **B2B leads need follow-up.** Eliza Colon (Bronx Defenders, ~100 TinyBooks) and Nora (hyperke LLC, retailer inquiry) are both active inbound B2B leads sitting in the CS queue. If SPS wants to pursue B2B/bulk, these shouldn't die in HelpScout.
+
+*Observations:* The foil stamping quality cluster is the most notable signal this weekend — four issues in one window suggests the machine repair from the 6/22 breakdown may not have fully resolved the problem, or post-repair output needs recalibration. This is worth a direct question to Print Pro. The structural story otherwise remains unchanged: Print Pro coordination, promo code manual adjustments, and product limitation friction continue to be the top three CS workload drivers. Rachyel continues to perform at an exceptional level, handling the full Sunday queue solo with speed, warmth, and good judgment. The Kim/Shutterfly comparison thread is worth noting — when customers explicitly compare SPS's workflow unfavorably to competitors, it's a product signal. The B2B leads (Bronx Defenders wanting 100 TinyBooks) represent exactly the kind of organizational/gifting use case that could be a repeatable revenue stream if there were a bulk ordering path.
+
+---
+
 ## 2026-06-22 — Weekly CS Review (Window: Wed 6/18 10:43 AM – Sun 6/22 11:42 AM PT)
 
 *Volume:* Moderate. ~225 messages over ~5 days spanning Juneteenth (federal holiday 6/19) and Father's Day weekend (6/21). Catherine C carried the heaviest shifts (Wednesday 6/18, Friday 6/20 — ~80+ replies combined). Vanessa W ran Saturday 6/21. Sunday 6/22 is mostly inbound customer replies and Print Pro responses — no SPS agent actively replying yet as of noon PT. Pace is consistent with recent weeks; no unusual spikes despite the holiday gift window.
