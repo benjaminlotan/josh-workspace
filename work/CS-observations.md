@@ -6,6 +6,30 @@
 
 ---
 
+## 2026-07-06 — Weekly CS Review (Window: Sat 7/5 12:27 PM – Sun 7/6 11:41 AM PT)
+
+*Volume:* Low-to-moderate. 43 messages over ~23 hours. Typical quiet weekend pace. Rachyel ran the full Sunday queue solo — every outbound reply is hers. No Catherine, Vanessa, or Jody visible.
+
+*Themes:*
+- **Shipping delays / lost orders — dominant theme.** Six distinct threads: Janet Amaya's wedding guest book (wedding THIS weekend, still waiting — Rachyel contacted production to expedite), Hazel Mak (international to Japan, multi-message address correction with 4 back-and-forths to get Tokyo added), Joanie Renshaw's delayed TinyBooks reprint (rush reprint issued), Li-Chen Miller (UPS rescheduled her package, anxious about leaving town — Rachyel confirmed labeled to ship), Pam Kline (order #750208 lost in transit via USPS — confirming address for reprint), Kat Eghdamian (order lost en route to New Zealand — confirming address for reprint). Shipping/delivery is the top customer anxiety driver this weekend.
+- **Product quality — 2 substantive complaints, including a novel defect.** (1) Kristen Kolb: defective framed print — explicitly said if the replacement is "just the print" without professional framing, she'll take the refund and "try another company." Churn-risk thread. (2) Kelly Ingram (order #752309): prints arrived sticky/tacky to the touch. Rachyel: "OH NO! They should not be like that." Novel defect — first time I've seen sticky/tacky prints in the queue. Could be a coating or finishing issue at Print Pro.
+- **Damaged in transit.** betsy31jeanne received damaged order — Rachyel requested photos. Standard protocol.
+- **App/web platform disconnect — still recurring.** johnnadurham couldn't sync TinyBooks between app and website. Rachyel explained they don't connect (data is local to device). Same pattern seen every week since April.
+- **Product limitation friction.** Debra Presutto asked about black TinyBook cover — not available. Anita Samuel confused about mini photo book options via Instagram DM.
+- **Post-order modification friction.** Allison Bosworth wanted to add matte finish to order #753303 — Rachyel placed on hold, told her she'd need to place a new order. Customer asking about cancellation/refund for original. Standard but friction-generating.
+- **Print Pro coordination.** Rush flag filed (SPS2316957 — ship by 7/13; Heather confirmed will ship by 7/10). Brass stand removal confirmed (SPS2316916). International address corrections for Japan order. Routine coordination volume.
+- **Sale end date inquiry.** Elaine Goldberg — sale runs through July 7th. Quick answer.
+- **Help Scout platform incident.** Automatic Workflows down 07:16-08:07 UTC Jul 6. Resolved. No visible customer impact.
+
+*Flags:*
+- ⚠️ **Kristen Kolb — explicit churn threat on defective framed print.** Customer made it clear: if the replacement doesn't include professional framing (not just the print), she'll take the refund and go to another company. This is a customer who bought a premium product specifically for the framing and received a defect. Resolution matters here — losing a framed-print customer over a fulfillment dispute is avoidable.
+- ⚠️ **Sticky/tacky prints — novel defect (Kelly Ingram, order #752309).** First time I've seen this failure mode. Could indicate a coating or finishing issue at Print Pro. Worth monitoring — if more surface this week, it's a production process problem.
+- **Six shipping delay/lost threads in one weekend.** Volume of lost-in-transit and delayed orders is elevated. Two international (Japan, New Zealand), one wedding-deadline-critical (Janet Amaya — wedding this weekend). USPS continues to be the weakest link in the delivery chain.
+
+*Observations:* Quiet weekend structurally, with shipping delays and lost orders as the dominant customer pain point — six distinct threads out of 43 messages. The Kristen Kolb thread is the most commercially significant: a customer explicitly conditioning their loyalty on whether the replacement meets their original expectation (professional framing included). The sticky/tacky prints from Kelly Ingram are a new defect type worth watching. The recurring themes (app/web disconnect, product limitations, Print Pro coordination) continue unchanged. Rachyel is performing at her usual exceptional level, handling the full Sunday queue solo with speed, warmth, and judgment across everything from international address corrections to quality escalations. No structural changes from prior weeks.
+
+---
+
 ## 2026-06-29 — Weekly CS Review (Window: Sat 6/28 12:13 PM – Sun 6/29 11:43 AM PT)
 
 *Volume:* Moderate. 68 messages over ~23.5 hours. Typical weekend pace. Rachyel ran the entire Sunday queue solo — every outbound reply is hers. Catherine visible only in Print Pro coordination threads from earlier. No spikes.
