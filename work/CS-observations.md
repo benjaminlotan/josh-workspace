@@ -6,6 +6,28 @@
 
 ---
 
+## 2026-07-13 — Weekly CS Review (Window: Sat 7/12 1:50 PM – Sun 7/13 11:58 AM PT)
+
+*Volume:* Low-to-moderate. 43 messages over ~22 hours. Typical quiet weekend pace. Rachyel ran the full Sunday morning queue solo — every outbound reply is hers. Catherine visible only in Print Pro coordination threads (supplier-facing, not customer-facing). No Vanessa or Jody in this window.
+
+*Themes:*
+- **Print Pro / Bay Photo coordination — still the dominant workload.** Five fulfillment coordination threads: SPS2315086-REMAKE (labeled but never shipped → FedEx Intl Economy remake confirmed by Heather), SPS2317484 (brass stand removal confirmed by Heather), SPS2317696 (dust jacket-only reprint routed to Bay Photo because Black River not taking new orders), SPS2315574 (wrong order / pages potentially out of order or guts upside-down — multi-message investigation with Heather), SPS2316021 (returned order, will reship once return processed). Five fulfillment threads in a quiet 43-message window — the structural ratio hasn't changed since April.
+- **Black River Imaging — two concerning signals.** (1) Rachyel opened ticket #1550490 flagging BR_6591246 (international order, business day 13) hasn't shipped and "We are still not receiving any responses from Black River Customer Service." Supplier completely unresponsive. (2) SPS2317696 dust jacket explicitly routed to Bay Photo because "Black River is not taking new orders." Additionally, escalation thread #1549477 reveals Black River's imprinting machine in Springfield is "still having issues," delaying remake orders (6592482, 6592483) with no ETA. Three signals in one window: unresponsive CS, declining new orders, and ongoing equipment failures. This is a supplier in operational distress.
+- **Discontinued products — still generating tickets.** Ping asked about a hardcover book → told it's discontinued and replaced. JessicaChelsea asked about a specific TinyBook cover via Instagram → told "We no longer have that option. The covers are changing all the time." Same pattern every week — returning customers expecting products/options that no longer exist.
+- **Font size surprise in printed book.** Alyssa Carlson received a book where the text was "really big." Rachyel investigating with photo comparison vs. preview. Possible editor-to-print text rendering mismatch. Minor but worth tracking.
+- **Address change portal — working well.** Emily VanderZiel used the self-serve portal successfully. Quick, clean round-trip. Rachyel confirmed the change.
+- **Wedding ambassador inbound.** Ashley Beckner asked about a wedding ambassador program via Instagram. Rachyel directed to ambassador page and Cara's email. Organic interest continuing.
+- **Big spender order.** $400 Photo Magnets (14 line items). Healthy high-value activity.
+- **Customer sentiment: warm.** Multiple thank-yous and positive replies. Shannon VanHekken self-resolved her issue and placed her order. Lindsay Foisy willing to wait a few more days before requesting a reprint. Hazel excited about receiving her order ("I GOT THE GOODS!"). No frustrated or escalated threads.
+
+*Flags:*
+- ⚠️ **Black River Imaging — supplier in operational distress.** Three signals in one window: (1) not responding to CS inquiries, (2) "not taking new orders" forcing dust jacket work to be rerouted to Bay Photo, (3) imprinting machine in Springfield "still having issues" with no ETA on remake orders. This is a supplier that's either winding down capacity, having serious equipment problems, or both. If SPS has meaningful order volume going through Black River, this needs visibility with Ben — it could become a fulfillment bottleneck quickly. Catherine is managing the coordination well, but she's working around a non-functional supplier.
+- **Discontinued product/cover communication gap.** Two separate customers (different channels — email and Instagram) disappointed by discontinued options. The TinyBook cover churn ("the covers are changing all the time") is generating friction with returning customers. Proactive communication on the site about what's available would reduce these tickets.
+
+*Observations:* Quiet weekend structurally, but the Black River Imaging situation is the most notable signal. Three independent data points in one window — unresponsive CS, not accepting new orders, and ongoing equipment failures — paint a picture of a supplier with serious operational problems. This is materially different from the typical Print Pro coordination friction that dominates most reviews. If Black River handles any significant portion of SPS's book production, this is a capacity risk that needs proactive management, not just reactive ticket-by-ticket workarounds. Everything else is consistent with prior weeks: Print Pro coordination consuming the majority of CS time, discontinued products generating disappointment, and Rachyel performing at her usual exceptional level. The ambassador inbound from Ashley Beckner is a nice organic signal — a wedding customer spontaneously asking about promoting the brand.
+
+---
+
 ## 2026-07-06 — Weekly CS Review (Window: Sat 7/5 12:27 PM – Sun 7/6 11:41 AM PT)
 
 *Volume:* Low-to-moderate. 43 messages over ~23 hours. Typical quiet weekend pace. Rachyel ran the full Sunday queue solo — every outbound reply is hers. No Catherine, Vanessa, or Jody visible.
