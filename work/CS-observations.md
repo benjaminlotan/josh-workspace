@@ -6,6 +6,30 @@
 
 ---
 
+## 2026-07-20 — Weekly CS Review (Window: Sat 7/19 12:17 PM – Sun 7/20 11:19 AM PT)
+
+*Volume:* Low-to-moderate. 56 messages over ~23 hours. Typical quiet weekend pace. Rachyel ran the Sunday morning queue solo — every outbound reply is hers. Catherine visible only in a Print Pro coordination thread (supplier-facing). Cara handled two items (big spender assignment, Instagram collaboration response). No Vanessa or Jody in this window.
+
+*Themes:*
+- **Print quality — mobile upload compression diagnosis.** Samantha Kambo (professional photographer photos) reported print quality issues. Rachyel diagnosed it as phone compression during upload and offered a gift code to reorder using the website instead. Smart resolution, but highlights the recurring mobile-upload quality gap — photos uploaded via phone get compressed, and the app doesn't warn customers.
+- **Print Pro / Bay Photo coordination — standard volume.** SPS2316083 damaged print remake submitted (UPS 2-day, Heather confirming). SPS2318155 order cancelled by Print Pro. SPS2315574 return tracking coordination with Catherine. Routine but still consuming CS time. Also, Rachyel cancelled a Bay Photo order mid-production (SPS2318155) for a customer — Print Pro confirmed cancellation.
+- **TinyBook magnet safety question — needs a better answer.** Jenna Dirt asked via Messenger if TinyBook magnets are safe for kids. Rachyel responded that most customers order them for kids and she doesn't see why they wouldn't be safe, then asked about specific concerns. The answer was reasonable but imprecise — "I don't see why not" is different from having a definitive safety statement. If TinyBooks are marketed as kid-friendly, there should be a clear, confident answer about magnet safety that CS can reference.
+- **Coupon/promo UX friction — still recurring.** Customer (kmhayes2003) found the discount code drop-down and noted "It would help if it indicated that you can put coupons there." Rachyel acknowledged and said she'd pass on the feedback. Same structural UI issue seen repeatedly since April.
+- **Wedding deadline pressure — reprint for Friday wedding.** Shae's reprint for her wedding (this Friday) had messages going to spam. Rachyel tracked it down, confirmed production is working on it, and is coordinating a potential address change to speed delivery. High-stakes service recovery handled well.
+- **Saved project not auto-saving — calendar customer lost work.** Aubrey thought her calendar project saved automatically — it didn't. Nothing found under her email. 365 photos potentially need to be re-uploaded. This is the same Cloud Saved Projects gap that's been generating tickets since April.
+- **Product limitations — recurring.** TinyBooks only in sets of 3 (Betsy). Calendar template not customizable for custom artwork (Jennifer from nonprofit — Tigger Stavola Foundation). Both standard, both represent conversion friction.
+- **Big spender orders (2).** $720 TinyBooks (20 line items — Ashley Garrett Photography, professional/bulk buyer) and $356 Classic Prints (18 line items, international). The $720 order is notable: a professional photographer ordering 20 TinyBooks suggests a B2B/gifting use case.
+- **Instagram collaboration inbound.** Jenica (Junk Journal Aficionado) — Cara directed to her email. Organic interest continuing.
+- **Customer sentiment: warm.** Alison Gordon: "Thank you so much! Great customer service. I will be back!" Lauren Byrd: "It looks perfect!" Samantha Kambo grateful for the gift code. Debbie Mattingly quick resolution. No frustrated or escalated threads.
+
+*Flags:*
+- **TinyBook magnet safety — needs a definitive answer.** Customer asked a direct product safety question and the response was "I don't see why they would not be safe." If TinyBooks are primarily ordered for children, SPS should have a clear, confident safety statement about the embedded magnets (size, enclosure, compliance with any relevant safety standards). This is a liability and trust question, not just a CS question.
+- **$720 professional photographer order** — Ashley Garrett Photography ordering 20 TinyBooks is a B2B/bulk signal. Professional photographers ordering TinyBooks as client gifts or event products is a repeatable revenue stream worth understanding and potentially cultivating.
+
+*Observations:* Quiet, clean weekend. No new defect categories, no escalations, no Print Pro quality surprises. Rachyel handled the Sunday queue solo with her usual speed and professionalism — every thread resolved or advanced within minutes. The most interesting signal is the $720 professional photographer order (20 TinyBooks) — this is exactly the kind of B2B/gifting use case that could be a growth vector if there were a bulk ordering experience. The magnet safety question is a small thing that deserves a real answer: if the product is primarily sold for children, the safety answer should be definitive, not speculative. The structural story remains unchanged: Print Pro coordination, saved project failures, product limitation friction, and coupon UX issues continue to be the recurring CS workload drivers.
+
+---
+
 ## 2026-07-13 — Weekly CS Review (Window: Sat 7/12 1:50 PM – Sun 7/13 11:58 AM PT)
 
 *Volume:* Low-to-moderate. 43 messages over ~22 hours. Typical quiet weekend pace. Rachyel ran the full Sunday morning queue solo — every outbound reply is hers. Catherine visible only in Print Pro coordination threads (supplier-facing, not customer-facing). No Vanessa or Jody in this window.
