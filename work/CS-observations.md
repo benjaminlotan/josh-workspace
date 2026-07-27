@@ -6,6 +6,33 @@
 
 ---
 
+## 2026-07-27 — Weekly CS Review (Window: Sat 7/26 12:55 PM – Sun 7/27 11:54 AM PT)
+
+*Volume:* Low. 27 messages over ~23 hours. Very quiet weekend pace — lightest window in recent weeks. Rachyel ran the Sunday queue solo as usual. Catherine visible only in a Print Pro coordination thread (supplier-facing). No Vanessa or Jody in this window.
+
+*Themes:*
+- **Print Pro / Bay Photo coordination — still the dominant workload.** Four fulfillment coordination threads with Heather Trujillo: SPS2318237 (missing bookshelf → remake submitted), SPS2317925 (customer received someone else's order → refunded, credit requested), SPS2318397 (book pages stuck together and tore → rush remake UPS 2-day), and Botanical TinyBook cover hold on SPS2317962 (cover discontinued, customer switching to floral). Even in a 27-message window, fulfillment coordination consumes the majority of CS activity.
+- **Wrong order received — recurring privacy/trust failure.** SPS2317925: customer got someone else's order. Rachyel refunded and requested credit from Print Pro. This continues to surface every few weeks and remains the most trust-damaging fulfillment failure category.
+- **Book pages stuck together — quality defect.** SPS2318397: pages stuck together and tore when flipping. Rush remake with UPS 2-day submitted. This is a binding/adhesive defect — similar class as the binding rips seen periodically since April.
+- **Discontinued Botanical TinyBook cover — generating production holds.** Bay Photo flagged order SPS2317962 as delayed because the Botanical cover is discontinued. Customer (Heather Trujillo relaying) agreed to switch to floral. Cover discontinuation continues to create friction both at CS and at the production level, now causing actual order holds.
+- **Checkout/ordering UX friction — 2 conversion-blocking threads.** Mary H wrote twice about not being able to check out ("Still having trouble checking out on the website"). Camila Rechtman uploaded photos for Mini Photo Prints but couldn't find her project or figure out how to proceed — provided a direct editor reload link. Both represent willing buyers stuck in the interface.
+- **Order hold notification went to spam → cancel/refund.** Jenna Alessi's hold email went to spam. By the time she saw it, she needed a specific cover that wasn't available and requested cancellation. Email deliverability issue compounding a product availability issue — customer lost.
+- **Post-order cover change request.** Customer (mytran.va) placed order #756222, then realized there are other cover options and wants to change to strawberry and hearts. Post-order modification friction is a recurring pattern.
+- **Browser crash lost unsaved project.** Stephanie's browser refreshed and project wasn't saved. Rachyel: "If you did not save the project, there is not a way to recover the work." Offered free shipping upgrade on a new order. Same cloud-save gap generating tickets since April.
+- **Ambassador/influencer inbound (2).** Valerie Warren ("Funny Relatable Mom Life") and Sydney Campbell both reached out — Rachyel directed both to ambassador page and Cara's email. Organic interest continuing.
+- **Glowing customer testimonial.** Kaofeng Lee (Director of Organizational Development, TSPA/TSF) sent a heartfelt thank-you: "I just wanted to let you know how much I appreciated you expediting my photos! … I got it literally the next day and had plenty of time to organize the photos for the conference." Conference/event use case — B2B signal.
+- **Big spender.** $505.60 order (6 line items — Elevation Float Frame, Acrylic Photo Block). Healthy high-value activity.
+- **Shipping address question.** Kendra Vasile — told all items in an order must ship to one address. Limitation, not a bug.
+- **Sales spam.** Austin Parent from SAP following up on a pitch to "Jenny" (former employee). Persistent, irrelevant.
+
+*Flags:*
+- **Hold notification deliverability.** Jenna Alessi's hold email went to spam, resulting in a lost sale (customer wanted a specific cover, couldn't get it, cancelled). If hold notifications routinely land in spam, customers won't know their orders are waiting on them. Worth checking: what's the deliverability rate on hold/action-required emails? A subject line or sender reputation issue could be silently losing orders.
+- **Checkout UX — two customers stuck in one quiet window.** Mary H wrote twice about checkout failure; Camila couldn't find her project. In a 27-message window, two checkout-blocking threads is a high ratio. The editor-to-checkout flow continues to be the most common conversion barrier.
+
+*Observations:* Quietest weekend window in recent memory — 27 messages vs. the typical 40-55 range. Despite the low volume, the structural patterns are unchanged: Print Pro coordination is the dominant CS activity, wrong-order and quality defects continue to surface, and editor/checkout UX friction continues to block willing buyers. The Jenna Alessi thread is a small but telling signal — a hold notification going to spam, combined with a discontinued cover, resulted in a lost customer who was ready to buy. That's two independent failures (email deliverability + product availability) compounding into a cancellation. Rachyel continues to perform at her usual exceptional level, running the full Sunday queue solo with speed and warmth. The Kaofeng Lee thank-you is worth savoring — a conference organizer who got photos expedited and sent an unsolicited note of genuine gratitude. That's the kind of experience that builds reputation.
+
+---
+
 ## 2026-07-20 — Weekly CS Review (Window: Sat 7/19 12:17 PM – Sun 7/20 11:19 AM PT)
 
 *Volume:* Low-to-moderate. 56 messages over ~23 hours. Typical quiet weekend pace. Rachyel ran the Sunday morning queue solo — every outbound reply is hers. Catherine visible only in a Print Pro coordination thread (supplier-facing). Cara handled two items (big spender assignment, Instagram collaboration response). No Vanessa or Jody in this window.
