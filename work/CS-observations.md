@@ -6,6 +6,36 @@
 
 ---
 
+## 2026-08-10 — Weekly CS Review (Window: Sat 8/9 12:01 PM – Sun 8/10 11:59 AM PT)
+
+*Volume:* Moderate. 58 messages over ~24 hours. Typical weekend pace. Rachyel P ran the Sunday morning shift solo (~30+ replies, 7:54 AM – 11:59 AM PT) covering the full range. Catherine C visible in a couple of fulfillment coordination threads. No Julia, Vanessa, or Jody in this window.
+
+*Themes:*
+- **Print Pro / Bay Photo coordination — standard volume.** Wrong order received (SPS2319231 — customer got someone else's TinyBooks → rush remake UPS 2-day, confirmed by Heather Trujillo). Catherine investigating a quality/printing issue on #1564646 — unable to view original files, marked new order for QA before shipping. Rush flag on SPS2321200 confirmed by Heather. Standard coordination load.
+- **Lost replacement shipment — elevated customer frustration + privacy concern.** Rachel Cooper's replacement order (original was lost) is now also showing as delayed. Customer is "increasingly concerned and frustrated" and specifically uncomfortable that packages containing "personalized photo books with family photos, including many photos of my children" are missing. When both the original AND the replacement are lost, customer trust takes a compounding hit — and the privacy dimension (family photos in unknown hands) makes this more serious than a standard delivery failure.
+- **Product durability with toddlers — 2 incidents.** Nicole Perry's son put a TinyBook in his diaper and ruined it (wants to reorder just that one book). Grace Friloux's one-year-old separated the cover from pages. Both are products being used exactly as intended — family photo books in the hands of young children — and not surviving normal toddler handling. Not defects, but a signal about how the product actually lives in customers' homes.
+- **6-month image retention limit — still generating tickets.** Emmy told images are only kept for 6 months, can't reorder. MissyP (via Instagram) asked to reorder from order #726308 — told no access past 6 months. Same friction point seen every week.
+- **Summer sale promo code refund.** Rachyel manually refunded $3.30 for Save-Summer code. Same recurring pattern with every promotion — customer orders without applying code, writes in for manual refund.
+- **Editor/product UX friction — recurring.** Lucinda Graham (elderly customer) can't figure out how to download photos from email to upload to site — multi-message hand-holding across two days. Shuffle feature can't be undone (hesalmond — told to reupload all images). Can't combine separate orders for combined shipping (Whitney Brown). Customer needing help navigating saved projects (Susan Osgood — Rachyel found them and sent direct links). Standard navigation confusion.
+- **Square business cards — app vs. website gap.** GiNaKeLLY found square business cards available on the app but not the website, asking if they'll eventually be on the web too. Product availability inconsistency between platforms.
+- **Payment card change — clean process.** Rachyel handled a card change via refund + new invoice. Quick resolution.
+- **Privacy/data trust question.** Customer (Deanna Barton) asked: do you use my images for anything beyond printing? Rachyel: "Never ever! We only use your images to print :)" Important trust question, good answer.
+- **Big spender orders (2).** $397.80 (Framed Large Format Prints — Karen Quan), $412.50 (Hardcover Photo Books — Brian Sparness, 5 line items). Healthy high-value activity.
+- **Repeat customer loyalty — strong signals.** Lexie wants a second copy of a book — "meant so much to her parents." Anne-Marie: "I love your company" (wants 3 more books to 3 addresses). Cindy: "Your prints are such nice quality. Will never do Walgreens again." Nicole Perry (ruined TinyBook): "They are amazing and we will definitely be ordering more in the future!!"
+- **Instagram engagement — healthy.** Jenica (Junk Journal Aficionado) mentioned SPS in a Story. Aimee Pinard shared content. Amanda Zellmer Rhodes asked about deals — directed to Save-Summer 15% off. Rachyel engaging warmly with all.
+- **Hannah Brock — anxious repeat customer.** Placed new order and specifically asked Catherine to verify file sizes match the 3-5MB she uploaded. Prior quality experience made her cautious. Catherine marked the order for QA review. Good proactive handling.
+- **Old order still unresolved.** Lynn Shield's order #741472 from April still has issues — Rachyel investigating.
+- **Sara Pastusak — order + email confusion.** Previously cancelled order, tried to rebuy, still not receiving confirmation emails. Potential email deliverability issue for this customer.
+- **Nancy needing help with TinyBook photo upload.** Confused about whether to upload all 69 photos at once or incrementally — uploaded 23 and they populated all 3 books. Needs guidance on the multi-book photo flow.
+
+*Flags:*
+- ⚠️ **Rachel Cooper — double lost shipment + privacy concern.** Both original and replacement orders appear lost/delayed. Customer specifically flagged discomfort with personalized children's photos being in unknown hands. This needs resolution — if the replacement is truly lost, a third shipment with tracked/signature-required delivery may be warranted. Elevated service recovery situation.
+- **Wrong order received — again (SPS2319231).** Customer got someone else's TinyBooks. Rush remake filed. Same trust-damaging fulfillment failure that continues to surface every 1-2 weeks. Privacy dimension (someone else has YOUR photos) remains the most damaging category.
+
+*Observations:* Quiet, clean weekend. No new defect categories or production quality surprises — the structural patterns are unchanged. The Rachel Cooper thread is the most notable item: when both the original order and its replacement are lost, and the customer explicitly raises the privacy concern of family photos of children being in unknown hands, that's a situation that needs proactive, high-touch resolution rather than standard CS process. The repeat customer loyalty signals are genuinely strong this weekend — four separate customers expressing real affection for the product and the company. Rachyel continues to perform at her usual exceptional level, running the full Sunday queue solo with speed, warmth, and competence. The 6-month image retention limit continues to generate recurring disappointment from customers who want to reorder, and the square-business-cards app-vs-website gap is a small but interesting product availability inconsistency worth noting.
+
+---
+
 ## 2026-08-03 — Weekly CS Review (Window: Sat 8/2 7:32 PM – Sun 8/3 11:58 AM PT)
 
 *Volume:* Moderate. 81 messages over ~16.5 hours. Typical weekend pace. Julia B ran the Saturday evening shift (~38 replies, 7:30 PM – 9:40 PM PT) — handling the full range competently. Rachyel P picked up Sunday morning (~20 replies, 9:54 AM – 11:58 AM PT). Catherine visible only in a customer reply to a prior thread. No Vanessa or Jody in this window.
