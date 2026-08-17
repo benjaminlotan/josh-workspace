@@ -6,6 +6,31 @@
 
 ---
 
+## 2026-08-17 — Weekly CS Review (Window: Sat 8/16 12:06 PM – Sun 8/17 11:56 AM PT)
+
+*Volume:* Moderate. 53 messages over ~24 hours. Typical weekend pace. Rachyel P ran the Sunday morning queue solo (~25+ outbound replies, 9:49 AM – 11:56 AM PT) covering the full range with her usual speed and warmth. Julia B visible in a few Bay Photo coordination threads. Catherine C visible only in a customer reply to a prior thread. No Vanessa or Jody in this window.
+
+*Themes:*
+- **Bay Photo / Print Pro coordination — standard volume.** Five fulfillment threads with Heather Trujillo: brass stand removal (SPS2322592), shipping status check (SPS2320042 — shipping today), upside-down binding investigation (SPS2317181 — tracking shows delivered), lost international order remake (SPS2315150 — FedEx Intl Economy), returned/discarded order (SPS2313462). Julia B coordinating the international remake and returned order. Standard operational load.
+- **TinyBook multi-defect quality complaint.** Customer (bbirdie0526): pages not lined up when glued, sticky adhesive showing, magnet won't connect to other books, binding on pictures is off. Multiple quality failures on a single product. Conversation still in progress with Julia B.
+- **Sticker editor photo upload bug — specific and actionable.** Customer (bridgettblough) reported specific photo numbers not working in the sticker editor — changed 8 of 48, eventually deleted them because it took too long. TinyBooks had zero errors. Customer explicitly flagged: "it could be a glitch and it could prevent future orders from newcomers." Rachyel forwarded to tech team and offered 15% discount + free shipping on next order. If reproducible, this is a conversion-blocking bug affecting the sticker product specifically.
+- **Editor/app UX friction — still recurring.** Customer couldn't find print option in app ("Very confusing" — figured it out herself). Multiple customers couldn't figure out how to open saved projects and add to cart — Rachyel walked each through the pencil icon → review → add to cart flow. Customer needed help understanding app vs. website for collaborative book creation (only available on site). Same structural UX confusion generating tickets every week since April.
+- **6-month project/order retention limit — still generating tickets.** Sophie Kelmenson's project from January may have been deleted. Hope's re-order request denied — orders not kept past 6 months. Same friction point every week.
+- **Split shipping limitation — conversion friction.** Robyn Knappenberger wanted 2 calendars to 2 addresses from one order. Told she'd need 2 separate orders with 2 shipping fees. Decided to ship both to herself instead. Sale preserved but customer compromised.
+- **Order modification — great service recovery.** Janessa Ruiz wanted to cancel her order to fix it. Rachyel offered to hold and let her update the saved project instead. Customer updated within 3 minutes. Sale preserved, customer delighted.
+- **Product questions — standard mix.** TinyBook cover options (11 available), flat cards in sets of 24 only, TinyBooks in sets of 3 with 23 images each, Daily Calendar year on cover only (technically reusable), wedding guest book pen recommendations (detailed, well-handled), collaborative book only on website not app.
+- **Big spender orders (4) — very strong.** $357.78 (Canvas Prints, 5 items), $495.00 (Layflat Photo Albums, 5 items), $380.80 (Metal Prints, 2 items), $379.95 (Layflat Photo Album, 3 items). Total: $1,613.53 in big spender alerts. Layflat Albums continue to dominate the high-value mix.
+- **Customer waiting on response — possible coverage gap.** tay2thom18: "I am still waiting for a response please." No SPS reply visible in this window. Unassigned thread.
+- **Customer sentiment: warm.** Rosie Ledesma: "Most companies would say sorry, you messed up. I really appreciate the understanding and your kind human nature!" Multiple thank-yous and cooperative replies throughout. No frustrated or escalated threads.
+
+*Flags:*
+- **Sticker editor photo upload bug.** Customer provided specific, actionable feedback — certain photos failed to work in the sticker editor while the same photos worked fine in TinyBooks. If this is a reproducible bug, it's silently blocking conversions on the sticker product. Worth confirming with the tech team whether the forwarded feedback was investigated.
+- **Customer waiting on response (tay2thom18).** "Still waiting for a response please" with no visible SPS reply. If this thread fell through the cracks, it needs pickup Monday morning.
+
+*Observations:* Clean, quiet weekend. No new defect categories, no escalations, and the structural patterns remain unchanged from prior weeks — Print Pro coordination, editor UX friction, 6-month retention limit tickets, and product limitation questions continue to be the recurring CS workload drivers. The sticker editor bug report is the most actionable new signal: a customer took the time to describe a specific, reproducible issue and explicitly flagged it as a potential barrier for new customers. That kind of feedback is gold — worth ensuring the tech team actually investigates rather than filing it away. The big spender order volume is notably strong this weekend — four orders totaling $1,613, with Layflat Albums and Metal Prints as the high-value anchors. Rachyel continues to perform at her usual exceptional level, running the full Sunday queue solo with speed, warmth, and competence. The Janessa Ruiz thread is a nice example of service that preserves revenue: instead of processing the cancellation, Rachyel offered to hold the order and let the customer edit — resolved in 3 minutes, sale saved.
+
+---
+
 ## 2026-08-10 — Weekly CS Review (Window: Sat 8/9 12:01 PM – Sun 8/10 11:59 AM PT)
 
 *Volume:* Moderate. 58 messages over ~24 hours. Typical weekend pace. Rachyel P ran the Sunday morning shift solo (~30+ replies, 7:54 AM – 11:59 AM PT) covering the full range. Catherine C visible in a couple of fulfillment coordination threads. No Julia, Vanessa, or Jody in this window.
