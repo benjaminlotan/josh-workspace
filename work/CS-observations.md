@@ -6,6 +6,29 @@
 
 ---
 
+## 2026-09-07 — Weekly CS Review (Window: Sat 9/6 12:00 PM – Sun 9/7 11:11 AM PT)
+
+*Volume:* Low. 22 messages over ~23 hours. Light weekend window — mostly customer replies to existing threads, very few new conversations opened. Rachyel P handling the majority of active threads with her usual responsiveness. Catherine C visible in a couple of ongoing threads. No new agent-initiated outbound visible in this window.
+
+*Themes:*
+- **Ordering/checkout friction — 3-4 customers blocked.** Cherie: "Where's the add to cart button?" (thread with Catherine). Customer L couldn't place an order — got stuck at the cart page with nothing else visible. Krista Sparacino: "I'm having trouble placing my order! Please help me." Sonia Robinson on iPhone having issues. In a 22-message window, having 3-4 customers unable to complete a purchase is a high ratio. The ordering flow continues to be the most persistent conversion barrier in the CS queue.
+- **TinyBook quality perception gap — not a defect, but telling.** Dana Bettinger compared her TinyBooks unfavorably to her grid poster: "The grid poster arrived so clean and pristine, with excellent print quality. The tiny books are cute, just... a different type of product." Also mentioned "widely perforated edges." This isn't a quality complaint — it's a customer articulating a noticeable quality gap between SPS's own products. When a customer describes the hero product as "a different type of product" (inferior), that's worth hearing.
+- **Upside-down TinyBook binding — still recurring.** Kelly Gabrail sending additional photos of upside-down navy blue heart book. Same class of binding orientation defect that has appeared periodically for months.
+- **Shipping delay frustration — hard event deadline at risk.** International customer (annaragnhild) ordered expecting 26-day delivery per the website, now told it could take up to 40 days. Needs photos for a September 11 event. Explicitly disappointed and asking if anything can be done to speed delivery. When stated delivery times and actual delivery times diverge significantly, customers feel misled.
+- **Retroactive discount code refund — same pattern.** Dr Rachel Bennett (Australia) forgot to apply "labor 20" code on Daily Calendar order #766840. Requesting post-order refund. Same structural pattern seen with every promotion since April — customers order without the code, then write in for manual adjustment.
+- **B2B lead — active.** Jason Bennett ready to place first order of 20 books, asking about quantity discount and a link to verify the latest version. Active B2B lead in Catherine's queue. Continuation of a prior thread.
+- **Print quality — grayish tint.** Sarah (sfair24) sending photos showing grayish tint on her prints. Investigation in progress with Catherine.
+- **Envelope sizing mismatch — still under investigation.** Patti Morgan confirmed her flat cards are 4x6" but envelopes are 4 3/8 x 5 11/16". Continuation of the envelope sizing thread flagged in prior weeks.
+- **Big spender.** $342 order (7 line items — Tiny Books, Photo Magnets, Framed Fine Art Print). Healthy multi-product order. Assigned to Cara.
+- **Sales spam.** Standard "50+ orders/day, 3% commission" pitch. Noise.
+- **Customer sentiment: warm.** Multiple thank-you replies (Ashley Eggart, Anastasia Mirk, Carol Kresse, Nella Faber-Rod). Jennifer Roy enthusiastic about ordering during the sale. No frustrated or escalated threads.
+
+*Flags:* None urgent today. The checkout/ordering friction ratio (3-4 blocked customers in a 22-message window) continues to be the most commercially significant structural issue — every blocked buyer in the CS queue represents many more who silently abandoned.
+
+*Observations:* Quietest window in recent weeks — 22 messages, mostly replies to existing threads. The structural patterns are completely unchanged: ordering UX friction, TinyBook binding defects, shipping timeline expectations, and retroactive discount requests continue to surface with clockwork regularity. The Dana Bettinger thread is worth hearing beyond the specific ticket — a customer organically comparing two SPS products and finding the hero product (TinyBooks) noticeably lower quality than a grid poster is a quality perception signal. TinyBooks are "cute" but not "clean and pristine" in this customer's experience. The ordering friction ratio is the most commercially notable data point: in a window with only 22 messages, 3-4 customers were unable to figure out how to complete a purchase. That's a conversion problem, not a CS problem. Rachyel and Catherine handling the weekend queue with their usual competence.
+
+---
+
 ## 2026-08-31 — Weekly CS Review (Window: Sun 8/31 6:43 AM – 11:59 AM PT)
 
 *Volume:* Moderate-to-high. 100 messages in ~5.5 hours (Sunday morning queue). Rachyel P ran the full customer-facing queue solo with her usual speed and range. Julia B visible in Bay Photo/Print Pro coordination threads (supplier-facing — submitting remakes, coordinating with Heather Trujillo). Catherine C visible only in one customer reply to a prior thread.
