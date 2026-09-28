@@ -6,6 +6,30 @@
 
 ---
 
+## 2026-09-28 — Weekly CS Review (Window: Thu 9/25 2:08 PM – Sun 9/28 11:53 AM PT)
+
+*Volume:* Moderate. 100 messages over ~3.5 days. Typical Thursday-through-Sunday pace. Three agents active: Catherine C (Thursday/Friday), Jody P (Saturday), Rachyel P (Sunday). Clean shift coverage across the full weekend.
+
+*Themes:*
+- **Print Pro / Bay Photo coordination — standard volume with one notable escalation.** Catherine filed an "URGENT" 3rd follow-up on SPS2325855 (magnet order, production day 14, still not shipped). Heather Trujillo confirmed it would ship that day. Rachyel filed a rush reprint on SPS2326599 (delivered damaged in store). Jody coordinating two quality investigations with Heather — SPS2327185 (overexposed highlights) and SPS2325453 (streaking) — both pending Print Pro photo review. Rush flag on SPS2327637 (customer deadline) confirmed by Heather. Standard coordination load, but the day-14 magnet order required three escalation attempts before resolution.
+- **Book binding defect — insufficient spine glue.** Catherine filed remake for order 7099962785955 — page fell out immediately upon opening. Print Pro (Heather) confirmed insufficient spine glue, marked unbillable, flagged for management training. Same class of binding/adhesive defect seen periodically since April.
+- **Print quality investigations — 3 active threads.** Andrew Cassidy's "messed up order" — Rachyel determined mini prints were uploaded that way by the customer (user error, not production). Jody investigating overexposed highlights (SPS2327185) and streaking (SPS2325453) — both pending Print Pro evaluation. Heather requesting full-frame photos in both cases before making a determination. Standard investigation protocol.
+- **Jody P — solid Saturday shift.** First significant solo shift I've reviewed. Handled reprints, product questions (TinyBooks set of 3 only, JPG vs JPEG confusion, international shipping timelines), quality escalations to Print Pro, rush flags, order modifications (can't change after placed), and shipping upgrades. Professional, friendly, competent. Told a customer about the 6-month order retention limit. Good bench depth alongside Rachyel and Catherine.
+- **Big spender orders — exceptionally strong.** Six alerts totaling ~$3,184: $973.80 (22 line items — Wood Prints, Alveus Sanctuary), $610 (Acrylic Photo Blocks), $470.80 (Mini Prints), $447 (Layflat Photo Albums), $363 (Fine Art Prints), $320 (Framed Fine Art Prints). The $973 order from Alveus Sanctuary (wildlife sanctuary) is a notable B2B/organizational buyer.
+- **B2B lead — Solamoré Events.** Danica Sto Domingo inquiring about 100-150 hardcover photo books for events — asking about bulk discounts, proofs, and lead times. Rachyel responded well: offered discount quote, asked clarifying questions about order cadence (all at once vs. over time). Active B2B lead that should be tracked.
+- **Product limitation friction — recurring.** TinyBooks only in sets of 3 (Chris wanted to buy a 4th book for a second grandchild — told no). No double-sided prints (Kathleen Perfect). 6-month order retention limit. Can't ship to multiple addresses (Jill told she'd need 25 separate orders for 25 addresses). Same structural patterns every week.
+- **Duplicate TinyBook photos.** Winonya Drake received TinyBooks with duplicate photos despite uploading more than the required number. Rachyel investigating — sent editor reload link to verify against what was printed. Possible processing/photo-ordering issue, same class as prior versioning bugs.
+- **Ambassador/Instagram inbound.** Sofya Prado reached out via Instagram — Catherine directed to ambassador page and Cara's email. Organic interest continuing.
+- **Customer sentiment: warm.** Hannah Walden placed a $447 order after CS interaction and thanked the team enthusiastically. Jeanne Hopkins grateful for gift code and rush handling. Multiple positive thank-you replies throughout. No frustrated or escalated threads.
+
+*Flags:*
+- **B2B lead — Solamoré Events (100-150 photo books).** Rachyel is handling well but this is a meaningful revenue opportunity if it converts. Event photo books at scale — worth ensuring this doesn't die in the HelpScout queue.
+- **Day-14 magnet order required 3 escalation attempts (SPS2325855).** Catherine had to file an "URGENT" 3rd follow-up before Print Pro confirmed shipment. When a standard product takes 14+ business days and requires multiple escalations, production prioritization on that product line may need attention.
+
+*Observations:* Clean, typical weekend. The most notable signals are the strong big spender volume (~$3,184 across 6 orders) and the Solamoré Events B2B lead (100-150 photo books for events). Both suggest healthy demand for SPS products in the premium/organizational segment. The structural patterns remain completely unchanged: Print Pro coordination, product limitation friction, and the 6-month retention limit continue to be the recurring CS workload drivers. Jody P's Saturday shift was solid — she's a competent addition to the CS rotation alongside Rachyel and Catherine, providing good weekend coverage. The day-14 magnet escalation is a minor operational signal: when standard orders take that long and require 3 follow-ups, it suggests either a production bottleneck on magnets specifically or a prioritization gap at Print Pro. Customer sentiment remains warm throughout — no escalations, no churn threats, just routine operational support handled well by all three agents.
+
+---
+
 ## 2026-09-21 — Weekly CS Review (Window: Sat 9/20 12:53 PM – Sun 9/21 12:00 PM PT)
 
 *Volume:* Moderate. 48 messages over ~23 hours. Typical weekend pace. Rachyel P ran the full Sunday morning queue solo (starting ~9:38 AM PT) with her usual speed and range. Catherine C visible only in Bay Photo/Print Pro coordination threads (supplier-facing — coordinating remakes with Heather Trujillo).
