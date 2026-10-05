@@ -6,6 +6,29 @@
 
 ---
 
+## 2026-10-05 — Weekly CS Review (Window: Sat 10/4 12:08 PM – Sun 10/5 11:52 AM PT)
+
+*Volume:* Low-to-moderate. 37 messages over ~24 hours. Typical quiet weekend pace. Rachyel P ran the full Sunday morning queue solo (10:33 AM – 11:52 AM PT, ~15 outbound replies in 80 minutes) with her usual speed and range. Catherine C visible only in Bay Photo/Print Pro coordination threads (supplier-facing — one cancellation confirmation with Heather Trujillo). No other CS agents in this window.
+
+*Themes:*
+- **Alaska missing from state dropdown — product bug.** Karen Swerman reported that Alaska is not in the shipping address update link's state dropdown. She counted only 48 state abbreviations and couldn't enter it manually. Rachyel updated the address on her end. If AK is genuinely missing from the address form (and possibly one other state), this is blocking customers from self-serve address changes and creating unnecessary CS tickets. Quick engineering fix.
+- **App photo upload failures — active troubleshooting.** Customer (llukensparker) reported photos not loading in the app, unable to add to cart, error messages saying certain photos won't load. Confirmed app is updated. Rachyel asking diagnostic questions. Active thread — could be a reproducible app bug affecting photo imports.
+- **Saved project recovery / cloud-save gap — still recurring.** Pam Steelhammer spent hours choosing 69 pictures and then couldn't find them — "I didn't know how to save them." Rachyel investigating whether she uploaded and then quit the app without saving. Maryanne couldn't find her saved TinyBook projects — Rachyel found two saved sets and provided direct links. Same auto-save/cloud-save friction generating tickets since April.
+- **Amazon Pay checkout issue.** Denise couldn't complete checkout with Amazon Pay — self-resolved by switching payment methods. Noted "it may be the Amazon app that is the problem." Useful signal on Amazon Pay integration reliability.
+- **Product limitations — recurring.** Classic prints only come in matte for smaller sizes (Wendy). Can't add to or combine shipping on orders already placed (Maria Osorio). Must re-upload images to reorder keychains (Auto Warehouse). Hardcover books start at 30 pages (Jennie). Round metal prints discontinued (Stacey Morris). App and website don't sync — data is local to each platform (Karen Chavez). Same structural friction seen every week.
+- **Bay Photo / Print Pro coordination — light volume.** One cancellation confirmation (SPS2327442 — Heather Trujillo confirmed cancelled). Standard, minimal supplier-facing activity this window.
+- **Possible B2B/event lead.** Customer (s.bearbower) asked about a product option not currently available — Rachyel said "we are working on it for the future" and asked about event timing and quantity needed. Thread in progress.
+- **Big spender orders (2) — strong.** $304.62 (Classic Prints, 5 line items) and $435.12 (Photo Magnets, 14 line items). The $435 magnet order is notably large — 14 line items suggests a bulk/gifting use case.
+- **Customer sentiment: warm.** Alonna Davie: "Yay!! Thank you so much!!" Tamera Nunamaker: "Thank you so much for your quick response!" No frustrated or escalated threads.
+
+*Flags:*
+- **Alaska missing from state dropdown.** If confirmed, this is a product bug affecting the self-serve address change tool. Quick engineering fix — worth verifying whether AK (and potentially one other state, given only 48 abbreviations were counted) is indeed missing from the form.
+- **App photo upload failures (llukensparker).** Active troubleshooting thread — photos won't load or upload in the app despite being on the latest version. If reproducible, this is a conversion blocker. Worth monitoring for resolution.
+
+*Observations:* Quiet, clean weekend. The Alaska state dropdown bug is the most actionable new finding — a missing state in the address form is the kind of small, embarrassing bug that's easy to fix and directly reduces CS tickets. The structural patterns remain completely unchanged: app/web platform disconnect, saved project confusion, product limitation friction, and Print Pro coordination continue to be the recurring CS workload drivers. Rachyel continues to perform at her usual exceptional level, running the full Sunday queue solo with speed, warmth, and competence across the full range of issues. The big spender volume is healthy — the $435 magnet order (14 line items) suggests strong demand in the gifting/bulk segment. Customer sentiment remains warm throughout, with no escalations or frustrated threads.
+
+---
+
 ## 2026-09-28 — Weekly CS Review (Window: Thu 9/25 2:08 PM – Sun 9/28 11:53 AM PT)
 
 *Volume:* Moderate. 100 messages over ~3.5 days. Typical Thursday-through-Sunday pace. Three agents active: Catherine C (Thursday/Friday), Jody P (Saturday), Rachyel P (Sunday). Clean shift coverage across the full weekend.
