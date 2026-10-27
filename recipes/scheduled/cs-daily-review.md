@@ -47,14 +47,16 @@ Read the current file at `work/CS-observations.md` using `readFile`. Then use `e
 
 If the file doesn't exist yet, create it with `writeFile` with a header and this first entry.
 
-## Step 4: DM Ben and George
+## Step 4: DM Ben, George, and Cara
 
-Send a group DM to the private channel C0AS8HRNZL6 (this is the group DM with Ben, George, and Josh).
+Send the report to **two places**:
+1. The group DM channel C0AS8HRNZL6 (Ben + George + Josh)
+2. Cara's DM channel D0AND69KAN5 (Cara is now included in weekly CS reports per Ben's request on Oct 27, 2026)
 
-Keep it short — this is a daily summary, not an essay. Format:
+Keep it short — this is a weekly summary, not an essay. Format:
 
 ```
-*CS Daily Review — [DATE]*
+*CS Weekly Review — [DATE]*
 
 *Volume:* [characterization]
 
