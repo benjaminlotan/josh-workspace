@@ -40,7 +40,13 @@
 - **Channel ID:** `C0AS8HRNZL6`
 - **Type:** Private channel / small group
 - **Participants:** Ben (U06RVS14K), George (U071RMK2P), Josh (U0ARKNHKCCX)
-- **What it's about:** Three-way leadership channel for Ben, George, and Josh. Where Josh briefs both founders, shares CS review findings, and discusses sensitive operational/strategic topics. CS daily summaries post here.
+- **What it's about:** Three-way leadership channel for Ben, George, and Josh.
+
+### Group DM — Ben, George, Cara, Josh (CS Reviews)
+- **Channel ID:** `C0CDGUBK2CQ`
+- **Type:** Group DM
+- **Participants:** Ben, George, Cara, Josh
+- **What it's about:** The correct destination for weekly CS review reports, per Ben's instruction on Oct 27, 2026. Cara is included here.
 
 ---
 

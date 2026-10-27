@@ -47,11 +47,9 @@ Read the current file at `work/CS-observations.md` using `readFile`. Then use `e
 
 If the file doesn't exist yet, create it with `writeFile` with a header and this first entry.
 
-## Step 4: DM Ben, George, and Cara
+## Step 4: Send the report
 
-Send the report to **two places**:
-1. The group DM channel C0AS8HRNZL6 (Ben + George + Josh)
-2. Cara's DM channel D0AND69KAN5 (Cara is now included in weekly CS reports per Ben's request on Oct 27, 2026)
+Send the report to this channel: **C0CDGUBK2CQ** (the group DM with Ben, George, Cara, and Josh — per Ben's instruction on Oct 27, 2026, this is the correct place for CS reviews).
 
 Keep it short — this is a weekly summary, not an essay. Format:
 
